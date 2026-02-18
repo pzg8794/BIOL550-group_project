@@ -1,0 +1,21 @@
+.DS_Store
+__pycache__/
+.ipynb_checkpoints/
+
+# LaTeX build artifacts (we keep LaTeX in a separate repo)
+*.aux
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.xdv
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+
