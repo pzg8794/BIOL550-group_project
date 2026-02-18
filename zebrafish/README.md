@@ -47,6 +47,7 @@ Notebook walkthrough (recommended):
 
 - `zebrafish_sra_api_test_download.ipynb`
 - `zebrafish_github_setup_and_script_walkthrough.ipynb`
+- Step-by-step FASTQ download guide: `ZEBRAFISH_FASTQ_DOWNLOAD_STEP_BY_STEP.md`
 
 Install SRA Toolkit reproducibly (server or local; downloads official prebuilt tarball, does not commit binaries):
 
