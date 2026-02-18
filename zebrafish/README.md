@@ -23,6 +23,11 @@ Generate RunInfo + SRR lists (via Entrez / E-utilities):
 python3 scripts/get_zebrafish_data_sra.py
 ```
 
+Notebook walkthrough (recommended):
+
+- `zebrafish_sra_api_test_download.ipynb`
+- `zebrafish_github_setup_and_script_walkthrough.ipynb`
+
 This writes:
 
 - `metadata/PRJNA1277581/runinfo.csv`
