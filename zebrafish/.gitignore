@@ -1,6 +1,11 @@
 # Downloaded datasets (do not commit)
 data/
 
+# Downloaded tools (do not commit); keep docs tracked.
+tools/
+!tools/README.md
+!tools/.gitkeep
+
 # Common raw outputs / archives
 *.sra
 *.fastq
@@ -20,4 +25,3 @@ data/
 # Logs / temp
 *.log
 tmp/
-
