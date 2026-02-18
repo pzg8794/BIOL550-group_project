@@ -1,0 +1,23 @@
+# Downloaded datasets (do not commit)
+data/
+
+# Common raw outputs / archives
+*.sra
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.bam
+*.sam
+*.cram
+*.cram.crai
+*.bai
+*.csi
+*.tar
+*.tgz
+*.gz
+
+# Logs / temp
+*.log
+tmp/
+

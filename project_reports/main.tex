@@ -1,0 +1,105 @@
+\documentclass[10pt]{article}
+
+\usepackage[margin=0.60in]{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{siunitx}
+\usepackage{enumitem}
+\usepackage{microtype}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+\sisetup{group-separator={,}, group-minimum-digits=4}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\setlist[itemize]{leftmargin=*, noitemsep, topsep=2pt}
+\setlist[enumerate]{leftmargin=*, noitemsep, topsep=2pt}
+
+\title{BIOL550: Two SRA Datasets (Selection \& Validation Write-up)}
+\author{Piter Z. Garcia Bautista}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Chosen Datasets}
+
+The group chose three candidate RNA-seq projects and most members leaned toward two of them (\textbf{PRJNA1017789} and \textbf{PRJNA1277581}). For my individual submission, I replace the second pick with \textbf{PRJNA717662}, since it better matches my research interests. The two datasets I am proposing are: \textbf{PRJNA1017789} (mouse; \href{https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1017789}{BioProject}) and \textbf{PRJNA717662} (human; \href{https://www.ncbi.nlm.nih.gov/bioproject/PRJNA717662}{BioProject}).
+
+\section{Validation process (manual and reproducible)}
+
+I used SRA Run Selector RunInfo CSVs to validate: RNA-seq, \(\ge 20\) runs (used as the ``samples'' unit for initial screening), paired-end (\texttt{LibraryLayout=PAIRED}), depth \(\ge\) \num{40000000} \texttt{spots} per run, and read length consistent with the course requirement (\texttt{avgLength} near \(\sim 300\) for paired-end \(\sim 2\times 150\)). Note: for paired-end runs, \texttt{spots} is commonly a proxy for read pairs (often discussed as ``fragments''), and \texttt{avgLength} is the average \emph{spot length} (roughly the sum of both reads), not the library insert size.
+
+\section{Summary Table (final two datasets)}
+
+\begin{table}[h]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{p{1.75cm} p{1.85cm} p{0.75cm} p{2.65cm} p{4.7cm}}
+\toprule
+\textbf{BioProject} & \textbf{Organism} & \textbf{Runs} & \textbf{avgLength (min--max; mean)} & \textbf{spots (min--max; mean)} \\
+\midrule
+PRJNA1017789 & \emph{Mus musculus} & 26 & 302--302; 302.00 & \num{40136901}--\num{65409634}; \num{46078299} \\
+\addlinespace
+PRJNA717662 & \emph{Homo sapiens} & 152 & 287--300; 295.15 & \num{43836864}--\num{108271493}; \num{67329439} \\
+\bottomrule
+\end{tabular}
+\caption{Run-level stats from local RunInfo CSVs. Depth is reported as \texttt{spots} (a proxy for read pairs/fragments).}
+\end{table}
+
+\section{Dataset Details (brief)}
+
+\subsection*{PRJNA1017789 (mouse) --- axon regeneration after injury}
+\textbf{Project accession:} PRJNA1017789.\\
+\textbf{Brief description:} RNA-seq study in a mouse injury/regeneration context, investigating how the aryl hydrocarbon receptor relates to axon regeneration in DRG neurons.
+
+\textbf{Sample count:} 26 runs (GEO \texttt{GSM*} accessions in RunInfo); per-condition counts come from GEO sample metadata.
+
+\textbf{Case/control:} injury vs control (and/or perturbations), as defined in GEO sample metadata.
+
+\textbf{Strengths (pros)}
+\begin{itemize}[leftmargin=*]
+  \item Clear mechanistic biological question (injury response/regeneration) with a focused design.
+  \item Uniform read-length proxy (avgLength = 302 for all runs) and all runs exceed the 40M-spot depth threshold.
+  \item Moderate run count (26) is manageable for course timelines while still meeting the \(\ge 20\) sample requirement.
+\end{itemize}
+
+\textbf{Weaknesses (cons)}
+\begin{itemize}[leftmargin=*]
+  \item Model organism (mouse); translation to human clinical outcomes may be indirect.
+  \item Case/control labels require pulling sample metadata from GEO (RunInfo alone is not enough).
+\end{itemize}
+
+\subsection*{PRJNA717662 (human) --- long-term blood transcriptome after SARS-CoV-2}
+\textbf{Project accession:} PRJNA717662.\\
+\textbf{Brief description:} Blood RNA-seq from healthy controls and recovered COVID-19 patients at 12, 16, and 24 weeks post-infection; the project reports long-lasting transcriptomic signatures linked to severity.
+
+\textbf{Case/control:} healthy controls vs recovered COVID-19; additional grouping by timepoint (12/16/24 weeks) and disease severity (per GEO metadata).
+
+\textbf{Condition counts (from RunInfo \texttt{Subject\_ID}):} 14 healthy-control runs (14 subjects) and 138 recovered-COVID runs (65 subjects; repeated measures across timepoints, with some missingness).
+
+\textbf{Strengths (pros)}
+\begin{itemize}[leftmargin=*]
+  \item Strong healthcare relevance (human cohort; post-infection immune signatures).
+  \item Large sample size (152 runs) supports robust statistics and subgroup analyses.
+  \item All runs meet the 40M-spot depth criterion; depth is high on average (mean \(\approx\) \num{67329439} spots).
+\end{itemize}
+
+\textbf{Weaknesses (cons)}
+\begin{itemize}[leftmargin=*]
+  \item \texttt{avgLength} varies (287--300); suggests variations in read length or trimming; pipeline should handle this consistently.
+  \item Clinical covariates and subgroup definitions come from GEO metadata and must be curated carefully.\\
+\end{itemize}
+
+
+Overall, both datasets pass the screening criteria. PRJNA717662 is my stronger fit (human + clinically focused); PRJNA1017789 is a smaller, well-scoped mechanistic dataset.
+
+\end{document}
