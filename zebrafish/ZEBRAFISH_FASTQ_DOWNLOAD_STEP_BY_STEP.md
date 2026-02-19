@@ -49,8 +49,8 @@ ls -la
 ```
 
 Important (performance):
-- Keep large downloads **outside** the git repo folder when possible. Putting big FASTQ data under the repo can make the server feel slow.
-- In this guide we set `OUT_DIR` under your `$HOME` (your personal space) so the repo stays lightweight.
+- We download FASTQs into the shared data folder: `zebrafish/data/<ACC>/`.
+- This repo is configured to **not track** FASTQ data in git, so keeping data under `zebrafish/data/` is OK and keeps everyone using the same simple layout.
 
 ## Step 3 — Select your dataset (your SRR list)
 
@@ -131,13 +131,13 @@ Important notes:
 
 ## Step 5 — Heart of the script (what it runs under the hood)
 
-Copy/paste (this shows the script usage and options):
+Copy/paste (this shows the wrapper usage and options — this is the ONE script the team uses):
 
 ```bash
-bash zebrafish/scripts/download_fastq_sratoolkit_from_runs.sh --help
+bash zebrafish/scripts/download_fastq_sratoolkit.sh --help
 ```
 
-Copy/paste (this prints the script so you can see the “heart” of it):
+Copy/paste (this prints the “core loop” script so you can see the “heart” of it):
 
 ```bash
 sed -n '1,220p' zebrafish/scripts/download_fastq_sratoolkit_from_runs.sh
@@ -147,28 +147,38 @@ sed -n '1,220p' zebrafish/scripts/download_fastq_sratoolkit_from_runs.sh
 
 For each SRR in your `RUNS_FILE`, the wrapper runs:
 
-1) Download the run (resumable download):
+1) Download the run (resumable download) into a per-run temp folder:
 
 ```bash
-prefetch <SRR>
+prefetch -O <RUN_DIR>/sra <SRR>
 ```
 
-2) Convert to FASTQ using a “dump” command:
+Why this matters:
+- It prevents `prefetch` from creating stray `SRR.../` folders in `/home/zebrafish/`.
+- We delete the `<RUN_DIR>/sra/` folder after conversion, so we keep **only** the final FASTQs.
+
+2) Convert to FASTQ using a “dump” command (paired-end):
 
 ```bash
-fasterq-dump --split-files --threads <THREADS> --outdir <RUN_DIR> <SRR>
+fasterq-dump --split-files --threads <THREADS> --outdir <RUN_DIR> <SRR_OR_SRA_FILE>
 ```
 
 Meaning of each parameter:
 - `--split-files` → paired-end output: `<SRR>_1.fastq` and `<SRR>_2.fastq`
 - `--threads <THREADS>` → CPU threads to use (example: `4`)
 - `--outdir <RUN_DIR>` → output folder for that SRR
-- `<SRR>` → the SRR you are downloading (example: `SRR34002427`)
+- `<SRR_OR_SRA_FILE>` → either the SRR accession (example: `SRR34002427`) **or** the downloaded runfile path (if available)
 
 3) Compress the FASTQs (saves space):
 
 ```bash
 gzip -f <SRR>_1.fastq <SRR>_2.fastq
+```
+
+4) Cleanup the temporary runfile download:
+
+```bash
+rm -rf <RUN_DIR>/sra
 ```
 
 Final files you should see:
@@ -197,9 +207,10 @@ Both commands are from **SRA Toolkit** and both convert an SRR run into FASTQ fi
 What our script does (modern path):
 
 ```bash
-prefetch <SRR>
-fasterq-dump --split-files --threads 4 --outdir <RUN_DIR> <SRR>
+prefetch -O <RUN_DIR>/sra <SRR>
+fasterq-dump --split-files --threads 4 --outdir <RUN_DIR> <SRR_OR_SRA_FILE>
 gzip -f <RUN_DIR>/<SRR>_1.fastq <RUN_DIR>/<SRR>_2.fastq
+rm -rf <RUN_DIR>/sra
 ```
 
 The equivalent “classic” single-step conversion (paired-end) is:
@@ -263,8 +274,7 @@ How it looks when it runs (example output pattern):
 Copy/paste (this runs the download and writes FASTQs into your folder):
 
 ```bash
-DATA_ROOT="$HOME/biol550_zebrafish_data"
-OUT_DIR="$DATA_ROOT/$ACC"
+OUT_DIR="zebrafish/data/$ACC"
 THREADS=4
 
 # This selects the first 1 SRR from your assigned runs list and downloads it.
@@ -321,8 +331,7 @@ head -n "$N_RUNS" "$RUNS_FILE"
 Copy/paste (this runs the download for those N runs):
 
 ```bash
-DATA_ROOT="$HOME/biol550_zebrafish_data"
-OUT_DIR="$DATA_ROOT/$ACC"
+OUT_DIR="zebrafish/data/$ACC"
 THREADS=4
 
 bash zebrafish/scripts/download_fastq_sratoolkit.sh \
