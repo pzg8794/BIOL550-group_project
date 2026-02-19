@@ -57,6 +57,8 @@ while read -r SRR; do
 
   RUN_DIR="$OUT_DIR/$SRR"
   mkdir -p "$RUN_DIR"
+  SRA_DIR="$RUN_DIR/sra"
+  mkdir -p "$SRA_DIR"
 
   R1_GZ="$RUN_DIR/${SRR}_1.fastq.gz"
   R2_GZ="$RUN_DIR/${SRR}_2.fastq.gz"
@@ -69,14 +71,27 @@ while read -r SRR; do
   echo
   echo "== $SRR =="
 
-  # 1) Download .sra into SRA cache (fast to resume; shared cache behavior depends on toolkit config).
-  prefetch "$SRR"
+  # 1) Download runfile into a per-run folder (avoids creating SRR* dirs in repo root)
+  prefetch -O "$SRA_DIR" "$SRR"
+
+  # Prefer dumping from the downloaded file (so we don't re-download and we keep IO local).
+  # prefetch typically creates: $SRA_DIR/$SRR/<file>
+  SRA_INPUT="$SRR"
+  if [[ -d "$SRA_DIR/$SRR" ]]; then
+    SRA_FILE="$(find "$SRA_DIR/$SRR" -maxdepth 1 -type f 2>/dev/null | head -n 1 || true)"
+    if [[ -n "${SRA_FILE:-}" ]]; then
+      SRA_INPUT="$SRA_FILE"
+    fi
+  fi
 
   # 2) Convert to FASTQ (paired) into RUN_DIR
-  fasterq-dump --split-files --threads "$THREADS" --outdir "$RUN_DIR" "$SRR"
+  fasterq-dump --split-files --threads "$THREADS" --outdir "$RUN_DIR" "$SRA_INPUT"
 
   # 3) Gzip outputs (keep originals only temporarily to save space)
   gzip -f "$RUN_DIR/${SRR}_1.fastq" "$RUN_DIR/${SRR}_2.fastq"
+
+  # Cleanup downloaded runfile folder (keeps only FASTQ.gz outputs under data/<ACC>/<SRR>/)
+  rm -rf "$SRA_DIR" || true
 done < "$RUNS_FILE"
 
 echo
