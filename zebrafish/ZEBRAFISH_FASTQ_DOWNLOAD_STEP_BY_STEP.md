@@ -4,18 +4,29 @@ Each step below is **copy/paste** plus **one line** saying what it does.
 
 ## Index
 
-- [Step 1 — Log into the server](#step-1--log-into-the-server)
-- [Step 2 — Go to the project folder](#step-2--go-to-the-project-folder)
-- [Step 3 — Select your dataset (your SRR list)](#step-3--select-your-dataset-your-srr-list)
-- [Step 3.1 — How the dataset was split (collaboration)](#step-31--how-the-dataset-was-split-collaboration)
-- [Step 4 — Count your runs + view the SRR IDs](#step-4--count-your-runs--view-the-srr-ids)
-- [Step 4.1 — What gets downloaded each time you run the script](#step-41--what-gets-downloaded-each-time-you-run-the-script)
-- [Step 5 — Heart of the script (what it runs under the hood)](#step-5--heart-of-the-script-what-it-runs-under-the-hood)
-- [Step 6 — Recommended test: download 1 run](#step-6--recommended-test-download-1-run)
-- [Step 7 — Download N runs (YOU must set the number)](#step-7--download-n-runs-you-must-set-the-number)
-- [Step 8 — Check results (what “good” looks like)](#step-8--check-results-what-good-looks-like)
-- [Step 9 — Monitor progress (optional)](#step-9--monitor-progress-optional)
-- [TO-DO checklist](#to-do-checklist)
+- [Zebrafish FASTQ download (step-by-step)](#zebrafish-fastq-download-step-by-step)
+  - [Index](#index)
+  - [Step 1 — Log into the server](#step-1--log-into-the-server)
+  - [Step 2 — Go to the project folder](#step-2--go-to-the-project-folder)
+  - [Step 3 — Select your dataset (your SRR list)](#step-3--select-your-dataset-your-srr-list)
+  - [Step 3.1 — How the dataset was split (collaboration)](#step-31--how-the-dataset-was-split-collaboration)
+  - [Step 4 — Count your runs + view the SRR IDs](#step-4--count-your-runs--view-the-srr-ids)
+  - [Step 4.1 — What gets downloaded each time you run the script](#step-41--what-gets-downloaded-each-time-you-run-the-script)
+  - [Step 5 — Heart of the script (what it runs under the hood)](#step-5--heart-of-the-script-what-it-runs-under-the-hood)
+    - [The commands the script runs (the professor’s SRA Toolkit commands)](#the-commands-the-script-runs-the-professors-sra-toolkit-commands)
+    - [Script options you will use](#script-options-you-will-use)
+    - [Note: `fastq-dump` vs `fasterq-dump`](#note-fastq-dump-vs-fasterq-dump)
+    - [Equivalence: `fastq-dump` vs `fasterq-dump` (same goal, different tool)](#equivalence-fastq-dump-vs-fasterq-dump-same-goal-different-tool)
+      - [The “same thing” in practice (paired-end FASTQ)](#the-same-thing-in-practice-paired-end-fastq)
+      - [Parameter equivalence (quick mapping)](#parameter-equivalence-quick-mapping)
+      - [Why we use `fasterq-dump` in the team script](#why-we-use-fasterq-dump-in-the-team-script)
+      - [When `fastq-dump` is still useful](#when-fastq-dump-is-still-useful)
+  - [Step 6 — Recommended test: download 1 run](#step-6--recommended-test-download-1-run)
+  - [Step 7 — Download N runs (YOU must set the number)](#step-7--download-n-runs-you-must-set-the-number)
+  - [Step 8 — Check results (what “good” looks like)](#step-8--check-results-what-good-looks-like)
+  - [Step 9 — Monitor progress (optional)](#step-9--monitor-progress-optional)
+  - [TO-DO checklist](#to-do-checklist)
+    - [After you run the TO-DO block (what it does / why / how it looks)](#after-you-run-the-to-do-block-what-it-does--why--how-it-looks)
 
 ---
 
@@ -36,6 +47,10 @@ cd /home/zebrafish
 pwd
 ls -la
 ```
+
+Important (performance):
+- Keep large downloads **outside** the git repo folder when possible. Putting big FASTQ data under the repo can make the server feel slow.
+- In this guide we set `OUT_DIR` under your `$HOME` (your personal space) so the repo stays lightweight.
 
 ## Step 3 — Select your dataset (your SRR list)
 
@@ -262,7 +277,8 @@ cat "$RUNS_1"
 Copy/paste (this runs the download and writes FASTQs into your folder):
 
 ```bash
-OUT_DIR="zebrafish/data/fastq/full/$ACC/$NAME/test_first1"
+DATA_ROOT="$HOME/biol550_zebrafish_data"
+OUT_DIR="$DATA_ROOT/fastq/full/$ACC/$NAME/test_first1"
 THREADS=4
 
 bash zebrafish/scripts/download_fastq_sratoolkit_from_runs.sh \
@@ -311,7 +327,8 @@ cat "$RUNS_N"
 Copy/paste (this runs the download for those N runs):
 
 ```bash
-OUT_DIR="zebrafish/data/fastq/full/$ACC/$NAME/first${N_RUNS}"
+DATA_ROOT="$HOME/biol550_zebrafish_data"
+OUT_DIR="$DATA_ROOT/fastq/full/$ACC/$NAME/first${N_RUNS}"
 THREADS=4
 
 bash zebrafish/scripts/download_fastq_sratoolkit_from_runs.sh \
@@ -443,16 +460,16 @@ gzip -t "$OUT_DIR/$SRR/${SRR}_1.fastq.gz"
 gzip -t "$OUT_DIR/$SRR/${SRR}_2.fastq.gz"
 echo "gzip OK"
 
-# DOWNLOAD MORE: YOU MUST CHANGE THIS NUMBER
-N_RUNS=5
+# # DOWNLOAD MORE: YOU MUST CHANGE THIS NUMBER
+# N_RUNS=5
 
-RUNS_N="zebrafish/metadata/$ACC/splits/runs.member.${NAME}.first${N_RUNS}.txt"
-head -n "$N_RUNS" "$RUNS_FILE" > "$RUNS_N"
-echo "These SRRs will be downloaded:"
-cat "$RUNS_N"
+# RUNS_N="zebrafish/metadata/$ACC/splits/runs.member.${NAME}.first${N_RUNS}.txt"
+# head -n "$N_RUNS" "$RUNS_FILE" > "$RUNS_N"
+# echo "These SRRs will be downloaded:"
+# cat "$RUNS_N"
 
-OUT_DIR="zebrafish/data/fastq/full/$ACC/$NAME/first${N_RUNS}"
-bash zebrafish/scripts/download_fastq_sratoolkit_from_runs.sh --runs-file "$RUNS_N" --out-dir "$OUT_DIR" --threads "$THREADS"
+# OUT_DIR="zebrafish/data/fastq/full/$ACC/$NAME/first${N_RUNS}"
+# bash zebrafish/scripts/download_fastq_sratoolkit_from_runs.sh --runs-file "$RUNS_N" --out-dir "$OUT_DIR" --threads "$THREADS"
 ```
 
 ### After you run the TO-DO block (what it does / why / how it looks)
