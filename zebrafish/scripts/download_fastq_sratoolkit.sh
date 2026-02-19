@@ -80,7 +80,7 @@ mode_count=0
 
 ROOT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 CORE="$ROOT_DIR/scripts/download_fastq_sratoolkit_from_runs.sh"
-[[ -x "$CORE" ]] || { echo "ERROR: missing core script: $CORE" >&2; exit 2; }
+[[ -f "$CORE" ]] || { echo "ERROR: missing core script: $CORE" >&2; exit 2; }
 
 if [[ -z "$OUT_DIR" ]]; then
   OUT_DIR="$ROOT_DIR/data/$ACC"
@@ -136,4 +136,3 @@ CMD=(bash "$CORE" --runs-file "$RUNS_FILE_USE" --out-dir "$OUT_DIR" --threads "$
 printf '$ %q ' "${CMD[@]}"
 echo
 "${CMD[@]}"
-
