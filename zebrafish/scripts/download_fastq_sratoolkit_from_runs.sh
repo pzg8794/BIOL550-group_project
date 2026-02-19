@@ -8,7 +8,7 @@ Download FASTQs for a list of SRR runs using SRA Toolkit (prefetch + fasterq-dum
 Usage:
   bash scripts/download_fastq_sratoolkit_from_runs.sh \
     --runs-file metadata/PRJNA1277581/runs.filtered.txt \
-    --out-dir data/fastq/full/PRJNA1277581 \
+    --out-dir data/PRJNA1277581 \
     --threads 4
 
 Notes:
@@ -81,4 +81,3 @@ done < "$RUNS_FILE"
 
 echo
 echo "Done."
-

@@ -2,6 +2,34 @@
 __pycache__/
 .ipynb_checkpoints/
 
+# -----------------------------------------------------------------------------
+# Downloaded data / tools (DO NOT COMMIT)
+# -----------------------------------------------------------------------------
+
+# Zebrafish project downloads (keep repo lightweight)
+zebrafish/data/
+zebrafish/tools/
+
+# Older starter materials (kept locally; not part of the shared repo workflow)
+project_datasets/
+starter_pipeline/
+
+# Common large bioinformatics file types (ignore anywhere in this repo)
+*.sra
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.bam
+*.sam
+*.cram
+*.cram.crai
+*.bai
+*.csi
+*.tar
+*.tgz
+*.gz
+
 # LaTeX build artifacts (we keep LaTeX in a separate repo)
 *.aux
 *.log
@@ -18,4 +46,3 @@ __pycache__/
 *.nav
 *.snm
 *.vrb
-

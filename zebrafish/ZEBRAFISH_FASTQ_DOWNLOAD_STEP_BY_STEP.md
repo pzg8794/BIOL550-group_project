@@ -278,7 +278,7 @@ Copy/paste (this runs the download and writes FASTQs into your folder):
 
 ```bash
 DATA_ROOT="$HOME/biol550_zebrafish_data"
-OUT_DIR="$DATA_ROOT/fastq/full/$ACC/$NAME/test_first1"
+OUT_DIR="$DATA_ROOT/$ACC"
 THREADS=4
 
 bash zebrafish/scripts/download_fastq_sratoolkit_from_runs.sh \
@@ -302,6 +302,16 @@ Copy/paste (this shows you the output folder and confirms the two FASTQs exist):
 ls -la "$OUT_DIR"
 SRR="$(cat "$RUNS_1" | head -n 1 | tr -d '\r' | xargs)"
 ls -lh "$OUT_DIR/$SRR"
+```
+
+Copy/paste (cleanup right after the test so the tutorial doesn’t leave data behind):
+
+```bash
+# Delete the FASTQs we just created for the test run (keeps your main OUT_DIR clean).
+rm -rf "$OUT_DIR/$SRR"
+
+# Delete the temporary 1-run list file we created for the test.
+rm -f "$RUNS_1"
 ```
 
 ## Step 7 — Download N runs (YOU must set the number)
@@ -328,7 +338,7 @@ Copy/paste (this runs the download for those N runs):
 
 ```bash
 DATA_ROOT="$HOME/biol550_zebrafish_data"
-OUT_DIR="$DATA_ROOT/fastq/full/$ACC/$NAME/first${N_RUNS}"
+OUT_DIR="$DATA_ROOT/$ACC"
 THREADS=4
 
 bash zebrafish/scripts/download_fastq_sratoolkit_from_runs.sh \
@@ -448,7 +458,7 @@ head -n 1 "$RUNS_FILE" > "$RUNS_1"
 echo "Test SRR:"
 cat "$RUNS_1"
 
-OUT_DIR="zebrafish/data/fastq/full/$ACC/$NAME/test_first1"
+OUT_DIR="zebrafish/data/$ACC"
 THREADS=4
 bash zebrafish/scripts/download_fastq_sratoolkit_from_runs.sh --runs-file "$RUNS_1" --out-dir "$OUT_DIR" --threads "$THREADS"
 
@@ -462,13 +472,13 @@ echo "gzip OK"
 
 # # DOWNLOAD MORE: YOU MUST CHANGE THIS NUMBER
 # N_RUNS=5
-
+#
 # RUNS_N="zebrafish/metadata/$ACC/splits/runs.member.${NAME}.first${N_RUNS}.txt"
 # head -n "$N_RUNS" "$RUNS_FILE" > "$RUNS_N"
 # echo "These SRRs will be downloaded:"
 # cat "$RUNS_N"
-
-# OUT_DIR="zebrafish/data/fastq/full/$ACC/$NAME/first${N_RUNS}"
+#
+# OUT_DIR="zebrafish/data/$ACC"
 # bash zebrafish/scripts/download_fastq_sratoolkit_from_runs.sh --runs-file "$RUNS_N" --out-dir "$OUT_DIR" --threads "$THREADS"
 ```
 
@@ -487,12 +497,12 @@ How it looks (example output for `N_RUNS=1`):
 ```text
 runs_file_base: zebrafish/metadata/PRJNA1277581/splits/runs.member.piter.txt
 runs_file_use:  zebrafish/metadata/PRJNA1277581/splits/runs.member.piter.first1.txt
-out_dir:        zebrafish/data/fastq/full/PRJNA1277581/piter/test_first1
+out_dir:        zebrafish/data/PRJNA1277581
 threads:        4
 
 Starting download (N_RUNS=1)...
 runs_file: zebrafish/metadata/PRJNA1277581/splits/runs.member.piter.first1.txt
-out_dir:   zebrafish/data/fastq/full/PRJNA1277581/piter/test_first1
+out_dir:   zebrafish/data/PRJNA1277581
 threads:   4
 force:     0
 
@@ -505,7 +515,7 @@ reads written   : 241,524,444
 What you should see on disk after it finishes:
 
 ```text
-zebrafish/data/fastq/full/PRJNA1277581/<name>/test_first1/
+zebrafish/data/PRJNA1277581/
   SRR34002439/
     SRR34002439_1.fastq.gz
     SRR34002439_2.fastq.gz

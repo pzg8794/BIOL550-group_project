@@ -8,7 +8,7 @@ set -euo pipefail
 # without downloading full multi-GB runs.
 #
 # Outputs land under:
-#   data/test/PRJNA1277581/spots_<MAX_SPOTS>/<SRR>/
+#   data/PRJNA1277581/<SRR>/subset_spots_<MAX_SPOTS>/
 #
 # Defaults:
 #   - picks the 5 smallest runs (by `size_MB`) from metadata/runinfo.csv
@@ -71,18 +71,18 @@ print(str(out))
 PY
 fi
 
-OUT_ROOT="$ROOT_DIR/data/test/$ACC/spots_${MAX_SPOTS}"
-LOG_DIR="$ROOT_DIR/data/test/$ACC/logs"
+OUT_ROOT="$ROOT_DIR/data/$ACC"
+LOG_DIR="$ROOT_DIR/data/$ACC/logs_subset_spots_${MAX_SPOTS}"
 mkdir -p "$OUT_ROOT" "$LOG_DIR"
 
 echo "Runs list:  $RUNS_FILE"
 echo "Max spots:  $MAX_SPOTS (spot IDs 1..$MAX_SPOTS)"
-echo "Output dir: $OUT_ROOT"
+echo "Output dir: $OUT_ROOT/<SRR>/subset_spots_${MAX_SPOTS}/"
 echo
 
 while read -r SRR; do
   [[ -z "${SRR}" ]] && continue
-  OUT_DIR="$OUT_ROOT/$SRR"
+  OUT_DIR="$OUT_ROOT/$SRR/subset_spots_${MAX_SPOTS}"
   mkdir -p "$OUT_DIR"
 
   LOG="$LOG_DIR/${SRR}.spots_${MAX_SPOTS}.log"
@@ -106,4 +106,4 @@ while read -r SRR; do
 done < "$RUNS_FILE"
 
 echo
-echo "Done. Test FASTQs are under: $OUT_ROOT"
+echo "Done. Subset FASTQs are under: $OUT_ROOT"
