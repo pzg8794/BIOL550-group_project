@@ -249,8 +249,8 @@ Why we do a 1-run test:
 - It avoids wasting hours/disk space if something is misconfigured.
 
 What it does (high level):
-1) Creates a tiny file `RUNS_1` that contains only the first SRR from your `RUNS_FILE`.
-2) Runs the wrapper script on that 1-SRR list:
+1) Reads your assigned SRR list (`RUNS_FILE`).
+2) Runs the wrapper script for the first **1** SRR from your list:
    - downloads the SRR (`prefetch`)
    - converts it to paired FASTQ (`fasterq-dump --split-files`)
    - compresses to `.fastq.gz` (`gzip`)
@@ -260,20 +260,6 @@ How it looks when it runs (example output pattern):
 - You will see a section like `== SRRxxxxxxxx ==` for the run it is processing.
 - When it finishes, you should see two files for that SRR: `_1.fastq.gz` and `_2.fastq.gz`.
 
-Copy/paste (this creates a 1-run file from your SRR list):
-
-```bash
-RUNS_1="zebrafish/metadata/$ACC/splits/runs.member.${NAME}.test1.txt"
-head -n 1 "$RUNS_FILE" > "$RUNS_1"
-```
-
-Copy/paste (this prints the SRR you are about to download):
-
-```bash
-echo "Test SRR:"
-cat "$RUNS_1"
-```
-
 Copy/paste (this runs the download and writes FASTQs into your folder):
 
 ```bash
@@ -281,8 +267,11 @@ DATA_ROOT="$HOME/biol550_zebrafish_data"
 OUT_DIR="$DATA_ROOT/$ACC"
 THREADS=4
 
-bash zebrafish/scripts/download_fastq_sratoolkit_from_runs.sh \
-  --runs-file "$RUNS_1" \
+# This selects the first 1 SRR from your assigned runs list and downloads it.
+bash zebrafish/scripts/download_fastq_sratoolkit.sh \
+  --acc "$ACC" \
+  --member "$NAME" \
+  --n-runs 1 \
   --out-dir "$OUT_DIR" \
   --threads "$THREADS"
 ```
@@ -300,7 +289,7 @@ Copy/paste (this shows you the output folder and confirms the two FASTQs exist):
 
 ```bash
 ls -la "$OUT_DIR"
-SRR="$(cat "$RUNS_1" | head -n 1 | tr -d '\r' | xargs)"
+SRR="$(head -n 1 "$RUNS_FILE" | tr -d '\r' | xargs)"
 ls -lh "$OUT_DIR/$SRR"
 ```
 
@@ -309,9 +298,6 @@ Copy/paste (cleanup right after the test so the tutorial doesn’t leave data be
 ```bash
 # Delete the FASTQs we just created for the test run (keeps your main OUT_DIR clean).
 rm -rf "$OUT_DIR/$SRR"
-
-# Delete the temporary 1-run list file we created for the test.
-rm -f "$RUNS_1"
 ```
 
 ## Step 7 — Download N runs (YOU must set the number)
@@ -325,13 +311,11 @@ Copy/paste (this sets the number of runs to download):
 N_RUNS=5
 ```
 
-Copy/paste (this creates a file with exactly N SRR IDs and prints them):
+Copy/paste (this prints which SRRs will be downloaded):
 
 ```bash
-RUNS_N="zebrafish/metadata/$ACC/splits/runs.member.${NAME}.first${N_RUNS}.txt"
-head -n "$N_RUNS" "$RUNS_FILE" > "$RUNS_N"
 echo "These SRRs will be downloaded:"
-cat "$RUNS_N"
+head -n "$N_RUNS" "$RUNS_FILE"
 ```
 
 Copy/paste (this runs the download for those N runs):
@@ -341,8 +325,10 @@ DATA_ROOT="$HOME/biol550_zebrafish_data"
 OUT_DIR="$DATA_ROOT/$ACC"
 THREADS=4
 
-bash zebrafish/scripts/download_fastq_sratoolkit_from_runs.sh \
-  --runs-file "$RUNS_N" \
+bash zebrafish/scripts/download_fastq_sratoolkit.sh \
+  --acc "$ACC" \
+  --member "$NAME" \
+  --n-runs "$N_RUNS" \
   --out-dir "$OUT_DIR" \
   --threads "$THREADS"
 ```
@@ -452,19 +438,16 @@ ls -la "$RUNS_FILE"
 wc -l "$RUNS_FILE"
 head -n 10 "$RUNS_FILE"
 
-# TEST: 1 run only
-RUNS_1="zebrafish/metadata/$ACC/splits/runs.member.${NAME}.test1.txt"
-head -n 1 "$RUNS_FILE" > "$RUNS_1"
-echo "Test SRR:"
-cat "$RUNS_1"
-
 OUT_DIR="zebrafish/data/$ACC"
 THREADS=4
-bash zebrafish/scripts/download_fastq_sratoolkit_from_runs.sh --runs-file "$RUNS_1" --out-dir "$OUT_DIR" --threads "$THREADS"
+
+# TEST: 1 run only (recommended start)
+N_RUNS=1
+bash zebrafish/scripts/download_fastq_sratoolkit.sh --acc "$ACC" --member "$NAME" --n-runs "$N_RUNS" --out-dir "$OUT_DIR" --threads "$THREADS"
 
 echo "Check output:"
 ls -la "$OUT_DIR" | head
-SRR="$(cat "$RUNS_1" | head -n 1 | tr -d '\r' | xargs)"
+SRR="$(head -n 1 "$RUNS_FILE" | tr -d '\r' | xargs)"
 ls -lh "$OUT_DIR/$SRR"
 gzip -t "$OUT_DIR/$SRR/${SRR}_1.fastq.gz"
 gzip -t "$OUT_DIR/$SRR/${SRR}_2.fastq.gz"
@@ -472,14 +455,7 @@ echo "gzip OK"
 
 # # DOWNLOAD MORE: YOU MUST CHANGE THIS NUMBER
 # N_RUNS=5
-#
-# RUNS_N="zebrafish/metadata/$ACC/splits/runs.member.${NAME}.first${N_RUNS}.txt"
-# head -n "$N_RUNS" "$RUNS_FILE" > "$RUNS_N"
-# echo "These SRRs will be downloaded:"
-# cat "$RUNS_N"
-#
-# OUT_DIR="zebrafish/data/$ACC"
-# bash zebrafish/scripts/download_fastq_sratoolkit_from_runs.sh --runs-file "$RUNS_N" --out-dir "$OUT_DIR" --threads "$THREADS"
+# bash zebrafish/scripts/download_fastq_sratoolkit.sh --acc "$ACC" --member "$NAME" --n-runs "$N_RUNS" --out-dir "$OUT_DIR" --threads "$THREADS"
 ```
 
 ### After you run the TO-DO block (what it does / why / how it looks)
@@ -495,21 +471,25 @@ Why this is useful:
 How it looks (example output for `N_RUNS=1`):
 
 ```text
-runs_file_base: zebrafish/metadata/PRJNA1277581/splits/runs.member.piter.txt
-runs_file_use:  zebrafish/metadata/PRJNA1277581/splits/runs.member.piter.first1.txt
-out_dir:        zebrafish/data/PRJNA1277581
-threads:        4
+acc:      PRJNA1277581
+out_dir:  zebrafish/data/PRJNA1277581
+threads:  4
+force:    0
+member:   piter
+n_runs:   1
 
-Starting download (N_RUNS=1)...
-runs_file: zebrafish/metadata/PRJNA1277581/splits/runs.member.piter.first1.txt
+These SRRs will be downloaded:
+SRR34002439
+
+runs_file: /tmp/runs.PRJNA1277581.piter.first1.XXXXXX.txt
 out_dir:   zebrafish/data/PRJNA1277581
 threads:   4
 force:     0
 
 == SRR34002439 ==
 ... prefetch downloads the SRR run data ...
-... fasterq-dump converts it to FASTQ ...
-reads written   : 241,524,444
+... fasterq-dump converts it to FASTQ and gzips it ...
+Done.
 ```
 
 What you should see on disk after it finishes:
