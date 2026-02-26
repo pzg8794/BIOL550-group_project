@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <style>
+      .title { font: 700 34px Helvetica, Arial, sans-serif; fill: #111; }
+      .subtitle { font: 500 16px Helvetica, Arial, sans-serif; fill: #333; }
+      .hdr { font: 700 20px Helvetica, Arial, sans-serif; fill: #111; }
+      .boxhdr { font: 700 18px Helvetica, Arial, sans-serif; fill: #111; }
+      .box { fill: #fff; stroke: #6b7280; stroke-width: 2; rx: 10; ry: 10; }
+      .tag { font: 700 16px Helvetica, Arial, sans-serif; fill: #fff; }
+      .tagbg { stroke: none; rx: 8; ry: 8; }
+      .txt { font: 500 16px Helvetica, Arial, sans-serif; fill: #111; }
+      .small { font: 500 14px Helvetica, Arial, sans-serif; fill: #111; }
+      .mut { font: 700 16px Helvetica, Arial, sans-serif; fill: #7c2d12; }
+      .note { font: 500 14px Helvetica, Arial, sans-serif; fill: #374151; }
+      .line { stroke: #6b7280; stroke-width: 3; }
+      .thin { stroke: #9ca3af; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="900" fill="#ffffff"/>
+
+  <text x="80" y="90" class="title">Two rounds of experiments (clean schematic)</text>
+  <text x="80" y="125" class="subtitle">Based on Mitra et al., PNAS (2022): VEGF signaling links microglia/macrophages → Müller glia → vascular endothelium → Notch-state → proliferation/regeneration.</text>
+
+  <!-- Column backgrounds -->
+  <rect x="70" y="165" width="700" height="560" fill="#f9fafb" stroke="#e5e7eb" stroke-width="2" rx="14" ry="14"/>
+  <rect x="830" y="165" width="700" height="560" fill="#f9fafb" stroke="#e5e7eb" stroke-width="2" rx="14" ry="14"/>
+
+  <!-- Round headers -->
+  <rect x="100" y="195" width="210" height="42" fill="#111827" rx="12" ry="12"/>
+  <text x="122" y="223" class="tag">Round 1</text>
+  <text x="330" y="223" class="hdr">WT baseline + VEGF-axis perturbations</text>
+
+  <rect x="860" y="195" width="210" height="42" fill="#111827" rx="12" ry="12"/>
+  <text x="882" y="223" class="tag">Round 2</text>
+  <text x="1090" y="223" class="hdr">Immune-cell (csf1r) axis perturbations</text>
+
+  <!-- Legend -->
+  <text x="80" y="770" class="note"><tspan font-weight="700">Injury models:</tspan> needle poke (sections; 1–4 injuries/retina) or whole-retina RNA (8 injuries/retina); intravitreal NMDA; intense UV light.</text>
+  <text x="80" y="796" class="note"><tspan font-weight="700">Readouts:</tspan> MG proliferation (PCNA / EdU), microglia/macrophages (4C4), apoptosis (TUNEL), VEGF/Notch markers (vegfaa/pgfa, dll4/hey1), regeneration (EdU lineage tracing).</text>
+
+  <!-- ROUND 1 tree -->
+  <!-- Root -->
+  <rect x="290" y="270" width="260" height="58" class="box"/>
+  <text x="310" y="304" class="boxhdr">WT (AB background)</text>
+  <text x="510" y="304" class="small">n=3 / group</text>
+
+  <!-- connector down -->
+  <line x1="420" y1="328" x2="420" y2="360" class="line"/>
+  <line x1="140" y1="360" x2="700" y2="360" class="line"/>
+
+  <!-- Group boxes -->
+  <!-- 1 -->
+  <line x1="140" y1="360" x2="140" y2="405" class="line"/>
+  <rect x="80" y="405" width="240" height="92" class="box"/>
+  <text x="100" y="435" class="txt">WT uninjured</text>
+  <text x="100" y="462" class="small">healthy control</text>
+
+  <!-- 2 -->
+  <line x1="330" y1="360" x2="330" y2="405" class="line"/>
+  <rect x="270" y="405" width="300" height="92" class="box"/>
+  <text x="290" y="435" class="txt">WT injured + vehicle</text>
+  <text x="290" y="462" class="small">baseline injury response</text>
+
+  <!-- 3 -->
+  <line x1="520" y1="360" x2="520" y2="405" class="line"/>
+  <rect x="460" y="405" width="300" height="92" class="box"/>
+  <text x="480" y="435" class="txt">WT injured + pazopanib</text>
+  <text x="480" y="462" class="small">pan-VEGFR inhibitor</text>
+
+  <!-- 4 -->
+  <line x1="700" y1="360" x2="700" y2="405" class="line"/>
+  <rect x="640" y="405" width="250" height="92" class="box"/>
+  <text x="660" y="435" class="txt">WT injured + dn-vegfaa</text>
+  <text x="660" y="462" class="small">blocks VEGF ligands (heat shock)</text>
+
+  <!-- ROUND 2 tree -->
+  <rect x="1050" y="270" width="310" height="58" class="box"/>
+  <text x="1070" y="304" class="boxhdr">WT vs microglia/macrophage perturbations</text>
+  <text x="1310" y="304" class="small">n=3 / group</text>
+
+  <line x1="1205" y1="328" x2="1205" y2="360" class="line"/>
+  <line x1="900" y1="360" x2="1500" y2="360" class="line"/>
+
+  <!-- 2.1 WT healthy -->
+  <line x1="900" y1="360" x2="900" y2="405" class="line"/>
+  <rect x="850" y="405" width="250" height="92" class="box"/>
+  <text x="870" y="435" class="txt">WT uninjured</text>
+  <text x="870" y="462" class="small">healthy control</text>
+
+  <!-- 2.2 WT injured -->
+  <line x1="1040" y1="360" x2="1040" y2="405" class="line"/>
+  <rect x="990" y="405" width="260" height="92" class="box"/>
+  <text x="1010" y="435" class="txt">WT injured</text>
+  <text x="1010" y="462" class="small">baseline injury response</text>
+
+  <!-- 2.3 csf1rDM healthy -->
+  <line x1="1180" y1="360" x2="1180" y2="405" class="line"/>
+  <rect x="1130" y="405" width="300" height="92" class="box"/>
+  <text x="1150" y="435" class="txt"><tspan class="mut">csf1rDM</tspan> uninjured</text>
+  <text x="1150" y="462" class="small">csf1ra−/−; csf1rb−/−</text>
+
+  <!-- 2.4 csf1rDM injured -->
+  <line x1="1320" y1="360" x2="1320" y2="405" class="line"/>
+  <rect x="1270" y="405" width="300" height="92" class="box"/>
+  <text x="1290" y="435" class="txt"><tspan class="mut">csf1rDM</tspan> injured</text>
+  <text x="1290" y="462" class="small">reduced microglia/macrophages</text>
+
+  <!-- 2.5 WT injured + PLX3397 -->
+  <line x1="1460" y1="360" x2="1460" y2="405" class="line"/>
+  <rect x="1410" y="405" width="300" height="92" class="box"/>
+  <text x="1430" y="435" class="txt">WT injured + PLX3397</text>
+  <text x="1430" y="462" class="small">Csf1r inhibitor (microglia↓)</text>
+
+  <!-- 2.6 WT injured + ZVAD -->
+  <line x1="1500" y1="360" x2="1500" y2="515" class="thin"/>
+  <rect x="1410" y="515" width="300" height="92" class="box"/>
+  <text x="1430" y="545" class="txt">WT injured + ZVAD-fmk</text>
+  <text x="1430" y="572" class="small">caspase inhibitor (apoptosis↓)</text>
+
+  <!-- Footer note for Round 2 -->
+  <text x="860" y="640" class="note"><tspan font-weight="700">Key paper linkage:</tspan> microglia/macrophages regulate MG `vegfaa`/`pgfa`, and VEGF signaling (via VE `flt1`/`kdrl`) shifts VE `dll4` / MG Notch readouts (`hey1`).</text>
+</svg>
+

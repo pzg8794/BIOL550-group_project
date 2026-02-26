@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BIOL550 Weekly Report — Zebrafish SRA Download + FastQC</title>
+  <style>
+    body { font-family: "Times New Roman", Times, serif; font-size: 12pt; margin: 16px; line-height: 1.15; color: #111; }
+    h1, h2, h3 { margin: 0 0 8px 0; }
+    h1 { text-align: center; }
+    .subtitle { text-align: center; font-size: 11pt; margin: 0 0 12px 0; }
+    h2 { margin-top: 16px; }
+    p { text-align: justify; margin: 0 0 10px 0; }
+    pre { background: #f5f5f5; padding: 10px; border: none; box-shadow: none; outline: none; overflow-x: auto; font-size: 11px; }
+    code { font-family: Menlo, Consolas, monospace; font-size: 9px; }
+    pre code { font-size: 9px; }
+    .note { font-style: italic; margin-top: 6px; }
+    img { max-width: 70%; height: auto; display: block; margin: 8px auto; }
+    .figure-title { text-align: center; font-size: 11pt; margin: 4px 0 10px 0; }
+    @media print {
+      body { margin: 0.75in; }
+      pre { white-space: pre-wrap; word-break: break-word; border: none !important; box-shadow: none !important; outline: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Zebrafish RNA-seq Project — SRA Download + FastQC</h1>
+  <div class="subtitle">BIOL550 — Weekly Report — Feb 26, 2026</div>
+
+  <h2>What I accomplished since the previous report</h2>
+  <ul>
+    <li>Downloaded the full zebrafish dataset from SRA (BioProject <code>PRJNA1277581</code>; GEO <code>GSE299935</code>): 30 paired-end SRRs (<code>SRR34002410</code>–<code>SRR34002439</code>) into <code>/home/zebrafish/sra_runs</code>.</li>
+    <li>Ran FastQC on all reads (60 reports total, 2 mates per SRR) into <code>/home/zebrafish/fastqc_out</code> and copied the artifacts into our local <code>qc_bundle</code>.</li>
+    <li>Implemented and ran a simple pipeline for the team (after manual validation) to automate download + FastQC efficiently: one SRR at a time for downloading, with FastQC overlapping in parallel.</li>
+    <li>Summarized FastQC findings at the SRR + module level (parsing FastQC <code>summary.txt</code>) and used that to identify the main issues and which runs are most problematic.</li>
+    <li>Organized the shared directories and run lists (10 SRRs per member) and presented the workflow/pipeline to the group.</li>
+  </ul>
+
+  <h3>Results summary</h3>
+  <pre><code>FastQC highlights (run-level; worst-of-mates)
+- sequence_duplication_levels: FAIL in 30/30 SRRs
+- per_sequence_gc_content:     18 FAIL, 12 WARN (0 PASS)
+- adapter_content:             strong signal in a subset (16 FAIL; 2 WARN)
+
+Most problematic SRRs by severity (fail*3 + warn, summed across mates):
+SRR34002418, SRR34002420, then SRR34002410/15/17/26/27/28/29</code></pre>
+
+  <img src="../../qc_bundle/qc_analysis/fastqc_top_problematic_reports.png" alt="Top problematic FastQC reports" />
+  <div class="figure-title">Top problematic FastQC reports (severity = 3×FAIL + WARN)</div>
+
+  <img src="../../qc_bundle/qc_analysis/fastqc_per_sequence_gc_content_all.png" alt="Per sequence GC content across all reports" />
+  <div class="figure-title">Per-sequence GC content (all reports; overlay + heatmap)</div>
+
+  <h2>Methods used (commands + parameters)</h2>
+  <p>Tools used: SRA Toolkit (<code>fastq-dump</code> / <code>fasterq-dump</code>), FastQC, and FASTX. Workflow: download → FastQC → (FASTX trim) → re-FastQC → summarize results.</p>
+
+  <h3>Example commands (one run)</h3>
+  <pre><code># Download (SRA Toolkit; example using fastq-dump + gzip)
+fastq-dump --split-files --gzip -O /home/zebrafish/sra_runs SRR34002437
+
+# FastQC (paired-end)
+fastqc -t 1 -o /home/zebrafish/fastqc_out /home/zebrafish/sra_runs/SRR34002437_1.fastq.gz /home/zebrafish/sra_runs/SRR34002437_2.fastq.gz
+
+# FASTX trim (example quality trimming; writes to a separate directory)
+zcat /home/zebrafish/sra_runs/SRR34002437_1.fastq.gz | fastq_quality_trimmer -Q33 -t 20 -l 30 | gzip -c &gt; /home/zebrafish/fastx_out/SRR34002437_1.trim.fastq.gz</code></pre>
+
+  <h3>Pipeline automation (team)</h3>
+  <p>
+    We wrapped these steps into a resumable pipeline with two workers (download + FastQC) and per-member run lists so the team could run the process consistently and monitor it with simple logs.
+  </p>
+  <pre><code>ACC=PRJNA1277581 MEMBER=samuel RUNS_FILE=/home/zebrafish/split_run_ids/runs.member.samuel.txt \
+PIPE_DIR=/home/pzg8794/sra_runs_pipeline_samuel DUMP_THREADS=1 FASTQC_THREADS=1 \
+/home/pzg8794/zebrafish/scripts/sra_runs_pipeline_sra3.sh start</code></pre>
+
+  <h3>Analysis methodology (how we identified issues)</h3>
+  <p>
+    I parsed FastQC <code>summary.txt</code> from each <code>*_fastqc.zip</code>, collapsed mates to one SRR-level status per module (worst-of-mates), and ranked runs by severity (<code>3×FAIL + WARN</code>) to prioritize cleanup.
+  </p>
+  <pre><code>python3 Semester5/BIOL550/group_project/zebrafish/scripts/fastqc_bundle_summarize.py \
+  --qc-bundle Semester5/BIOL550/group_project/qc_bundle \
+  --out-dir   Semester5/BIOL550/group_project/qc_bundle/qc_analysis \
+  --stage raw</code></pre>
+
+  <h2>Problems encountered</h2>
+  <ul>
+    <li>The SRRs are large and we intentionally downloaded one at a time to avoid stressing shared resources, so total time was longer than expected.</li>
+    <li>The server maintenance shutdown (5–7am) interrupted downloads mid-run and required resuming after restart.</li>
+    <li>Finding/confirming the paper tied to this dataset has been challenging; we identified the dataset accessions (<code>PRJNA1277581</code> / <code>GSE299935</code>) but still need to confirm the exact publication.</li>
+    <li>FastQC raised issues we need to investigate/clean: duplication flags in all SRRs, GC-content deviations, and adapter signal in a subset.</li>
+  </ul>
+
+  <h2>Goals for the coming week</h2>
+  <ul>
+    <li>Re-run FastQC on trimmed reads and repeat the same SRR-level analysis to confirm adapters improve and reads are not over-trimmed.</li>
+    <li>Finish trimming across all SRRs into <code>/home/zebrafish/fastx_out</code> (keep raw FASTQs unchanged).</li>
+    <li>Confirm the correct paper/publication for this dataset and use it to guide the next analysis steps and interpretation.</li>
+    <li>Create a concrete plan for downstream analysis (alignment/quantification and comparisons) based on the paper’s experimental design.</li>
+  </ul>
+
+</body>
+</html>

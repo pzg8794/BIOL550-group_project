@@ -14,7 +14,7 @@
 
 **On local machine (Mac):**
 - Exported artifacts: `Semester5/BIOL550/BIOL550-Lab/server_exports/2026-02-05/`
-- Extracted bundle for reporting: `Semester5/BIOL550/BIOL550-Lab/qc_bundle/`
+- Extracted bundle for reporting: `Semester5/BIOL550/group_project/qc_bundle/`
 - MultiQC report: `Semester5/BIOL550/BIOL550-Lab/multiqc_report/multiqc_report.html`
 
 ## Step 1 — QC With FastQC (Raw Reads)

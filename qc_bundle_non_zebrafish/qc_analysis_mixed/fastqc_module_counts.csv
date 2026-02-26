@@ -1,0 +1,12 @@
+module,pass,warn,fail,n
+Per sequence GC content,0,22,44,66
+Sequence Duplication Levels,24,0,42,66
+Per base sequence quality,42,0,24,66
+Per sequence quality scores,42,0,24,66
+Adapter Content,44,2,20,66
+Per base sequence content,24,26,16,66
+Overrepresented sequences,24,42,0,66
+Per tile sequence quality,39,3,0,42
+Basic Statistics,66,0,0,66
+Per base N content,66,0,0,66
+Sequence Length Distribution,66,0,0,66
