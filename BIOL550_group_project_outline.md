@@ -19,9 +19,15 @@
 * Phase 3 (Weeks 12-15): Tertiary Analysis \- Differential expression, statistical rigor, visuals, fairness metrics in DE results  
 * Bonus (Weeks 15-16): Optional \- SNP calling, isoform analysis, network analysis, machine learning classification
 
+**Implementation note (what we actually built):** we implemented a repeatable, low-load pipeline on Sequoia that runs **download → FastQC (raw)**, followed by a second pipeline for **FASTX trim → FastQC (trimmed)**. The exact commands and shared folder paths are captured in `Semester5/BIOL550/BIOL550-Lab/task_n_desc.md`.
+
+**Update (2026-03-02):** the instructor confirmed the zebrafish dataset (`PRJNA1277581`) is **single-cell RNA-seq**. Any decision to switch datasets should account for assay type (bulk vs single-cell) and analysis feasibility.
+
+**Update (2026-03-02): mouse dataset reset:** we are repeating the same primary pipeline on a mouse dataset and keeping all artifacts dataset-scoped to avoid mixing. Reusable scripts/notebooks live in `Semester5/BIOL550/group_project/pipelines/`, and zebrafish artifacts were archived to `Semester5/BIOL550/group_project/_tmp_zebrafish_2026-03-02/` so they can be deleted later. Work log: `Semester5/BIOL550/group_project/WORKLOG.md`.
+
 ## **Key Responsibilities**
 
-* *Samuel (Computational):* FastQC, CutAdapt/FastX quality trimming, Bowtie2/TopHat alignment, BAM file generation, GitHub repo management, reproducible pipeline documentation  
+* *Samuel (Computational):* FastQC, CutAdapt/FASTX quality trimming, Bowtie2/TopHat alignment, BAM file generation, GitHub repo management, reproducible pipeline documentation  
 * *Piter (Statistical):* Differential expression quantification (Cufflinks/RSEM), statistical tests (FDR, Bonferroni), fairness metrics (disparate impact, equalized odds), publication-quality visualizations (volcano plots, heatmaps, boxplots)  
 * *Nikhi (Support):* Data organization and metadata management, literature compilation, coordination support, meeting notes, and decision log tracking
 
@@ -375,6 +381,8 @@ Validation criteria used here (no Human/Public requirement):
 * avgLength ≥ 150 bp  
 * spots ≥ 40,000,000 (fragments)
 
+**Assay modality note (bulk vs single-cell):** some “RNA-Seq” projects are single-cell. We maintain a dataset modality table (with evidence links) in `Semester5/BIOL550/BIOL550-Lab/task_n_desc.md#dataset-modality-check-bulk-vs-single-cell--double-checked-2026-03-02` and update it when the instructor clarifies assay type.
+
 
 **PRJNA1184725**
 
@@ -423,6 +431,7 @@ Validation criteria used here (no Human/Public requirement):
   * Strong depth and long reads across all runs.  
   * Clear biological focus (retina regeneration) with many samples.  
 * Weaknesses: Zebrafish model; may not fit projects requiring mammalian/human context.
+  * **Update (2026-03-02):** single-cell RNA-seq per instructor confirmation.
 
 **PRJNA1222833**
 

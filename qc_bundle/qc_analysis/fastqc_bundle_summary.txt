@@ -1,3 +1,0 @@
-fastqc_reports: 60
-srr_runs: 30
-modules: 11

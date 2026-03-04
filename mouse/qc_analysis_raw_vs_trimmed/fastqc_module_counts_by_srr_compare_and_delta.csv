@@ -1,0 +1,12 @@
+module,stage_raw,fail_raw,pass_raw,warn_raw,n_srr_raw,stage_trimmed,fail_trimmed,pass_trimmed,warn_trimmed,n_srr_trimmed,pass_delta,warn_delta,fail_delta,n_srr_delta
+Adapter Content,raw,26,0,0,26,trimmed,26,0,0,26,0,0,0,0
+Basic Statistics,raw,0,26,0,26,trimmed,0,26,0,26,0,0,0,0
+Overrepresented sequences,raw,2,12,12,26,trimmed,2,12,12,26,0,0,0,0
+Per base N content,raw,0,26,0,26,trimmed,0,26,0,26,0,0,0,0
+Per base sequence content,raw,26,0,0,26,trimmed,26,0,0,26,0,0,0,0
+Per base sequence quality,raw,0,26,0,26,trimmed,0,26,0,26,0,0,0,0
+Per sequence GC content,raw,0,4,22,26,trimmed,0,4,22,26,0,0,0,0
+Per sequence quality scores,raw,0,26,0,26,trimmed,0,26,0,26,0,0,0,0
+Per tile sequence quality,raw,14,12,0,26,trimmed,14,12,0,26,0,0,0,0
+Sequence Duplication Levels,raw,26,0,0,26,trimmed,26,0,0,26,0,0,0,0
+Sequence Length Distribution,raw,0,26,0,26,trimmed,0,0,26,26,-26,26,0,0

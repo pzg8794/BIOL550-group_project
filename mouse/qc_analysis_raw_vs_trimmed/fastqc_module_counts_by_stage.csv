@@ -1,0 +1,23 @@
+stage,module,pass,warn,fail,n
+raw,Adapter Content,0,0,52,52
+raw,Sequence Duplication Levels,0,0,52,52
+raw,Per tile sequence quality,24,0,28,52
+raw,Per base sequence content,0,26,26,52
+raw,Overrepresented sequences,37,13,2,52
+raw,Per sequence GC content,17,35,0,52
+raw,Basic Statistics,52,0,0,52
+raw,Per base N content,52,0,0,52
+raw,Per base sequence quality,52,0,0,52
+raw,Per sequence quality scores,52,0,0,52
+raw,Sequence Length Distribution,52,0,0,52
+trimmed,Adapter Content,0,0,52,52
+trimmed,Sequence Duplication Levels,0,0,52,52
+trimmed,Per tile sequence quality,24,0,28,52
+trimmed,Per base sequence content,0,26,26,52
+trimmed,Overrepresented sequences,37,13,2,52
+trimmed,Sequence Length Distribution,0,52,0,52
+trimmed,Per sequence GC content,17,35,0,52
+trimmed,Basic Statistics,52,0,0,52
+trimmed,Per base N content,52,0,0,52
+trimmed,Per base sequence quality,52,0,0,52
+trimmed,Per sequence quality scores,52,0,0,52

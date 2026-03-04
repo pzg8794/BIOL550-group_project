@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BIOL550 Weekly Report — Mouse SRA Download + FastQC (raw vs trimmed)</title>
+  <style>
+    body { font-family: "Times New Roman", Times, serif; font-size: 12pt; margin: 16px; line-height: 1.15; color: #111; }
+    h1, h2, h3 { margin: 0 0 8px 0; }
+    h1 { text-align: center; }
+    .subtitle { text-align: center; font-size: 11pt; margin: 0 0 12px 0; }
+    h2 { margin-top: 16px; }
+    p { text-align: justify; margin: 0 0 10px 0; }
+    pre { background: #f5f5f5; padding: 10px; border: none; box-shadow: none; outline: none; overflow-x: auto; font-size: 11px; }
+    code { font-family: Menlo, Consolas, monospace; font-size: 9px; }
+    pre code { font-size: 9px; }
+    .note { font-style: italic; margin: 0 0 4px 0; }
+    img { max-width: 60%; height: auto; display: block; margin: 8px auto; }
+    .figure-title { text-align: center; font-size: 11pt; margin: 2px 0 2px 0; }
+    .img-row { display: flex; gap: 16px; align-items: stretch; justify-content: center; margin: 4px 0 0 0; }
+    .img-col { flex: 0 1 520px; display: flex; flex-direction: column; }
+    .img-row img { max-width: 100%; margin: 0 auto; }
+    table { border-collapse: collapse; width: 100%; font-size: 10.5pt; }
+    th, td { border: 1px solid #ddd; padding: 4px 6px; vertical-align: top; }
+    th { background: #f5f5f5; font-weight: bold; text-align: left; }
+
+    /* CHANGED: remove fixed height so no huge gap */
+    .side-by-side { }
+    .side-by-side .panel { height: auto; }
+
+    .side-by-side .panel-img img {
+      width: 100%;
+      height: auto;
+      max-width: none;
+      margin: 0;
+      object-fit: contain;
+      object-position: top center;
+      display: block;
+    }
+    .side-by-side .panel-table { overflow: hidden; display: flex; flex-direction: column; }
+    .side-by-side .panel-table .panel-scroll { flex: 1 1 auto; overflow: auto; }
+    .side-by-side .panel-table .panel-desc { flex: 0 0 auto; font-size: 10pt; line-height: 1.05; margin-top: 4px; }
+    .side-by-side .panel-text { overflow: auto; padding: 0 2px; }
+
+    .gc-row .panel { height: auto; }
+    .gc-row .panel-img { display: flex; justify-content: center; }
+    .gc-row .panel-img img { width: auto; height: auto; max-width: 100%; max-height: 220px; margin: 0; }
+    .gc-row .panel-text { overflow: visible; }
+    .gc-row .panel-text p { margin: 0; }
+    .panel-inline-title { text-align: center; font-size: 11pt; font-weight: bold; margin: 0 0 4px 0; }
+    .panel-note-sm { font-size: 10pt; line-height: 1.05; }
+
+    .tight-table { font-size: 8.5pt; line-height: 1.02; }
+    .tight-table th, .tight-table td { padding: 1px 3px; }
+    .tight-table th:nth-child(1), .tight-table td:nth-child(1) { width: 44px; text-align: center; white-space: nowrap; }
+    .tight-table th:nth-child(2), .tight-table td:nth-child(2) { white-space: nowrap; }
+
+    /* NEW: keep text close under the row */
+    .after-row { margin-top: 4px; }
+
+    /* Mouse report: colored module summary table (raw vs trimmed) */
+    .qc-compare-table { font-size: 6.2pt; line-height: 0.9; }
+    .qc-compare-table th, .qc-compare-table td { padding: 0px 1px; text-align: center; }
+    .qc-compare-table th { background: #f3f4f6; color: #111; font-weight: bold; }
+    .qc-compare-table td.qc-module { text-align: left; font-weight: 800; background-color: #ecfeff; border: 1px solid #67e8f9; }
+    .qc-compare-table td.qc-module code { font-size: 6.6px; }
+
+    @media print {
+      /* Keep table cell background colors in PDF/print (browser print engines often drop them by default). */
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      @page { margin: 0.2in; }
+      body { margin: 0.15in; }
+      pre { white-space: pre-wrap; word-break: break-word; border: none !important; box-shadow: none !important; outline: none !important; }
+      .img-row { break-inside: avoid; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Mouse RNA-seq — FastQC (raw vs trimmed)</h1>
+  <div class="subtitle">BIOL550 — Weekly Report — Mar 4, 2026</div>
+
+  <h2>What I accomplished since the previous report</h2>
+  <p>
+    This week, in collaboration with my team, I moved our shared pipeline to the mouse RNA-seq dataset
+    (BioProject <code>PRJNA1017789</code>; GEO Series <code>GSE243308</code>) and repeated the full workflow from scratch.
+    This directly follows last week’s stated goals (end-to-end SRA download → FastQC → trim → FastQC plus clearer QC interpretation), after we realized our earlier candidate dataset was single-cell RNA-Seq and needed a different analysis path.
+    We downloaded 26 paired-end runs (<code>SRR30333743</code>–<code>SRR30333768</code>) using SRA Toolkit and generated
+    raw FastQC outputs for all runs.
+  </p>
+  <p>
+    Also, following our zebrafish project’s approach for organizing shared data, I wrapped the steps into a
+    resumable pipeline (download → FastQC → FASTX trim → FastQC) so the team can run consistently without overloading shared
+    compute/storage resources. As of this report, the local QC bundles contain <strong>52 raw</strong> FastQC reports and <strong>52 trimmed</strong>
+    FastQC reports (26 SRRs × 2 mates in each stage), along with summary tables and figures for interpretation.
+  </p>
+
+  <h3>Quick Review of FastQC Output Findings</h3>
+  <p>
+    I summarized FastQC by parsing each <code>*_fastqc.zip</code> with Python, collapsing mates to SRR-level module outcomes
+    (worst-of-mates), and computing a simple report-level severity score (<code>3×FAIL + WARN</code>). Because trimmed FastQC
+    is now available for all SRRs locally, the raw vs trimmed comparisons below reflect the full dataset (52 reports per stage).
+  </p>
+
+	  <div class="figure-title"><strong>FastQC overview (raw vs trimmed): module outcomes (right) + most problematic reports (left)</strong></div>
+  <div class="img-row side-by-side">
+    <div class="img-col">
+      <div class="panel panel-img">
+        <img src="../qc_analysis_raw_vs_trimmed/fastqc_top_problematic_reports_raw_vs_trimmed.png" alt="Top problematic FastQC reports (raw vs trimmed)" />
+      </div>
+    </div>
+    <div class="img-col">
+      <div class="panel panel-table">
+        <div class="panel-scroll">
+          <table class="tight-table qc-compare-table">
+            <thead>
+              <tr>
+                <th rowspan="2">module</th>
+                <th colspan="2">raw (n=52)</th>
+                <th colspan="2">trimmed (n=52)</th>
+                <th colspan="2">Δ (trimmed − raw)</th>
+              </tr>
+              <tr>
+                <th>fail</th>
+                <th>warn</th>
+                <th>fail</th>
+                <th>warn</th>
+                <th>fail</th>
+                <th>warn</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="qc-module"><code>Adapter Content</code></td>
+                <td style="background-color: rgba(220,38,38,0.900);color:#fff;">52</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: rgba(220,38,38,0.900);color:#fff;">52</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+              </tr>
+              <tr>
+                <td class="qc-module"><code>Sequence Duplication Levels</code></td>
+                <td style="background-color: rgba(220,38,38,0.900);color:#fff;">52</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: rgba(220,38,38,0.900);color:#fff;">52</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+              </tr>
+              <tr>
+                <td class="qc-module"><code>Per base sequence content</code></td>
+                <td style="background-color: rgba(220,38,38,0.510);color:#fff;">26</td>
+                <td style="background-color: rgba(245,158,11,0.620);color:#111;">26</td>
+                <td style="background-color: rgba(220,38,38,0.510);color:#fff;">26</td>
+                <td style="background-color: rgba(245,158,11,0.620);color:#111;">26</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+              </tr>
+              <tr>
+                <td class="qc-module"><code>Per sequence GC content</code></td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: rgba(245,158,11,0.800);color:#111;">35</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: rgba(245,158,11,0.800);color:#111;">35</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+              </tr>
+              <tr>
+                <td class="qc-module"><code>Basic Statistics</code></td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+              </tr>
+              <tr>
+                <td class="qc-module"><code>Overrepresented sequences</code></td>
+                <td style="background-color: rgba(220,38,38,0.150);color:#fff;">2</td>
+                <td style="background-color: rgba(245,158,11,0.360);color:#111;">13</td>
+                <td style="background-color: rgba(220,38,38,0.150);color:#fff;">2</td>
+                <td style="background-color: rgba(245,158,11,0.360);color:#111;">13</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+              </tr>
+              <tr>
+                <td class="qc-module"><code>Per base N content</code></td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+              </tr>
+              <tr>
+                <td class="qc-module"><code>Per base sequence quality</code></td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+              </tr>
+              <tr>
+                <td class="qc-module"><code>Per sequence quality scores</code></td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+              </tr>
+              <tr>
+                <td class="qc-module"><code>Per tile sequence quality</code></td>
+                <td style="background-color: rgba(220,38,38,0.540);color:#fff;">28</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: rgba(220,38,38,0.540);color:#fff;">28</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+              </tr>
+              <tr>
+                <td class="qc-module"><code>Sequence Length Distribution</code></td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: rgba(245,158,11,0.900);color:#111;">52</td>
+                <td style="background-color: #f3f4f6; color:#111;">0</td>
+                <td style="background-color: rgba(220,38,38,0.900);color:#fff;">52</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="after-row">
+    The left panel ranks FastQC reports by severity (raw on the left, trimmed on the right). The table summarizes which modules dominate
+    WARN/FAIL before and after trimming: <code>Adapter Content</code> fails across all reports in both stages, and <code>Sequence Length Distribution</code>
+    flips from PASS (raw) to WARN (trimmed) because trimming introduces variable read lengths. Overall, trimming slightly improves tail
+    quality but is not expected to remove adapter signal; adapter clipping is required.
+  </p>
+  <div class="img-row side-by-side gc-row">
+    <div class="img-col">
+      <div class="panel panel-img">
+        <img src="../qc_analysis_raw_vs_trimmed/fastqc_per_sequence_gc_content_all.png" alt="Per sequence GC content (raw vs trimmed)" />
+      </div>
+    </div>
+    <div class="img-col">
+      <div class="panel panel-text">
+        <div class="panel-inline-title">Per-sequence GC content (raw vs trimmed)</div>
+        <p class="panel-note-sm">
+          GC profiles are similar pre- vs post-trim (peaks align; no strong secondary mode), which argues against an obvious contamination
+          signal at the dataset level. The module remains frequently WARN (<code>35/52</code> in both stages), consistent with RNA-seq composition
+          effects rather than a single outlier batch.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-row side-by-side">
+    <div class="img-col">
+      <div class="panel panel-text">
+        <div class="panel-inline-title">FastQC module status by report (raw vs trimmed)</div>
+        <p class="panel-note-sm">
+          The same dataset-wide flags dominate in both stages (<code>Adapter Content</code>, <code>Sequence Duplication Levels</code>, and
+          many runs split WARN/FAIL for <code>Per base sequence content</code>). The most systematic stage change is
+          <code>Sequence Length Distribution</code> switching to WARN after trimming, which confirms trimming is active but does not resolve
+          adapter signal; this points to adding adapter clipping (<code>fastx_clipper</code>) before repeating FastQC.
+        </p>
+      </div>
+    </div>
+    <div class="img-col">
+      <div class="panel panel-img">
+        <img src="../qc_analysis_raw_vs_trimmed/fastqc_module_status_heatmap_raw_vs_trimmed.png" alt="FastQC module status heatmap (raw vs trimmed)" />
+      </div>
+    </div>
+  </div>
+
+  <div class="img-row side-by-side gc-row">
+    <div class="img-col">
+      <div class="panel panel-img">
+        <img src="../qc_analysis_raw_vs_trimmed/fastqc_sequence_duplication_levels_all.png" alt="Sequence duplication levels (raw vs trimmed)" />
+      </div>
+    </div>
+    <div class="img-col">
+      <div class="panel panel-text">
+        <div class="panel-inline-title">Sequence duplication levels (raw vs trimmed)</div>
+        <p class="panel-note-sm">
+          Duplication remains high in both stages (FAIL across all reports), which is common in RNA-seq due to highly expressed transcripts.
+          Trimming does not change this pattern, so we treat duplication as a dataset-wide characteristic unless extreme outliers appear.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-row side-by-side gc-row">
+    <div class="img-col">
+      <div class="panel panel-text">
+        <div class="panel-inline-title">Sequence length distribution (raw vs trimmed)</div>
+        <p class="panel-note-sm">
+          Raw reads are fixed-length (151 bp), while trimmed reads show a spread of shorter lengths (hence WARN for
+          <code>Sequence Length Distribution</code> after trimming). This is an expected side effect and contributes to small increases in the
+          simple severity score; we will confirm we are not over-trimming into overly short reads for alignment.
+        </p>
+      </div>
+    </div>
+    <div class="img-col">
+      <div class="panel panel-img">
+        <img src="../qc_analysis_raw_vs_trimmed/fastqc_sequence_length_distribution_all.png" alt="Sequence length distribution (raw vs trimmed)" />
+      </div>
+    </div>
+  </div>
+
+	  <div class="figure-title"><strong>Key summary metrics (raw vs trimmed): per-base quality + adapter signal</strong></div>
+  <div class="img-row side-by-side">
+    <div class="img-col">
+      <div class="panel panel-img">
+        <img src="../qc_analysis_raw_vs_trimmed/pbq_min_10th_hist.png" alt="Per-base quality (min 10th percentile) raw vs trimmed" />
+      </div>
+    </div>
+    <div class="img-col">
+      <div class="panel panel-img">
+        <img src="../qc_analysis_raw_vs_trimmed/adapter_max_hist.png" alt="Adapter signal (adapter_max) raw vs trimmed" />
+      </div>
+    </div>
+  </div>
+  <p class="after-row">
+    Quality trimming shifts tail-quality upward, but adapter signal is essentially unchanged between raw and trimmed; this supports adding
+    an explicit adapter clipping step before repeating FastQC and re-checking <code>Adapter Content</code> / <code>Overrepresented sequences</code>.
+  </p>
+
+  <h2>Methods used (commands + parameters)</h2>
+  <p>
+    We used the same toolchain and workflow as the previous report: SRA Toolkit to download paired-end FASTQs, FastQC to assess read
+    quality (raw and trimmed), and FASTX for quality trimming. For this mouse dataset, quality trimming used
+    <code>fastq_quality_trimmer</code> with <code>-Q33 -t 20 -l 30</code> (Phred+33, trim bases &lt;Q20, keep reads ≥30 bp). We then
+    summarized FastQC by parsing <code>*_fastqc.zip</code> and comparing raw vs trimmed at the module + SRR level. Based on the findings,
+    the next method addition is adapter clipping (FASTX <code>fastx_clipper</code>) followed by another FastQC pass.
+  </p>
+
+  <h3>Example commands (same pattern as last report)</h3>
+  <pre><code>fastq-dump --split-files --gzip SRR30333743 # SRA Toolkit: download paired FASTQs
+fastqc -t 1 SRR30333743_1.fastq.gz SRR30333743_2.fastq.gz # FastQC: QC both mates
+fastq_quality_trimmer -Q33 -t 20 -l 30 # FASTX: trim low-Q tails (stdin→stdout)</code></pre>
+
+  <h2>Problems encountered</h2>
+  <p>
+    First, our earlier candidate dataset turned out to be <strong>single-cell RNA-Seq</strong>, which does not match this bulk-style
+    download→FastQC→FASTX workflow; we pivoted to the mouse bulk RNA-seq dataset and re-ran the entire pipeline, while archiving the
+    prior zebrafish artifacts into a separate temp directory to avoid mixing organisms. Second, the SRRs are large and the server is
+    shared, so the pipeline had to be resumable and concurrency-limited; we addressed this by running a parallelized end-to-end pipeline
+    with clear progress markers and logs. Lastly, the dominant FastQC flags (adapter signal and high duplication) are not resolved by
+    quality trimming alone, so we need to add adapter clipping and re-evaluate before downstream analysis.
+  </p>
+
+  <h2>Goals for the coming week</h2>
+  <p>
+    Next week, in collaboration with my team, I will (1) add adapter clipping (FASTX <code>fastx_clipper</code>) and quantify whether
+    <code>Adapter Content</code> and <code>Overrepresented sequences</code> improve after clipping, (2) re-run FastQC after clipping and
+    repeat the same SRR/module comparisons to confirm improvements without excessive read shortening, (3) generate a consolidated QC
+    summary (e.g., MultiQC) for the finalized raw/trimmed/clipped outputs, and (4) confirm the experimental design/metadata linked to
+    <code>PRJNA1017789</code>/<code>GSE243308</code> so we can proceed into alignment/quantification and define comparisons.
+  </p>
+
+</body>
+</html>

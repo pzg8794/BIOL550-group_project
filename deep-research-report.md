@@ -1,5 +1,7 @@
 # Project Pipeline Presentation
 
+**Update (2026-03-02):** we archived the zebrafish artifacts and are repeating the same workflow on a mouse dataset. The current, dataset-scoped process doc is `Semester5/BIOL550/group_project/mouse/PROCESS_mouse_fastq_fastqc_fastx.md`, and the overall log is `Semester5/BIOL550/group_project/WORKLOG.md`.
+
 ## Slide 1: Project Overview  
 - **Approach:** We spent Week 2–3 learning the NCBI SRA Toolkit (prefetch, fastq-dump, fasterq-dump), FastQC, and FASTX-Toolkit by following the course lab guide.  
 - **Manual Testing:** Each member independently tested data download and QC on a few runs to understand the workflow.  
