@@ -355,11 +355,6 @@
     To automate the manual validation step (after checking a few SRRs by hand), I batch-ingested FastQC report artifacts (HTML/ZIP) with a lightweight crawler-style workflow (e.g., <a href="https://crawlee.dev/python/docs/examples/crawl-multiple-urls">Crawlee</a>) and parsed report tables into pandas DataFrames; then I used pandas plotting (<a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html">docs</a>) plus simple HTML styling to generate the summary tables/figures shown here.
   </p>
 
-  <h3>Example commands (same pattern as last report)</h3>
-  <pre><code>fastq-dump --split-files --gzip SRR30333743 # SRA Toolkit: download paired FASTQs
-fastqc -t 1 SRR30333743_1.fastq.gz SRR30333743_2.fastq.gz # FastQC: QC both mates
-fastq_quality_trimmer -Q33 -t 20 -l 30 # FASTX: trim low-Q tails (stdin→stdout)</code></pre>
-
   <h2>Problems encountered</h2>
   <p>
     First, our earlier candidate dataset turned out to be <strong>single-cell RNA-Seq</strong>, which does not match this bulk-style
