@@ -1,0 +1,53 @@
+stage,srr,fail_count,warn_count,fail_module_keys,warn_module_keys
+raw,SRR30333743,4,2,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Per sequence GC content"
+raw,SRR30333744,4,2,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Per sequence GC content"
+raw,SRR30333745,4,2,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Per sequence GC content"
+raw,SRR30333746,4,1,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels",Overrepresented sequences
+raw,SRR30333747,4,1,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels",Overrepresented sequences
+raw,SRR30333748,4,2,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Per sequence GC content"
+raw,SRR30333749,4,1,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels",Overrepresented sequences
+raw,SRR30333750,4,1,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels",Overrepresented sequences
+raw,SRR30333751,4,2,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Per sequence GC content"
+raw,SRR30333752,4,2,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Per sequence GC content"
+raw,SRR30333753,4,2,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Per sequence GC content"
+raw,SRR30333754,5,1,"Adapter Content, Overrepresented sequences, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels",Per sequence GC content
+raw,SRR30333755,4,2,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Per sequence GC content"
+raw,SRR30333756,5,1,"Adapter Content, Overrepresented sequences, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels",Per sequence GC content
+raw,SRR30333757,3,1,"Adapter Content, Per base sequence content, Sequence Duplication Levels",Per sequence GC content
+raw,SRR30333758,3,1,"Adapter Content, Per base sequence content, Sequence Duplication Levels",Per sequence GC content
+raw,SRR30333759,3,1,"Adapter Content, Per base sequence content, Sequence Duplication Levels",Per sequence GC content
+raw,SRR30333760,3,1,"Adapter Content, Per base sequence content, Sequence Duplication Levels",Per sequence GC content
+raw,SRR30333761,3,1,"Adapter Content, Per base sequence content, Sequence Duplication Levels",Per sequence GC content
+raw,SRR30333762,3,1,"Adapter Content, Per base sequence content, Sequence Duplication Levels",Per sequence GC content
+raw,SRR30333763,3,1,"Adapter Content, Per base sequence content, Sequence Duplication Levels",Per sequence GC content
+raw,SRR30333764,3,1,"Adapter Content, Per base sequence content, Sequence Duplication Levels",Per sequence GC content
+raw,SRR30333765,3,1,"Adapter Content, Per base sequence content, Sequence Duplication Levels",Per sequence GC content
+raw,SRR30333766,3,1,"Adapter Content, Per base sequence content, Sequence Duplication Levels",Per sequence GC content
+raw,SRR30333767,3,1,"Adapter Content, Per base sequence content, Sequence Duplication Levels",Per sequence GC content
+raw,SRR30333768,3,1,"Adapter Content, Per base sequence content, Sequence Duplication Levels",Per sequence GC content
+trimmed,SRR30333743,4,3,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333744,4,3,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333745,4,3,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333746,4,2,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Sequence Length Distribution"
+trimmed,SRR30333747,4,2,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Sequence Length Distribution"
+trimmed,SRR30333748,4,3,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333749,4,2,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Sequence Length Distribution"
+trimmed,SRR30333750,4,2,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Sequence Length Distribution"
+trimmed,SRR30333751,4,3,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333752,4,3,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333753,4,3,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333754,5,2,"Adapter Content, Overrepresented sequences, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333755,4,3,"Adapter Content, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Overrepresented sequences, Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333756,5,2,"Adapter Content, Overrepresented sequences, Per base sequence content, Per tile sequence quality, Sequence Duplication Levels","Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333757,3,2,"Adapter Content, Per base sequence content, Sequence Duplication Levels","Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333758,3,2,"Adapter Content, Per base sequence content, Sequence Duplication Levels","Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333759,3,2,"Adapter Content, Per base sequence content, Sequence Duplication Levels","Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333760,3,2,"Adapter Content, Per base sequence content, Sequence Duplication Levels","Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333761,3,2,"Adapter Content, Per base sequence content, Sequence Duplication Levels","Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333762,3,2,"Adapter Content, Per base sequence content, Sequence Duplication Levels","Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333763,3,2,"Adapter Content, Per base sequence content, Sequence Duplication Levels","Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333764,3,2,"Adapter Content, Per base sequence content, Sequence Duplication Levels","Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333765,3,2,"Adapter Content, Per base sequence content, Sequence Duplication Levels","Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333766,3,2,"Adapter Content, Per base sequence content, Sequence Duplication Levels","Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333767,3,2,"Adapter Content, Per base sequence content, Sequence Duplication Levels","Per sequence GC content, Sequence Length Distribution"
+trimmed,SRR30333768,3,2,"Adapter Content, Per base sequence content, Sequence Duplication Levels","Per sequence GC content, Sequence Length Distribution"

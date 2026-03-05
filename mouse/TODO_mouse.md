@@ -20,12 +20,13 @@ Keep this list current. Weekly report task must remain last.
   - [x] run-level severity deltas (improved vs unchanged vs worse)
   - [x] identify outliers + propose next cleanup tasks
   - [x] Re-run notebook after full trimmed bundle copy (26/26) to refresh plots + exports.
+  - [ ] If adapter-related modules remain problematic, consider a `fastp`-based trim (adapter-aware) as a targeted alternative to the FASTX-only trim, then re-run the same FastQC comparison.
+  - [ ] QC remediation experiments checklist (work SRR-by-SRR): `Semester5/BIOL550/group_project/mouse/TODO_qc_remediation.md`
 
 ## Organization + cleanup
 - [ ] Update `PROCESS_mouse_fastq_fastqc_fastx.md` with final server paths and the parallel runner command.
 - [ ] Update `BIOL550-Notes.md` and `task_n_desc.md` with final completion snapshot + final paths.
-- [ ] Flatten server directory structure under `/home/zebrafish/mouse/` (remove redundant `PRJNA1017789_parallel` nesting when safe).
-- [ ] Archive/delete old baseline folder `/home/zebrafish/mouse/PRJNA1017789/` after verification.
+- [x] Remove shared-directory symlink; keep one dataset root: `/home/zebrafish/mouse/PRJNA1017789_parallel/`.
 
 ## Deliverables (collected)
 - [x] Keep weekly report HTML/PDF copies together in `Semester5/BIOL550/weekly_reports/_collected/` (with `manifest.csv`) for side-by-side review.
