@@ -14,6 +14,9 @@
     pre { background: #f5f5f5; padding: 10px; border: none; box-shadow: none; outline: none; overflow-x: auto; font-size: 11px; }
     code { font-family: Menlo, Consolas, monospace; font-size: 9px; }
     pre code { font-size: 9px; }
+    h3.mini-h3 { margin: 1px 0 1px 0; font-size: 9.5pt; }
+    pre.mini-pre { background: #f5f5f5; padding: 2px 6px; margin: 0 auto 6px; max-width: 66%; font-size: 7.8px; line-height: 1.03; white-space: pre-wrap; word-break: break-word; overflow-x: hidden; }
+    pre.mini-pre code { font-size: 7.8px; }
     .note { font-style: italic; margin: 0 0 4px 0; }
     img { max-width: 60%; height: auto; display: block; margin: 8px auto; }
     .figure-title { text-align: center; font-size: 11pt; margin: 2px 0 2px 0; }
@@ -98,15 +101,15 @@
 
 <body>
 
-  <h1>Mouse RNA-seq — FastQC (raw vs trimmed)</h1>
+  <h1>Mouse RNA-Seq — FastQC (raw vs trimmed)</h1>
   <div class="subtitle">BIOL550 — Weekly Report — Mar 4, 2026</div>
 
   <h2>What I accomplished since the previous report</h2>
   <p>
-    This week, in collaboration with my team, I moved our shared pipeline to the mouse RNA-seq dataset
+    This week, in collaboration with my team, I moved our shared pipeline to the mouse RNA-Seq dataset
     (BioProject <code>PRJNA1017789</code>; GEO Series <code>GSE243308</code>) and repeated the full workflow from scratch.
     This directly follows last week’s stated goals: re-running FastQC on trimmed reads, repeating SRR-level QC analysis,
-    and confirming the dataset’s paper and experimental design. After realizing our earlier candidate dataset was
+    and confirming the dataset’s paper and experimental design. After realizing our earlier candidate (zebrafish) dataset was
     single-cell RNA-Seq and not suitable for this workflow, we pivoted to this bulk mouse project, downloaded 26
     paired-end runs (<code>SRR30333743</code>–<code>SRR30333768</code>) using SRA Toolkit, and generated raw and trimmed
     FastQC reports for all runs.
@@ -286,7 +289,7 @@
         <div class="panel-inline-title">Per-sequence GC content (raw vs trimmed)</div>
         <p class="panel-note-sm">
           GC profiles are similar pre- vs post-trim (peaks align; no strong secondary mode), which argues against an obvious contamination
-          signal at the dataset level. The module remains frequently WARN (<code>35/52</code> in both stages), consistent with RNA-seq composition
+          signal at the dataset level. The module remains frequently WARN (<code>35/52</code> in both stages), consistent with RNA-Seq composition
           effects rather than a single outlier batch.
         </p>
       </div>
@@ -322,7 +325,7 @@
       <div class="panel panel-text">
         <div class="panel-inline-title">Sequence duplication levels (raw vs trimmed)</div>
         <p class="panel-note-sm">
-          Duplication remains high in both stages (FAIL across all reports), which is common in RNA-seq due to highly expressed transcripts.
+          Duplication remains high in both stages (FAIL across all reports), which is common in RNA-Seq due to highly expressed transcripts.
           Trimming does not change this pattern, so we treat duplication as a dataset-wide characteristic unless extreme outliers appear.
         </p>
       </div>
@@ -370,9 +373,12 @@
     We used the same toolchain and workflow as the previous report: SRA Toolkit to download paired-end FASTQs, FastQC to assess read
     quality (raw and trimmed), and FASTX for quality trimming. For this mouse dataset, quality trimming used
     <code>fastq_quality_trimmer</code> with <code>-Q33 -t 20 -l 30</code> (Phred+33, trim bases &lt;Q20, keep reads ≥30 bp). We then
-    summarized FastQC by parsing <code>*_fastqc.zip</code> and comparing raw vs trimmed at the module + SRR level. Based on the findings,
-    the next method addition is adapter clipping (FASTX <code>fastx_clipper</code>) followed by another FastQC pass.
+    summarized FastQC by parsing <code>*_fastqc.zip</code> and comparing raw vs trimmed at the module + SRR level. 
   </p>
+  <h3 class="mini-h3">Manual Commands for Each SRR</h3>
+  <pre class="mini-pre"><code>fastq-dump --split-files --gzip SRR30333743 # download paired FASTQs
+fastqc -t 1 SRR30333743_1.fastq.gz SRR30333743_2.fastq.gz # QC both mates
+fastq_quality_trimmer -Q33 -t 20 -l 30 # FASTX: trim low-Q 3' tails (stdin-&gt;stdout)</code></pre>
   <p>
     Note: To automate the manual MultiQC validation step (after verifying a few SRRs
     by hand), I used a small
@@ -389,7 +395,7 @@
   <h2>Problems encountered</h2>
   <p>
     First, our earlier candidate dataset turned out to be <strong>single-cell RNA-Seq</strong>, which does not match this bulk-style
-    download→FastQC→FASTX workflow; we pivoted to the mouse bulk RNA-seq dataset and re-ran the entire pipeline, while archiving the
+    download→FastQC→FASTX workflow; we pivoted to the mouse bulk RNA-Seq dataset and re-ran the entire pipeline, while archiving the
     prior zebrafish artifacts into a separate temp directory to avoid mixing organisms. Second, the SRRs are large and the server is
     shared, so the pipeline had to be resumable and concurrency-limited; we addressed this by running a parallelized end-to-end pipeline
     with clear progress markers and logs. Lastly, the dominant FastQC flags (adapter signal and high duplication) are not resolved by
