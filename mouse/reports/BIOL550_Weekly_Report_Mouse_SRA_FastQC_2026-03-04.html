@@ -98,9 +98,13 @@
 
   <h3>Quick Review of FastQC Output Findings</h3>
   <p>
-    I summarized FastQC by parsing each <code>*_fastqc.zip</code> with Python, collapsing mates to SRR-level module outcomes
-    (worst-of-mates), and computing a simple report-level severity score (<code>3×FAIL + WARN</code>) as a lightweight heuristic to rank which reports to inspect first (FAIL weighted more than WARN). Because trimmed FastQC
-    is now available for all SRRs locally, the raw vs trimmed comparisons below reflect the full dataset (52 reports per stage).
+    To summarize FastQC across the dataset, I used Python and pandas to parse each
+    <code>*_fastqc.zip</code> and calculate a per-report severity score (<code>3×FAIL + WARN</code>).
+    This let us quickly identify which reports (and SRRs) concentrate the most WARN/FAIL modules,
+    which modules are consistently problematic across the project, and how those patterns compare
+    between raw and trimmed QC. Following the same approach as the previous report, below I show
+    the top problematic reports and a module-level summary across all FastQC outputs, with trimmed
+    QC included as an additional comparison.
   </p>
 
 	  <div class="figure-title"><strong>FastQC overview (raw vs trimmed): module outcomes (right) + most problematic reports (left)</strong></div>
