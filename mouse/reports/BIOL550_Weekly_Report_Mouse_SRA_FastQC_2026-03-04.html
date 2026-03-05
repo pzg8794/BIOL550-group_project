@@ -50,6 +50,26 @@
     .panel-inline-title { text-align: center; font-size: 11pt; font-weight: bold; margin: 0 0 4px 0; }
     .panel-note-sm { font-size: 10pt; line-height: 1.05; }
 
+    /* Slightly smaller images for the last summary rows */
+    .shrink-img .panel-img { display: flex; justify-content: center; }
+    .shrink-img .panel-img img {
+      width: auto !important;
+      height: auto !important;
+      max-width: 100% !important;
+      max-height: 200px !important;
+      margin: 0 !important;
+    }
+
+    /* Even smaller for the two "sequence *" composite plots */
+    .shrink-img-sm .panel-img { display: flex; justify-content: center; }
+    .shrink-img-sm .panel-img img {
+      width: auto !important;
+      height: auto !important;
+      max-width: 100% !important;
+      max-height: 100px !important;
+      margin: 0 !important;
+    }
+
     .tight-table { font-size: 8.5pt; line-height: 1.02; }
     .tight-table th, .tight-table td { padding: 1px 3px; }
     .tight-table th:nth-child(1), .tight-table td:nth-child(1) { width: 44px; text-align: center; white-space: nowrap; }
@@ -290,7 +310,7 @@
     </div>
   </div>
 
-  <div class="img-row side-by-side gc-row">
+  <div class="img-row side-by-side gc-row shrink-img-sm">
     <div class="img-col">
       <div class="panel panel-img">
         <img src="../qc_analysis_raw_vs_trimmed/fastqc_sequence_duplication_levels_all.png" alt="Sequence duplication levels (raw vs trimmed)" />
@@ -307,7 +327,7 @@
     </div>
   </div>
 
-  <div class="img-row side-by-side gc-row">
+  <div class="img-row side-by-side gc-row shrink-img-sm">
     <div class="img-col">
       <div class="panel panel-text">
         <div class="panel-inline-title">Sequence length distribution (raw vs trimmed)</div>
@@ -326,7 +346,7 @@
   </div>
 
 	  <div class="figure-title"><strong>Key summary metrics (raw vs trimmed): per-base quality + adapter signal</strong></div>
-  <div class="img-row side-by-side">
+  <div class="img-row side-by-side shrink-img">
     <div class="img-col">
       <div class="panel panel-img">
         <img src="../qc_analysis_raw_vs_trimmed/pbq_min_10th_hist.png" alt="Per-base quality (min 10th percentile) raw vs trimmed" />
@@ -339,7 +359,7 @@
     </div>
   </div>
   <p class="after-row">
-    Quality trimming shifts tail-quality upward, but adapter signal is essentially unchanged between raw and trimmed; this supports adding
+    Quality trimming shifts tail-quality upward, but adapter signal is unchanged between raw and trimmed; this supports adding
     an explicit adapter clipping step before repeating FastQC and re-checking <code>Adapter Content</code> / <code>Overrepresented sequences</code>.
   </p>
 
@@ -352,7 +372,16 @@
     the next method addition is adapter clipping (FASTX <code>fastx_clipper</code>) followed by another FastQC pass.
   </p>
   <p>
-    To automate the manual validation step (after checking a few SRRs by hand), I batch-ingested FastQC report artifacts (HTML/ZIP) with a lightweight crawler-style workflow (e.g., <a href="https://crawlee.dev/python/docs/examples/crawl-multiple-urls">Crawlee</a>) and parsed report tables into pandas DataFrames; then I used pandas plotting (<a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html">docs</a>) plus simple HTML styling to generate the summary tables/figures shown here.
+    Note: To automate the manual MultiQC validation step (after verifying a few SRRs
+    by hand), I used a small
+    <a href="https://crawlee.dev/python/docs/examples/crawl-multiple-urls">crawler</a>
+    to iterate over the local FastQC HTML reports to have each report as a
+    parseable object, then used pandas to convert each module table into DataFrames
+    for consistent aggregation. Finally, I used
+    <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html">pandas plotting</a>
+    plus lightweight HTML/CSS templating from prior reports to generate the summary
+    figures and highlighted tables, speeding review while preserving accuracy as we
+    restarted from zero.
   </p>
 
   <h2>Problems encountered</h2>
