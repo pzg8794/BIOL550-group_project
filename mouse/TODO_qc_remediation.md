@@ -52,6 +52,9 @@ Success criteria:
 - `Adapter Content` and `Overrepresented sequences` move toward WARN/PASS (or at least visibly reduced).
 - Read length distribution doesn’t collapse (avoid over-trimming).
 
+Server helper script (one SRR at a time; group-safe perms):
+- `Semester5/BIOL550/group_project/pipelines/qc_remed_fastp_one_srr.sh`
+
 ### B) `FASTX fastx_clipper` (+ optional quality trim)
 
 Why: “classic” toolchain; requires a known adapter sequence; can be used to mirror course tooling expectations.
@@ -68,6 +71,9 @@ Use when:
 - You have a clear sequence to remove (from `fastqc_overrepresented_sequences.csv` or kit docs), OR
 - You need anchored trimming (e.g., `^PRIMER`).
 
+Server helper script (one SRR at a time; requires adapter env vars):
+- `Semester5/BIOL550/group_project/pipelines/qc_remed_cutadapt_one_srr.sh`
+
 ## Output review checklist (per SRR)
 
 After each approach, run FastQC and record:
@@ -81,4 +87,3 @@ After each approach, run FastQC and record:
 - If `Adapter Content` improves with `fastp`: adopt `fastp` as the next pipeline stage for the project (replace FASTX-only trimming).
 - If adapter signal persists even after `fastp`: treat as library property; proceed but call it out in downstream interpretation.
 - Duplication: do **not** try to “fix” with trimming; only flag extreme outliers for possible exclusion.
-
