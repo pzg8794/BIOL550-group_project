@@ -105,9 +105,11 @@
   <p>
     This week, in collaboration with my team, I moved our shared pipeline to the mouse RNA-seq dataset
     (BioProject <code>PRJNA1017789</code>; GEO Series <code>GSE243308</code>) and repeated the full workflow from scratch.
-    This directly follows last week’s stated goals (end-to-end SRA download → FastQC → trim → FastQC plus clearer QC interpretation), after we realized our earlier candidate dataset was single-cell RNA-Seq and needed a different analysis path.
-    We downloaded 26 paired-end runs (<code>SRR30333743</code>–<code>SRR30333768</code>) using SRA Toolkit and generated
-    raw FastQC outputs for all runs.
+    This directly follows last week’s stated goals: re-running FastQC on trimmed reads, repeating SRR-level QC analysis,
+    and confirming the dataset’s paper and experimental design. After realizing our earlier candidate dataset was
+    single-cell RNA-Seq and not suitable for this workflow, we pivoted to this bulk mouse project, downloaded 26
+    paired-end runs (<code>SRR30333743</code>–<code>SRR30333768</code>) using SRA Toolkit, and generated raw and trimmed
+    FastQC reports for all runs.
   </p>
   <p>
     Also, following our zebrafish project’s approach, I wrapped the steps into a
