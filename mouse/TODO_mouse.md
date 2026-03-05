@@ -3,9 +3,9 @@
 Keep this list current. Weekly report task must remain last.
 
 ## Pipeline + data
-- [ ] Confirm pipeline completion markers on server (`fastx.completed`, `end_to_end.completed`).
-- [ ] Verify final server counts: raw FASTQs + raw FastQC + trimmed FASTQs + trimmed FastQC are all **26/26**.
-- [ ] Cleanup temp/stale files (confirm no `*.tmp.*` left in `fastx_out/`).
+- [x] Confirm pipeline completion markers on server (`fastx.completed`, `end_to_end.completed`).
+- [x] Verify final server counts: raw FASTQs + raw FastQC + trimmed FASTQs + trimmed FastQC are all **26/26**.
+- [x] Cleanup temp/stale files (confirm no `*.tmp.*` left in `fastx_out/`).
 
 ## Local bundles (copy from Sequoia → Mac)
 - [x] Copy **raw FastQC** bundle (ZIP + HTML) to `Semester5/BIOL550/group_project/mouse/qc_bundle_raw/` (52 ZIP + 52 HTML).
