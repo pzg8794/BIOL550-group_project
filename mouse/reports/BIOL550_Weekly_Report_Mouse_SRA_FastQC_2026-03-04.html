@@ -396,8 +396,7 @@ fastq_quality_trimmer -Q33 -t 20 -l 30 # FASTX: trim low-Q 3' tails (stdin-&gt;s
   <h2>Problems encountered</h2>
   <p>
     First, our earlier candidate dataset turned out to be <strong>single-cell RNA-Seq</strong>, which does not match this bulk-style
-    download→FastQC→FASTX workflow; we pivoted to the mouse bulk RNA-Seq dataset and re-ran the entire pipeline, while archiving the
-    prior zebrafish artifacts into a separate temp directory to avoid mixing organisms. Second, the SRRs are large and the server is
+    download→FastQC→FASTX workflow; we pivoted to the mouse bulk RNA-Seq dataset and re-ran the entire pipeline. Second, the SRRs are large and the server is
     shared, so the pipeline had to be resumable and concurrency-limited; we addressed this by running a parallelized end-to-end pipeline
     with clear progress markers and logs. Lastly, the dominant FastQC flags (adapter signal and high duplication) are not resolved by
     quality trimming alone, so we need to add adapter clipping and re-evaluate before downstream analysis.
