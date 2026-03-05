@@ -99,7 +99,7 @@
   <h3>Quick Review of FastQC Output Findings</h3>
   <p>
     I summarized FastQC by parsing each <code>*_fastqc.zip</code> with Python, collapsing mates to SRR-level module outcomes
-    (worst-of-mates), and computing a simple report-level severity score (<code>3×FAIL + WARN</code>). Because trimmed FastQC
+    (worst-of-mates), and computing a simple report-level severity score (<code>3×FAIL + WARN</code>) as a lightweight heuristic to rank which reports to inspect first (FAIL weighted more than WARN). Because trimmed FastQC
     is now available for all SRRs locally, the raw vs trimmed comparisons below reflect the full dataset (52 reports per stage).
   </p>
 
@@ -239,8 +239,7 @@
   <p class="after-row">
     The left panel ranks FastQC reports by severity (raw on the left, trimmed on the right). The table summarizes which modules dominate
     WARN/FAIL before and after trimming: <code>Adapter Content</code> fails across all reports in both stages, and <code>Sequence Length Distribution</code>
-    flips from PASS (raw) to WARN (trimmed) because trimming introduces variable read lengths. Overall, trimming slightly improves tail
-    quality but is not expected to remove adapter signal; adapter clipping is required.
+    flips from PASS (raw) to WARN (trimmed) because trimming introduces variable read lengths. Overall, trimming improves tail quality but does not remove adapter signal (it trims low-quality tails, not technical sequence), so adapter clipping (e.g., FASTX <code>fastx_clipper</code>) is required.
   </p>
   <div class="img-row side-by-side gc-row">
     <div class="img-col">
@@ -339,6 +338,9 @@
     <code>fastq_quality_trimmer</code> with <code>-Q33 -t 20 -l 30</code> (Phred+33, trim bases &lt;Q20, keep reads ≥30 bp). We then
     summarized FastQC by parsing <code>*_fastqc.zip</code> and comparing raw vs trimmed at the module + SRR level. Based on the findings,
     the next method addition is adapter clipping (FASTX <code>fastx_clipper</code>) followed by another FastQC pass.
+  </p>
+  <p>
+    To automate the manual validation step (after checking a few SRRs by hand), I batch-ingested FastQC report artifacts (HTML/ZIP) with a lightweight crawler-style workflow (e.g., <a href="https://crawlee.dev/python/docs/examples/crawl-multiple-urls">Crawlee</a>) and parsed report tables into pandas DataFrames; then I used pandas plotting (<a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html">docs</a>) plus simple HTML styling to generate the summary tables/figures shown here.
   </p>
 
   <h3>Example commands (same pattern as last report)</h3>
