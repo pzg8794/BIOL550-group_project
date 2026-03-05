@@ -241,9 +241,17 @@
     </div>
   </div>
   <p class="after-row">
-    The left panel ranks FastQC reports by severity (raw on the left, trimmed on the right). The table summarizes which modules dominate
-    WARN/FAIL before and after trimming: <code>Adapter Content</code> fails across all reports in both stages, and <code>Sequence Length Distribution</code>
-    flips from PASS (raw) to WARN (trimmed) because trimming introduces variable read lengths. Overall, trimming improves tail quality but does not remove adapter signal (it trims low-quality tails, not technical sequence), so adapter clipping (e.g., FASTX <code>fastx_clipper</code>) is required.
+    As in the previous report, the left panel ranks individual FastQC reports by
+    severity (<code>3×FAIL + WARN</code>) to prioritize which SRRs to inspect
+    first. The right table summarizes module PASS/WARN/FAIL counts across all
+    reports to distinguish “global” patterns. Here, we also include trimmed QC
+    (trimmed columns) to compare modules before vs after trimming:
+    <code>Adapter Content</code> fails across all reports in both stages, and
+    <code>Sequence Length Distribution</code> flips from PASS (raw) to WARN
+    (trimmed) because trimming introduces variable read lengths. Overall, trimming
+    improves tail quality but does not remove adapter signal (it trims low-quality
+    tails, not technical sequence), so adapter clipping (e.g., FASTX
+    <code>fastx_clipper</code>) is required.
   </p>
   <div class="img-row side-by-side gc-row">
     <div class="img-col">
