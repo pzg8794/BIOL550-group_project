@@ -27,5 +27,9 @@ Keep this list current. Weekly report task must remain last.
 - [ ] Flatten server directory structure under `/home/zebrafish/mouse/` (remove redundant `PRJNA1017789_parallel` nesting when safe).
 - [ ] Archive/delete old baseline folder `/home/zebrafish/mouse/PRJNA1017789/` after verification.
 
+## Deliverables (collected)
+- [x] Keep weekly report HTML/PDF copies together in `Semester5/BIOL550/weekly_reports/_collected/` (with `manifest.csv`) for side-by-side review.
+
 ## Weekly report (last)
 - [x] Draft weekly report paragraph-style using the final raw-vs-trimmed QC comparison insights + next steps (`mouse/reports/BIOL550_Weekly_Report_Mouse_SRA_FastQC_2026-03-04.html`).
+- [x] Polish report wording/layout (MultiQC note + figure sizing tweaks).
