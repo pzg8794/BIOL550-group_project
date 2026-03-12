@@ -1,3 +1,5 @@
+> Tooling note (2026-03-05): this table suggests FASTX for clipping because that’s what we ran first. For “targeted trimming” (adapter remnants / known end sequences) on paired-end reads, prefer `fastp`; for primer/amplicon trimming, use `cutadapt`. See `Semester5/BIOL550/BIOL550-Notes.md` (“fastp vs FASTX Toolkit”).
+
 | module_key | module | status | srr | issue | desc | possible_causes | possible_solutions |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | adapter_content | Adapter Content | fail | SRR30333743 | Adapter sequence detected in reads | Adapters inflate k-mer signals and can create artificial sequence content bias. | Short inserts/read-through, adapter dimers, incomplete cleanup. | Clip adapters with FASTX fastx_clipper (correct adapter sequence) and run FastQC again. |

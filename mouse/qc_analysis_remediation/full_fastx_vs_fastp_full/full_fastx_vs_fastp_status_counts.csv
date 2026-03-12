@@ -1,0 +1,5 @@
+module,fastx_pass,fastx_warn,fastx_fail,fastp_pass,fastp_warn,fastp_fail,improved,unchanged,worse
+Adapter Content,0,0,52,52,0,0,52,0,0
+Overrepresented sequences,37,13,2,52,0,0,15,37,0
+Per base sequence content,0,26,26,0,26,26,0,52,0
+Sequence Length Distribution,0,52,0,0,52,0,0,52,0

@@ -4,6 +4,17 @@
 
 *January 27, 2026 | BIOL550: High Throughput Sequencing Analysis (Spring 2026\)*
 
+## Documentation links
+
+- Group project documentation map: [DOCUMENTATION_MAP.md](DOCUMENTATION_MAP.md)
+- Group project workspace hub: [README.md](README.md)
+- Group project work log: [WORKLOG.md](WORKLOG.md)
+- Active mouse workflow: [mouse/PROCESS_mouse_fastq_fastqc_fastx.md](mouse/PROCESS_mouse_fastq_fastqc_fastx.md)
+- Active mouse TODO: [mouse/TODO_mouse.md](mouse/TODO_mouse.md)
+- Active mouse remediation plan: [mouse/TODO_qc_remediation.md](mouse/TODO_qc_remediation.md)
+
+Use this file for the original plan and team responsibilities. Use the work log and mouse docs for what actually happened after the dataset pivot.
+
 ## **Team Roster**
 
 | No | Name | Expertise | Role | Key Phases | Lead Deliverable |
@@ -20,6 +31,8 @@
 * Bonus (Weeks 15-16): Optional \- SNP calling, isoform analysis, network analysis, machine learning classification
 
 **Implementation note (what we actually built):** we implemented a repeatable, low-load pipeline on Sequoia that runs **download → FastQC (raw)**, followed by a second pipeline for **FASTX trim → FastQC (trimmed)**. The exact commands and shared folder paths are captured in `Semester5/BIOL550/BIOL550-Lab/task_n_desc.md`.
+
+> Tooling note (2026-03-05): FASTX is fine for basic quality trimming, but for “targeted trimming” (adapter remnants / known end sequences) on paired-end reads, prefer `fastp`; for primer/amplicon trimming, use `cutadapt`. See `Semester5/BIOL550/BIOL550-Notes.md` (“fastp vs FASTX Toolkit”) for commands.
 
 **Update (2026-03-02):** the instructor confirmed the zebrafish dataset (`PRJNA1277581`) is **single-cell RNA-seq**. Any decision to switch datasets should account for assay type (bulk vs single-cell) and analysis feasibility.
 

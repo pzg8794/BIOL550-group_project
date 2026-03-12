@@ -2,10 +2,24 @@
 
 **Update (2026-03-02):** we archived the zebrafish artifacts and are repeating the same workflow on a mouse dataset. The current, dataset-scoped process doc is `Semester5/BIOL550/group_project/mouse/PROCESS_mouse_fastq_fastqc_fastx.md`, and the overall log is `Semester5/BIOL550/group_project/WORKLOG.md`.
 
+## Documentation links
+
+- Group project documentation map: [DOCUMENTATION_MAP.md](DOCUMENTATION_MAP.md)
+- Group project workspace hub: [README.md](README.md)
+- Group project outline: [BIOL550_group_project_outline.md](BIOL550_group_project_outline.md)
+- Group project work log: [WORKLOG.md](WORKLOG.md)
+- Active mouse workflow: [mouse/PROCESS_mouse_fastq_fastqc_fastx.md](mouse/PROCESS_mouse_fastq_fastqc_fastx.md)
+- Active mouse TODO: [mouse/TODO_mouse.md](mouse/TODO_mouse.md)
+- Active mouse remediation plan: [mouse/TODO_qc_remediation.md](mouse/TODO_qc_remediation.md)
+
+Use this file for high-level project narrative and presentation framing. Use the linked process, TODO, and work-log files for current operational details.
+
 ## Slide 1: Project Overview  
 - **Approach:** We spent Week 2–3 learning the NCBI SRA Toolkit (prefetch, fastq-dump, fasterq-dump), FastQC, and FASTX-Toolkit by following the course lab guide.  
 - **Manual Testing:** Each member independently tested data download and QC on a few runs to understand the workflow.  
 - **Automation Design:** We then designed an **automated pipeline**. We organized shared directories (`sra_runs/`, `fastqc_out/`, `trimmed_out/`), split the 30 SRA runs evenly across the 3 team members, and agreed on a producer-consumer flow: (a) download one run at a time, (b) in parallel run FastQC on the downloaded run, (c) then trim its reads (using FASTX) before moving to the next run.  
+
+- *Tooling note (2026-03-05):* for “targeted trimming” (adapter remnants / known end sequences) on paired-end reads, prefer `fastp`; for primer/amplicon trimming, use `cutadapt`. See `Semester5/BIOL550/BIOL550-Notes.md` (“fastp vs FASTX Toolkit”).
 - *Speaker notes:* Introduce overall strategy. Explain that learning the tools manually ensured team familiarity. Emphasize the pipelined workflow (download → QC → trim) and even workload split. Mention the shared directory structure and run list split.
 
 ## Slide 2: Implementation Details  

@@ -50,6 +50,8 @@ fastqc_out/
 
 ## Step 1b — Cleanup Attempt With FastX
 
+> Tooling note (2026-03-05): FastX/FASTX is the legacy trimmer used for the class exercise. For adapter-focused targeted trimming on paired-end reads, prefer `fastp`; for primer/amplicon trimming, use `cutadapt`. See `Semester5/BIOL550/BIOL550-Notes.md` (“fastp vs FASTX Toolkit”) for current examples.
+
 **What was run:** `fastq_quality_trimmer` on each gzipped FASTQ to trim low-quality tails (Phred+33), writing **uncompressed** trimmed FASTQs (`*.trim.fq`).
 
 **Command used:**

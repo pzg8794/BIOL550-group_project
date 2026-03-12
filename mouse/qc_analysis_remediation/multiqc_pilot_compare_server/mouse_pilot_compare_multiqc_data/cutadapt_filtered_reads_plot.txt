@@ -1,0 +1,4 @@
+Sample	Pairs passing filters	Pairs that were too short
+cutadapt | SRR30333743	49201417.0	894402.0
+cutadapt | SRR30333754	49820745.0	1271085.0
+cutadapt | SRR30333756	48607951.0	1169035.0

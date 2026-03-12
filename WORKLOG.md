@@ -2,10 +2,31 @@
 
 This log captures **what we did**, **the steps**, and **why** (so we can reproduce work and keep the shared server + repo organized).
 
+## Documentation links
+
+- Parent group-project hub: [README.md](README.md)
+- Group project documentation map: [DOCUMENTATION_MAP.md](DOCUMENTATION_MAP.md)
+- Agent start guide: [START_HERE_AGENT.md](START_HERE_AGENT.md)
+- Server minimum policy: [SERVER_MINIMUM_POLICY.md](SERVER_MINIMUM_POLICY.md)
+- Course notes: [../BIOL550-Notes.md](../BIOL550-Notes.md)
+- Lab task hub: [../BIOL550-Lab/task_n_desc.md](../BIOL550-Lab/task_n_desc.md)
+- Original group project plan: [BIOL550_group_project_outline.md](BIOL550_group_project_outline.md)
+- Presentation / research summary: [deep-research-report.md](deep-research-report.md)
+- Active mouse workflow: [mouse/PROCESS_mouse_fastq_fastqc_fastx.md](mouse/PROCESS_mouse_fastq_fastqc_fastx.md)
+- Active mouse TODO: [mouse/TODO_mouse.md](mouse/TODO_mouse.md)
+- Active mouse remediation plan: [mouse/TODO_qc_remediation.md](mouse/TODO_qc_remediation.md)
+
+Use this file as the dated change log. For exact current commands or pending tasks, follow the linked mouse docs.
+
+> Server policy: keep the minimum on `sequoia`; keep most code and analysis local. See [SERVER_MINIMUM_POLICY.md](SERVER_MINIMUM_POLICY.md).
+
 ## 2026-03-02 — Dataset pivot + cleanup (zebrafish → mouse)
 
 ### What changed
 - We pivoted away from the zebrafish dataset work area and started a **mouse dataset** run using the same workflow (**download → FastQC (raw) → FASTX trim → FastQC (trimmed) → compare**).
+
+> Tooling note (2026-03-05): if trimming is specifically to remove adapters/known end-sequences, prefer `fastp` over FASTX; for primer/amplicon trimming, use `cutadapt`. See `Semester5/BIOL550/BIOL550-Notes.md` (“fastp vs FASTX Toolkit”) for examples.
+
 - We **archived zebrafish artifacts** locally and on the server into clearly named temp folders so they can be deleted later without hunting.
 - We extracted the reusable scripts/notebook into a dataset-agnostic `pipelines/` location (local + server).
 - We added an end-to-end runner script to chain the pipeline sequentially when we need to catch up quickly.
@@ -58,18 +79,18 @@ This log captures **what we did**, **the steps**, and **why** (so we can reprodu
 - Server: `/home/pzg8794/metadata/PRJNA1017789/splits/PRJNA1017789_runs.all.txt`
 
 ### Server paths (all outputs under one dataset root)
-- `DATA_ROOT=/home/zebrafish/mouse/PRJNA1017789`
-- Raw FASTQs: `/home/zebrafish/mouse/PRJNA1017789/sra_runs/`
-- Raw FastQC: `/home/zebrafish/mouse/PRJNA1017789/fastqc_out/`
-- Trimmed FASTQs: `/home/zebrafish/mouse/PRJNA1017789/fastx_out/`
-- Trimmed FastQC: `/home/zebrafish/mouse/PRJNA1017789/fastqc_out_trimmed/`
-- Logs: `/home/zebrafish/mouse/PRJNA1017789/.pipeline/`
+- `DATA_ROOT=/home/zebrafish/mouse/PRJNA1017789_parallel`
+- Raw FASTQs: `/home/zebrafish/mouse/PRJNA1017789_parallel/sra_runs/`
+- Raw FastQC: `/home/zebrafish/mouse/PRJNA1017789_parallel/fastqc_out/`
+- Trimmed FASTQs: `/home/zebrafish/mouse/PRJNA1017789_parallel/fastx_out/`
+- Trimmed FastQC: `/home/zebrafish/mouse/PRJNA1017789_parallel/fastqc_out_trimmed/`
+- Logs: `/home/zebrafish/mouse/PRJNA1017789_parallel/.pipeline/`
 
 ### Command used (Sequoia)
 ```bash
 ACC=PRJNA1017789
 RUNS_FILE=/home/pzg8794/metadata/PRJNA1017789/splits/PRJNA1017789_runs.all.txt
-DATA_ROOT=/home/zebrafish/mouse/$ACC
+DATA_ROOT=/home/zebrafish/mouse/PRJNA1017789_parallel
 
 ACC="$ACC" RUNS_FILE="$RUNS_FILE" DATA_ROOT="$DATA_ROOT" MEMBER=piter \
   DUMP_THREADS=2 FASTQC_THREADS_RAW=1 FASTQC_THREADS_TRIM=2 TRIM_QUAL=20 MIN_LEN=30 \
@@ -78,16 +99,16 @@ ACC="$ACC" RUNS_FILE="$RUNS_FILE" DATA_ROOT="$DATA_ROOT" MEMBER=piter \
 
 ### Monitor
 ```bash
-tail -f /home/zebrafish/mouse/PRJNA1017789/.pipeline/end_to_end.nohup.log
-tail -f /home/zebrafish/mouse/PRJNA1017789/.pipeline/raw/download.nohup.log
-tail -f /home/zebrafish/mouse/PRJNA1017789/.pipeline/raw/fastqc.nohup.log
+tail -f /home/zebrafish/mouse/PRJNA1017789_parallel/.pipeline/end_to_end.nohup.log
+tail -f /home/zebrafish/mouse/PRJNA1017789_parallel/.pipeline/raw/download.nohup.log
+tail -f /home/zebrafish/mouse/PRJNA1017789_parallel/.pipeline/raw/fastqc.nohup.log
 ```
 
 ### Stop (if needed)
 ```bash
 ACC=PRJNA1017789
 RUNS_FILE=/home/pzg8794/metadata/PRJNA1017789/splits/PRJNA1017789_runs.all.txt
-DATA_ROOT=/home/zebrafish/mouse/$ACC
+DATA_ROOT=/home/zebrafish/mouse/PRJNA1017789_parallel
 
 ACC="$ACC" RUNS_FILE="$RUNS_FILE" DATA_ROOT="$DATA_ROOT" \
   /home/pzg8794/pipelines/run_end_to_end_fastq_fastqc_fastx_fastqc.sh stop
@@ -157,3 +178,859 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 - Copied the full trimmed FastQC bundle to: `Semester5/BIOL550/group_project/mouse/qc_bundle_trimmed/` (52 ZIP + 52 HTML).
 - Re-ran the comparison notebook to refresh plots + CSV exports under: `Semester5/BIOL550/group_project/mouse/qc_analysis_raw_vs_trimmed/`.
 - Drafted the mouse weekly report: `Semester5/BIOL550/group_project/mouse/reports/BIOL550_Weekly_Report_Mouse_SRA_FastQC_2026-03-04.html`.
+
+---
+
+## 2026-03-09 — QC remediation plan formalized
+
+### Why
+- The baseline QC comparison answered what **FASTX quality trimming** changed, but it also showed that the remaining dominant issues are **technical sequence cleanup** problems, not “more trimming” problems.
+- We need a clean exploration phase before alignment so we can learn the available cleanup tools, test them on the right SRRs, and pick the alignment input based on evidence.
+
+### What changed
+- Documented a dedicated remediation plan in:
+  - `Semester5/BIOL550/group_project/mouse/TODO_qc_remediation.md`
+- Added a separate remediation notebook scaffold so the baseline notebook stays focused:
+  - `Semester5/BIOL550/group_project/mouse/notebooks/qc_remediation_experiments_mouse.ipynb`
+- Updated the mouse process doc with a remediation section:
+  - `Semester5/BIOL550/group_project/mouse/PROCESS_mouse_fastq_fastqc_fastx.md`
+- Updated the mouse TODO so the pilot/tool-choice work is tracked explicitly:
+  - `Semester5/BIOL550/group_project/mouse/TODO_mouse.md`
+- Standardized the active mouse workflow on the single BIOL550 Python environment:
+  - `/Users/pitergarcia/DataScience/Semester5/BIOL550/biol550_env`
+
+### Tooling updates
+- `qc_remed_fastp_one_srr.sh`
+  - default root now points to `/home/zebrafish/mouse/PRJNA1017789_parallel/`
+  - adds `--trim_poly_g`
+  - uses tail-focused quality trimming to stay closer to the original FASTX intent
+- `qc_remed_cutadapt_one_srr.sh`
+  - default root now points to `/home/zebrafish/mouse/PRJNA1017789_parallel/`
+  - now supports either explicit adapters, `NEXTSEQ_TRIM`, or both
+
+### Planned pilot
+- First-pass SRRs:
+  - `SRR30333754`
+  - `SRR30333756`
+  - `SRR30333743`
+- First-pass tools:
+  - `fastp` for paired-end adapter + poly-G cleanup
+  - `cutadapt` for explicit-sequence / `NEXTSEQ_TRIM` comparison
+
+---
+
+## 2026-03-09 → 2026-03-10 — Trusted remediation workspace + pilot comparison setup
+
+### Why
+- The shared dataset root is still the correct source for **raw input FASTQs**, but the shared derived outputs are no longer a trustworthy place to run or compare remediation experiments.
+- We need one remediation workspace that we control, one frozen baseline copied from the local project, and one repeatable comparison script that can score `raw` vs `FASTX` vs `fastp` vs `cutadapt`.
+- The notebook should not be the source of truth for this phase. The source of truth should be terminal-generated artifacts that the notebook can display later.
+
+### What we verified on the server
+- Shared raw inputs under `/home/zebrafish/mouse/PRJNA1017789_parallel/` were still intact:
+  - `sra_runs/` contained `52` FASTQ files (`26` paired-end SRRs)
+  - `fastqc_out/` contained `104` FastQC files (`52` ZIP + `52` HTML)
+  - file ownership and dates were consistent with the original run (`pzg8794:zebrafish`, dated `2026-03-02`)
+  - the raw sample set and raw FastQC sample set matched exactly
+- Shared derived outputs were **not** safe to use as the remediation baseline:
+  - `fastp_out/` only contained a manual rerun for `SRR30333743`
+  - `fastqc_fastp_trim/` only contained the matching FastQC for that one rerun
+  - those files were owned by `nb6672` and dated `2026-03-05`
+  - `fastx_out/` and `fastqc_out_trimmed/` were missing from the shared tree at the time of the audit
+
+### Decision
+- Keep using `/home/zebrafish/mouse/PRJNA1017789_parallel/` as the **shared raw input source**.
+- Do **not** trust shared derived outputs for remediation comparisons.
+- Freeze the trusted baseline from the local project and copy it into a home-owned remediation workspace under `/home/pzg8794/`.
+- Run remediation experiments and comparisons from that home workspace only.
+
+### Home remediation workspace created
+- Root: `/home/pzg8794/mouse_qc_remediation/`
+- Baseline copies:
+  - `/home/pzg8794/mouse_qc_remediation/baseline/qc_bundle_raw/`
+  - `/home/pzg8794/mouse_qc_remediation/baseline/qc_bundle_trimmed/`
+- Support directories:
+  - `/home/pzg8794/mouse_qc_remediation/scripts/`
+  - `/home/pzg8794/mouse_qc_remediation/logs/`
+  - `/home/pzg8794/mouse_qc_remediation/compare/`
+  - `/home/pzg8794/mouse_qc_remediation/output/`
+
+### What we copied and checked
+- Copied the trusted local FastQC bundles into the home baseline workspace.
+- Verified that both baseline bundles contain `104` files each.
+- Verified that the three pilot SRRs are present in both baseline stages:
+  - `SRR30333754`
+  - `SRR30333756`
+  - `SRR30333743`
+
+### Comparison tooling added
+- New repo script:
+  - `Semester5/BIOL550/group_project/pipelines/mouse_qc_strategy_compare.py`
+- Server copies:
+  - `/home/pzg8794/mouse_qc_remediation/scripts/mouse_qc_strategy_compare.py`
+  - `/home/pzg8794/mouse_qc_remediation/scripts/run_compare.sh`
+- Purpose:
+  - parse FastQC ZIP bundles for `raw`, `FASTX`, `fastp`, and `cutadapt`
+  - parse `fastp` JSON and `cutadapt` logs
+  - write one comparison package with stage-level metrics, adapter curves, tool metrics, and a readable summary
+
+### Preliminary outputs already generated
+- Directory:
+  - `/home/pzg8794/mouse_qc_remediation/compare/preliminary/`
+- Files:
+  - `pilot_read_stage_metrics.csv`
+  - `pilot_adapter_curve_data.csv`
+  - `pilot_srr_comparison_wide.csv`
+  - `pilot_fastp_run_metrics.csv`
+  - `pilot_cutadapt_run_metrics.csv`
+  - `pilot_summary.md`
+
+### Findings from the preliminary compare (`raw` vs current `FASTX`)
+- The current FASTX trim changed read length / tail quality, but it did **not** materially resolve the dominant technical-sequence signal in the pilot runs.
+- The main unresolved patterns remained:
+  - poly-G dominated read 2 signal in `SRR30333754` and `SRR30333756`
+  - explicit TruSeq adapter signal in `SRR30333743_1`
+- This confirmed the earlier interpretation: the next step is **targeted technical cleanup**, not more generic quality trimming.
+
+### Pilot remediation runs launched in the home workspace
+- Wrapper:
+  - `/home/pzg8794/mouse_qc_remediation/scripts/run_pilot_remediation.sh`
+- Log:
+  - `/home/pzg8794/mouse_qc_remediation/logs/run_pilot_remediation.2026-03-09_232002.log`
+- Tool plan inside the wrapper:
+  - `fastp` on `SRR30333754`, `SRR30333756`, `SRR30333743`
+  - `cutadapt` with `NEXTSEQ_TRIM=20` on the poly-G dominated SRRs
+  - `cutadapt` with `NEXTSEQ_TRIM=20` + explicit `ADAPTER_R1` on `SRR30333743`
+
+### Last verified live run state (2026-03-10 00:32 EDT)
+- The `fastp` pilot phase completed for all three SRRs:
+  - `SRR30333754`
+  - `SRR30333756`
+  - `SRR30333743`
+- Evidence on the server:
+  - `3` `fastp` report pairs (`.html` + `.json`)
+  - `12` post-`fastp` FastQC artifacts (`6` ZIP + `6` HTML)
+  - `6` trimmed `fastp` FASTQ files (`3` paired-end SRRs)
+- The pipeline had moved into the `cutadapt` phase:
+  - trimming for `SRR30333754` completed and wrote `/home/pzg8794/mouse_qc_remediation/output/cutadapt/reports/SRR30333754.cutadapt.log`
+  - `FastQC` was still running on `/home/pzg8794/mouse_qc_remediation/output/cutadapt/out/SRR30333754_1.cutadapt.fastq.gz` and `/home/pzg8794/mouse_qc_remediation/output/cutadapt/out/SRR30333754_2.cutadapt.fastq.gz`
+- The final all-stage compare had **not** been generated yet:
+  - `/home/pzg8794/mouse_qc_remediation/compare/preliminary/` contained `6` files
+  - `/home/pzg8794/mouse_qc_remediation/compare/final/` was still empty
+
+### Documentation decision for this phase
+- Server/terminal artifacts are the primary record for remediation.
+- Markdown files must record:
+  - what was run
+  - why it was run
+  - what changed
+  - what decision followed
+- The notebook should only become a presentation layer after the comparison artifacts exist.
+
+---
+
+## 2026-03-10 — Pilot remediation completed + first tool decision
+
+### What changed
+- The `cutadapt` pilot phase completed for all three pilot SRRs:
+  - `SRR30333754`
+  - `SRR30333756`
+  - `SRR30333743`
+- The final comparison package was generated in:
+  - `/home/pzg8794/mouse_qc_remediation/compare/final/`
+- Final files produced:
+  - `pilot_adapter_curve_data.csv`
+  - `pilot_cutadapt_run_metrics.csv`
+  - `pilot_fastp_run_metrics.csv`
+  - `pilot_read_stage_metrics.csv`
+  - `pilot_srr_comparison_wide.csv`
+  - `pilot_summary.md`
+
+### Findings
+- For the two dominant poly-G read 2 cases, `fastp` clearly outperformed `cutadapt` on residual adapter signal:
+  - `SRR30333754_2`
+    - current `FASTX` adapter_max `45.0897`
+    - `fastp` adapter_max `0.0589`, retained `95.5758%`
+    - `cutadapt` adapter_max `45.0601`, retained `97.5000%`
+  - `SRR30333756_2`
+    - current `FASTX` adapter_max `32.4893`
+    - `fastp` adapter_max `0.0434`, retained `95.7836%`
+    - `cutadapt` adapter_max `31.8831`, retained `97.7000%`
+- For the explicit TruSeq adapter case, both tools removed the dominant overrepresented signal, but `fastp` still drove adapter_max lower:
+  - `SRR30333743_1`
+    - current `FASTX` adapter_max `49.1768`
+    - `fastp` adapter_max `0.0054`, retained `96.7674%`
+    - `cutadapt` adapter_max `0.0338`, retained `98.2000%`
+- Overall pattern:
+  - `cutadapt` preserved slightly more reads
+  - `fastp` removed the dominant technical signal much more effectively across the pilot set
+
+### Decision
+- Choose `fastp` as the **default batch remediation tool** for the mouse project.
+- Keep `cutadapt` as the **targeted explicit-sequence fallback** when a known adapter/primer sequence needs direct control.
+
+### Why this decision is defensible
+- The main unresolved dataset-wide problem was poly-G / adapter-like technical signal, especially in read 2.
+- `fastp` reduced adapter_max from large baseline values to near zero in all three pilot cases.
+- `cutadapt` improved retention, but it did not materially reduce adapter_max in the two poly-G dominated pilot reads.
+
+### Next step
+- Copy or sync the final comparison package into the local mouse workspace.
+- Update the remediation notebook and weekly report so the final tool comparison is visible outside the server workspace.
+
+### Local sync completed
+- Copied the final comparison package from `/home/pzg8794/mouse_qc_remediation/compare/final/` into:
+  - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/`
+- The local remediation analysis folder now has the server-generated CSV/summary files needed for notebook display and report writing.
+
+### Notebook rebuilt around the actual comparison questions
+- Rebuilt:
+  - `Semester5/BIOL550/group_project/mouse/notebooks/qc_remediation_experiments_mouse.ipynb`
+- New notebook structure now follows the real decision flow:
+  - what problem remained after `FASTX`
+  - what each tested solution did (`fastp`, `cutadapt`)
+  - how all stages compare on the same page
+  - which tool wins and why
+- The notebook’s dataset-level signal sections now use **all-SRR GC bell-shape composites**:
+  - start from the full `52`-report current `FASTX` bundle
+  - materialize a copy for each tool-specific stage
+  - replace the `6` pilot report ZIPs in that copy with the corresponding `fastp` or `cutadapt` FastQC ZIPs
+  - then render the FastQC `Per sequence GC content` bell shape so the stage view stays dataset-level rather than pilot-only
+- Executed the notebook successfully in:
+  - `/Users/pitergarcia/DataScience/Semester5/BIOL550/biol550_env`
+- New local comparison figures written to:
+  - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/final_problem_raw_vs_fastx.png`
+  - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/final_fastp_vs_baseline.png`
+  - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/final_cutadapt_vs_baseline.png`
+  - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/final_all_tools_comparison.png`
+  - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/final_fastp_gc_bellshape_all_srrs.png`
+  - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/final_cutadapt_gc_bellshape_all_srrs.png`
+  - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/final_all_tools_gc_bellshape_all_srrs.png`
+
+---
+
+## 2026-03-11 — Documentation sync for remediation results + current notebook state
+
+### Step
+- Reviewed the current local remediation workspace and synchronized the documentation entry points:
+  - `Semester5/BIOL550/group_project/mouse/notebooks/qc_remediation_experiments_mouse.ipynb`
+  - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/`
+  - `Semester5/BIOL550/group_project/mouse/TODO_qc_remediation.md`
+  - `Semester5/BIOL550/group_project/mouse/PROCESS_mouse_fastq_fastqc_fastx.md`
+  - `Semester5/BIOL550/group_project/mouse/TODO_mouse.md`
+  - `Semester5/BIOL550/BIOL550-Notes.md`
+  - `Semester5/BIOL550/BIOL550-Lab/task_n_desc.md`
+
+### Finding
+- The local remediation workspace now has one clear set of comparison artifacts:
+  - notebook: `Semester5/BIOL550/group_project/mouse/notebooks/qc_remediation_experiments_mouse.ipynb`
+  - summary CSVs: `pilot_srr_comparison_wide.csv`, `pilot_read_stage_metrics.csv`, `pilot_fastp_run_metrics.csv`, `pilot_cutadapt_run_metrics.csv`
+  - plots: `final_problem_raw_vs_fastx.png`, `final_fastp_vs_baseline.png`, `final_cutadapt_vs_baseline.png`, `final_all_tools_comparison.png`, and the three `final_*_gc_bellshape_all_srrs.png` figures
+- The documented scientific conclusion remains unchanged:
+  - use `fastp` as the default remediation tool for the mouse dataset
+  - keep `cutadapt` as the targeted fallback when explicit sequence-level trimming control is needed
+- The current notebook file should be treated as the authoritative presentation artifact for the remediation comparison; the CSVs and PNGs in `mouse/qc_analysis_remediation/` are the supporting evidence files behind it.
+
+### Decision
+- Keep all active BIOL550 mouse docs pointed at the current notebook + remediation analysis folder as the canonical local deliverables.
+- Leave the weekly-report update as the last remaining mouse remediation write-up task.
+
+### Added interpretation guidance
+- Documented how to read the GC bell-shape plots:
+  - shaded band = `25th` to `75th` percentile spread
+  - bold line = stage median
+  - `Current FASTX` = trimmed baseline
+  - the bell plots are a dataset-level sanity check; the final tool choice still comes from the remediation metrics
+- Added two notebook-level visual aids:
+  - a baseline bell plot for `raw` vs `Current FASTX` trimmed baseline
+  - a `2x2` bell-plot gallery so the baseline, `fastp`, `cutadapt`, and all-stage views can be compared on one page
+
+---
+
+## 2026-03-11 — Plotting research for remediation comparisons
+
+### Step
+- Reviewed official documentation for MultiQC reports and custom content, the MultiQC FastQC module, seaborn `pointplot` / `lineplot` / `heatmap`, seaborn error-bar guidance, Plotly line / heatmap / box plots, and the `fastp` README:
+  - https://docs.seqera.io/multiqc/reports
+  - https://docs.seqera.io/multiqc/custom_content
+  - https://docs.seqera.io/multiqc/modules/fastqc
+  - https://seaborn.pydata.org/generated/seaborn.pointplot.html
+  - https://seaborn.pydata.org/generated/seaborn.lineplot.html
+  - https://seaborn.pydata.org/generated/seaborn.heatmap.html
+  - https://seaborn.pydata.org/tutorial/error_bars.html
+  - https://plotly.com/python/line-charts/
+  - https://plotly.com/python/heatmaps/
+  - https://plotly.com/python/box-plots/
+  - https://github.com/OpenGene/fastp
+
+### Finding
+- MultiQC is the best single interactive report layer for many-sample QC review and can host remediation summaries through custom content.
+- `pointplot`-style comparisons are a better fit than plain bars when the question is category-to-category change.
+- `lineplot` with percentile intervals is a good fit for stage-level QC curves because these data are not guaranteed to be symmetric or normal.
+- Heatmaps are the most compact way to summarize pass / warn / fail changes across many samples and modules.
+- The GC bell plot remains useful, but only as a sanity check; it is not the strongest plot for ranking `FASTX` vs `fastp` vs `cutadapt`.
+- MultiQC supports a mouse theoretical GC overlay (`mm10_txome`), which would improve interpretation if we keep the GC panel.
+- `fastp` already emits before/after summaries, which makes it easy to support slope, scatter, and summary-table views.
+
+### Decision
+- Keep the current bell plots, but do not use them as the primary ranking plot.
+- Prioritize delta-vs-`Current FASTX` plots, a retention-vs-cleanup scatter plot, and a sample/module/stage heatmap as the next best explanation layer.
+- Preserve this plotting guidance in the mouse process and remediation tracking docs so the rationale survives outside the notebook.
+
+---
+
+## 2026-03-11 — Implemented research-backed decision plots in the notebook
+
+### Step
+- Updated the remediation notebook builder to add three decision-focused figures:
+  - `final_adapter_delta_vs_fastx.png`
+  - `final_retention_vs_adapter_tradeoff.png`
+  - `final_status_heatmap_focus_reads.png`
+- Rebuilt and executed:
+  - `Semester5/BIOL550/group_project/pipelines/build_mouse_qc_remediation_notebook.py`
+  - `Semester5/BIOL550/group_project/mouse/notebooks/qc_remediation_experiments_mouse.ipynb`
+
+### Finding
+- The notebook now separates the roles of the plots clearly:
+  - ranking plots answer whether each tool improves `Current FASTX`
+  - tradeoff plot shows cleanup vs retention cost
+  - status heatmap shows categorical FastQC state transitions
+  - bell plots remain as the final dataset-level sanity check
+- This matches what we learned from the documentation review:
+  - direct stage-to-stage comparisons should drive the tool decision
+  - bell plots should validate that the library shape still looks reasonable
+
+### Decision
+- Keep the new decision plots as the primary comparison layer in the notebook.
+- Keep the bell plots as validation plots only.
+- Leave MultiQC as the final server-side validation report after the workflow is fully frozen.
+
+---
+
+## 2026-03-11 — Server-side MultiQC pilot validation
+
+### Step
+- Reconnected to `sequoia` and verified the current remediation workspace:
+  - `raw` FastQC zips: `52`
+  - `Current FASTX` FastQC zips: `52`
+  - `fastp` FastQC zips: `6`
+  - `cutadapt` FastQC zips: `6`
+- Chose the MultiQC scope based on those counts:
+  - pilot comparison report now
+  - full chosen-tool report later
+- Added two reusable helper scripts locally and copied them to the server:
+  - `Semester5/BIOL550/group_project/pipelines/mouse_multiqc_pilot_compare.sh`
+  - `Semester5/BIOL550/group_project/pipelines/mouse_multiqc_final_fastp.sh`
+- Installed MultiQC in the user-local server path because it was not present:
+  - `python3 -m pip install --user --break-system-packages multiqc`
+- Generated the pilot comparison report on the server with:
+  - `/home/pzg8794/mouse_qc_remediation/scripts/mouse_multiqc_pilot_compare.sh`
+
+### Finding
+- The immediate apples-to-apples validation report is the pilot comparison report, not separate per-tool reports and not a full-dataset all-tools report.
+- MultiQC completed successfully on the server:
+  - report: `/home/pzg8794/mouse_qc_remediation/multiqc/pilot_compare/report/mouse_pilot_compare_multiqc.html`
+  - data: `/home/pzg8794/mouse_qc_remediation/multiqc/pilot_compare/report/mouse_pilot_compare_multiqc_data/`
+- MultiQC found:
+  - `cutadapt`: `3` reports
+  - `fastp`: `3` reports
+  - `fastqc`: `24` reports
+- `--dirs --dirs-depth 1` was the correct setting because the same pilot reads appear across multiple stage folders and needed stage-prefixed sample names.
+
+### Decision
+- Keep the pilot comparison MultiQC report as the current server-side validation artifact.
+- Do not generate separate MultiQC reports per approach as the main deliverable.
+- Generate the final full-dataset MultiQC report only after `fastp` is run across all SRRs.
+
+---
+
+## 2026-03-11 — Copied MultiQC locally and cleaned server space
+
+### Step
+- Copied the server-side MultiQC pilot validation outputs into the local remediation analysis folder:
+  - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/multiqc_pilot_compare_server/`
+- Audited server-side disk usage under `/home/pzg8794/mouse_qc_remediation/`
+- Deleted the large pilot-only trimmed FASTQ intermediates:
+  - `/home/pzg8794/mouse_qc_remediation/output/fastp/out/*.fastq.gz`
+  - `/home/pzg8794/mouse_qc_remediation/output/cutadapt/out/*.fastq.gz`
+- Deleted the temporary pip cache:
+  - `/home/pzg8794/.cache/pip`
+
+### Finding
+- The local copy now contains:
+  - `mouse_pilot_compare_multiqc.html`
+  - `mouse_pilot_compare_multiqc_data/`
+- The large removable space consumers were the pilot trimmed FASTQ outputs:
+  - `output/fastp/out/`: about `20G`
+  - `output/cutadapt/out/`: about `20G`
+- After cleanup, the remaining server footprint is much smaller:
+  - `mouse_qc_remediation/output`: about `18M`
+  - `mouse_qc_remediation/multiqc`: about `11M`
+  - `mouse_qc_remediation/baseline`: about `138M`
+- The analysis-critical artifacts were preserved:
+  - post-tool FastQC zips
+  - `fastp` JSON reports
+  - `cutadapt` logs
+  - MultiQC report + data
+
+### Decision
+- Keep the server workspace lean by removing large intermediate FASTQ outputs once the downstream QC artifacts and summaries are secured.
+- Keep the local analysis copy as the easiest place to inspect the MultiQC pilot outputs.
+
+---
+
+## 2026-03-11 — Removed remaining zebra temp workspace from server home
+
+### Step
+- Searched `/home/pzg8794` for zebra / zebrafish-named artifacts.
+- Deleted the remaining temporary zebra directory:
+  - `/home/pzg8794/_tmp_zebrafish_2026-03-02`
+
+### Finding
+- No zebra / zebrafish-named paths remain under `/home/pzg8794`.
+- The removed directory had been using roughly `744M`.
+
+### Decision
+- Treat zebra work as retired from the server home workspace.
+- Keep any future one-off analysis code local first, copy it to the server only for execution, and remove the server copy afterward.
+
+---
+
+## 2026-03-11 — Removed long custom code from server home
+
+### Step
+- Audited code files under:
+  - `/home/pzg8794/mouse_qc_remediation/scripts`
+  - `/home/pzg8794/pipelines`
+- Applied the current cleanup rule:
+  - keep short wrappers on the server
+  - remove longer custom code (`>~100` lines)
+
+### Finding
+- Remaining server-side code is now short wrapper-level only:
+  - `run_compare.sh` (`11` lines)
+  - `run_pilot_remediation.sh` (`23` lines)
+  - `mouse_multiqc_final_fastp.sh` (`29` lines)
+  - `mouse_multiqc_pilot_compare.sh` (`70` lines)
+  - `qc_remed_cutadapt_one_srr.sh` (`98` lines)
+  - `download_fastq_sratoolkit_from_runs.sh` (`98` lines)
+  - `qc_remed_fastp_one_srr.sh` (`99` lines)
+- Removed longer code from the server:
+  - `/home/pzg8794/mouse_qc_remediation/scripts/mouse_qc_strategy_compare.py`
+  - `/home/pzg8794/pipelines/download_fastq_sratoolkit.sh`
+  - `/home/pzg8794/pipelines/fastx_trim_fastqc_pipeline.sh`
+  - `/home/pzg8794/pipelines/run_end_to_end_fastq_fastqc_fastx_fastqc.sh`
+  - `/home/pzg8794/pipelines/run_end_to_end_fastq_fastqc_fastx_fastqc_parallel.sh`
+  - `/home/pzg8794/pipelines/sra_runs_pipeline_sra3.sh`
+  - `/home/pzg8794/pipelines/sra_runs_pipeline_sra3_parallel.sh`
+- `/home/pzg8794/pipelines` is now reduced to about `8K`.
+
+### Decision
+- Long custom code is now local-first by policy.
+- If any removed script needs to run again, copy it from the local repo to the server, execute it, and delete the server copy immediately afterward.
+
+---
+
+## 2026-03-11 — Elevated server-minimum policy into a standalone project rule
+
+### Step
+- Added a dedicated policy document:
+  - `Semester5/BIOL550/group_project/SERVER_MINIMUM_POLICY.md`
+- Linked that policy from the main group-project hub, documentation map, mouse process doc, mouse remediation plan, and the work log header.
+
+### Finding
+- The server-residency rule is now explicit instead of scattered:
+  - server keeps only the minimum needed to run, inspect, and prove work
+  - local repo keeps the notebooks, long scripts, analysis logic, and custom code
+  - long code may be copied to the server temporarily, then must be removed after use
+- Short wrappers and templates are still allowed to remain on the server.
+
+### Decision
+- Treat `SERVER_MINIMUM_POLICY.md` as the authoritative statement for what may remain on `sequoia`.
+- Before copying new code to the server, check that file first.
+
+---
+
+## 2026-03-11 — Transcript review for pre-alignment next steps
+
+### Step
+- Reviewed the BIOL550 transcript notes relevant to QC cleanup and alignment planning:
+  - `Semester5/BIOL550/transcripts/2026-02-18 Lecture_ SRA Toolkit Workflows, FastQC, Server Coordination, and Alignment Deliverables-summary.md`
+  - `Semester5/BIOL550/transcripts/2026-02-19 Lecture_ Sequencing Data QC Workflow with FastQC and FASTX-Toolkit-summary.md`
+  - `Semester5/BIOL550/transcripts/2026-02-26 Analysis of RNA-Seq Quality Control and Methodology Verification-summary.md`
+  - `Semester5/BIOL550/transcripts/2026-03-02 Weekly Meeting_ Bulk RNA-seq Dataset Selection, Access Permissions, and QC (Adapters_Duplication)-summary.md`
+  - `Semester5/BIOL550/transcripts/2026-03-04 Lecture_ RNA Sequencing Data Analysis and Quality Control-summary.md`
+  - `Semester5/BIOL550/transcripts/2026-03-05 Lecture_ RNA-seq QC, Reference Selection, and Differential Expression Tools-transcript.txt`
+- Converted those course-level recommendations into an explicit pre-alignment checklist in the mouse TODO docs.
+
+### Finding
+- The transcripts are consistent on the main sequence:
+  - if adapter/poly-G signal persists after quality trimming, do targeted cleanup and rerun FastQC
+  - do not treat every FastQC FAIL as an automatic blocker
+  - capture STAR mapping summaries as part of the alignment QC layer
+  - choose the reference genome deliberately, not automatically
+- For this mouse project, that means the cleanup phase is **not fully done yet** just because the pilot decision is done.
+- The remaining alignment-prep work is:
+  - full-dataset `fastp` rerun
+  - full cleaned-input FastQC + MultiQC validation
+  - reference genome + annotation freeze
+  - sample sheet / design matrix freeze
+  - STAR run manifest + mapping-summary capture template
+
+### Decision
+- Treat the pilot remediation result as the tool-selection milestone, not the end of cleaning.
+- Use the updated TODOs as the pre-alignment checklist before the report for tomorrow and before launching STAR.
+
+---
+
+## 2026-03-11 — Launched full-dataset fastp cleanup for alignment prep
+
+### Step
+- Started the full chosen-tool cleanup run on `sequoia` to cover the first three pre-alignment items in one sequence:
+  - full-dataset `fastp` across all `26` SRRs
+  - post-`fastp` FastQC for all cleaned files
+  - final chosen-tool MultiQC report after the rerun
+- Server wrapper used:
+  - `/home/pzg8794/mouse_qc_remediation/scripts/mouse_run_full_fastp_alignment_prep.sh`
+- Server log:
+  - `/home/pzg8794/mouse_qc_remediation/logs/run_full_fastp_alignment_prep.2026-03-11_032611.log`
+
+### Finding
+- The run started successfully under PID `2468090`.
+- The log shows the first sample (`SRR30333743`) entering the `fastp` step.
+- Output directories were reset before launch so the full rerun will produce a clean full-dataset `fastp` bundle and a clean final chosen-tool MultiQC report.
+
+### Decision
+- Leave the wrapper running on the server while the full dataset is processed.
+- Treat the three pre-alignment items as **in progress** until the completion marker files appear:
+  - `/home/pzg8794/mouse_qc_remediation/output/fastp/full_fastp_all_srrs.completed`
+  - `/home/pzg8794/mouse_qc_remediation/multiqc/final_fastp_all_srrs/mouse_fastp_all_srrs_multiqc.completed`
+
+---
+
+## 2026-03-11 — Completed full fastp cleanup validation and added long-code staging helper
+
+### Step
+- Verified the full chosen-tool server run completed successfully:
+  - full-dataset `fastp` across all `26` SRRs
+  - post-`fastp` FastQC for all `52` read files
+  - final chosen-tool MultiQC report
+- Added a local-only helper for temporary long-code staging:
+  - `Semester5/BIOL550/group_project/pipelines/sync_long_code_to_sequoia.sh`
+
+### Finding
+- Completion markers now exist:
+  - `/home/pzg8794/mouse_qc_remediation/output/fastp/full_fastp_all_srrs.completed`
+  - `/home/pzg8794/mouse_qc_remediation/multiqc/final_fastp_all_srrs/mouse_fastp_all_srrs_multiqc.completed`
+- Final chosen-tool MultiQC report exists:
+  - `/home/pzg8794/mouse_qc_remediation/multiqc/final_fastp_all_srrs/report/mouse_fastp_all_srrs_multiqc.html`
+- The server-side execution phase for the first three pre-alignment tasks is now complete.
+- The next useful analysis step is no longer more cleanup execution; it is comparison of the full `fastp` post-QC bundle against the current FASTX baseline.
+- The new helper centralizes the approved long-code manifest and supports `list`, `push`, `status`, and `remove`, so we do not need to rewrite copy/delete commands each time.
+
+### Decision
+- Treat the full `fastp` rerun as the validated cleaned-input stage for the mouse dataset.
+- Keep using `sync_long_code_to_sequoia.sh` whenever long custom code must be staged to `/home/pzg8794`, then remove those copies immediately after use.
+- Next: copy the final post-`fastp` QC artifacts locally as needed and write the full-dataset `FASTX` vs `fastp` comparison for the report.
+
+---
+
+## 2026-03-11 — Added future-agent startup protocol
+
+### Step
+- Added a scoped agent instruction file for the BIOL550 group-project subtree:
+  - `Semester5/BIOL550/group_project/AGENTS.md`
+- Added a read-first handoff guide:
+  - `Semester5/BIOL550/group_project/START_HERE_AGENT.md`
+- Linked the new guide from:
+  - `Semester5/BIOL550/group_project/README.md`
+  - `Semester5/BIOL550/group_project/DOCUMENTATION_MAP.md`
+  - `Semester5/BIOL550/group_project/WORKLOG.md`
+
+### Finding
+- Future Codex sessions working anywhere under `Semester5/BIOL550/group_project/` now have an explicit startup order instead of relying on scattered context.
+- The startup protocol captures:
+  - what to read first
+  - the local-vs-server working model
+  - the documentation update pattern
+  - the current mouse-project state and next-step sequence
+
+### Decision
+- Treat `AGENTS.md` plus `START_HERE_AGENT.md` as the standard onboarding path for future sessions.
+- Keep those two files updated whenever the project workflow or priorities change.
+
+---
+
+## 2026-03-11 — Generated supplemental FASTX MultiQC reports
+
+### Step
+- Added two short local/server MultiQC wrappers:
+  - `Semester5/BIOL550/group_project/pipelines/mouse_multiqc_fastx_baseline.sh`
+  - `Semester5/BIOL550/group_project/pipelines/mouse_multiqc_fastx_vs_fastp.sh`
+- Ran both on `sequoia` inside `/home/pzg8794/mouse_qc_remediation/scripts/`.
+- Copied the resulting report folders into the local remediation analysis workspace.
+
+### Finding
+- The server now has:
+  - FASTX-only full-dataset report:
+    - `/home/pzg8794/mouse_qc_remediation/multiqc/fastx_baseline_all_srrs/report/mouse_fastx_baseline_all_srrs_multiqc.html`
+  - FASTX-vs-fastp full-dataset comparison report:
+    - `/home/pzg8794/mouse_qc_remediation/multiqc/fastx_vs_fastp_all_srrs/report/mouse_fastx_vs_fastp_all_srrs_multiqc.html`
+- Local analysis copies now exist:
+  - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/multiqc_fastx_baseline_server/`
+  - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/multiqc_fastx_vs_fastp_server/`
+- These reports are useful supporting evidence because the full `fastp` rerun is now complete across all `26` SRRs.
+- They do not replace the notebook/custom comparison workflow; they complement it.
+
+### Decision
+- Use the new MultiQC reports as secondary validation for the report discussion:
+  - FASTX-only report for baseline context
+  - FASTX-vs-fastp report for side-by-side QC review
+- Keep the custom comparison tables/plots as the primary basis for the final interpretation.
+
+---
+
+## 2026-03-11 — Standardized reporting language for custom QC workflow vs MultiQC
+
+### Step
+- Reused the wording pattern from the earlier weekly report and updated the BIOL550 notes plus mouse workflow docs to describe the QC layers consistently.
+
+### Finding
+- The most accurate framing for this project is:
+  - the custom workflow reads the underlying FastQC outputs directly and compares them across stages
+  - this is effectively an automated file-by-file QC review, matching the professor’s preferred manual inspection logic
+  - MultiQC is then used as a supplementary aggregation and confirmation layer
+- This wording is stronger than saying only “validate MultiQC,” because it explains that the file-level comparison is the primary evidence and MultiQC is the corroborating summary.
+
+### Decision
+- Use the following reporting position going forward:
+  - custom comparison workflow = primary validation layer
+  - MultiQC = supplementary aggregation / confirmation layer
+- Reuse the prior-report language where possible so the report sounds consistent with earlier work.
+
+---
+
+## 2026-03-11 — Completed full-dataset FASTX vs fastp comparison
+
+### Step
+- Copied the full post-`fastp` FastQC zip bundle and `fastp` JSON reports locally:
+  - `Semester5/BIOL550/group_project/mouse/qc_bundle_fastp_full/`
+  - `Semester5/BIOL550/group_project/mouse/fastp_reports_full/`
+- Added a local comparison script:
+  - `Semester5/BIOL550/group_project/pipelines/mouse_fastx_vs_fastp_full_compare.py`
+- Generated the full-dataset comparison outputs:
+  - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/full_fastx_vs_fastp_full/`
+
+### Finding
+- The comparison covers all `52` read-level FastQC reports (`26` paired-end SRRs).
+- Headline full-dataset changes from FASTX -> fastp:
+  - `Adapter Content`: `52 fail` -> `52 pass`
+  - `Overrepresented sequences`: `37 pass / 13 warn / 2 fail` -> `52 pass`
+  - median `adapter_max`: `31.8806` -> `0.0051`
+  - median `adapter_max` delta (`fastp - FASTX`): `-31.8737`
+  - median retained reads after `fastp`: `97.52%`
+  - median post-fastp `Q30` rate: `93.83%`
+- No read reports remain in `fail` for `Adapter Content` or `Overrepresented sequences` after the full `fastp` rerun.
+
+### Decision
+- Treat the full-dataset `FASTX` vs `fastp` comparison as complete and report-ready.
+- Use the generated markdown summary plus the supporting CSVs as the primary evidence for the report section that explains why `fastp` beat the previous FASTX-trimmed baseline.
+
+---
+
+## 2026-03-11 — Added full-dataset comparison references to the remediation notebook
+
+### Step
+- Updated the notebook builder:
+  - `Semester5/BIOL550/group_project/pipelines/build_mouse_qc_remediation_notebook.py`
+- Rebuilt and executed:
+  - `Semester5/BIOL550/group_project/mouse/notebooks/qc_remediation_experiments_mouse.ipynb`
+
+### Finding
+- The notebook now includes **Step 5C. Bring in the full-dataset validation pass**.
+- That section points directly to:
+  - the full-dataset `FASTX` vs `fastp` summary markdown
+  - the full-dataset status-count table
+  - the supporting MultiQC FASTX and FASTX-vs-fastp reports
+- This closes the gap between the pilot narrative and the full-dataset validation outputs.
+
+### Decision
+- Treat the remediation notebook as the complete QC analysis notebook:
+  - pilot decision logic
+  - full-dataset validation references
+  - supporting MultiQC references
+
+---
+
+## 2026-03-11 — Added full-dataset QC plots to Step 5C
+
+### Step
+- Updated the remediation notebook builder again so **Step 5C** includes actual full-dataset plots, not just tables and file references.
+- Rebuilt and executed:
+  - `Semester5/BIOL550/group_project/mouse/notebooks/qc_remediation_experiments_mouse.ipynb`
+
+### Finding
+- The full-dataset comparison section now includes:
+  - `full_fastx_vs_fastp_adapter_comparison.png`
+  - `full_fastx_vs_fastp_retention_tradeoff.png`
+  - `full_fastx_vs_fastp_status_counts.png`
+- Those plots live in:
+  - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/full_fastx_vs_fastp_full/`
+- This makes the full-dataset section visually parallel to the pilot decision section above it.
+
+### Decision
+- Treat Step 5C as the full-dataset visualization layer for the QC notebook, not just a reference block.
+- Keep the baseline notebook unchanged; keep the full-dataset comparison visuals in the dedicated QC/remediation notebook.
+
+---
+
+## 2026-03-11 — Drafted team-share version of the next two alignment-prep decisions
+
+### Step
+- Confirmed the proposed cleaned-input root on `sequoia`:
+  - `/home/pzg8794/mouse_qc_remediation/output/fastp/out/`
+- Verified:
+  - `52` cleaned FASTQ files exist there
+  - the full rerun completion marker exists
+- Used the full-dataset `FASTX` vs `fastp` comparison to assess whether any SRR still needs targeted `cutadapt`.
+- Wrote a shareable draft:
+  - `Semester5/BIOL550/group_project/mouse/ALIGNMENT_PREP_TEAM_DRAFT.md`
+
+### Finding
+- The proposed cleaned-input root is operationally ready to freeze for STAR.
+- The full-dataset comparison shows no remaining `warn`/`fail` rows for:
+  - `Adapter Content`
+  - `Overrepresented sequences`
+- That means there is no current file-level QC evidence that any SRR still needs a targeted `cutadapt` fallback before alignment.
+
+### Decision
+- Keep both TODO items open until the team agrees.
+- Use `ALIGNMENT_PREP_TEAM_DRAFT.md` as the version to share while the team is still catching up.
+
+---
+
+## 2026-03-11 — Added notebook-ready alignment-prep discussion draft
+
+### Step
+- Extended the remediation notebook:
+  - `Semester5/BIOL550/group_project/mouse/notebooks/qc_remediation_experiments_mouse.ipynb`
+- Added **Step 6. Alignment-prep discussion draft** through the local builder:
+  - `Semester5/BIOL550/group_project/pipelines/build_mouse_qc_remediation_notebook.py`
+- Rebuilt and executed the notebook in:
+  - `/Users/pitergarcia/DataScience/Semester5/BIOL550/biol550_env`
+
+### Finding
+- The notebook now contains a discussion package for the remaining alignment-prep items that are already supported by QC evidence:
+  - proposed cleaned-input root + naming convention
+  - evidence that no SRR currently needs targeted `cutadapt`
+  - an alignment-manifest preview with SRR + mate paths ready for team metadata fill-in
+  - a non-blocking QC table for modules we should monitor rather than keep trying to “fix”
+- The truly open items left outside this notebook section are:
+  - reference + annotation freeze
+  - STAR manifest / QC template finalization after the reference choice
+
+### Decision
+- Use **Step 6** as the notebook-ready discussion layer for the team meeting/report.
+- Keep the TODO items open until the team confirms the cleaned-input freeze and the no-`cutadapt` position.
+
+---
+
+## 2026-03-11 — Created new weekly report draft for remediation + full fastp validation
+
+### Step
+- Created a new HTML weekly report draft:
+  - `Semester5/BIOL550/group_project/mouse/reports/BIOL550_Weekly_Report_Mouse_QC_Remediation_2026-03-11.html`
+- Reused the previous report’s structure and formatting model instead of inventing a new layout.
+- Kept the report compact by slightly reducing font/table/image sizes and using the full-dataset remediation figures already generated locally.
+
+### Finding
+- The new draft now reflects the current project state instead of the older raw-vs-trimmed-only checkpoint:
+  - pilot `fastp` vs `cutadapt` decision already made
+  - full-dataset `fastp` rerun completed
+  - full post-`fastp` FastQC and supplementary MultiQC completed
+  - notebook-based alignment-prep discussion items available for team review
+- The report uses the same four syllabus-style sections:
+  - what I accomplished
+  - methods used
+  - problems encountered
+  - goals for the coming week
+
+### Decision
+- Keep the weekly report TODO items open until the user finishes arranging/customizing the final report wording.
+- Use the new HTML file as the working draft for tomorrow’s submission/update.
+
+---
+
+## 2026-03-11 — Transcript review for remaining alignment-prep items + report wording correction
+
+### Step
+- Reviewed the BIOL550 transcript summaries again, focusing on:
+  - `2026-03-04 Lecture_ RNA Sequencing Data Analysis and Quality Control-summary.md`
+  - `2026-02-26 Analysis of RNA-Seq Quality Control and Methodology Verification-summary.md`
+  - `2026-03-02 Weekly Meeting_ Bulk RNA-seq Dataset Selection, Access Permissions, and QC (Adapters_Duplication)-summary.md`
+  - `2026-03-05 Lecture_ RNA-seq QC, Reference Selection, and Differential Expression Tools-transcript.txt`
+- Corrected the new weekly report draft so it says the work was done **in communication with the team**, not “in collaboration with the team.”
+
+### Finding
+- The remaining transcript-driven action items that still matter are:
+  - explicitly capture STAR mapping summary metrics for downstream troubleshooting
+  - make the reference choice explicit as a decision between paper replication and the most recent well-annotated strain-appropriate reference
+  - if more than one mouse reference is available, compare annotation/completeness rather than picking blindly
+  - if alignment underperforms later, revisit QC/sample assignment before assuming more trimming is needed
+- The user also clarified the earlier team-agreed pilot direction:
+  - focus initially on `SRR30333743`
+  - trim the adapter and poly-G signals in the affected forward/reverse reads respectively
+
+### Decision
+- Keep those transcript-derived items visible in the active TODO rather than burying them only in notes.
+- Keep the report wording precise: “in communication with my team” for this phase.
+
+---
+
+## 2026-03-12 — Finalized weekly report wording/layout for remediation + alignment-prep handoff
+
+### Step
+- Finished the working weekly report draft:
+  - `Semester5/BIOL550/group_project/mouse/reports/BIOL550_Weekly_Report_Mouse_QC_Remediation_2026-03-11.html`
+- Tightened the language section by section so each figure is explicitly tied to the evidence it supports.
+- Reworked the report layout so the main comparison figures, methods figure, problems evidence, and goals evidence all follow the same compact left/right pattern.
+
+### Finding
+- The report now presents the remediation story in the same order as the actual analysis:
+  - full-dataset outcome summary
+  - dataset-level stage overview
+  - FASTX vs `fastp` comparison
+  - why `fastp` is better
+  - focused pilot-read closeout
+  - methods, problems, and next-step evidence
+- The wording is now more concrete:
+  - removes repeated planning text from accomplishments
+  - ties `Problems encountered` directly to the validation summary image
+  - ties `Goals for the coming week` directly to the remaining-post-`fastp` reads image
+  - uses the QC comparison language consistently when describing the methods figure
+
+### Decision
+- Treat the current HTML as the finalized local draft for submission/review.
+- Mark the weekly report TODO items complete and keep the report alongside the supporting notebook/artifacts for reference.
+
+---
+
+## 2026-03-12 — Final documentation sync before commit/push
+
+### Step
+- Rechecked the active mouse documentation before the final repo handoff:
+  - `Semester5/BIOL550/group_project/mouse/TODO_mouse.md`
+  - `Semester5/BIOL550/group_project/mouse/TODO_qc_remediation.md`
+  - `Semester5/BIOL550/group_project/WORKLOG.md`
+- Updated the remediation tracker so its alignment-prep section matches the completed full-dataset `fastp` validation and the final report state.
+
+### Finding
+- The active docs now agree on the current state:
+  - cleanup decision is complete (`fastp` won)
+  - full-dataset `fastp` validation is complete
+  - the remaining work is alignment preparation (`inputs`, `reference`, `design sheet`, `STAR manifest`), not unresolved cleanup work
+- The weekly report, remediation notebook, and TODOs now point at the same evidence package.
+
+### Decision
+- Commit the documentation/report/notebook state as the current project snapshot.
+- Push both the nested `group_project` repo and the parent `BIOL550` repo after the commits complete.

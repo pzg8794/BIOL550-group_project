@@ -1,0 +1,8 @@
+srr,trimmed_severity,trimmed_fail_total,trimmed_warn_total,trimmed_adapter_content,trimmed_overrepresented_sequences,dominant_raw_pattern,dominant_raw_pct
+SRR30333748,26,7,5,fail,warn,poly-G / two-color artifact,0.77
+SRR30333745,26,7,5,fail,warn,poly-G / two-color artifact,0.885
+SRR30333744,26,7,5,fail,warn,poly-G / two-color artifact,0.894
+SRR30333751,26,7,5,fail,warn,poly-G / two-color artifact,0.728
+SRR30333752,26,7,5,fail,warn,poly-G / two-color artifact,0.698
+SRR30333753,26,7,5,fail,warn,poly-G / two-color artifact,0.819
+SRR30333755,26,7,5,fail,warn,poly-G / two-color artifact,0.889

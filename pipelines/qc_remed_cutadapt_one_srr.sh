@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SRR="${1:-}"
-ROOT="${ROOT:-/home/zebrafish/mouse/PRJNA1017789}"
+ROOT="${ROOT:-/home/zebrafish/mouse/PRJNA1017789_parallel}"
 
 RAW_DIR="${RAW_DIR:-$ROOT/sra_runs}"
 OUT_BASE="${OUT_BASE:-$ROOT/qc_remediation}"
@@ -14,8 +14,9 @@ CUTADAPT_CORES="${CUTADAPT_CORES:-4}"
 
 TRIM_QUAL="${TRIM_QUAL:-20}"
 MIN_LEN="${MIN_LEN:-30}"
+NEXTSEQ_TRIM="${NEXTSEQ_TRIM:-}"
 
-# Required: adapters (set these based on FastQC Overrepresented sequences or kit docs)
+# Optional: explicit adapters (set these based on FastQC Overrepresented sequences or kit docs)
 ADAPTER_R1="${ADAPTER_R1:-}"
 ADAPTER_R2="${ADAPTER_R2:-}"
 
@@ -39,11 +40,11 @@ ensure_group_dirs() {
   find "$OUT_BASE" -type d -exec chmod 2770 {} + 2>/dev/null || true
 }
 
-[[ -n "$SRR" ]] || die "usage: qc_remed_cutadapt_one_srr.sh <SRR...> (requires ADAPTER_R1/ADAPTER_R2 env vars)"
+[[ -n "$SRR" ]] || die "usage: qc_remed_cutadapt_one_srr.sh <SRR...> (set ADAPTER_R1/ADAPTER_R2 and/or NEXTSEQ_TRIM)"
 [[ -x "$CUTADAPT_BIN" ]] || die "cutadapt not found/executable at: $CUTADAPT_BIN"
 [[ -x "$FASTQC_BIN" ]] || die "fastqc not found/executable at: $FASTQC_BIN"
-[[ -n "$ADAPTER_R1" ]] || die "set ADAPTER_R1 (adapter sequence for read1)"
-[[ -n "$ADAPTER_R2" ]] || die "set ADAPTER_R2 (adapter sequence for read2)"
+[[ -n "$ADAPTER_R1" || -n "$ADAPTER_R2" || -n "$NEXTSEQ_TRIM" ]] || \
+  die "set ADAPTER_R1/ADAPTER_R2 and/or NEXTSEQ_TRIM"
 
 ensure_group_dirs
 
@@ -57,13 +58,26 @@ OUT2="$OUT_BASE/cutadapt/out/${SRR}_2.cutadapt.fastq.gz"
 LOG="$OUT_BASE/cutadapt/reports/${SRR}.cutadapt.log"
 
 printf '[%s] cutadapt %s\n' "$(date '+%F %T')" "$SRR"
-"$CUTADAPT_BIN" \
-  -a "$ADAPTER_R1" -A "$ADAPTER_R2" \
-  -q "$TRIM_QUAL" \
-  -m "$MIN_LEN" \
-  -o "$OUT1" -p "$OUT2" \
-  --cores "$CUTADAPT_CORES" \
-  "$IN1" "$IN2" | tee "$LOG"
+cmd=(
+  "$CUTADAPT_BIN"
+  -q "$TRIM_QUAL"
+  -m "$MIN_LEN"
+  -o "$OUT1" -p "$OUT2"
+  --cores "$CUTADAPT_CORES"
+)
+
+if [[ -n "$ADAPTER_R1" ]]; then
+  cmd+=(-a "$ADAPTER_R1")
+fi
+if [[ -n "$ADAPTER_R2" ]]; then
+  cmd+=(-A "$ADAPTER_R2")
+fi
+if [[ -n "$NEXTSEQ_TRIM" ]]; then
+  cmd+=(--nextseq-trim="$NEXTSEQ_TRIM")
+fi
+
+cmd+=("$IN1" "$IN2")
+"${cmd[@]}" | tee "$LOG"
 
 set_perms_file "$OUT1"
 set_perms_file "$OUT2"
@@ -82,4 +96,3 @@ do
 done
 
 printf '[%s] done %s\n' "$(date '+%F %T')" "$SRR"
-

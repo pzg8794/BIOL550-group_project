@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SRR="${1:-}"
-ROOT="${ROOT:-/home/zebrafish/mouse/PRJNA1017789}"
+ROOT="${ROOT:-/home/zebrafish/mouse/PRJNA1017789_parallel}"
 
 RAW_DIR="${RAW_DIR:-$ROOT/sra_runs}"
 OUT_BASE="${OUT_BASE:-$ROOT/qc_remediation}"
@@ -14,6 +14,8 @@ FASTP_THREADS="${FASTP_THREADS:-4}"
 
 TRIM_QUAL="${TRIM_QUAL:-20}"
 MIN_LEN="${MIN_LEN:-30}"
+TRIM_POLY_G="${TRIM_POLY_G:-yes}"
+FASTP_EXTRA_ARGS="${FASTP_EXTRA_ARGS:-}"
 
 die() { printf 'ERROR: %s\n' "$*" >&2; exit 1; }
 
@@ -52,15 +54,30 @@ HTML="$OUT_BASE/fastp/reports/${SRR}.fastp.html"
 JSON="$OUT_BASE/fastp/reports/${SRR}.fastp.json"
 
 printf '[%s] fastp %s\n' "$(date '+%F %T')" "$SRR"
-"$FASTP_BIN" \
-  -i "$IN1" -I "$IN2" \
-  -o "$OUT1" -O "$OUT2" \
-  --detect_adapter_for_pe \
-  --cut_front --cut_tail \
-  --cut_mean_quality "$TRIM_QUAL" \
-  --length_required "$MIN_LEN" \
-  --thread "$FASTP_THREADS" \
+cmd=(
+  "$FASTP_BIN"
+  -i "$IN1" -I "$IN2"
+  -o "$OUT1" -O "$OUT2"
+  --detect_adapter_for_pe
+  --cut_tail
+  --cut_mean_quality "$TRIM_QUAL"
+  --length_required "$MIN_LEN"
+  --thread "$FASTP_THREADS"
   --html "$HTML" --json "$JSON"
+)
+
+if [[ "$TRIM_POLY_G" == "yes" ]]; then
+  cmd+=(--trim_poly_g)
+fi
+
+if [[ -n "$FASTP_EXTRA_ARGS" ]]; then
+  # Allow controlled fastp experiments without editing the script.
+  # shellcheck disable=SC2206
+  extra_args=( $FASTP_EXTRA_ARGS )
+  cmd+=("${extra_args[@]}")
+fi
+
+"${cmd[@]}"
 
 set_perms_file "$OUT1"
 set_perms_file "$OUT2"
@@ -80,4 +97,3 @@ do
 done
 
 printf '[%s] done %s\n' "$(date '+%F %T')" "$SRR"
-

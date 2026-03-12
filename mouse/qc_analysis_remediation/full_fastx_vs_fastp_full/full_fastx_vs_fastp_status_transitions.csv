@@ -1,0 +1,209 @@
+read_id,srr,module,fastx_status,fastp_status,direction
+SRR30333743_1,SRR30333743,Adapter Content,fail,pass,improved
+SRR30333743_1,SRR30333743,Overrepresented sequences,warn,pass,improved
+SRR30333743_1,SRR30333743,Per base sequence content,fail,fail,unchanged
+SRR30333743_1,SRR30333743,Sequence Length Distribution,warn,warn,unchanged
+SRR30333743_2,SRR30333743,Adapter Content,fail,pass,improved
+SRR30333743_2,SRR30333743,Overrepresented sequences,warn,pass,improved
+SRR30333743_2,SRR30333743,Per base sequence content,warn,warn,unchanged
+SRR30333743_2,SRR30333743,Sequence Length Distribution,warn,warn,unchanged
+SRR30333744_1,SRR30333744,Adapter Content,fail,pass,improved
+SRR30333744_1,SRR30333744,Overrepresented sequences,pass,pass,unchanged
+SRR30333744_1,SRR30333744,Per base sequence content,fail,fail,unchanged
+SRR30333744_1,SRR30333744,Sequence Length Distribution,warn,warn,unchanged
+SRR30333744_2,SRR30333744,Adapter Content,fail,pass,improved
+SRR30333744_2,SRR30333744,Overrepresented sequences,warn,pass,improved
+SRR30333744_2,SRR30333744,Per base sequence content,warn,warn,unchanged
+SRR30333744_2,SRR30333744,Sequence Length Distribution,warn,warn,unchanged
+SRR30333745_1,SRR30333745,Adapter Content,fail,pass,improved
+SRR30333745_1,SRR30333745,Overrepresented sequences,pass,pass,unchanged
+SRR30333745_1,SRR30333745,Per base sequence content,fail,fail,unchanged
+SRR30333745_1,SRR30333745,Sequence Length Distribution,warn,warn,unchanged
+SRR30333745_2,SRR30333745,Adapter Content,fail,pass,improved
+SRR30333745_2,SRR30333745,Overrepresented sequences,warn,pass,improved
+SRR30333745_2,SRR30333745,Per base sequence content,warn,warn,unchanged
+SRR30333745_2,SRR30333745,Sequence Length Distribution,warn,warn,unchanged
+SRR30333746_1,SRR30333746,Adapter Content,fail,pass,improved
+SRR30333746_1,SRR30333746,Overrepresented sequences,pass,pass,unchanged
+SRR30333746_1,SRR30333746,Per base sequence content,fail,fail,unchanged
+SRR30333746_1,SRR30333746,Sequence Length Distribution,warn,warn,unchanged
+SRR30333746_2,SRR30333746,Adapter Content,fail,pass,improved
+SRR30333746_2,SRR30333746,Overrepresented sequences,warn,pass,improved
+SRR30333746_2,SRR30333746,Per base sequence content,warn,warn,unchanged
+SRR30333746_2,SRR30333746,Sequence Length Distribution,warn,warn,unchanged
+SRR30333747_1,SRR30333747,Adapter Content,fail,pass,improved
+SRR30333747_1,SRR30333747,Overrepresented sequences,pass,pass,unchanged
+SRR30333747_1,SRR30333747,Per base sequence content,fail,fail,unchanged
+SRR30333747_1,SRR30333747,Sequence Length Distribution,warn,warn,unchanged
+SRR30333747_2,SRR30333747,Adapter Content,fail,pass,improved
+SRR30333747_2,SRR30333747,Overrepresented sequences,warn,pass,improved
+SRR30333747_2,SRR30333747,Per base sequence content,warn,warn,unchanged
+SRR30333747_2,SRR30333747,Sequence Length Distribution,warn,warn,unchanged
+SRR30333748_1,SRR30333748,Adapter Content,fail,pass,improved
+SRR30333748_1,SRR30333748,Overrepresented sequences,pass,pass,unchanged
+SRR30333748_1,SRR30333748,Per base sequence content,fail,fail,unchanged
+SRR30333748_1,SRR30333748,Sequence Length Distribution,warn,warn,unchanged
+SRR30333748_2,SRR30333748,Adapter Content,fail,pass,improved
+SRR30333748_2,SRR30333748,Overrepresented sequences,warn,pass,improved
+SRR30333748_2,SRR30333748,Per base sequence content,warn,warn,unchanged
+SRR30333748_2,SRR30333748,Sequence Length Distribution,warn,warn,unchanged
+SRR30333749_1,SRR30333749,Adapter Content,fail,pass,improved
+SRR30333749_1,SRR30333749,Overrepresented sequences,pass,pass,unchanged
+SRR30333749_1,SRR30333749,Per base sequence content,fail,fail,unchanged
+SRR30333749_1,SRR30333749,Sequence Length Distribution,warn,warn,unchanged
+SRR30333749_2,SRR30333749,Adapter Content,fail,pass,improved
+SRR30333749_2,SRR30333749,Overrepresented sequences,warn,pass,improved
+SRR30333749_2,SRR30333749,Per base sequence content,warn,warn,unchanged
+SRR30333749_2,SRR30333749,Sequence Length Distribution,warn,warn,unchanged
+SRR30333750_1,SRR30333750,Adapter Content,fail,pass,improved
+SRR30333750_1,SRR30333750,Overrepresented sequences,pass,pass,unchanged
+SRR30333750_1,SRR30333750,Per base sequence content,fail,fail,unchanged
+SRR30333750_1,SRR30333750,Sequence Length Distribution,warn,warn,unchanged
+SRR30333750_2,SRR30333750,Adapter Content,fail,pass,improved
+SRR30333750_2,SRR30333750,Overrepresented sequences,warn,pass,improved
+SRR30333750_2,SRR30333750,Per base sequence content,warn,warn,unchanged
+SRR30333750_2,SRR30333750,Sequence Length Distribution,warn,warn,unchanged
+SRR30333751_1,SRR30333751,Adapter Content,fail,pass,improved
+SRR30333751_1,SRR30333751,Overrepresented sequences,pass,pass,unchanged
+SRR30333751_1,SRR30333751,Per base sequence content,fail,fail,unchanged
+SRR30333751_1,SRR30333751,Sequence Length Distribution,warn,warn,unchanged
+SRR30333751_2,SRR30333751,Adapter Content,fail,pass,improved
+SRR30333751_2,SRR30333751,Overrepresented sequences,warn,pass,improved
+SRR30333751_2,SRR30333751,Per base sequence content,warn,warn,unchanged
+SRR30333751_2,SRR30333751,Sequence Length Distribution,warn,warn,unchanged
+SRR30333752_1,SRR30333752,Adapter Content,fail,pass,improved
+SRR30333752_1,SRR30333752,Overrepresented sequences,pass,pass,unchanged
+SRR30333752_1,SRR30333752,Per base sequence content,fail,fail,unchanged
+SRR30333752_1,SRR30333752,Sequence Length Distribution,warn,warn,unchanged
+SRR30333752_2,SRR30333752,Adapter Content,fail,pass,improved
+SRR30333752_2,SRR30333752,Overrepresented sequences,warn,pass,improved
+SRR30333752_2,SRR30333752,Per base sequence content,warn,warn,unchanged
+SRR30333752_2,SRR30333752,Sequence Length Distribution,warn,warn,unchanged
+SRR30333753_1,SRR30333753,Adapter Content,fail,pass,improved
+SRR30333753_1,SRR30333753,Overrepresented sequences,pass,pass,unchanged
+SRR30333753_1,SRR30333753,Per base sequence content,fail,fail,unchanged
+SRR30333753_1,SRR30333753,Sequence Length Distribution,warn,warn,unchanged
+SRR30333753_2,SRR30333753,Adapter Content,fail,pass,improved
+SRR30333753_2,SRR30333753,Overrepresented sequences,warn,pass,improved
+SRR30333753_2,SRR30333753,Per base sequence content,warn,warn,unchanged
+SRR30333753_2,SRR30333753,Sequence Length Distribution,warn,warn,unchanged
+SRR30333754_1,SRR30333754,Adapter Content,fail,pass,improved
+SRR30333754_1,SRR30333754,Overrepresented sequences,pass,pass,unchanged
+SRR30333754_1,SRR30333754,Per base sequence content,fail,fail,unchanged
+SRR30333754_1,SRR30333754,Sequence Length Distribution,warn,warn,unchanged
+SRR30333754_2,SRR30333754,Adapter Content,fail,pass,improved
+SRR30333754_2,SRR30333754,Overrepresented sequences,fail,pass,improved
+SRR30333754_2,SRR30333754,Per base sequence content,warn,warn,unchanged
+SRR30333754_2,SRR30333754,Sequence Length Distribution,warn,warn,unchanged
+SRR30333755_1,SRR30333755,Adapter Content,fail,pass,improved
+SRR30333755_1,SRR30333755,Overrepresented sequences,pass,pass,unchanged
+SRR30333755_1,SRR30333755,Per base sequence content,fail,fail,unchanged
+SRR30333755_1,SRR30333755,Sequence Length Distribution,warn,warn,unchanged
+SRR30333755_2,SRR30333755,Adapter Content,fail,pass,improved
+SRR30333755_2,SRR30333755,Overrepresented sequences,warn,pass,improved
+SRR30333755_2,SRR30333755,Per base sequence content,warn,warn,unchanged
+SRR30333755_2,SRR30333755,Sequence Length Distribution,warn,warn,unchanged
+SRR30333756_1,SRR30333756,Adapter Content,fail,pass,improved
+SRR30333756_1,SRR30333756,Overrepresented sequences,pass,pass,unchanged
+SRR30333756_1,SRR30333756,Per base sequence content,fail,fail,unchanged
+SRR30333756_1,SRR30333756,Sequence Length Distribution,warn,warn,unchanged
+SRR30333756_2,SRR30333756,Adapter Content,fail,pass,improved
+SRR30333756_2,SRR30333756,Overrepresented sequences,fail,pass,improved
+SRR30333756_2,SRR30333756,Per base sequence content,warn,warn,unchanged
+SRR30333756_2,SRR30333756,Sequence Length Distribution,warn,warn,unchanged
+SRR30333757_1,SRR30333757,Adapter Content,fail,pass,improved
+SRR30333757_1,SRR30333757,Overrepresented sequences,pass,pass,unchanged
+SRR30333757_1,SRR30333757,Per base sequence content,fail,fail,unchanged
+SRR30333757_1,SRR30333757,Sequence Length Distribution,warn,warn,unchanged
+SRR30333757_2,SRR30333757,Adapter Content,fail,pass,improved
+SRR30333757_2,SRR30333757,Overrepresented sequences,pass,pass,unchanged
+SRR30333757_2,SRR30333757,Per base sequence content,warn,warn,unchanged
+SRR30333757_2,SRR30333757,Sequence Length Distribution,warn,warn,unchanged
+SRR30333758_1,SRR30333758,Adapter Content,fail,pass,improved
+SRR30333758_1,SRR30333758,Overrepresented sequences,pass,pass,unchanged
+SRR30333758_1,SRR30333758,Per base sequence content,fail,fail,unchanged
+SRR30333758_1,SRR30333758,Sequence Length Distribution,warn,warn,unchanged
+SRR30333758_2,SRR30333758,Adapter Content,fail,pass,improved
+SRR30333758_2,SRR30333758,Overrepresented sequences,pass,pass,unchanged
+SRR30333758_2,SRR30333758,Per base sequence content,warn,warn,unchanged
+SRR30333758_2,SRR30333758,Sequence Length Distribution,warn,warn,unchanged
+SRR30333759_1,SRR30333759,Adapter Content,fail,pass,improved
+SRR30333759_1,SRR30333759,Overrepresented sequences,pass,pass,unchanged
+SRR30333759_1,SRR30333759,Per base sequence content,fail,fail,unchanged
+SRR30333759_1,SRR30333759,Sequence Length Distribution,warn,warn,unchanged
+SRR30333759_2,SRR30333759,Adapter Content,fail,pass,improved
+SRR30333759_2,SRR30333759,Overrepresented sequences,pass,pass,unchanged
+SRR30333759_2,SRR30333759,Per base sequence content,warn,warn,unchanged
+SRR30333759_2,SRR30333759,Sequence Length Distribution,warn,warn,unchanged
+SRR30333760_1,SRR30333760,Adapter Content,fail,pass,improved
+SRR30333760_1,SRR30333760,Overrepresented sequences,pass,pass,unchanged
+SRR30333760_1,SRR30333760,Per base sequence content,fail,fail,unchanged
+SRR30333760_1,SRR30333760,Sequence Length Distribution,warn,warn,unchanged
+SRR30333760_2,SRR30333760,Adapter Content,fail,pass,improved
+SRR30333760_2,SRR30333760,Overrepresented sequences,pass,pass,unchanged
+SRR30333760_2,SRR30333760,Per base sequence content,warn,warn,unchanged
+SRR30333760_2,SRR30333760,Sequence Length Distribution,warn,warn,unchanged
+SRR30333761_1,SRR30333761,Adapter Content,fail,pass,improved
+SRR30333761_1,SRR30333761,Overrepresented sequences,pass,pass,unchanged
+SRR30333761_1,SRR30333761,Per base sequence content,fail,fail,unchanged
+SRR30333761_1,SRR30333761,Sequence Length Distribution,warn,warn,unchanged
+SRR30333761_2,SRR30333761,Adapter Content,fail,pass,improved
+SRR30333761_2,SRR30333761,Overrepresented sequences,pass,pass,unchanged
+SRR30333761_2,SRR30333761,Per base sequence content,warn,warn,unchanged
+SRR30333761_2,SRR30333761,Sequence Length Distribution,warn,warn,unchanged
+SRR30333762_1,SRR30333762,Adapter Content,fail,pass,improved
+SRR30333762_1,SRR30333762,Overrepresented sequences,pass,pass,unchanged
+SRR30333762_1,SRR30333762,Per base sequence content,fail,fail,unchanged
+SRR30333762_1,SRR30333762,Sequence Length Distribution,warn,warn,unchanged
+SRR30333762_2,SRR30333762,Adapter Content,fail,pass,improved
+SRR30333762_2,SRR30333762,Overrepresented sequences,pass,pass,unchanged
+SRR30333762_2,SRR30333762,Per base sequence content,warn,warn,unchanged
+SRR30333762_2,SRR30333762,Sequence Length Distribution,warn,warn,unchanged
+SRR30333763_1,SRR30333763,Adapter Content,fail,pass,improved
+SRR30333763_1,SRR30333763,Overrepresented sequences,pass,pass,unchanged
+SRR30333763_1,SRR30333763,Per base sequence content,fail,fail,unchanged
+SRR30333763_1,SRR30333763,Sequence Length Distribution,warn,warn,unchanged
+SRR30333763_2,SRR30333763,Adapter Content,fail,pass,improved
+SRR30333763_2,SRR30333763,Overrepresented sequences,pass,pass,unchanged
+SRR30333763_2,SRR30333763,Per base sequence content,warn,warn,unchanged
+SRR30333763_2,SRR30333763,Sequence Length Distribution,warn,warn,unchanged
+SRR30333764_1,SRR30333764,Adapter Content,fail,pass,improved
+SRR30333764_1,SRR30333764,Overrepresented sequences,pass,pass,unchanged
+SRR30333764_1,SRR30333764,Per base sequence content,fail,fail,unchanged
+SRR30333764_1,SRR30333764,Sequence Length Distribution,warn,warn,unchanged
+SRR30333764_2,SRR30333764,Adapter Content,fail,pass,improved
+SRR30333764_2,SRR30333764,Overrepresented sequences,pass,pass,unchanged
+SRR30333764_2,SRR30333764,Per base sequence content,warn,warn,unchanged
+SRR30333764_2,SRR30333764,Sequence Length Distribution,warn,warn,unchanged
+SRR30333765_1,SRR30333765,Adapter Content,fail,pass,improved
+SRR30333765_1,SRR30333765,Overrepresented sequences,pass,pass,unchanged
+SRR30333765_1,SRR30333765,Per base sequence content,fail,fail,unchanged
+SRR30333765_1,SRR30333765,Sequence Length Distribution,warn,warn,unchanged
+SRR30333765_2,SRR30333765,Adapter Content,fail,pass,improved
+SRR30333765_2,SRR30333765,Overrepresented sequences,pass,pass,unchanged
+SRR30333765_2,SRR30333765,Per base sequence content,warn,warn,unchanged
+SRR30333765_2,SRR30333765,Sequence Length Distribution,warn,warn,unchanged
+SRR30333766_1,SRR30333766,Adapter Content,fail,pass,improved
+SRR30333766_1,SRR30333766,Overrepresented sequences,pass,pass,unchanged
+SRR30333766_1,SRR30333766,Per base sequence content,fail,fail,unchanged
+SRR30333766_1,SRR30333766,Sequence Length Distribution,warn,warn,unchanged
+SRR30333766_2,SRR30333766,Adapter Content,fail,pass,improved
+SRR30333766_2,SRR30333766,Overrepresented sequences,pass,pass,unchanged
+SRR30333766_2,SRR30333766,Per base sequence content,warn,warn,unchanged
+SRR30333766_2,SRR30333766,Sequence Length Distribution,warn,warn,unchanged
+SRR30333767_1,SRR30333767,Adapter Content,fail,pass,improved
+SRR30333767_1,SRR30333767,Overrepresented sequences,pass,pass,unchanged
+SRR30333767_1,SRR30333767,Per base sequence content,fail,fail,unchanged
+SRR30333767_1,SRR30333767,Sequence Length Distribution,warn,warn,unchanged
+SRR30333767_2,SRR30333767,Adapter Content,fail,pass,improved
+SRR30333767_2,SRR30333767,Overrepresented sequences,pass,pass,unchanged
+SRR30333767_2,SRR30333767,Per base sequence content,warn,warn,unchanged
+SRR30333767_2,SRR30333767,Sequence Length Distribution,warn,warn,unchanged
+SRR30333768_1,SRR30333768,Adapter Content,fail,pass,improved
+SRR30333768_1,SRR30333768,Overrepresented sequences,pass,pass,unchanged
+SRR30333768_1,SRR30333768,Per base sequence content,fail,fail,unchanged
+SRR30333768_1,SRR30333768,Sequence Length Distribution,warn,warn,unchanged
+SRR30333768_2,SRR30333768,Adapter Content,fail,pass,improved
+SRR30333768_2,SRR30333768,Overrepresented sequences,pass,pass,unchanged
+SRR30333768_2,SRR30333768,Per base sequence content,warn,warn,unchanged
+SRR30333768_2,SRR30333768,Sequence Length Distribution,warn,warn,unchanged

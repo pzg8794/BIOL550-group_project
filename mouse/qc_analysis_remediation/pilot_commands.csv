@@ -1,0 +1,7 @@
+tool,srr,goal,command
+fastp,SRR30333754,paired-end adapter + poly-G + quality-tail cleanup,ROOT=/home/zebrafish/mouse/PRJNA1017789_parallel bash Semester5/BIOL550/group_project/pipelines/qc_remed_fastp_one_srr.sh SRR30333754
+cutadapt,SRR30333754,explicit adapter and/or NEXTSEQ_TRIM comparison,ROOT=/home/zebrafish/mouse/PRJNA1017789_parallel NEXTSEQ_TRIM=20 bash Semester5/BIOL550/group_project/pipelines/qc_remed_cutadapt_one_srr.sh SRR30333754
+fastp,SRR30333756,paired-end adapter + poly-G + quality-tail cleanup,ROOT=/home/zebrafish/mouse/PRJNA1017789_parallel bash Semester5/BIOL550/group_project/pipelines/qc_remed_fastp_one_srr.sh SRR30333756
+cutadapt,SRR30333756,explicit adapter and/or NEXTSEQ_TRIM comparison,ROOT=/home/zebrafish/mouse/PRJNA1017789_parallel NEXTSEQ_TRIM=20 bash Semester5/BIOL550/group_project/pipelines/qc_remed_cutadapt_one_srr.sh SRR30333756
+fastp,SRR30333743,paired-end adapter + poly-G + quality-tail cleanup,ROOT=/home/zebrafish/mouse/PRJNA1017789_parallel bash Semester5/BIOL550/group_project/pipelines/qc_remed_fastp_one_srr.sh SRR30333743
+cutadapt,SRR30333743,explicit adapter and/or NEXTSEQ_TRIM comparison,ROOT=/home/zebrafish/mouse/PRJNA1017789_parallel ADAPTER_R1=GATCGGAAGAGCACACGTCTGAACTCCAGTCACATGAGGCCATCTGGGGG NEXTSEQ_TRIM=20 bash Semester5/BIOL550/group_project/pipelines/qc_remed_cutadapt_one_srr.sh SRR30333743
