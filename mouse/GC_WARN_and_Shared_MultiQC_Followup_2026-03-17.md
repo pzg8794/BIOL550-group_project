@@ -42,6 +42,114 @@ We needed one place that records:
 - Treat the shared `before_trimming_only` report as the authoritative pre-trim shared MultiQC report.
 - Do not use the mixed `shared_fastqc` run when the question is specifically “what do the `fastp`-trimmed files look like?”
 
+### How we actually ran MultiQC
+
+Dummy version:
+- pick **one folder type only**
+- point MultiQC at that folder
+- write the report into a separate output folder
+- name the report clearly so nobody confuses stages
+
+The important rule is:
+- if the question is **after trimming**, use only the trimmed FastQC folder
+- if the question is **before trimming**, use only the raw FastQC folder
+- do **not** mix both folders unless you intentionally want a comparison-style report
+
+#### Mouse example — trimmed only
+
+This is the command pattern for the corrected shared trimmed-only report:
+
+```bash
+multiqc \
+  --force \
+  --dirs \
+  --dirs-depth 1 \
+  /home/zebrafish/mouse/PRJNA1017789_parallel/fastqc_fastp_trim \
+  --outdir /home/zebrafish/mouse/PRJNA1017789_parallel/multiqc/fastp_trim_only \
+  --filename mouse_fastp_trim_only_multiqc.html
+```
+
+What each part means:
+- `multiqc` = run MultiQC
+- `--force` = overwrite an old report if the folder already has one
+- `--dirs` = keep directory names in the labels so we know where inputs came from
+- `--dirs-depth 1` = only keep one directory level in those labels
+- input folder:
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/fastqc_fastp_trim`
+- output folder:
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/multiqc/fastp_trim_only`
+- output file name:
+  - `mouse_fastp_trim_only_multiqc.html`
+
+#### Mouse example — before trimming only
+
+```bash
+multiqc \
+  --force \
+  --dirs \
+  --dirs-depth 1 \
+  /home/zebrafish/mouse/PRJNA1017789_parallel/fastqc_out \
+  --outdir /home/zebrafish/mouse/PRJNA1017789_parallel/multiqc/before_trimming_only \
+  --filename mouse_before_trimming_only_multiqc.html
+```
+
+This is the same idea, but now the input folder is the raw FastQC folder instead of the trimmed FastQC folder.
+
+#### Zebrafish example — same logic
+
+If we were doing the same thing for zebrafish, the structure would be identical:
+
+```bash
+multiqc \
+  --force \
+  --dirs \
+  --dirs-depth 1 \
+  /home/zebrafish/zebrafish/PROJECT_NAME/fastqc_fastp_trim \
+  --outdir /home/zebrafish/zebrafish/PROJECT_NAME/multiqc/fastp_trim_only \
+  --filename zebrafish_fastp_trim_only_multiqc.html
+```
+
+The logic does not change:
+- one stage
+- one matching FastQC input folder
+- one clearly named output folder
+
+#### Private canonical full-`fastp` example
+
+The canonical private full-`fastp` report used one more input type, because it included both:
+- post-`fastp` FastQC outputs
+- `fastp` JSON reports
+
+That command pattern was:
+
+```bash
+multiqc \
+  --force \
+  --dirs \
+  --dirs-depth 1 \
+  /home/pzg8794/mouse_qc_remediation/output/fastqc_after/fastp \
+  /home/pzg8794/mouse_qc_remediation/output/fastp/reports \
+  --outdir /home/pzg8794/mouse_qc_remediation/multiqc/final_fastp_all_srrs/report \
+  --filename mouse_fastp_all_srrs_multiqc.html
+```
+
+That is why the private canonical MultiQC includes:
+- FastQC sections
+- `fastp` report sections
+
+while the shared trimmed-only report includes:
+- FastQC sections only
+
+#### Step-by-step summary
+
+1. Decide which stage you want to summarize.
+2. Pick the matching FastQC folder for that stage.
+3. Create a separate output folder for that exact report.
+4. Run MultiQC on only that intended input set.
+5. Name the report clearly so it is obvious what stage it summarizes.
+
+That is the whole workflow.
+
 ## 2) Local copy of the corrected shared trimmed-only report
 
 ### Step
