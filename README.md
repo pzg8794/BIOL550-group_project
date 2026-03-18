@@ -18,6 +18,8 @@ LaTeX report sources/build outputs have been removed from this repo and will liv
 - Mouse process doc: [mouse/PROCESS_mouse_fastq_fastqc_fastx.md](mouse/PROCESS_mouse_fastq_fastqc_fastx.md)
 - Mouse TODO: [mouse/TODO_mouse.md](mouse/TODO_mouse.md)
 - Mouse remediation plan: [mouse/TODO_qc_remediation.md](mouse/TODO_qc_remediation.md)
+- Mouse full-status share doc: [mouse/MOUSE_GROUP_STATUS_FULL.md](mouse/MOUSE_GROUP_STATUS_FULL.md)
+- Mouse simple follow guide: [mouse/MOUSE_GROUP_FOLLOW_GUIDE.md](mouse/MOUSE_GROUP_FOLLOW_GUIDE.md)
 
 Use this file as the group-project entry point, then move down the hierarchy into the mouse workflow docs.
 
@@ -56,6 +58,8 @@ See [SERVER_MINIMUM_POLICY.md](SERVER_MINIMUM_POLICY.md) before copying code to 
 See the per-project README(s), e.g.:
 
 - `mouse/PROCESS_mouse_fastq_fastqc_fastx.md`
+- `mouse/MOUSE_GROUP_STATUS_FULL.md`
+- `mouse/MOUSE_GROUP_FOLLOW_GUIDE.md`
 - Notebook template (raw vs trimmed comparison): `Semester5/BIOL550/group_project/pipelines/notebooks/fastqc_qc_bundle_analysis_raw_vs_trimmed.ipynb`
 
 ## Organization Tips

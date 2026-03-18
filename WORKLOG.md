@@ -219,6 +219,113 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 
 ---
 
+## 2026-03-17 → 2026-03-18 — STAR alignment launch (private first, shared chained after)
+
+### Why
+- The remediation decision is complete enough to start production alignment:
+  - `fastp` is the chosen cleanup stage
+  - the remaining `Per Sequence GC Content` WARN subset is documented as a cohort/batch-style follow-up, not a blocking adapter problem
+- The most efficient execution path is:
+  1. build the `GRCm39` + `Ensembl` STAR reference once in the private workspace
+  2. launch the full `all 26` alignment there first
+  3. chain the same alignment in the shared tree so it starts automatically after the private run finishes
+
+### Reference decision
+- Assembly: `GRCm39`
+- Annotation source: matching `Ensembl` `GTF`
+- Private reference root:
+  - `/home/pzg8794/mouse_qc_remediation/reference/grcm39_ensembl/`
+- Private STAR index:
+  - `/home/pzg8794/mouse_qc_remediation/reference/grcm39_ensembl/star_index_sjdb150/`
+
+### Private alignment launch
+- Input root:
+  - `/home/pzg8794/mouse_qc_remediation/output/fastp/out/`
+- Output root:
+  - `/home/pzg8794/mouse_qc_remediation/alignment/star_grcm39_ensembl_all26_fastp/`
+- Scripts added locally:
+  - `Semester5/BIOL550/group_project/pipelines/mouse_star_prepare_reference.sh`
+  - `Semester5/BIOL550/group_project/pipelines/mouse_star_align_one_srr.sh`
+  - `Semester5/BIOL550/group_project/pipelines/mouse_star_align_batch.sh`
+  - `Semester5/BIOL550/group_project/pipelines/mouse_run_star_all26_fastp_parallel.sh`
+- Synced server targets:
+  - `/home/pzg8794/mouse_qc_remediation/scripts/`
+- Launcher state:
+  - PID `71166`
+  - log: `/home/pzg8794/mouse_qc_remediation/logs/run_star_all26_fastp_parallel.2026-03-17_233805.log`
+
+### Important correction during launch
+- The first private alignment attempt failed at the reference step because `STAR genomeGenerate` does not accept a compressed FASTA.
+- The reference-prep script was fixed to unzip the FASTA and GTF before index generation.
+- The private launcher was restarted after that correction and the index completed successfully.
+
+### Shared follow-on alignment setup
+- Shared input root:
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/fastp_out/`
+- Shared output root:
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/alignment/star_grcm39_ensembl_all26_fastp/`
+- Shared scripts added locally:
+  - `Semester5/BIOL550/group_project/pipelines/mouse_star_align_one_srr_shared.sh`
+  - `Semester5/BIOL550/group_project/pipelines/mouse_star_align_batch_shared.sh`
+  - `Semester5/BIOL550/group_project/pipelines/mouse_run_star_all26_fastp_shared_after_private.sh`
+- Synced shared targets:
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/scripts/`
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/runs/`
+
+### Shared-run decision
+- We did **not** build a second shared index immediately.
+- Instead, the shared launcher waits for the private completion flag:
+  - `/home/pzg8794/mouse_qc_remediation/alignment/star_grcm39_ensembl_all26_fastp/all26_fastp_alignment.completed`
+- Once that file appears, the shared launcher will:
+  - sync the finished private reference/index bundle into the shared tree
+  - write shared metadata
+  - start the three shared STAR batch jobs
+
+### Shared waiting launcher state
+- first shared waiting PID `72403`
+- first shared waiting log:
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/logs/run_star_all26_fastp_shared_after_private.2026-03-18_020015.log`
+- initial handoff issue after the private run completed:
+  - the shared launcher failed because `rsync` is not installed on `sequoia`
+- correction:
+  - patched `mouse_run_star_all26_fastp_shared_after_private.sh` to use `cp -a` when `rsync` is unavailable
+  - re-synced the script to the shared tree
+  - relaunched the shared handoff
+- current shared launcher PID `75809`
+- current shared launcher log:
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/logs/run_star_all26_fastp_shared_after_private.2026-03-18_095656.log`
+- current status from the new log:
+  - `Private run completed; syncing shared reference/index`
+  - `rsync not found; using cp -a fallback`
+- later shared-load adjustment:
+  - the shared side was reduced from three concurrent STAR jobs to **serial one-sample-at-a-time** execution
+  - shared `STAR_THREADS` was reduced to `1`
+  - the shared launcher was restarted after clearing the partial shared alignment state
+  - current serial shared launcher PID `77729`
+- current serial shared launcher log:
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/logs/run_star_all26_fastp_shared_after_private.2026-03-18_110908.log`
+
+### Shared vs private trimmed-output audit
+- We copied the private `final_fastp_all_srrs` MultiQC locally so it could be compared directly against the shared trimmed-only MultiQC.
+- Audit result:
+  - the shared and private trimmed outputs are **not equivalent**
+  - they have the same `52` sample set
+  - they retain the same broad GC-warning pattern
+  - but they differ in sequence counts, sequence-length ranges, `fastp` after-filtering read totals, and one remaining `Overrepresented Sequences` warning on the shared side
+- Canonical decision:
+  - use the private cleaned-input root for alignment
+  - do not treat the shared trimmed output as interchangeable without further validation
+- Audit note:
+  - `Semester5/BIOL550/group_project/mouse/SHARED_VS_PRIVATE_FASTP_TRIM_AUDIT_2026-03-18.md`
+
+### Supporting notes
+- Private launch note:
+  - `Semester5/BIOL550/group_project/mouse/ALIGNMENT_LOCAL_SERVER_START_2026-03-17.md`
+- Shared follow-on note:
+  - `Semester5/BIOL550/group_project/mouse/ALIGNMENT_SHARED_FOLLOWON_SETUP_2026-03-18.md`
+
+---
+
 ## 2026-03-09 → 2026-03-10 — Trusted remediation workspace + pilot comparison setup
 
 ### Why
@@ -1034,3 +1141,93 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 ### Decision
 - Commit the documentation/report/notebook state as the current project snapshot.
 - Push both the nested `group_project` repo and the parent `BIOL550` repo after the commits complete.
+
+---
+
+## 2026-03-16 — Added team-facing handoff docs and simplified notebook copy
+
+### Step
+- Added two team-facing markdown handoff files:
+  - `Semester5/BIOL550/group_project/mouse/MOUSE_GROUP_STATUS_FULL.md`
+  - `Semester5/BIOL550/group_project/mouse/MOUSE_GROUP_FOLLOW_GUIDE.md`
+- Created a simplified notebook copy for team follow-along:
+  - `Semester5/BIOL550/group_project/mouse/notebooks/qc_remediation_experiments_mouse_team_follow.ipynb`
+- Linked these files from:
+  - `Semester5/BIOL550/group_project/README.md`
+  - `Semester5/BIOL550/group_project/DOCUMENTATION_MAP.md`
+  - `Semester5/BIOL550/group_project/mouse/TODO_mouse.md`
+
+### Finding
+- The project now has two different share modes for the team:
+  - one complete status snapshot with full paths, evidence files, and current decisions
+  - one dummified follow guide that reduces the project to the minimum they need to understand and follow the work
+- The team-follow notebook copy gives them a stable notebook entry point without changing the main remediation notebook.
+
+### Decision
+- Use `MOUSE_GROUP_STATUS_FULL.md` when someone needs the full project state.
+- Use `MOUSE_GROUP_FOLLOW_GUIDE.md` and `qc_remediation_experiments_mouse_team_follow.ipynb` when someone only needs the simplified version.
+
+
+---
+
+## 2026-03-17 — Shared MultiQC correction, GC WARN metadata check, and alignment recommendation
+
+### Step
+- Re-ran the shared MultiQC outputs on `sequoia` as stage-specific reports instead of a combined mixed report:
+  - before trimming only
+  - after trimming only (`fastp` only)
+- Copied the corrected shared trimmed-only report into the local repo:
+  - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/multiqc_fastp_trim_only_shared/`
+- Extracted the post-`fastp` `Per Sequence GC Content` WARN sample list from the trimmed-only MultiQC data bundle.
+- Mapped the WARN subset against `GSE243308` / `PRJNA1017789` sample metadata to see whether it corresponded to one biological group.
+
+### Finding
+- Correct shared reports now exist at:
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/multiqc/before_trimming_only/mouse_before_trimming_only_multiqc.html`
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/multiqc/fastp_trim_only/mouse_fastp_trim_only_multiqc.html`
+- The post-`fastp` GC status in the trimmed-only report is `27 PASS / 25 WARN / 0 FAIL`.
+- The WARN subset clusters mainly in `SRR30333757` through `SRR30333768` plus `SRR30333756_1`.
+- Metadata check shows that this WARN subset does not belong to one simple biological condition; it spans control and conditional knockout, and spans multiple DRG sample groups.
+- That makes the remaining GC WARN pattern look more like a study-subset / cohort effect than a simple sick-vs-control signal.
+
+### Decision
+- Keep the corrected trimmed-only shared MultiQC report as the authoritative post-`fastp` shared report.
+- Do not remove samples or trim further based on the GC curve alone.
+- Use alignment metrics as the next decision layer by comparing the GC-WARN subset against the GC-PASS subset after STAR.
+- Preserve the full conversation outcome in a dedicated note:
+  - `Semester5/BIOL550/group_project/mouse/GC_WARN_and_Shared_MultiQC_Followup_2026-03-17.md`
+
+---
+
+## 2026-03-17 — STAR alignment bootstrap on local server
+
+### Step
+- Converted the alignment discussion into explicit pre-run decisions:
+  - `GRCm39` + matching `Ensembl` `GTF`
+  - cleaned input root = `/home/pzg8794/mouse_qc_remediation/output/fastp/out/`
+  - shared STAR index under `/home/pzg8794/mouse_qc_remediation/reference/grcm39_ensembl/star_index_sjdb150/`
+  - first-pass run scope = all `26` SRRs
+- Added server-oriented STAR scripts to the repo:
+  - `pipelines/mouse_star_prepare_reference.sh`
+  - `pipelines/mouse_star_align_one_srr.sh`
+  - `pipelines/mouse_star_align_batch.sh`
+  - `pipelines/mouse_run_star_all26_fastp_parallel.sh`
+- Added a dedicated note that explains how the project moved from QC remediation into alignment launch:
+  - `mouse/ALIGNMENT_LOCAL_SERVER_START_2026-03-17.md`
+
+### Finding
+- The project now has a concrete alignment bootstrap path that stays consistent with the earlier remediation decisions and with the “document every major action” rule.
+- The safest first-pass alignment scope is all `26`, because downstream subsetting can still happen after alignment without forcing a second mapping run.
+- The resolved Ensembl files at launch were:
+  - `Mus_musculus.GRCm39.dna.primary_assembly.fa.gz`
+  - `Mus_musculus.GRCm39.115.gtf.gz`
+- The local server-side launcher was started with log:
+  - `/home/pzg8794/mouse_qc_remediation/logs/run_star_all26_fastp_parallel.2026-03-17_233805.log`
+- Alignment output root:
+  - `/home/pzg8794/mouse_qc_remediation/alignment/star_grcm39_ensembl_all26_fastp/`
+- The first launch attempt failed quickly because STAR requires an uncompressed FASTA for `genomeGenerate`.
+- The reference-prep script was corrected, re-synced to `sequoia`, and the launcher was restarted.
+
+### Decision
+- Monitor the STAR index build first, then the three parallel batch logs.
+- Use this all-26 run as the base alignment layer; defer any subsetting decision until the alignment metrics are available.

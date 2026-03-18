@@ -153,7 +153,7 @@
     </div>
   </div>
   <p class="after-row">
-    The figures above how the full-dataset FASTX baseline differs from the <code>fastp</code>-cleaned stage. The direct
+    The figures above show how the full-dataset FASTX baseline differs from the <code>fastp</code>-cleaned stage. The direct
     FASTX-vs-<code>fastp</code> comparison shows that the residual adapter signal drops sharply after <code>fastp</code>, while the
     status matrix shows the same change categorically: <code>Adapter Content</code> and <code>Overrepresented sequences</code> move out
     of FASTX FAIL/WARN states and into <code>fastp</code> PASS states. Read together, they show that the two stages are not similar views of the same data; they behave differently at the continuous-signal level and the module-status level.
@@ -239,14 +239,14 @@ Validation layers used this week:
     </div>
     <div class="img-col" style="flex: 1 1 620px; justify-content: center;">
       <p class="panel-note-sm">
-        <strong>First,</strong> as seen in the validation summary output on the left, the original FASTX-trimmed baseline was still not
+        As seen in the validation summary output on the left, the original FASTX-trimmed baseline was still not
         alignment-ready for the technical artifact modules we were trying to fix. The summary shows <code>52</code>
         <code>Adapter Content</code> FAIL reports, <code>2</code> <code>Overrepresented sequences</code> FAIL reports, and a median
         <code>adapter_max</code> of <code>31.8806</code> under FASTX. This is the evidence that the residual adapter-related signal was
         still present after the first trimming strategy.
       </p>
       <p class="panel-note-sm">
-        <strong>Second,</strong> the same validation summary also shows what changed after <code>fastp</code> and what did not.
+        The same validation summary also shows what changed after <code>fastp</code> and what did not.
         <code>Adapter Content</code> FAIL dropped from <code>52</code> to <code>0</code>, <code>Overrepresented sequences</code> FAIL
         dropped from <code>2</code> to <code>0</code>, and median <code>adapter_max</code> dropped from <code>31.8806</code> to
         <code>0.0051</code>. However, not every FastQC flag changed after <code>fastp</code>:
@@ -267,8 +267,7 @@ Validation layers used this week:
         are still tiny relative to the old FASTX baseline, so the immediate next step would be to confirm the alignment inputs.
       </p>
       <p class="panel-note-sm">
-        Similarly, I will (1) present the notebook-based alignment-prep discussion items to the team and confirm the cleaned-input root
-        plus the current “no targeted <code>cutadapt</code> fallback” position, (2) confirm the exact mouse reference genome +
+        Similarly, I will (1) present the notebook-based alignment-prep discussion items to the team and confirm the cleaned <code>fastp</code> inputs are ready for alignment and document why <code>cutadapt</code> is not needed as a fallback, (2) confirm the exact mouse reference genome +
         annotation pair for alignment, (3) build the sample/design
         sheet with SRR, condition, replicate, and mate-path columns, and (4) prepare the STAR run manifest and the alignment-QC capture
         template so we can start mapping with the cleaned <code>fastp</code> outputs rather than the older FASTX baseline.

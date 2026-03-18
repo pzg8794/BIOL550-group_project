@@ -254,6 +254,28 @@ Important implementation decision:
 - use the notebook only to display those finished tables/plots
 - do not make the notebook the primary place where parsing and comparison logic lives
 
+## 2026-03-18 — alignment handoff from remediation into production mapping
+
+The remediation phase now feeds directly into a production alignment setup:
+- private alignment root:
+  - `/home/pzg8794/mouse_qc_remediation/alignment/star_grcm39_ensembl_all26_fastp/`
+- private launcher:
+  - PID `71166`
+  - log: `/home/pzg8794/mouse_qc_remediation/logs/run_star_all26_fastp_parallel.2026-03-17_233805.log`
+- shared follow-on launcher:
+  - PID `72403`
+  - log: `/home/zebrafish/mouse/PRJNA1017789_parallel/logs/run_star_all26_fastp_shared_after_private.2026-03-18_020015.log`
+
+Decision:
+- do **not** build a second shared STAR index immediately
+- let the private run remain canonical for the first complete index + alignment launch
+- once the private completion flag exists, sync the finished `GRCm39` + `Ensembl` reference bundle into the shared tree and start the shared alignment automatically
+
+Why:
+- the QC/remediation decision is already settled (`fastp` is the canonical cleaned input)
+- the remaining GC WARN issue is being treated as a monitored cohort/batch-style signal, not as a trimming blocker
+- rebuilding the same mouse index in two places at the same time adds unnecessary I/O and increases the chance of inconsistent reference state
+
 What does **not** belong in the baseline notebook:
 - new experiment-specific outputs
 - repeated narrative about raw vs FASTX
@@ -691,3 +713,73 @@ After every major action, add three things explicitly:
 - `fastp`: https://github.com/OpenGene/fastp
 - `cutadapt`: https://cutadapt.readthedocs.io/
 - `FASTX Toolkit`: http://hannonlab.cshl.edu/fastx_toolkit/
+
+## 2026-03-17 follow-up — shared MultiQC correction + GC WARN subgroup check
+
+### Step
+- Corrected the shared MultiQC output so the trimmed-only shared report uses only `fastqc_fastp_trim`.
+- Generated matching before-trimming and after-trimming shared reports.
+- Copied the corrected trimmed-only shared report locally.
+- Extracted the `Per Sequence GC Content` WARN samples from the trimmed-only MultiQC data.
+- Mapped the WARN SRRs against `GSE243308` / `PRJNA1017789` sample metadata.
+
+### Status
+- Shared trimmed-only and raw-only reports are complete.
+- WARN subset mapping is complete at a quick metadata level.
+
+### Finding
+- Post-`fastp` `Per Sequence GC Content` remains `27 PASS / 25 WARN / 0 FAIL`.
+- The WARN entries cluster mainly in `SRR30333757` through `SRR30333768` plus `SRR30333756_1`.
+- That subset maps to a real cohort within the study, but not to one simple biological condition: it spans control and conditional knockout, and spans naive/control DRG and injury DRG groups.
+- This makes the remaining GC WARN pattern look more like a cohort / hidden-batch / study-subset effect than a simple sick-vs-control problem.
+
+### Decision
+- Do not remove samples or trim further based on the GC curve alone.
+- Proceed to alignment with the `fastp` outputs and use alignment metrics as the next decision layer.
+- If the GC-WARN subset also underperforms at alignment, then revisit exclusion/subsetting with stronger evidence.
+
+### Reference
+- `Semester5/BIOL550/group_project/mouse/GC_WARN_and_Shared_MultiQC_Followup_2026-03-17.md`
+
+## 2026-03-17 follow-up — STAR alignment start on local server
+
+### Step
+- Locked the alignment preconditions explicitly before launching STAR:
+  - `GRCm39` + matching `Ensembl` `GTF`
+  - cleaned inputs from `/home/pzg8794/mouse_qc_remediation/output/fastp/out/`
+  - one shared STAR index under `/home/pzg8794/mouse_qc_remediation/reference/grcm39_ensembl/star_index_sjdb150/`
+  - first-pass alignment scope = all `26` SRRs
+- Added server-targeted STAR scripts locally:
+  - `mouse_star_prepare_reference.sh`
+  - `mouse_star_align_one_srr.sh`
+  - `mouse_star_align_batch.sh`
+  - `mouse_run_star_all26_fastp_parallel.sh`
+- Added a dedicated note documenting the full reasoning chain into alignment start.
+
+### Status
+- Local scripts and alignment-start note are in place.
+- Server sync is complete.
+- The `all 26` STAR launcher has started on `sequoia`.
+
+### Finding
+- The QC remediation phase is already strong enough to justify using alignment as the next decision layer.
+- The remaining GC WARN issue is documented as non-random but not clearly attributable to one simple biological condition.
+- That makes alignment metrics more informative than more trimming.
+- The resolved Ensembl reference files at launch time were:
+  - `Mus_musculus.GRCm39.dna.primary_assembly.fa.gz`
+  - `Mus_musculus.GRCm39.115.gtf.gz`
+- The launcher log path is:
+  - `/home/pzg8794/mouse_qc_remediation/logs/run_star_all26_fastp_parallel.2026-03-17_233805.log`
+- The current output root is:
+  - `/home/pzg8794/mouse_qc_remediation/alignment/star_grcm39_ensembl_all26_fastp/`
+- The first launcher attempt exposed a STAR input requirement:
+  - STAR rejects compressed FASTA input for `genomeGenerate`
+  - the reference-prep script was corrected to unzip the FASTA and GTF before index generation
+  - the launcher was restarted after that fix
+
+### Decision
+- Keep this all-26 STAR run as the first-pass alignment run.
+- Compare GC-WARN vs GC-PASS only after STAR metrics exist.
+
+### Reference
+- `Semester5/BIOL550/group_project/mouse/ALIGNMENT_LOCAL_SERVER_START_2026-03-17.md`

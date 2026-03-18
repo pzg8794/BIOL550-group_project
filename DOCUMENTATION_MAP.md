@@ -38,6 +38,18 @@ This file is the navigation hub for the active BIOL550 group-project documentati
   - active task tracker for the mouse project
 - [Mouse remediation plan](mouse/TODO_qc_remediation.md)
   - focused plan for QC remediation experiments and tool selection
+- [Mouse full-status share doc](mouse/MOUSE_GROUP_STATUS_FULL.md)
+  - complete team-facing snapshot of what was done, what files matter, and what is still open
+- [Mouse simple follow guide](mouse/MOUSE_GROUP_FOLLOW_GUIDE.md)
+  - dummified version of the current mouse project for team follow-along
+- [Mouse shared alignment follow guide](mouse/ALIGNMENT_SHARED_TEAM_FOLLOW_GUIDE.md)
+  - dummified alignment-specific guide for the shared server tree
+- [Mouse alignment execution summary + index](mouse/ALIGNMENT_EXECUTION_SUMMARY_AND_INDEX.md)
+  - one-document alignment summary with references to the detailed notes and scripts
+- [Shared vs private fastp-trim audit](mouse/SHARED_VS_PRIVATE_FASTP_TRIM_AUDIT_2026-03-18.md)
+  - documented comparison of the shared trimmed MultiQC against the private canonical trimmed MultiQC
+- [GC WARN + shared MultiQC follow-up note](mouse/GC_WARN_and_Shared_MultiQC_Followup_2026-03-17.md)
+  - dated decision note covering the shared trimmed-only MultiQC rerun, GC WARN metadata check, and alignment recommendation
 
 ### Level 4 — Evidence and outputs
 
@@ -45,6 +57,8 @@ This file is the navigation hub for the active BIOL550 group-project documentati
   - baseline raw-vs-FASTX QC exploration
 - `mouse/notebooks/qc_remediation_experiments_mouse.ipynb`
   - presentation layer for remediation comparisons after terminal outputs exist
+- `mouse/notebooks/qc_remediation_experiments_mouse_team_follow.ipynb`
+  - simplified team-follow copy of the remediation notebook
 - `mouse/qc_analysis_raw_vs_trimmed/`
   - baseline comparison tables and plots
 - `mouse/reports/BIOL550_Weekly_Report_Mouse_SRA_FastQC_2026-03-04.html`

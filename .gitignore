@@ -56,3 +56,6 @@ starter_pipeline/
 *.nav
 *.snm
 *.vrb
+
+# Local server alignment copy (kept locally, not versioned)
+mouse/alignment_local_server_private_copy/

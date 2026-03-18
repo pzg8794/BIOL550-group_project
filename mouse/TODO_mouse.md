@@ -11,6 +11,8 @@ Keep this list current. Weekly report task must remain last.
 - Group project work log: [../WORKLOG.md](../WORKLOG.md)
 - Course notes: [../../BIOL550-Notes.md](../../BIOL550-Notes.md)
 - Lab task hub: [../../BIOL550-Lab/task_n_desc.md](../../BIOL550-Lab/task_n_desc.md)
+- Shared alignment follow guide: [ALIGNMENT_SHARED_TEAM_FOLLOW_GUIDE.md](ALIGNMENT_SHARED_TEAM_FOLLOW_GUIDE.md)
+- Shared vs private trim audit: [SHARED_VS_PRIVATE_FASTP_TRIM_AUDIT_2026-03-18.md](SHARED_VS_PRIVATE_FASTP_TRIM_AUDIT_2026-03-18.md)
 
 Use this file for the active task checklist. Record dated outcomes in the work log and detailed remediation logic in the remediation plan.
 
@@ -107,12 +109,75 @@ Local Python/Jupyter work should use:
 - [x] Remove shared-directory symlink; keep one dataset root: `/home/zebrafish/mouse/PRJNA1017789_parallel/`.
 - [x] Add a local helper for staging/removing long code on `sequoia`: `Semester5/BIOL550/group_project/pipelines/sync_long_code_to_sequoia.sh`
 
+## 2026-03-17 — shared MultiQC + GC subset follow-up
+- [x] Re-run the shared MultiQC reports as stage-specific outputs on `sequoia`:
+  - before trimming only: `/home/zebrafish/mouse/PRJNA1017789_parallel/multiqc/before_trimming_only/mouse_before_trimming_only_multiqc.html`
+  - after trimming only: `/home/zebrafish/mouse/PRJNA1017789_parallel/multiqc/fastp_trim_only/mouse_fastp_trim_only_multiqc.html`
+- [x] Copy the corrected shared trimmed-only MultiQC report locally:
+  - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/multiqc_fastp_trim_only_shared/`
+- [x] Check whether the post-`fastp` `Per Sequence GC Content` WARN subset maps to one biological group.
+  - Finding: the WARN subset clusters in a real study subset, but not in one simple biological condition.
+  - Decision note: `Semester5/BIOL550/group_project/mouse/GC_WARN_and_Shared_MultiQC_Followup_2026-03-17.md`
+- [ ] Use STAR alignment metrics to compare the GC-WARN subset vs the GC-PASS subset before considering removal/subsetting.
+
+## 2026-03-17 — alignment start on local server (`sequoia`)
+- [x] Lock the pre-alignment decision set explicitly:
+  - `GRCm39` + matching `Ensembl` `GTF`
+  - cleaned-input root = `/home/pzg8794/mouse_qc_remediation/output/fastp/out/`
+  - shared STAR index under `/home/pzg8794/mouse_qc_remediation/reference/grcm39_ensembl/star_index_sjdb150/`
+  - run `all 26` first, then subset later if needed
+- [x] Create local STAR pipeline sources for the server-side run:
+  - `Semester5/BIOL550/group_project/pipelines/mouse_star_prepare_reference.sh`
+  - `Semester5/BIOL550/group_project/pipelines/mouse_star_align_one_srr.sh`
+  - `Semester5/BIOL550/group_project/pipelines/mouse_star_align_batch.sh`
+  - `Semester5/BIOL550/group_project/pipelines/mouse_run_star_all26_fastp_parallel.sh`
+- [x] Create a dedicated alignment-start note that records how we got here and why this alignment launch is justified:
+  - `Semester5/BIOL550/group_project/mouse/ALIGNMENT_LOCAL_SERVER_START_2026-03-17.md`
+- [ ] Sync the STAR scripts + run lists to `/home/pzg8794/mouse_qc_remediation/` on `sequoia`.
+- [x] Sync the STAR scripts + run lists to `/home/pzg8794/mouse_qc_remediation/` on `sequoia`.
+- [x] Start the `all 26` STAR run in the local server-side workspace.
+- [x] Record the launcher log path, PID(s), and output root after the run starts.
+  - active launcher PID: `71166`
+  - launcher log: `/home/pzg8794/mouse_qc_remediation/logs/run_star_all26_fastp_parallel.2026-03-17_233805.log`
+  - output root: `/home/pzg8794/mouse_qc_remediation/alignment/star_grcm39_ensembl_all26_fastp/`
+  - note: the first launcher attempt failed because STAR requires an uncompressed FASTA; the reference-prep script was fixed and the run was restarted.
+
+## 2026-03-18 — shared follow-on alignment setup (`sequoia`)
+- [x] Create a shared-directory follow-on note that records why the shared run is chained behind the private run:
+  - `Semester5/BIOL550/group_project/mouse/ALIGNMENT_SHARED_FOLLOWON_SETUP_2026-03-18.md`
+- [x] Create a dummified shared alignment follow guide for teammates:
+  - `Semester5/BIOL550/group_project/mouse/ALIGNMENT_SHARED_TEAM_FOLLOW_GUIDE.md`
+- [x] Create shared-run STAR wrappers:
+  - `Semester5/BIOL550/group_project/pipelines/mouse_star_align_one_srr_shared.sh`
+  - `Semester5/BIOL550/group_project/pipelines/mouse_star_align_batch_shared.sh`
+  - `Semester5/BIOL550/group_project/pipelines/mouse_run_star_all26_fastp_shared_after_private.sh`
+- [x] Sync the shared-run STAR wrappers + run lists into the shared tree:
+  - scripts: `/home/zebrafish/mouse/PRJNA1017789_parallel/scripts/`
+  - run lists: `/home/zebrafish/mouse/PRJNA1017789_parallel/runs/`
+- [x] Start the shared waiting launcher so the shared alignment begins automatically after the private run finishes.
+  - active waiting PID (first launch): `72403`
+  - first waiting log: `/home/zebrafish/mouse/PRJNA1017789_parallel/logs/run_star_all26_fastp_shared_after_private.2026-03-18_020015.log`
+  - handoff issue found after private completion: `rsync` is not installed on `sequoia`
+  - fix applied: shared launcher now falls back to `cp -a` when `rsync` is unavailable
+  - thread/load adjustment requested afterward: switch shared alignment to serial one-sample-at-a-time execution with `STAR_THREADS=1`
+  - current shared launcher PID: `77729`
+  - current shared launcher log: `/home/zebrafish/mouse/PRJNA1017789_parallel/logs/run_star_all26_fastp_shared_after_private.2026-03-18_110908.log`
+- [x] Decide whether to build a second shared index immediately.
+  - Decision: **no immediate shared rebuild**
+  - Rationale: reuse the finished private `GRCm39` + `Ensembl` STAR index after the private run completes, then launch the shared alignment from that synced reference bundle.
+
 ## Current local deliverables
 
 - Remediation notebook:
   - `Semester5/BIOL550/group_project/mouse/notebooks/qc_remediation_experiments_mouse.ipynb`
+- Team-follow remediation notebook copy:
+  - `Semester5/BIOL550/group_project/mouse/notebooks/qc_remediation_experiments_mouse_team_follow.ipynb`
 - Remediation artifact folder:
   - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/`
+- Team full-status handoff doc:
+  - `Semester5/BIOL550/group_project/mouse/MOUSE_GROUP_STATUS_FULL.md`
+- Team simple follow guide:
+  - `Semester5/BIOL550/group_project/mouse/MOUSE_GROUP_FOLLOW_GUIDE.md`
 - Full-dataset FASTX vs fastp comparison:
   - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/full_fastx_vs_fastp_full/`
 - Supplemental MultiQC local copies:
