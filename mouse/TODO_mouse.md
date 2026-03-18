@@ -13,6 +13,7 @@ Keep this list current. Weekly report task must remain last.
 - Lab task hub: [../../BIOL550-Lab/task_n_desc.md](../../BIOL550-Lab/task_n_desc.md)
 - Shared alignment follow guide: [ALIGNMENT_SHARED_TEAM_FOLLOW_GUIDE.md](ALIGNMENT_SHARED_TEAM_FOLLOW_GUIDE.md)
 - Shared vs private trim audit: [SHARED_VS_PRIVATE_FASTP_TRIM_AUDIT_2026-03-18.md](SHARED_VS_PRIVATE_FASTP_TRIM_AUDIT_2026-03-18.md)
+- Canonical shared `full_fastp` handoff: [CANONICAL_FULL_FASTP_SHARED_HANDOFF_2026-03-18.md](CANONICAL_FULL_FASTP_SHARED_HANDOFF_2026-03-18.md)
 
 Use this file for the active task checklist. Record dated outcomes in the work log and detailed remediation logic in the remediation plan.
 
@@ -165,6 +166,20 @@ Local Python/Jupyter work should use:
 - [x] Decide whether to build a second shared index immediately.
   - Decision: **no immediate shared rebuild**
   - Rationale: reuse the finished private `GRCm39` + `Ensembl` STAR index after the private run completes, then launch the shared alignment from that synced reference bundle.
+
+## 2026-03-18 — canonical `full_fastp` copy into the shared tree
+- [x] Copy the canonical `full_fastp` MultiQC into the shared tree with a clearly distinguishable name.
+  - shared canonical MultiQC:
+    - `/home/zebrafish/mouse/PRJNA1017789_parallel/multiqc/full_fastp_canonical_privatecopy/`
+- [x] Start copying the canonical `full_fastp` all-26 alignment into the shared tree with a clearly distinguishable name.
+  - shared canonical alignment:
+    - `/home/zebrafish/mouse/PRJNA1017789_parallel/alignment/star_grcm39_ensembl_all26_full_fastp_canonical_privatecopy/`
+  - note:
+    - the copy can take longer because it includes BAM outputs
+- [x] Add a handoff note that explains why the canonical shared-side copy exists and which paths the team should use.
+  - `Semester5/BIOL550/group_project/mouse/CANONICAL_FULL_FASTP_SHARED_HANDOFF_2026-03-18.md`
+- [x] Record the process lesson explicitly.
+  - independent verification of shared derived outputs is required before treating them as canonical
 
 ## Current local deliverables
 

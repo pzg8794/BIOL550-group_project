@@ -48,6 +48,8 @@ This file is the navigation hub for the active BIOL550 group-project documentati
   - one-document alignment summary with references to the detailed notes and scripts
 - [Shared vs private fastp-trim audit](mouse/SHARED_VS_PRIVATE_FASTP_TRIM_AUDIT_2026-03-18.md)
   - documented comparison of the shared trimmed MultiQC against the private canonical trimmed MultiQC
+- [Canonical `full_fastp` shared handoff](mouse/CANONICAL_FULL_FASTP_SHARED_HANDOFF_2026-03-18.md)
+  - exact shared paths for the canonical MultiQC and alignment copies, plus the rationale for using them
 - [GC WARN + shared MultiQC follow-up note](mouse/GC_WARN_and_Shared_MultiQC_Followup_2026-03-17.md)
   - dated decision note covering the shared trimmed-only MultiQC rerun, GC WARN metadata check, and alignment recommendation
 

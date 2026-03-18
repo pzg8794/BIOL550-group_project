@@ -41,6 +41,12 @@ We moved into alignment after the QC remediation phase established `fastp` as th
 - shared alignment root:
   - `/home/zebrafish/mouse/PRJNA1017789_parallel/alignment/star_grcm39_ensembl_all26_fastp/`
 
+### Shared canonical copies for team use
+- canonical MultiQC copy:
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/multiqc/full_fastp_canonical_privatecopy/`
+- canonical alignment copy:
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/alignment/star_grcm39_ensembl_all26_full_fastp_canonical_privatecopy/`
+
 ## Why private first, then shared
 
 - one correct index build is cheaper than two simultaneous builds
@@ -86,6 +92,9 @@ The remaining `Per Sequence GC Content` shift does not map cleanly to one biolog
 ### Shared-side handoff design
 - [`Semester5/BIOL550/group_project/mouse/ALIGNMENT_SHARED_FOLLOWON_SETUP_2026-03-18.md`](ALIGNMENT_SHARED_FOLLOWON_SETUP_2026-03-18.md)
 
+### Canonical shared-side copy
+- [`Semester5/BIOL550/group_project/mouse/CANONICAL_FULL_FASTP_SHARED_HANDOFF_2026-03-18.md`](CANONICAL_FULL_FASTP_SHARED_HANDOFF_2026-03-18.md)
+
 ### Team-simple version
 - [`Semester5/BIOL550/group_project/mouse/ALIGNMENT_SHARED_TEAM_FOLLOW_GUIDE.md`](ALIGNMENT_SHARED_TEAM_FOLLOW_GUIDE.md)
 
@@ -96,6 +105,8 @@ The remaining `Per Sequence GC Content` shift does not map cleanly to one biolog
   - [`Semester5/BIOL550/group_project/mouse/ALIGNMENT_LOCAL_SERVER_START_2026-03-17.md`](ALIGNMENT_LOCAL_SERVER_START_2026-03-17.md)
 - shared follow-on setup:
   - [`Semester5/BIOL550/group_project/mouse/ALIGNMENT_SHARED_FOLLOWON_SETUP_2026-03-18.md`](ALIGNMENT_SHARED_FOLLOWON_SETUP_2026-03-18.md)
+- canonical shared handoff:
+  - [`Semester5/BIOL550/group_project/mouse/CANONICAL_FULL_FASTP_SHARED_HANDOFF_2026-03-18.md`](CANONICAL_FULL_FASTP_SHARED_HANDOFF_2026-03-18.md)
 - GC WARN / metadata follow-up:
   - [`Semester5/BIOL550/group_project/mouse/GC_WARN_and_Shared_MultiQC_Followup_2026-03-17.md`](GC_WARN_and_Shared_MultiQC_Followup_2026-03-17.md)
 - project task tracker:

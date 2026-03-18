@@ -323,6 +323,21 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
   - `Semester5/BIOL550/group_project/mouse/ALIGNMENT_LOCAL_SERVER_START_2026-03-17.md`
 - Shared follow-on note:
   - `Semester5/BIOL550/group_project/mouse/ALIGNMENT_SHARED_FOLLOWON_SETUP_2026-03-18.md`
+- Canonical shared handoff note:
+  - `Semester5/BIOL550/group_project/mouse/CANONICAL_FULL_FASTP_SHARED_HANDOFF_2026-03-18.md`
+
+### Canonical `full_fastp` copied into the shared tree
+- We copied the canonical `full_fastp` MultiQC into the shared tree so the team can read the same cleaned-input QC summary that matches the canonical alignment input.
+- Shared canonical MultiQC path:
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/multiqc/full_fastp_canonical_privatecopy/`
+- We also started copying the completed canonical all-26 alignment into a separate shared-side path so the team can use the same alignment outputs for downstream analysis.
+- Shared canonical alignment path:
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/alignment/star_grcm39_ensembl_all26_full_fastp_canonical_privatecopy/`
+- Why the extra copy exists:
+  - the earlier shared trimmed-only QC output did not exactly match the canonical private `full_fastp` output
+  - a clearly named canonical shared-side copy avoids repeating the same ambiguity during downstream analysis
+- Process takeaway:
+  - group work still requires independent verification of shared derived outputs before they are treated as canonical
 
 ---
 
