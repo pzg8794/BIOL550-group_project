@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BIOL550 Weekly Report — Mouse Alignment Validation + Local Reproducible Analysis</title>
+  <style>
+    body { font-family: "Times New Roman", Times, serif; font-size: 11pt; margin: 14px; line-height: 1.12; color: #111; }
+    h1, h2, h3 { margin: 0 0 8px 0; }
+    h1 { text-align: center; font-size: 16pt; }
+    .subtitle { text-align: center; font-size: 10.5pt; margin: 0 0 10px 0; }
+    h2 { margin-top: 14px; font-size: 12.5pt; }
+    h3 { margin-top: 10px; font-size: 11pt; }
+    p { text-align: justify; margin: 0 0 8px 0; }
+    pre { background: #f5f5f5; padding: 7px 9px; border: none; overflow-x: auto; font-size: 8.4px; line-height: 1.05; white-space: pre-wrap; word-break: break-word; }
+    code { font-family: Menlo, Consolas, monospace; font-size: 8.6px; }
+    .figure-title { text-align: center; font-size: 10.5pt; margin: 2px 0 4px 0; }
+    img { max-width: 72%; height: auto; display: block; margin: 6px auto; }
+    .img-row { display: flex; gap: 14px; align-items: flex-start; justify-content: center; margin: 4px 0 2px 0; }
+    .img-col { flex: 0 1 520px; display: flex; flex-direction: column; }
+    .img-row img { max-width: 100%; margin: 0 auto; }
+    .panel-note-sm { font-size: 9.7pt; line-height: 1.06; }
+    table { border-collapse: collapse; width: 100%; font-size: 9.2pt; }
+    th, td { border: 1px solid #ddd; padding: 4px 6px; vertical-align: top; }
+    th { background: #f5f5f5; font-weight: bold; text-align: left; }
+    .tight-table { font-size: 8.6pt; line-height: 1.04; }
+    .tight-table th, .tight-table td { padding: 3px 4px; }
+    .after-row { margin-top: 4px; }
+    .compact-list { margin: 0 0 8px 18px; }
+    .compact-list li { margin: 0 0 3px 0; }
+    .small-note { font-size: 9.6pt; line-height: 1.06; }
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      @page { margin: 0.22in; }
+      body { margin: 0.16in; }
+      .img-row { break-inside: avoid; }
+      table { break-inside: avoid; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Mouse RNA-Seq — Alignment Validation + Local Reproducible Analysis</h1>
+  <div class="subtitle">BIOL550 — Weekly Report — Mar 19, 2026</div>
+
+  <h2>What I accomplished since the previous report</h2>
+  <p>
+    This week, I moved the mouse project from QC remediation into alignment validation by analyzing the first full canonical
+    STAR run for all <strong>26 paired-end SRRs</strong> in <code>PRJNA1017789</code> / <code>GSE243308</code>. To validate the
+    server-side run independently, I set up a local reproducible analysis environment, copied the canonical STAR summary outputs into
+    the project, and built a notebook-based alignment evidence package.
+  </p>
+  <p>
+    The local workflow parsed all <strong>26</strong> STAR <code>Log.final.out</code> files and all <strong>26</strong>
+    STAR <code>ReadsPerGene.out.tab</code> files, then joined those alignment metrics to run metadata, sequencing-platform labels,
+    and the earlier GC-WARN / GC-PASS classification. This produced a sample-level summary table, a reverse-stranded count handoff
+    matrix, and a focused set of alignment figures.
+  </p>
+  <p>
+    The alignment results support moving forward. Across all <strong>26</strong> samples, the median unique-mapping rate is about
+    <strong>94%</strong>, the lower-performing subset still aligns well above failure territory, and the remaining platform / GC
+    differences look like metadata to carry forward rather than reasons to stop the workflow. This week’s report therefore marks the
+    transition from cleanup validation into count-level analysis and DE preparation.
+  </p>
+
+  <h2>Methods used</h2>
+  <p>
+    The alignment run used the canonical cleaned-input set generated from the full <code>fastp</code> workflow rather than the older
+    FASTX baseline. Mapping was performed against the <code>GRCm39</code> mouse reference with the matching
+    <code>Ensembl</code> annotation, and the local report focuses on the STAR summary artifacts that are most informative for first-pass
+    validation: the per-sample log metrics in <code>Log.final.out</code> and the special rows plus gene counts in
+    <code>ReadsPerGene.out.tab</code>.
+  </p>
+  <p>
+    This analytical focus also follows the direction discussed in class over the last two days: once the GC-content split was shown to
+    correlate with sequencing instrument rather than a simple biological subgroup, the next useful check was to compare alignment
+    statistics across those platform-linked subsets and ask whether the GC shift behaves like a failed-sample issue or like a machine /
+    batch effect that can be modeled downstream.
+  </p>
+  <div class="img-row" style="align-items: flex-start;">
+    <div class="img-col" style="flex: 0 1 500px;">
+      <pre><code>Canonical alignment input:
+- cleaned FASTQs from the full fastp rerun
+- reference = GRCm39 + matching Ensembl GTF
+- mapper = STAR
+
+STAR index example:
+STAR \
+  --runThreadN 8 \
+  --runMode genomeGenerate \
+  --genomeDir star_index_sjdb150 \
+  --genomeFastaFiles Mus_musculus.GRCm39.dna.primary_assembly.fa \
+  --sjdbGTFfile Mus_musculus.GRCm39.115.gtf \
+  --sjdbOverhang 150
+
+STAR alignment example:
+STAR \
+  --runThreadN 8 \
+  --genomeDir star_index_sjdb150 \
+  --readFilesIn SRR30333743_1.trim.fastq.gz SRR30333743_2.trim.fastq.gz \
+  --readFilesCommand zcat \
+  --outSAMtype BAM SortedByCoordinate \
+  --quantMode GeneCounts</code></pre>
+    </div>
+    <div class="img-col" style="flex: 0 1 390px;">
+      <p class="panel-note-sm">
+        Workflow used for local validation:
+      </p>
+      <ul class="compact-list panel-note-sm">
+        <li>copy canonical STAR summary outputs locally;</li>
+        <li>parse all <code>Log.final.out</code> files;</li>
+        <li>parse all <code>ReadsPerGene.out.tab</code> files;</li>
+        <li>join alignment metrics with sample metadata;</li>
+        <li>summarize by sample, platform, and GC status;</li>
+        <li>export a count handoff matrix for DESeq2.</li>
+      </ul>
+      <p class="panel-note-sm">
+        The local environment setup supported independent validation of the server-side STAR outputs in a notebook and made it possible to
+        summarize the run reproducibly without repeated server-side reanalysis.
+      </p>
+      <p class="panel-note-sm">
+        The local notebook now serves as the process record for alignment-stage interpretation and as the direct handoff into the
+        DE notebook, where the reverse-stranded count matrix will be modeled with family-specific DESeq2 contrasts.
+      </p>
+    </div>
+  </div>
+
+  <h2>Results / key figures</h2>
+
+  <div class="figure-title"><strong>Alignment overview: per-sample unique mapping across the full all-26 STAR run</strong></div>
+  <div style="max-width: 940px; margin: 0 auto;">
+    <img src="../alignment_analysis_star_all26/figures/unique_mapping_by_sample.png" alt="Unique mapping rate by sample across the all-26 STAR run" />
+  </div>
+  <p class="after-row">
+    This figure shows the unique-mapping rate for every sample in the canonical STAR run. The main result is that none of the
+    samples collapse into a clear failed-alignment regime. Instead, the full set clusters in a high-mapping range with a median
+    around <strong>94%</strong>. That is the first strong indication that the data are technically usable for downstream expression
+    analysis. The lower samples remain worth tracking, but they still sit in a range that supports keeping the complete dataset.
+  </p>
+
+  <div class="figure-title"><strong>Compact alignment summary used to judge downstream readiness</strong></div>
+  <table class="tight-table">
+    <thead>
+      <tr>
+        <th>Grouping</th>
+        <th>Median unique mapping (%)</th>
+        <th>Median multi-mapping (%)</th>
+        <th>Median no-feature burden (%)</th>
+        <th>Median ambiguous burden (%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>NovaSeq 6000</code></td>
+        <td>93.34</td>
+        <td>5.49</td>
+        <td>3.11</td>
+        <td>1.86</td>
+      </tr>
+      <tr>
+        <td><code>NovaSeq X</code></td>
+        <td>94.77</td>
+        <td>3.82</td>
+        <td>3.76</td>
+        <td>2.10</td>
+      </tr>
+      <tr>
+        <td><code>GC-PASS</code></td>
+        <td>94.81</td>
+        <td>3.79</td>
+        <td>3.76</td>
+        <td>2.09</td>
+      </tr>
+      <tr>
+        <td><code>GC-WARN</code></td>
+        <td>93.38</td>
+        <td>5.48</td>
+        <td>3.14</td>
+        <td>1.87</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="panel-note-sm">
+    This compact table summarizes the alignment decision point. The key pattern is not
+    failure, but structured variation: <code>NovaSeq X</code> and <code>GC-PASS</code> samples align somewhat better, while
+    <code>NovaSeq 6000</code> and <code>GC-WARN</code> samples show modestly higher multi-mapping. Even so, all groups remain
+    within a technically usable range, which supports continuing with the full dataset rather than excluding one subset at the
+    alignment stage.
+  </p>
+
+  <div class="figure-title"><strong>Platform split at alignment: <code>NovaSeq X</code> performs somewhat better, but both platforms remain usable</strong></div>
+  <div class="img-row">
+    <div class="img-col" style="flex: 0 1 430px;">
+      <div style="max-width: 300px; margin: 0 auto;">
+        <img src="../alignment_analysis_star_all26/figures/unique_mapping_by_platform.png" alt="Unique mapping by sequencing platform" />
+      </div>
+    </div>
+    <div class="img-col" style="flex: 0 1 430px;">
+      <div style="max-width: 600px; margin: 0 auto;">
+        <img src="../alignment_analysis_star_all26/figures/assignment_burden_by_platform.png" alt="No-feature and ambiguous assignment burden by platform" />
+      </div>
+    </div>
+  </div>
+  <p class="after-row">
+    The left panel compares unique-mapping rates across sequencing platforms and shows the same pattern visible in the sample-level
+    overview: <code>NovaSeq X</code> aligns somewhat better than <code>NovaSeq 6000</code>. The right panel shows assignment burden
+    after alignment, specifically the fraction of input reads that land in STAR’s <code>N_noFeature</code> and <code>N_ambiguous</code>
+    categories. The point of showing both panels together is that the platform split is real, but it does not indicate a failed
+    platform. Instead, the alignment results support the working explanation from the recent class discussion: the GC-content shift is
+    at least partly tracking instrument / batch structure, and that structure remains visible after alignment as a modest platform
+    effect that should remain explicit in downstream interpretation.
+  </p>
+
+  <div class="figure-title"><strong>GC-WARN vs GC-PASS at alignment: weaker, but not failed</strong></div>
+  <div style="max-width: 560px; margin: 0 auto;">
+    <img src="../alignment_analysis_star_all26/figures/unique_mapping_by_gc_status.png" alt="Unique mapping by GC-WARN versus GC-PASS status" />
+  </div>
+  <p class="after-row">
+    This figure addresses the earlier concern that the remaining GC-WARN subset might represent samples that should be removed before
+    downstream analysis. The alignment result does not support that interpretation. The GC-WARN subset aligns somewhat worse than the
+    GC-PASS subset, but it still maps at a high level overall and does not form a collapsed outlier group. In other words, the GC
+    signal persists as a structured cohort effect, not as evidence that the samples are technically unusable. Because the GC-WARN
+    samples also cluster strongly with the older sequencing platform, the alignment notebook helps explain the earlier GC bimodality as
+    a likely platform-linked shift rather than a simple trimming failure.
+  </p>
+
+  <h2>Problems encountered</h2>
+  <p>
+    The main limitations at this stage are analytical rather than operational. First, the platform split remains visible at alignment,
+    which means later differential-expression interpretation must keep platform as explicit metadata instead of assuming perfect
+    homogeneity across all runs. Second, the GC-WARN subset still shows somewhat weaker unique mapping and somewhat higher
+    multi-mapping, so that label should also be carried forward into the count-level and DE notebooks. Third, the local BAM / BAI copy
+    from the server is still slower and larger than the log/count bundle, so the local notebook was intentionally designed to proceed
+    using the completed STAR summary outputs first.
+  </p>
+  <p>
+    These issues do not block the project at this stage. The alignment results support proceeding with the full dataset while keeping
+    platform and GC status explicit in downstream modeling and interpretation.
+  </p>
+
+  <h2>Goals for the coming week</h2>
+  <p>
+    Next week, I will use the reverse-stranded STAR count matrix as the direct handoff into the differential-expression notebook. The
+    immediate goal is to fit family-specific DESeq2 models rather than one confounded all-sample model, because the current dataset
+    contains meaningful platform and sample-type structure that should be handled explicitly. That means:
+  </p>
+  <ul class="compact-list">
+    <li>proceed to the DE notebook using the reverse-stranded STAR count matrix;</li>
+    <li>keep <code>platform</code> and <code>GC status</code> as explicit metadata labels during downstream interpretation;</li>
+    <li>fit separate DESeq2 model families for tissue <code>NovaSeq 6000</code>, tissue sham <code>NovaSeq X</code>, and neuron-culture <code>NovaSeq X</code> samples;</li>
+    <li>identify which contrasts become the strongest candidates for the individual report.</li>
+  </ul>
+  <p class="small-note">
+    This week’s alignment notebook supports moving from cleanup validation into differential expression analysis. The full dataset is
+    technically strong enough to proceed, and the remaining platform / GC patterns should be carried forward as metadata rather than
+    treated as immediate blockers.
+  </p>
+
+</body>
+</html>

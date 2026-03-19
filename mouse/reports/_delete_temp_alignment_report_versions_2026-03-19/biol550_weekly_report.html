@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BIOL550 Weekly Report — Mouse Alignment Validation + Local Reproducible Analysis</title>
+  <style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 10.5pt;
+      margin: 0;
+      padding: 0;
+      line-height: 1.18;
+      color: #111;
+    }
+    .page {
+      width: 7.5in;
+      margin: 0 auto;
+      padding: 0.30in 0.38in 0.28in 0.38in;
+      box-sizing: border-box;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: auto; }
+    h1 {
+      text-align: center;
+      font-size: 14.5pt;
+      margin: 0 0 3px 0;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 9.8pt;
+      margin: 0 0 10px 0;
+      color: #444;
+    }
+    h2 {
+      font-size: 11.5pt;
+      margin: 9px 0 4px 0;
+      border-bottom: 0.5px solid #aaa;
+      padding-bottom: 1px;
+    }
+    h3 {
+      font-size: 10.5pt;
+      margin: 7px 0 3px 0;
+    }
+    p {
+      text-align: justify;
+      margin: 0 0 5px 0;
+    }
+    pre {
+      background: #f5f5f5;
+      padding: 5px 7px;
+      border: none;
+      overflow-x: auto;
+      font-size: 7.5px;
+      line-height: 1.06;
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin: 0 0 4px 0;
+    }
+    code {
+      font-family: Menlo, Consolas, monospace;
+      font-size: 8.2px;
+    }
+    .figure-title {
+      text-align: center;
+      font-size: 9.8pt;
+      font-weight: bold;
+      margin: 7px 0 2px 0;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 4px auto;
+    }
+    .img-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      justify-content: center;
+      margin: 2px 0;
+    }
+    .img-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 8.4pt;
+      margin: 4px 0 4px 0;
+    }
+    th, td {
+      border: 0.5px solid #bbb;
+      padding: 3px 5px;
+      vertical-align: top;
+    }
+    th {
+      background: #efefef;
+      font-weight: bold;
+      text-align: left;
+    }
+    ul.clist {
+      margin: 0 0 5px 16px;
+      padding: 0;
+    }
+    ul.clist li {
+      margin: 0 0 2px 0;
+      font-size: 9.8pt;
+    }
+    .note {
+      font-size: 9.3pt;
+      line-height: 1.12;
+      margin: 2px 0 4px 0;
+    }
+    .two-col {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .two-col .left  { flex: 0 0 46%; }
+    .two-col .right { flex: 1; }
+    hr { border: none; border-top: 0.5px solid #ccc; margin: 6px 0; }
+
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      @page { margin: 0; }
+      body { margin: 0; }
+      .page { page-break-after: always; }
+      .page:last-child { page-break-after: auto; }
+      .img-row { break-inside: avoid; }
+      table   { break-inside: avoid; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ══════════════════ PAGE 1 ══════════════════ -->
+<div class="page">
+
+  <h1>Mouse RNA-Seq — Alignment Validation &amp; Local Reproducible Analysis</h1>
+  <div class="subtitle">BIOL550 — Weekly Report — Mar 19, 2026</div>
+
+  <h2>Accomplishments since the previous report</h2>
+  <p>
+    This week the mouse project moved from QC remediation into alignment validation. I analyzed the first full canonical
+    STAR run across all <strong>26 paired-end SRRs</strong> in <code>PRJNA1017789</code>&nbsp;/&nbsp;<code>GSE243308</code>,
+    set up a local reproducible environment, and built a notebook-based alignment evidence package. The local workflow
+    parsed all 26 <code>Log.final.out</code> and <code>ReadsPerGene.out.tab</code> files, joined those metrics to
+    sample metadata, sequencing-platform labels, and the earlier GC-WARN&nbsp;/&nbsp;GC-PASS classification, and exported
+    a reverse-stranded count handoff matrix. Across all samples the median unique-mapping rate is approximately
+    <strong>94%</strong>; no sample collapses into a failed-alignment regime. The remaining platform and GC differences
+    look like metadata to carry forward rather than reasons to halt. This report marks the transition from cleanup
+    validation into count-level analysis and DE preparation.
+  </p>
+
+  <h2>Methods</h2>
+  <div class="two-col">
+    <div class="left">
+      <pre><code>Canonical alignment input:
+- cleaned FASTQs from the full fastp rerun
+- reference = GRCm39 + matching Ensembl GTF
+- mapper = STAR
+
+STAR index:
+STAR \
+  --runThreadN 8 \
+  --runMode genomeGenerate \
+  --genomeDir star_index_sjdb150 \
+  --genomeFastaFiles Mus_musculus.GRCm39.dna.primary_assembly.fa \
+  --sjdbGTFfile Mus_musculus.GRCm39.115.gtf \
+  --sjdbOverhang 150
+
+STAR alignment (per sample):
+STAR \
+  --runThreadN 8 \
+  --genomeDir star_index_sjdb150 \
+  --readFilesIn SRR_1.trim.fastq.gz SRR_2.trim.fastq.gz \
+  --readFilesCommand zcat \
+  --outSAMtype BAM SortedByCoordinate \
+  --quantMode GeneCounts</code></pre>
+    </div>
+    <div class="right">
+      <p class="note"><strong>Local validation workflow:</strong></p>
+      <ul class="clist">
+        <li>Copy canonical STAR summary outputs locally.</li>
+        <li>Parse all <code>Log.final.out</code> files (alignment stats).</li>
+        <li>Parse all <code>ReadsPerGene.out.tab</code> files (gene counts).</li>
+        <li>Join metrics with sample metadata, platform, and GC status.</li>
+        <li>Export reverse-stranded count matrix for DESeq2.</li>
+      </ul>
+      <p class="note">
+        This setup enabled independent validation of the server-side run in a reproducible notebook
+        without repeated server-side reanalysis. The GC-content split was shown in recent class sessions
+        to correlate with sequencing instrument rather than a biological subgroup, making platform
+        comparison at alignment the key next check — confirmed here.
+      </p>
+    </div>
+  </div>
+
+  <h2>Alignment summary table</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Grouping</th>
+        <th>Median unique mapping (%)</th>
+        <th>Median multi-mapping (%)</th>
+        <th>Median no-feature (%)</th>
+        <th>Median ambiguous (%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>NovaSeq 6000</code></td><td>93.34</td><td>5.49</td><td>3.11</td><td>1.86</td></tr>
+      <tr><td><code>NovaSeq X</code></td><td>94.77</td><td>3.82</td><td>3.76</td><td>2.10</td></tr>
+      <tr><td><code>GC-PASS</code></td><td>94.81</td><td>3.79</td><td>3.76</td><td>2.09</td></tr>
+      <tr><td><code>GC-WARN</code></td><td>93.38</td><td>5.48</td><td>3.14</td><td>1.87</td></tr>
+    </tbody>
+  </table>
+  <p class="note">
+    All groups are in a technically usable range. <code>NovaSeq X</code> and <code>GC-PASS</code> samples align somewhat
+    better; <code>NovaSeq 6000</code> and <code>GC-WARN</code> show modestly higher multi-mapping. The pattern is structured
+    variation, not failure — both subsets proceed to downstream analysis.
+  </p>
+
+</div>
+<!-- ══════════════════ END PAGE 1 ══════════════════ -->
+
+
+<!-- ══════════════════ PAGE 2 ══════════════════ -->
+<div class="page">
+
+  <h2>Key figures</h2>
+
+  <div class="figure-title">Per-sample unique mapping — all 26 SRRs (canonical STAR run)</div>
+  <div style="max-width: 820px; margin: 0 auto;">
+    <img src="../alignment_analysis_star_all26/figures/unique_mapping_by_sample.png"
+         alt="Unique mapping rate by sample across the all-26 STAR run" style="max-height:1.55in;" />
+  </div>
+  <p class="note" style="margin-top:2px;">
+    No sample collapses into a failed-alignment regime. The full set clusters in a high-mapping range around <strong>94%</strong>,
+    confirming the data are technically usable for downstream expression analysis. Lower-performing samples remain worth tracking
+    but fall well within an acceptable range.
+  </p>
+
+  <div class="figure-title" style="margin-top:6px;">Platform split at alignment</div>
+  <div class="img-row">
+    <div class="img-col">
+      <img src="../alignment_analysis_star_all26/figures/unique_mapping_by_platform.png"
+           alt="Unique mapping by sequencing platform" style="max-height:1.45in;" />
+    </div>
+    <div class="img-col">
+      <img src="../alignment_analysis_star_all26/figures/assignment_burden_by_platform.png"
+           alt="No-feature and ambiguous assignment burden by platform" style="max-height:1.45in;" />
+    </div>
+  </div>
+  <p class="note" style="margin-top:2px;">
+    <code>NovaSeq X</code> aligns somewhat better (left) and shows comparable assignment burden (right). The platform split
+    is real but does not indicate a failed platform — it corroborates the class-discussion finding that the GC-content shift
+    tracks instrument structure, a batch effect to model downstream rather than a reason to exclude samples.
+  </p>
+
+  <div class="figure-title" style="margin-top:6px;">GC-WARN vs GC-PASS at alignment</div>
+  <div style="max-width: 500px; margin: 0 auto;">
+    <img src="../alignment_analysis_star_all26/figures/unique_mapping_by_gc_status.png"
+         alt="Unique mapping by GC-WARN versus GC-PASS status" style="max-height:1.45in;" />
+  </div>
+  <p class="note" style="margin-top:2px;">
+    GC-WARN samples align somewhat worse but remain high overall and do not form a collapsed outlier group. Because GC-WARN
+    samples cluster strongly with the older platform, the GC bimodality is best explained as a platform-linked shift rather
+    than a trimming failure. Both subsets proceed.
+  </p>
+
+  <hr/>
+
+  <h2>Limitations</h2>
+  <ul class="clist">
+    <li>Platform split persists at alignment — <code>platform</code> must remain explicit metadata in DE modeling.</li>
+    <li>GC-WARN subset shows modestly lower unique mapping and higher multi-mapping — carry the label forward into count-level and DE notebooks.</li>
+    <li>Local BAM&nbsp;/&nbsp;BAI transfer from the server is slow and large; the validation notebook was intentionally designed to proceed from STAR summary outputs first.</li>
+  </ul>
+  <p class="note">None of these block the project. The alignment results support proceeding with the full dataset.</p>
+
+  <h2>Goals for the coming week</h2>
+  <ul class="clist">
+    <li>Use the reverse-stranded STAR count matrix as the direct handoff into the DE notebook.</li>
+    <li>Keep <code>platform</code> and <code>GC status</code> as explicit metadata labels throughout downstream interpretation.</li>
+    <li>Fit separate DESeq2 model families: tissue <code>NovaSeq 6000</code>, tissue-sham <code>NovaSeq X</code>, and neuron-culture <code>NovaSeq X</code>.</li>
+    <li>Identify the strongest contrast candidates for the individual report.</li>
+  </ul>
+
+</div>
+<!-- ══════════════════ END PAGE 2 ══════════════════ -->
+
+</body>
+</html>
