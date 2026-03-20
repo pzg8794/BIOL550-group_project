@@ -57,6 +57,7 @@ This file is the navigation hub for the active BIOL550 group-project documentati
 - [Mouse differential expression notebook note](mouse/DIFFERENTIAL_EXPRESSION_NOTEBOOK_2026-03-19.md)
   - DESeq2-stage note covering the all-26 count handoff, family-specific model design, exported contrasts, and first-pass interpretation
 - [Mouse DESeq2 shared-server setup note](mouse/DESEQ2_SHARED_SERVER_SETUP_2026-03-20.md)
+- [Mouse DESeq2 environment explainer](mouse/DESEQ2_ENVIRONMENT_EXPLAINER_2026-03-20.md)
   - private team-only DESeq2 environment on `sequoia`, runtime issue/fix, wrapper lifecycle, and shared input/output path setup
 
 ### Level 4 — Evidence and outputs
@@ -72,6 +73,7 @@ This file is the navigation hub for the active BIOL550 group-project documentati
 - `mouse/notebooks/mouse_differential_expression_all26.ipynb`
   - DESeq2 notebook for the family-specific all-26 mouse count analysis
 - `pipelines/mouse_deseq2_shared_server_run.sh`
+- `pipelines/mouse_deseq2_activate_shared.sh`
   - short shared-server wrapper that checks the private team DESeq2 environment and launches the DE driver against shared inputs
 - `mouse/qc_analysis_raw_vs_trimmed/`
   - baseline comparison tables and plots

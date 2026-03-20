@@ -69,7 +69,7 @@
 
 ## Shared server status
 
-- A private team-only DESeq2 runtime was created on `sequoia` instead of using the broken system `R`.
+- A shared-tree team DESeq2 runtime was created on `sequoia` instead of using the broken system `R`.
 - Runtime path:
-  - `/home/pzg8794/.local/share/micromamba/envs/biol550_deseq2`
-- The shared execution path should point to that private environment, not to `/usr/local/bin/R`.
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/.local/share/micromamba/envs/biol550_deseq2`
+- The shared execution path now points to that team-owned environment instead of `/usr/local/bin/R`.

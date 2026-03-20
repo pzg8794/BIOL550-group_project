@@ -1378,11 +1378,11 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 - Preserve the local copy only as retained evidence.
 - Keep the private validated `fastp` alignment as the sole canonical source for notebook analysis, reports, and downstream DE modeling.
 
-## 2026-03-20 — Private team DESeq2 environment created on sequoia
+## 2026-03-20 — Shared-tree team DESeq2 environment created on sequoia
 
 ### Step
-- Created a private team-only micromamba environment on `sequoia`:
-  - `/home/pzg8794/.local/share/micromamba/envs/biol550_deseq2`
+- Created a shared-tree team micromamba environment on `sequoia`:
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/.local/share/micromamba/envs/biol550_deseq2`
 - Installed:
   - `R 4.3.3`
   - `DESeq2`
@@ -1399,7 +1399,9 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 - The server’s current `/usr/local/bin/R` was not usable because it failed at runtime with:
   - missing `libreadline.so.7`
 - That made a direct install into the current server R stack the wrong fix.
-- A user-scoped micromamba environment fixed the runtime problem without changing the server’s existing/global setup.
+- A self-contained shared-tree micromamba environment fixed the runtime problem without changing the server’s existing/global setup.
+- Reusing the private home-directory environment as the team-facing runtime was rejected because teammates should not depend on `/home/pzg8794/.local/...`.
+- Copying an already-built micromamba environment tree was also rejected as the final fix because these environments can be prefix-bound; the safer fix was to create the environment directly at the final shared path.
 - One package-name issue also surfaced during setup:
   - `bioconductor-biocmanager` did not resolve in the chosen channels
   - `r-biocmanager` was the correct package name

@@ -228,15 +228,15 @@ Local Python/Jupyter work should use:
 - [x] Record the DE notebook interpretation and handoff note:
   - `Semester5/BIOL550/group_project/mouse/DIFFERENTIAL_EXPRESSION_NOTEBOOK_2026-03-19.md`
 
-## 2026-03-20 — private team DESeq2 server environment
-- [x] Create a private team-only DESeq2 environment on `sequoia` without changing the server’s global R stack.
+## 2026-03-20 — shared-tree team DESeq2 server environment
+- [x] Create a shared-tree team DESeq2 environment on `sequoia` without changing the server’s global R stack.
   - env path:
-    - `/home/pzg8794/.local/share/micromamba/envs/biol550_deseq2`
+    - `/home/zebrafish/mouse/PRJNA1017789_parallel/.local/share/micromamba/envs/biol550_deseq2`
 - [x] Record the runtime issue and the fix.
   - issue:
     - `/usr/local/bin/R` failed because `libreadline.so.7` was missing
   - fix:
-    - private micromamba environment with `R 4.3.3` + `DESeq2`
+    - shared-tree micromamba environment with `R 4.3.3` + `DESeq2`
 - [x] Add a short shared-server wrapper for team execution.
   - local canonical wrapper:
     - `Semester5/BIOL550/group_project/pipelines/mouse_deseq2_shared_server_run.sh`

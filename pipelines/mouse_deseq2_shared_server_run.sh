@@ -12,14 +12,14 @@ Shared paths:
   OUTPUT_ROOT=/home/zebrafish/mouse/PRJNA1017789_parallel/deseq2_shared/output
 
 Requirements:
-  - private team env: /home/pzg8794/.local/share/micromamba/envs/biol550_deseq2
+  - shared team env: /home/zebrafish/mouse/PRJNA1017789_parallel/.local/share/micromamba/envs/biol550_deseq2
   - temporary long-code copy: /home/pzg8794/pipelines/mouse_deseq2_all26.R
 EOF
 }
 
 ACTION="${1:-}"
-MICROMAMBA_BIN="/home/pzg8794/.local/bin/micromamba"
-export MAMBA_ROOT_PREFIX="/home/pzg8794/.local/share/micromamba"
+MICROMAMBA_BIN="/home/zebrafish/mouse/PRJNA1017789_parallel/.local/bin/micromamba"
+export MAMBA_ROOT_PREFIX="/home/zebrafish/mouse/PRJNA1017789_parallel/.local/share/micromamba"
 ENV_NAME="biol550_deseq2"
 R_DRIVER="/home/pzg8794/pipelines/mouse_deseq2_all26.R"
 INPUT_ROOT="/home/zebrafish/mouse/PRJNA1017789_parallel/deseq2_shared/inputs"
