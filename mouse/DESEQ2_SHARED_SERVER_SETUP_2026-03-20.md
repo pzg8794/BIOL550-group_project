@@ -65,7 +65,22 @@
 
 ## Exact commands
 
-### Environment check
+### Environment activation
+
+```bash
+export MAMBA_ROOT_PREFIX=/home/pzg8794/.local/share/micromamba
+eval "$(/home/pzg8794/.local/bin/micromamba shell hook -s bash)"
+micromamba activate biol550_deseq2
+```
+
+### Environment check after activation
+
+```bash
+R --version | head -n 2
+Rscript -e "cat(R.version.string, '\n'); suppressPackageStartupMessages(library(DESeq2)); cat('DESEQ2_OK\n')"
+```
+
+### One-command environment check without activation
 
 ```bash
 export MAMBA_ROOT_PREFIX=/home/pzg8794/.local/share/micromamba
