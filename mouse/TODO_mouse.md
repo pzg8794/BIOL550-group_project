@@ -119,7 +119,13 @@ Local Python/Jupyter work should use:
 - [x] Check whether the post-`fastp` `Per Sequence GC Content` WARN subset maps to one biological group.
   - Finding: the WARN subset clusters in a real study subset, but not in one simple biological condition.
   - Decision note: `Semester5/BIOL550/group_project/mouse/GC_WARN_and_Shared_MultiQC_Followup_2026-03-17.md`
-- [ ] Use STAR alignment metrics to compare the GC-WARN subset vs the GC-PASS subset before considering removal/subsetting.
+- [x] Use STAR alignment metrics to compare the GC-WARN subset vs the GC-PASS subset before considering removal/subsetting.
+  - Notebook:
+    - `Semester5/BIOL550/group_project/mouse/notebooks/mouse_alignment_analysis_star_all26.ipynb`
+  - Output folder:
+    - `Semester5/BIOL550/group_project/mouse/alignment_analysis_star_all26/`
+  - Decision note:
+    - `Semester5/BIOL550/group_project/mouse/ALIGNMENT_ANALYSIS_NOTEBOOK_2026-03-19.md`
 
 ## 2026-03-17 — alignment start on local server (`sequoia`)
 - [x] Lock the pre-alignment decision set explicitly:
@@ -181,14 +187,84 @@ Local Python/Jupyter work should use:
 - [x] Record the process lesson explicitly.
   - independent verification of shared derived outputs is required before treating them as canonical
 
+## 2026-03-19 — local canonical alignment copy + alignment notebook
+- [x] Create the local alignment-analysis notebook for the canonical all-26 STAR run.
+  - notebook:
+    - `Semester5/BIOL550/group_project/mouse/notebooks/mouse_alignment_analysis_star_all26.ipynb`
+  - outputs:
+    - `Semester5/BIOL550/group_project/mouse/alignment_analysis_star_all26/`
+- [x] Build the first full sample-level alignment summary from `Log.final.out` + `ReadsPerGene.out.tab`.
+  - exported tables include:
+    - `mouse_alignment_sample_summary.tsv`
+    - `mouse_star_gene_counts_reverse_stranded.tsv`
+    - `alignment_metric_by_platform_median.tsv`
+    - `alignment_metric_by_gc_status_median.tsv`
+- [ ] Finish the local BAM / BAI sync from `sequoia` into:
+  - `Semester5/BIOL550/group_project/mouse/alignment_local_server_private_copy/star_grcm39_ensembl_all26_fastp/`
+  - note:
+    - the STAR log/count analysis is complete locally
+    - BAM transfer is large and continues separately from the notebook work
+
+## 2026-03-19 — differential expression notebook and DESeq2 export package
+- [x] Create and execute the local DE notebook for the all-26 STAR count handoff.
+  - notebook:
+    - `Semester5/BIOL550/group_project/mouse/notebooks/mouse_differential_expression_all26.ipynb`
+  - driver script:
+    - `Semester5/BIOL550/group_project/pipelines/mouse_deseq2_all26.R`
+- [x] Build the cleaned DE design table and family/contrast manifests.
+  - exported tables include:
+    - `mouse_de_design_table.tsv`
+    - `family_manifest.tsv`
+    - `contrast_manifest.tsv`
+- [x] Run all valid family-specific DESeq2 contrasts instead of one confounded global model.
+  - families:
+    - tissue / `NovaSeq 6000` / naive vs injury
+    - tissue / `NovaSeq X` / ipsilateral vs contralateral sham
+    - neurons / `NovaSeq X`
+  - total contrasts exported:
+    - `11`
+- [x] Generate DE QC figures and per-contrast result packages under:
+  - `Semester5/BIOL550/group_project/mouse/differential_expression_all26/`
+- [x] Record the DE notebook interpretation and handoff note:
+  - `Semester5/BIOL550/group_project/mouse/DIFFERENTIAL_EXPRESSION_NOTEBOOK_2026-03-19.md`
+
+## 2026-03-20 — private team DESeq2 server environment
+- [x] Create a private team-only DESeq2 environment on `sequoia` without changing the server’s global R stack.
+  - env path:
+    - `/home/pzg8794/.local/share/micromamba/envs/biol550_deseq2`
+- [x] Record the runtime issue and the fix.
+  - issue:
+    - `/usr/local/bin/R` failed because `libreadline.so.7` was missing
+  - fix:
+    - private micromamba environment with `R 4.3.3` + `DESeq2`
+- [x] Add a short shared-server wrapper for team execution.
+  - local canonical wrapper:
+    - `Semester5/BIOL550/group_project/pipelines/mouse_deseq2_shared_server_run.sh`
+  - server wrapper target:
+    - `/home/zebrafish/mouse/PRJNA1017789_parallel/scripts/mouse_deseq2_shared_server_run.sh`
+- [x] Copy the count matrix and alignment sample summary into a shared DE input directory on `sequoia`.
+  - shared input root:
+    - `/home/zebrafish/mouse/PRJNA1017789_parallel/deseq2_shared/inputs/`
+- [x] Verify that the wrapper can see the environment and the shared input files.
+  - wrapper check status:
+    - `CHECK_OK`
+
 ## Current local deliverables
 
 - Remediation notebook:
   - `Semester5/BIOL550/group_project/mouse/notebooks/qc_remediation_experiments_mouse.ipynb`
 - Team-follow remediation notebook copy:
   - `Semester5/BIOL550/group_project/mouse/notebooks/qc_remediation_experiments_mouse_team_follow.ipynb`
+- Alignment notebook:
+  - `Semester5/BIOL550/group_project/mouse/notebooks/mouse_alignment_analysis_star_all26.ipynb`
+- Differential expression notebook:
+  - `Semester5/BIOL550/group_project/mouse/notebooks/mouse_differential_expression_all26.ipynb`
 - Remediation artifact folder:
   - `Semester5/BIOL550/group_project/mouse/qc_analysis_remediation/`
+- Alignment analysis artifact folder:
+  - `Semester5/BIOL550/group_project/mouse/alignment_analysis_star_all26/`
+- Differential expression artifact folder:
+  - `Semester5/BIOL550/group_project/mouse/differential_expression_all26/`
 - Team full-status handoff doc:
   - `Semester5/BIOL550/group_project/mouse/MOUSE_GROUP_STATUS_FULL.md`
 - Team simple follow guide:

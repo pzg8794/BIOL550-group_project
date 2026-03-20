@@ -30,6 +30,7 @@ ALL_TARGETS=(
   download_fastq_sratoolkit.sh
   fastqc_bundle_summarize.py
   fastx_trim_fastqc_pipeline.sh
+  mouse_deseq2_all26.R
   mouse_qc_strategy_compare.py
   run_end_to_end_fastq_fastqc_fastx_fastqc.sh
   run_end_to_end_fastq_fastqc_fastx_fastqc_parallel.sh
@@ -43,6 +44,7 @@ remote_dir_for() {
     download_fastq_sratoolkit.sh) echo "/home/pzg8794/pipelines" ;;
     fastqc_bundle_summarize.py) echo "/home/pzg8794/mouse_qc_remediation/scripts" ;;
     fastx_trim_fastqc_pipeline.sh) echo "/home/pzg8794/pipelines" ;;
+    mouse_deseq2_all26.R) echo "/home/pzg8794/pipelines" ;;
     mouse_qc_strategy_compare.py) echo "/home/pzg8794/mouse_qc_remediation/scripts" ;;
     run_end_to_end_fastq_fastqc_fastx_fastqc.sh) echo "/home/pzg8794/pipelines" ;;
     run_end_to_end_fastq_fastqc_fastx_fastqc_parallel.sh) echo "/home/pzg8794/pipelines" ;;

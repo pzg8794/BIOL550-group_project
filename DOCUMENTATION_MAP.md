@@ -52,6 +52,12 @@ This file is the navigation hub for the active BIOL550 group-project documentati
   - exact shared paths for the canonical MultiQC and alignment copies, plus the rationale for using them
 - [GC WARN + shared MultiQC follow-up note](mouse/GC_WARN_and_Shared_MultiQC_Followup_2026-03-17.md)
   - dated decision note covering the shared trimmed-only MultiQC rerun, GC WARN metadata check, and alignment recommendation
+- [Mouse alignment analysis notebook note](mouse/ALIGNMENT_ANALYSIS_NOTEBOOK_2026-03-19.md)
+  - alignment-stage note covering the local all-26 STAR notebook, exported tables/figures, and the first-pass interpretation
+- [Mouse differential expression notebook note](mouse/DIFFERENTIAL_EXPRESSION_NOTEBOOK_2026-03-19.md)
+  - DESeq2-stage note covering the all-26 count handoff, family-specific model design, exported contrasts, and first-pass interpretation
+- [Mouse DESeq2 shared-server setup note](mouse/DESEQ2_SHARED_SERVER_SETUP_2026-03-20.md)
+  - private team-only DESeq2 environment on `sequoia`, runtime issue/fix, wrapper lifecycle, and shared input/output path setup
 
 ### Level 4 — Evidence and outputs
 
@@ -61,8 +67,18 @@ This file is the navigation hub for the active BIOL550 group-project documentati
   - presentation layer for remediation comparisons after terminal outputs exist
 - `mouse/notebooks/qc_remediation_experiments_mouse_team_follow.ipynb`
   - simplified team-follow copy of the remediation notebook
+- `mouse/notebooks/mouse_alignment_analysis_star_all26.ipynb`
+  - alignment-stage notebook for the canonical all-26 STAR run
+- `mouse/notebooks/mouse_differential_expression_all26.ipynb`
+  - DESeq2 notebook for the family-specific all-26 mouse count analysis
+- `pipelines/mouse_deseq2_shared_server_run.sh`
+  - short shared-server wrapper that checks the private team DESeq2 environment and launches the DE driver against shared inputs
 - `mouse/qc_analysis_raw_vs_trimmed/`
   - baseline comparison tables and plots
+- `mouse/alignment_analysis_star_all26/`
+  - alignment summary tables, reverse-stranded count handoff matrix, and figures derived from the canonical STAR outputs
+- `mouse/differential_expression_all26/`
+  - family-level DESeq2 outputs, QC figures, contrast tables, and result manifests for the mouse dataset
 - `mouse/reports/BIOL550_Weekly_Report_Mouse_SRA_FastQC_2026-03-04.html`
   - weekly report artifact built from the current mouse QC phase
 

@@ -1246,3 +1246,165 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 ### Decision
 - Monitor the STAR index build first, then the three parallel batch logs.
 - Use this all-26 run as the base alignment layer; defer any subsetting decision until the alignment metrics are available.
+
+## 2026-03-18 — Peer review version cleanup and internal reasoning capture
+- **step** — Archived superseded peer-review HTML drafts into `_delete_temp_peer_review_versions_2026-03-18/` and renamed the selected version to `Peer_Review_BIOL550_Final.html`.
+- **status** — One final active peer-review HTML remains at top level; prior drafts are retained in a local archive folder.
+- **finding** — The strongest version balanced candid peer evaluation with explicit acknowledgment that process and environment also shaped the group outcome.
+- **decision** — Keep `Peer_Review_BIOL550_Final.html` as the active submission file and store personal score/reasoning context only in `PEER_REVIEW_INTERNAL_REASONING_2026-03-18.md`.
+
+## 2026-03-19 — Mouse alignment notebook, STAR summary exports, and local BAM sync start
+
+### Step
+- Created a new alignment-stage notebook under:
+  - `Semester5/BIOL550/group_project/mouse/notebooks/mouse_alignment_analysis_star_all26.ipynb`
+- Executed the notebook in the shared BIOL550 environment so it parsed the local canonical STAR outputs and wrote figures/tables into:
+  - `Semester5/BIOL550/group_project/mouse/alignment_analysis_star_all26/`
+- Built a sample-level summary by merging:
+  - STAR `Log.final.out` metrics
+  - STAR `ReadsPerGene.out.tab` special rows
+  - SRA run metadata
+  - GEO sample metadata
+  - post-`fastp` GC-WARN / GC-PASS labels
+- Started the local BAM/BAM-index sync from:
+  - `/home/pzg8794/mouse_qc_remediation/alignment/star_grcm39_ensembl_all26_fastp/`
+  - into:
+  - `Semester5/BIOL550/group_project/mouse/alignment_local_server_private_copy/star_grcm39_ensembl_all26_fastp/`
+
+### Finding
+- All `26/26` STAR `Log.final.out` files and `26/26` `ReadsPerGene.out.tab` files were already present locally, so the alignment notebook could run immediately even before the BAM sync finished.
+- The notebook exported:
+  - `mouse_alignment_sample_summary.tsv`
+  - `mouse_star_gene_counts_reverse_stranded.tsv`
+  - `star_log_alignment_metrics.tsv`
+  - `alignment_metric_by_platform_median.tsv`
+  - `alignment_metric_by_gc_status_median.tsv`
+  - five report-ready figures under `mouse/alignment_analysis_star_all26/figures/`
+- First-pass alignment interpretation from the notebook:
+  - median unique mapping is approximately `94%`
+  - `NovaSeq X` vs `NovaSeq 6000` differences are visible but not catastrophic
+  - `GC-WARN` samples show lower median unique mapping and higher multi-mapping than `GC-PASS`, but they do not collapse as a failed subset
+- The BAM transfer is much larger than the log/count bundle; the sync has started and is verified progressing locally, but it remains separate from the completed log/count notebook analysis.
+
+### Decision
+- Use the new notebook + `alignment_analysis_star_all26/` outputs as the current alignment-stage evidence package for the mouse project.
+- Proceed with the full dataset into the next count/report phase while carrying `platform` and `GC status` as explicit metadata labels.
+- Use the reverse-stranded STAR count matrix as the next handoff artifact for the individual report and later DE-focused notebook work.
+
+## 2026-03-19 — Mouse DESeq2 notebook, family manifests, and contrast export package
+
+### Step
+- Added a dedicated DESeq2 driver script:
+  - `pipelines/mouse_deseq2_all26.R`
+- Created and executed the mouse DE notebook:
+  - `mouse/notebooks/mouse_differential_expression_all26.ipynb`
+- Built the DE design table from:
+  - `mouse/alignment_analysis_star_all26/tables/mouse_star_gene_counts_reverse_stranded.tsv`
+  - `mouse/alignment_analysis_star_all26/tables/mouse_alignment_sample_summary.tsv`
+- Split the downstream analysis into three valid model families and exported all interpretable contrasts into:
+  - `mouse/differential_expression_all26/`
+
+### Finding
+- The count matrix and alignment sample summary matched cleanly across all `26` samples, so no manual sample exclusion was required for the first-pass DE workflow.
+- The family manifest confirms three valid DE families:
+  - tissue / `NovaSeq 6000` / naive vs injury = `12` samples
+  - tissue / `NovaSeq X` / sham side = `8` samples
+  - neurons / `NovaSeq X` = `6` samples
+- The DE package now includes:
+  - `mouse_de_design_table.tsv`
+  - `family_manifest.tsv`
+  - `contrast_manifest.tsv`
+  - family-level PCA / dispersion / sample-distance figures
+  - per-contrast full tables, significant tables, top-gene tables, MA plots, volcano plots, and heatmaps
+- First-pass contrast summary:
+  - `injury_in_control` = `4667` significant genes
+  - `injury_in_cko` = `4088` significant genes
+  - `geno_in_ipsilateral_sham` = `144`
+  - `ipsilateral_vs_contralateral_in_cko` = `131`
+  - `geno_in_neurons` = `139`
+  - tissue genotype effects in the `NovaSeq 6000` family remained small (`2` significant genes in naive; `2` in injury)
+
+### Decision
+- Keep the family-specific DESeq2 approach as the default downstream model strategy.
+- Do not fit a single global DE model across tissue, neurons, and both platforms because the design is structurally confounded.
+- Use the tissue injury contrasts as the main report candidate set, with sham-side and neuron genotype contrasts kept as secondary report-ready results.
+- Treat `mouse/notebooks/mouse_differential_expression_all26.ipynb` plus `mouse/differential_expression_all26/` as the current DE evidence package for the mouse project.
+
+## 2026-03-19 — Alignment-first weekly report draft built from the local STAR notebook
+
+### Step
+- Drafted the new mouse weekly report as an alignment-first report:
+  - `mouse/reports/BIOL550_Weekly_Report_Mouse_Alignment_Validation_2026-03-19.html`
+- Rendered the matching PDF:
+  - `mouse/reports/BIOL550 Weekly Report — Mouse Alignment Validation + Local Reproducible Analysis.pdf`
+- Added a short internal note documenting the report angle, included figures, excluded figures, and core claim:
+  - `mouse/reports/_INTERNAL_ALIGNMENT_WEEKLY_REPORT_NOTE_2026-03-19.md`
+
+### Finding
+- The report now uses the alignment notebook as the main analytical source of truth rather than treating local environment setup as the main accomplishment.
+- The figure set is smaller and more readable than the prior QC-remediation report:
+  - per-sample unique mapping
+  - platform comparison
+  - GC-status comparison
+  - assignment-burden comparison
+  - one compact summary table
+- The recent transcript discussion about GC bimodality and sequencing-instrument effects is folded into the report narrative, and the alignment notebook supports that explanation:
+  - the GC-WARN subset aligns somewhat worse
+  - the older platform also aligns somewhat worse
+  - neither subset behaves like a failed-sample cluster
+
+### Decision
+- Keep this report aligned to the technical readiness question:
+  - is the full dataset strong enough to proceed beyond alignment?
+- Use the weekly report to bridge from alignment validation into the DE notebook rather than returning to a cleanup-heavy narrative.
+
+## 2026-03-19 — Shared non-canonical STAR alignment stopped and archived
+
+### Step
+- Checked the active server-side shared alignment processes under:
+  - `/home/zebrafish/mouse/PRJNA1017789_parallel/alignment/star_grcm39_ensembl_all26_fastp/`
+- Stopped the shared-side STAR launcher, batch, per-sample wrapper, and active STAR subprocesses on `sequoia`.
+- Moved the local copy of the shared-side alignment tree out of the active local alignment area into:
+  - `mouse/_delete_temp_bad_shared_alignment_2026-03-19/`
+- Added an archive note:
+  - `mouse/_delete_temp_bad_shared_alignment_2026-03-19/README.txt`
+
+### Finding
+- The shared-side alignment was still running even though the shared `fastp_out` tree had already been documented as non-equivalent to the private canonical validated `fastp` output.
+- Leaving that run active would keep consuming server resources for a non-canonical output set and increase the chance of later confusion about which alignment should be used downstream.
+
+### Decision
+- Stop using the shared-side STAR run as an active workflow.
+- Preserve the local copy only as retained evidence.
+- Keep the private validated `fastp` alignment as the sole canonical source for notebook analysis, reports, and downstream DE modeling.
+
+## 2026-03-20 — Private team DESeq2 environment created on sequoia
+
+### Step
+- Created a private team-only micromamba environment on `sequoia`:
+  - `/home/pzg8794/.local/share/micromamba/envs/biol550_deseq2`
+- Installed:
+  - `R 4.3.3`
+  - `DESeq2`
+  - `BiocManager`
+  - supporting plotting / CLI packages needed by the existing DE driver
+- Added a short shared-server wrapper locally:
+  - `pipelines/mouse_deseq2_shared_server_run.sh`
+- Added a detailed internal setup note:
+  - `mouse/DESEQ2_SHARED_SERVER_SETUP_2026-03-20.md`
+- Added a simplified teammate guide in the share repo:
+  - `mouse_group_project_work/docs/DESEQ2_SHARED_TEAM_GUIDE.md`
+
+### Finding
+- The server’s current `/usr/local/bin/R` was not usable because it failed at runtime with:
+  - missing `libreadline.so.7`
+- That made a direct install into the current server R stack the wrong fix.
+- A user-scoped micromamba environment fixed the runtime problem without changing the server’s existing/global setup.
+- One package-name issue also surfaced during setup:
+  - `bioconductor-biocmanager` did not resolve in the chosen channels
+  - `r-biocmanager` was the correct package name
+
+### Decision
+- Keep the DESeq2 runtime private to `/home/pzg8794` and use it as the team environment.
+- Keep the long DESeq2 driver local as canonical code.
+- Keep only the short wrapper and shared input/output artifacts in the team-facing shared directory on the server.
