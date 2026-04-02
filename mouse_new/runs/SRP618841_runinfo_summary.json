@@ -1,0 +1,18 @@
+{
+  "n_runs": 20,
+  "models": [
+    "Illumina NovaSeq X"
+  ],
+  "layouts": [
+    "PAIRED"
+  ],
+  "strategies": [
+    "RNA-Seq"
+  ],
+  "avg_lengths": [
+    "302"
+  ],
+  "release_dates": [
+    "2026-02-05"
+  ]
+}

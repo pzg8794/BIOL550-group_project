@@ -1,0 +1,12 @@
+module	mean_status_score
+Per Base Sequence Content	0.25
+Sequence Duplication Levels	0.25
+Adapter Content	0.25
+Per Tile Sequence Quality	0.375
+Per Sequence GC Content	0.5375
+Per Base Sequence Quality	0.65
+Overrepresented Sequences	0.675
+Basic Statistics	1.0
+Per Sequence Quality Scores	1.0
+Per Base N Content	1.0
+Sequence Length Distribution	1.0

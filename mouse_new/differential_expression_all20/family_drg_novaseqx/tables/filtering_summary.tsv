@@ -1,0 +1,2 @@
+family_id	family_label	samples_total	genes_before_filter	genes_after_filter	min_samples_count_ge_10
+family_drg_novaseqx	DRG / NovaSeq X / ipsilateral vs contralateral	20	78334	21481	3

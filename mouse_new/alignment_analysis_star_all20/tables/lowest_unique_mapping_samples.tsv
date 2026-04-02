@@ -1,0 +1,6 @@
+srr	sample_title	platform_short	gc_status	unique_pct	multi_pct
+SRR35329995	Replicate H95, CRE genotype, Contralateral tissue	NovaSeq X	WARN	92.5	5.73
+SRR35329985	Replicate H64, CRE genotype, Contralateral tissue	NovaSeq X	WARN	92.67	5.64
+SRR35329991	Replicate H96, Wildtype, Ipsilateral tissue	NovaSeq X	WARN	92.7	5.57
+SRR35329990	Replicate H100, CRE genotype, Contralateral tissue	NovaSeq X	WARN	92.74	5.7
+SRR35329992	Replicate H97, Wildtype, Ipsilateral tissue	NovaSeq X	WARN	93.08	5.08

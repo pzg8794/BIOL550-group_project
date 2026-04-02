@@ -1,0 +1,21 @@
+srr	sample_title	source_name	platform_family	source_class	geno_class	side_class	condition_family	family_id	gc_status	genotype	treatment	include_in_de	excluded_reason
+SRR35329977	Replicate H64, CRE genotype, Ipsilateral tissue	Ipsi	NovaSeq X	drg	cre	ipsi	ipsi_cre	family_drg_novaseqx	WARN	CRE	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329978	Replicate H65,  Wildtype, Ipsilateral tissue	Ipsi	NovaSeq X	drg	ff	ipsi	ipsi_ff	family_drg_novaseqx	WARN	FF	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329979	Replicate H96,  Wildtype, Contralateral tissue	Contra	NovaSeq X	drg	ff	contra	contra_ff	family_drg_novaseqx	WARN	FF	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329980	Replicate H97,  Wildtype, Contralateral tissue	Contra	NovaSeq X	drg	ff	contra	contra_ff	family_drg_novaseqx	WARN	FF	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329981	Replicate H65,  Wildtype, Contralateral tissue	Contra	NovaSeq X	drg	ff	contra	contra_ff	family_drg_novaseqx	WARN	FF	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329982	Replicate H62,  Wildtype, Contralateral tissue	Contra	NovaSeq X	drg	ff	contra	contra_ff	family_drg_novaseqx	WARN	FF	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329983	Replicate H61, CRE genotype, Ipsilateral tissue	Ipsi	NovaSeq X	drg	cre	ipsi	ipsi_cre	family_drg_novaseqx	WARN	CRE	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329984	Replicate H62,  Wildtype, Ipsilateral tissue	Ipsi	NovaSeq X	drg	ff	ipsi	ipsi_ff	family_drg_novaseqx	WARN	FF	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329985	Replicate H64, CRE genotype, Contralateral tissue	Contra	NovaSeq X	drg	cre	contra	contra_cre	family_drg_novaseqx	WARN	CRE	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329986	Replicate H63, Wildtype, Ipsilateral tissue	Ipsi	NovaSeq X	drg	ff	ipsi	ipsi_ff	family_drg_novaseqx	WARN	FF	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329987	Replicate H95, CRE genotype, Ipsilateral tissue	Ipsi	NovaSeq X	drg	cre	ipsi	ipsi_cre	family_drg_novaseqx	WARN	CRE	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329988	Replicate H99, CRE genotype, Contralateral tissue	Contra	NovaSeq X	drg	cre	contra	contra_cre	family_drg_novaseqx	WARN	CRE	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329989	Replicate H63,  Wildtype, Contralateral tissue	Contra	NovaSeq X	drg	ff	contra	contra_ff	family_drg_novaseqx	WARN	FF	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329990	Replicate H100, CRE genotype, Contralateral tissue	Contra	NovaSeq X	drg	cre	contra	contra_cre	family_drg_novaseqx	WARN	CRE	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329991	Replicate H96, Wildtype, Ipsilateral tissue	Ipsi	NovaSeq X	drg	ff	ipsi	ipsi_ff	family_drg_novaseqx	WARN	FF	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329992	Replicate H97, Wildtype, Ipsilateral tissue	Ipsi	NovaSeq X	drg	ff	ipsi	ipsi_ff	family_drg_novaseqx	WARN	FF	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329993	Replicate H99, CRE genotype, Ipsilateral tissue	Ipsi	NovaSeq X	drg	cre	ipsi	ipsi_cre	family_drg_novaseqx	WARN	CRE	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329994	Replicate H100, CRE genotype, Ipsilateral tissue	Ipsi	NovaSeq X	drg	cre	ipsi	ipsi_cre	family_drg_novaseqx	WARN	CRE	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329995	Replicate H95, CRE genotype, Contralateral tissue	Contra	NovaSeq X	drg	cre	contra	contra_cre	family_drg_novaseqx	WARN	CRE	Spinal Cord Injury - 1dpi	TRUE	
+SRR35329996	Replicate H6, CRE genotype, Contralateral tissue	Contra	NovaSeq X	drg	cre	contra	contra_cre	family_drg_novaseqx	WARN	CRE	Spinal Cord Injury - 1dpi	TRUE	

@@ -1,0 +1,8 @@
+artifact	expected	found	status
+RunInfo CSV	1	1	complete
+raw FastQC ZIPs	40	40	complete
+raw FastQC HTMLs	40	40	complete
+raw MultiQC HTML	1	1	complete
+trimmed FastQC ZIPs	40	0	pending
+trimmed FastQC HTMLs	40	0	pending
+trimmed MultiQC HTML	1	0	pending

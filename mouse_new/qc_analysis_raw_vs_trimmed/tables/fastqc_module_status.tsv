@@ -1,0 +1,441 @@
+run	read	stage	module	status	zip_path
+SRR35329977	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_1_fastqc.zip
+SRR35329977	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_1_fastqc.zip
+SRR35329977	1	raw	Overrepresented sequences	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_1_fastqc.zip
+SRR35329977	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_1_fastqc.zip
+SRR35329977	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_1_fastqc.zip
+SRR35329977	1	raw	Per base sequence quality	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_1_fastqc.zip
+SRR35329977	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_1_fastqc.zip
+SRR35329977	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_1_fastqc.zip
+SRR35329977	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_1_fastqc.zip
+SRR35329977	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_1_fastqc.zip
+SRR35329977	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_1_fastqc.zip
+SRR35329977	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_2_fastqc.zip
+SRR35329977	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_2_fastqc.zip
+SRR35329977	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_2_fastqc.zip
+SRR35329977	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_2_fastqc.zip
+SRR35329977	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_2_fastqc.zip
+SRR35329977	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_2_fastqc.zip
+SRR35329977	2	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_2_fastqc.zip
+SRR35329977	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_2_fastqc.zip
+SRR35329977	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_2_fastqc.zip
+SRR35329977	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_2_fastqc.zip
+SRR35329977	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329977_2_fastqc.zip
+SRR35329978	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_1_fastqc.zip
+SRR35329978	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_1_fastqc.zip
+SRR35329978	1	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_1_fastqc.zip
+SRR35329978	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_1_fastqc.zip
+SRR35329978	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_1_fastqc.zip
+SRR35329978	1	raw	Per base sequence quality	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_1_fastqc.zip
+SRR35329978	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_1_fastqc.zip
+SRR35329978	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_1_fastqc.zip
+SRR35329978	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_1_fastqc.zip
+SRR35329978	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_1_fastqc.zip
+SRR35329978	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_1_fastqc.zip
+SRR35329978	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_2_fastqc.zip
+SRR35329978	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_2_fastqc.zip
+SRR35329978	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_2_fastqc.zip
+SRR35329978	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_2_fastqc.zip
+SRR35329978	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_2_fastqc.zip
+SRR35329978	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_2_fastqc.zip
+SRR35329978	2	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_2_fastqc.zip
+SRR35329978	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_2_fastqc.zip
+SRR35329978	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_2_fastqc.zip
+SRR35329978	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_2_fastqc.zip
+SRR35329978	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329978_2_fastqc.zip
+SRR35329979	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_1_fastqc.zip
+SRR35329979	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_1_fastqc.zip
+SRR35329979	1	raw	Overrepresented sequences	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_1_fastqc.zip
+SRR35329979	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_1_fastqc.zip
+SRR35329979	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_1_fastqc.zip
+SRR35329979	1	raw	Per base sequence quality	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_1_fastqc.zip
+SRR35329979	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_1_fastqc.zip
+SRR35329979	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_1_fastqc.zip
+SRR35329979	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_1_fastqc.zip
+SRR35329979	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_1_fastqc.zip
+SRR35329979	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_1_fastqc.zip
+SRR35329979	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_2_fastqc.zip
+SRR35329979	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_2_fastqc.zip
+SRR35329979	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_2_fastqc.zip
+SRR35329979	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_2_fastqc.zip
+SRR35329979	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_2_fastqc.zip
+SRR35329979	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_2_fastqc.zip
+SRR35329979	2	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_2_fastqc.zip
+SRR35329979	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_2_fastqc.zip
+SRR35329979	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_2_fastqc.zip
+SRR35329979	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_2_fastqc.zip
+SRR35329979	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329979_2_fastqc.zip
+SRR35329980	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_1_fastqc.zip
+SRR35329980	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_1_fastqc.zip
+SRR35329980	1	raw	Overrepresented sequences	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_1_fastqc.zip
+SRR35329980	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_1_fastqc.zip
+SRR35329980	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_1_fastqc.zip
+SRR35329980	1	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_1_fastqc.zip
+SRR35329980	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_1_fastqc.zip
+SRR35329980	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_1_fastqc.zip
+SRR35329980	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_1_fastqc.zip
+SRR35329980	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_1_fastqc.zip
+SRR35329980	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_1_fastqc.zip
+SRR35329980	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_2_fastqc.zip
+SRR35329980	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_2_fastqc.zip
+SRR35329980	2	raw	Overrepresented sequences	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_2_fastqc.zip
+SRR35329980	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_2_fastqc.zip
+SRR35329980	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_2_fastqc.zip
+SRR35329980	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_2_fastqc.zip
+SRR35329980	2	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_2_fastqc.zip
+SRR35329980	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_2_fastqc.zip
+SRR35329980	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_2_fastqc.zip
+SRR35329980	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_2_fastqc.zip
+SRR35329980	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329980_2_fastqc.zip
+SRR35329981	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_1_fastqc.zip
+SRR35329981	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_1_fastqc.zip
+SRR35329981	1	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_1_fastqc.zip
+SRR35329981	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_1_fastqc.zip
+SRR35329981	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_1_fastqc.zip
+SRR35329981	1	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_1_fastqc.zip
+SRR35329981	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_1_fastqc.zip
+SRR35329981	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_1_fastqc.zip
+SRR35329981	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_1_fastqc.zip
+SRR35329981	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_1_fastqc.zip
+SRR35329981	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_1_fastqc.zip
+SRR35329981	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_2_fastqc.zip
+SRR35329981	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_2_fastqc.zip
+SRR35329981	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_2_fastqc.zip
+SRR35329981	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_2_fastqc.zip
+SRR35329981	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_2_fastqc.zip
+SRR35329981	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_2_fastqc.zip
+SRR35329981	2	raw	Per sequence GC content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_2_fastqc.zip
+SRR35329981	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_2_fastqc.zip
+SRR35329981	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_2_fastqc.zip
+SRR35329981	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_2_fastqc.zip
+SRR35329981	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329981_2_fastqc.zip
+SRR35329982	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_1_fastqc.zip
+SRR35329982	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_1_fastqc.zip
+SRR35329982	1	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_1_fastqc.zip
+SRR35329982	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_1_fastqc.zip
+SRR35329982	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_1_fastqc.zip
+SRR35329982	1	raw	Per base sequence quality	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_1_fastqc.zip
+SRR35329982	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_1_fastqc.zip
+SRR35329982	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_1_fastqc.zip
+SRR35329982	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_1_fastqc.zip
+SRR35329982	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_1_fastqc.zip
+SRR35329982	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_1_fastqc.zip
+SRR35329982	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_2_fastqc.zip
+SRR35329982	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_2_fastqc.zip
+SRR35329982	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_2_fastqc.zip
+SRR35329982	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_2_fastqc.zip
+SRR35329982	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_2_fastqc.zip
+SRR35329982	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_2_fastqc.zip
+SRR35329982	2	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_2_fastqc.zip
+SRR35329982	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_2_fastqc.zip
+SRR35329982	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_2_fastqc.zip
+SRR35329982	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_2_fastqc.zip
+SRR35329982	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329982_2_fastqc.zip
+SRR35329983	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_1_fastqc.zip
+SRR35329983	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_1_fastqc.zip
+SRR35329983	1	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_1_fastqc.zip
+SRR35329983	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_1_fastqc.zip
+SRR35329983	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_1_fastqc.zip
+SRR35329983	1	raw	Per base sequence quality	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_1_fastqc.zip
+SRR35329983	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_1_fastqc.zip
+SRR35329983	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_1_fastqc.zip
+SRR35329983	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_1_fastqc.zip
+SRR35329983	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_1_fastqc.zip
+SRR35329983	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_1_fastqc.zip
+SRR35329983	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_2_fastqc.zip
+SRR35329983	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_2_fastqc.zip
+SRR35329983	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_2_fastqc.zip
+SRR35329983	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_2_fastqc.zip
+SRR35329983	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_2_fastqc.zip
+SRR35329983	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_2_fastqc.zip
+SRR35329983	2	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_2_fastqc.zip
+SRR35329983	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_2_fastqc.zip
+SRR35329983	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_2_fastqc.zip
+SRR35329983	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_2_fastqc.zip
+SRR35329983	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329983_2_fastqc.zip
+SRR35329984	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_1_fastqc.zip
+SRR35329984	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_1_fastqc.zip
+SRR35329984	1	raw	Overrepresented sequences	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_1_fastqc.zip
+SRR35329984	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_1_fastqc.zip
+SRR35329984	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_1_fastqc.zip
+SRR35329984	1	raw	Per base sequence quality	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_1_fastqc.zip
+SRR35329984	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_1_fastqc.zip
+SRR35329984	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_1_fastqc.zip
+SRR35329984	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_1_fastqc.zip
+SRR35329984	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_1_fastqc.zip
+SRR35329984	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_1_fastqc.zip
+SRR35329984	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_2_fastqc.zip
+SRR35329984	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_2_fastqc.zip
+SRR35329984	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_2_fastqc.zip
+SRR35329984	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_2_fastqc.zip
+SRR35329984	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_2_fastqc.zip
+SRR35329984	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_2_fastqc.zip
+SRR35329984	2	raw	Per sequence GC content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_2_fastqc.zip
+SRR35329984	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_2_fastqc.zip
+SRR35329984	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_2_fastqc.zip
+SRR35329984	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_2_fastqc.zip
+SRR35329984	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329984_2_fastqc.zip
+SRR35329985	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_1_fastqc.zip
+SRR35329985	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_1_fastqc.zip
+SRR35329985	1	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_1_fastqc.zip
+SRR35329985	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_1_fastqc.zip
+SRR35329985	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_1_fastqc.zip
+SRR35329985	1	raw	Per base sequence quality	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_1_fastqc.zip
+SRR35329985	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_1_fastqc.zip
+SRR35329985	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_1_fastqc.zip
+SRR35329985	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_1_fastqc.zip
+SRR35329985	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_1_fastqc.zip
+SRR35329985	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_1_fastqc.zip
+SRR35329985	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_2_fastqc.zip
+SRR35329985	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_2_fastqc.zip
+SRR35329985	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_2_fastqc.zip
+SRR35329985	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_2_fastqc.zip
+SRR35329985	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_2_fastqc.zip
+SRR35329985	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_2_fastqc.zip
+SRR35329985	2	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_2_fastqc.zip
+SRR35329985	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_2_fastqc.zip
+SRR35329985	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_2_fastqc.zip
+SRR35329985	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_2_fastqc.zip
+SRR35329985	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329985_2_fastqc.zip
+SRR35329986	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_1_fastqc.zip
+SRR35329986	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_1_fastqc.zip
+SRR35329986	1	raw	Overrepresented sequences	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_1_fastqc.zip
+SRR35329986	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_1_fastqc.zip
+SRR35329986	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_1_fastqc.zip
+SRR35329986	1	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_1_fastqc.zip
+SRR35329986	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_1_fastqc.zip
+SRR35329986	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_1_fastqc.zip
+SRR35329986	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_1_fastqc.zip
+SRR35329986	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_1_fastqc.zip
+SRR35329986	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_1_fastqc.zip
+SRR35329986	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_2_fastqc.zip
+SRR35329986	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_2_fastqc.zip
+SRR35329986	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_2_fastqc.zip
+SRR35329986	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_2_fastqc.zip
+SRR35329986	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_2_fastqc.zip
+SRR35329986	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_2_fastqc.zip
+SRR35329986	2	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_2_fastqc.zip
+SRR35329986	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_2_fastqc.zip
+SRR35329986	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_2_fastqc.zip
+SRR35329986	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_2_fastqc.zip
+SRR35329986	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329986_2_fastqc.zip
+SRR35329987	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_1_fastqc.zip
+SRR35329987	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_1_fastqc.zip
+SRR35329987	1	raw	Overrepresented sequences	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_1_fastqc.zip
+SRR35329987	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_1_fastqc.zip
+SRR35329987	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_1_fastqc.zip
+SRR35329987	1	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_1_fastqc.zip
+SRR35329987	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_1_fastqc.zip
+SRR35329987	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_1_fastqc.zip
+SRR35329987	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_1_fastqc.zip
+SRR35329987	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_1_fastqc.zip
+SRR35329987	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_1_fastqc.zip
+SRR35329987	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_2_fastqc.zip
+SRR35329987	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_2_fastqc.zip
+SRR35329987	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_2_fastqc.zip
+SRR35329987	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_2_fastqc.zip
+SRR35329987	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_2_fastqc.zip
+SRR35329987	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_2_fastqc.zip
+SRR35329987	2	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_2_fastqc.zip
+SRR35329987	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_2_fastqc.zip
+SRR35329987	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_2_fastqc.zip
+SRR35329987	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_2_fastqc.zip
+SRR35329987	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329987_2_fastqc.zip
+SRR35329988	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_1_fastqc.zip
+SRR35329988	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_1_fastqc.zip
+SRR35329988	1	raw	Overrepresented sequences	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_1_fastqc.zip
+SRR35329988	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_1_fastqc.zip
+SRR35329988	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_1_fastqc.zip
+SRR35329988	1	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_1_fastqc.zip
+SRR35329988	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_1_fastqc.zip
+SRR35329988	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_1_fastqc.zip
+SRR35329988	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_1_fastqc.zip
+SRR35329988	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_1_fastqc.zip
+SRR35329988	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_1_fastqc.zip
+SRR35329988	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_2_fastqc.zip
+SRR35329988	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_2_fastqc.zip
+SRR35329988	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_2_fastqc.zip
+SRR35329988	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_2_fastqc.zip
+SRR35329988	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_2_fastqc.zip
+SRR35329988	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_2_fastqc.zip
+SRR35329988	2	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_2_fastqc.zip
+SRR35329988	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_2_fastqc.zip
+SRR35329988	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_2_fastqc.zip
+SRR35329988	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_2_fastqc.zip
+SRR35329988	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329988_2_fastqc.zip
+SRR35329989	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_1_fastqc.zip
+SRR35329989	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_1_fastqc.zip
+SRR35329989	1	raw	Overrepresented sequences	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_1_fastqc.zip
+SRR35329989	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_1_fastqc.zip
+SRR35329989	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_1_fastqc.zip
+SRR35329989	1	raw	Per base sequence quality	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_1_fastqc.zip
+SRR35329989	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_1_fastqc.zip
+SRR35329989	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_1_fastqc.zip
+SRR35329989	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_1_fastqc.zip
+SRR35329989	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_1_fastqc.zip
+SRR35329989	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_1_fastqc.zip
+SRR35329989	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_2_fastqc.zip
+SRR35329989	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_2_fastqc.zip
+SRR35329989	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_2_fastqc.zip
+SRR35329989	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_2_fastqc.zip
+SRR35329989	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_2_fastqc.zip
+SRR35329989	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_2_fastqc.zip
+SRR35329989	2	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_2_fastqc.zip
+SRR35329989	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_2_fastqc.zip
+SRR35329989	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_2_fastqc.zip
+SRR35329989	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_2_fastqc.zip
+SRR35329989	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329989_2_fastqc.zip
+SRR35329990	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_1_fastqc.zip
+SRR35329990	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_1_fastqc.zip
+SRR35329990	1	raw	Overrepresented sequences	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_1_fastqc.zip
+SRR35329990	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_1_fastqc.zip
+SRR35329990	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_1_fastqc.zip
+SRR35329990	1	raw	Per base sequence quality	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_1_fastqc.zip
+SRR35329990	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_1_fastqc.zip
+SRR35329990	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_1_fastqc.zip
+SRR35329990	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_1_fastqc.zip
+SRR35329990	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_1_fastqc.zip
+SRR35329990	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_1_fastqc.zip
+SRR35329990	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_2_fastqc.zip
+SRR35329990	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_2_fastqc.zip
+SRR35329990	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_2_fastqc.zip
+SRR35329990	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_2_fastqc.zip
+SRR35329990	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_2_fastqc.zip
+SRR35329990	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_2_fastqc.zip
+SRR35329990	2	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_2_fastqc.zip
+SRR35329990	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_2_fastqc.zip
+SRR35329990	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_2_fastqc.zip
+SRR35329990	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_2_fastqc.zip
+SRR35329990	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329990_2_fastqc.zip
+SRR35329991	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_1_fastqc.zip
+SRR35329991	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_1_fastqc.zip
+SRR35329991	1	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_1_fastqc.zip
+SRR35329991	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_1_fastqc.zip
+SRR35329991	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_1_fastqc.zip
+SRR35329991	1	raw	Per base sequence quality	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_1_fastqc.zip
+SRR35329991	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_1_fastqc.zip
+SRR35329991	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_1_fastqc.zip
+SRR35329991	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_1_fastqc.zip
+SRR35329991	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_1_fastqc.zip
+SRR35329991	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_1_fastqc.zip
+SRR35329991	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_2_fastqc.zip
+SRR35329991	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_2_fastqc.zip
+SRR35329991	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_2_fastqc.zip
+SRR35329991	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_2_fastqc.zip
+SRR35329991	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_2_fastqc.zip
+SRR35329991	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_2_fastqc.zip
+SRR35329991	2	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_2_fastqc.zip
+SRR35329991	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_2_fastqc.zip
+SRR35329991	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_2_fastqc.zip
+SRR35329991	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_2_fastqc.zip
+SRR35329991	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329991_2_fastqc.zip
+SRR35329992	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_1_fastqc.zip
+SRR35329992	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_1_fastqc.zip
+SRR35329992	1	raw	Overrepresented sequences	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_1_fastqc.zip
+SRR35329992	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_1_fastqc.zip
+SRR35329992	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_1_fastqc.zip
+SRR35329992	1	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_1_fastqc.zip
+SRR35329992	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_1_fastqc.zip
+SRR35329992	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_1_fastqc.zip
+SRR35329992	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_1_fastqc.zip
+SRR35329992	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_1_fastqc.zip
+SRR35329992	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_1_fastqc.zip
+SRR35329992	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_2_fastqc.zip
+SRR35329992	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_2_fastqc.zip
+SRR35329992	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_2_fastqc.zip
+SRR35329992	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_2_fastqc.zip
+SRR35329992	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_2_fastqc.zip
+SRR35329992	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_2_fastqc.zip
+SRR35329992	2	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_2_fastqc.zip
+SRR35329992	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_2_fastqc.zip
+SRR35329992	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_2_fastqc.zip
+SRR35329992	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_2_fastqc.zip
+SRR35329992	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329992_2_fastqc.zip
+SRR35329993	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_1_fastqc.zip
+SRR35329993	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_1_fastqc.zip
+SRR35329993	1	raw	Overrepresented sequences	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_1_fastqc.zip
+SRR35329993	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_1_fastqc.zip
+SRR35329993	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_1_fastqc.zip
+SRR35329993	1	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_1_fastqc.zip
+SRR35329993	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_1_fastqc.zip
+SRR35329993	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_1_fastqc.zip
+SRR35329993	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_1_fastqc.zip
+SRR35329993	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_1_fastqc.zip
+SRR35329993	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_1_fastqc.zip
+SRR35329993	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_2_fastqc.zip
+SRR35329993	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_2_fastqc.zip
+SRR35329993	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_2_fastqc.zip
+SRR35329993	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_2_fastqc.zip
+SRR35329993	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_2_fastqc.zip
+SRR35329993	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_2_fastqc.zip
+SRR35329993	2	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_2_fastqc.zip
+SRR35329993	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_2_fastqc.zip
+SRR35329993	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_2_fastqc.zip
+SRR35329993	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_2_fastqc.zip
+SRR35329993	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329993_2_fastqc.zip
+SRR35329994	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_1_fastqc.zip
+SRR35329994	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_1_fastqc.zip
+SRR35329994	1	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_1_fastqc.zip
+SRR35329994	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_1_fastqc.zip
+SRR35329994	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_1_fastqc.zip
+SRR35329994	1	raw	Per base sequence quality	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_1_fastqc.zip
+SRR35329994	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_1_fastqc.zip
+SRR35329994	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_1_fastqc.zip
+SRR35329994	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_1_fastqc.zip
+SRR35329994	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_1_fastqc.zip
+SRR35329994	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_1_fastqc.zip
+SRR35329994	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_2_fastqc.zip
+SRR35329994	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_2_fastqc.zip
+SRR35329994	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_2_fastqc.zip
+SRR35329994	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_2_fastqc.zip
+SRR35329994	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_2_fastqc.zip
+SRR35329994	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_2_fastqc.zip
+SRR35329994	2	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_2_fastqc.zip
+SRR35329994	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_2_fastqc.zip
+SRR35329994	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_2_fastqc.zip
+SRR35329994	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_2_fastqc.zip
+SRR35329994	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329994_2_fastqc.zip
+SRR35329995	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_1_fastqc.zip
+SRR35329995	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_1_fastqc.zip
+SRR35329995	1	raw	Overrepresented sequences	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_1_fastqc.zip
+SRR35329995	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_1_fastqc.zip
+SRR35329995	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_1_fastqc.zip
+SRR35329995	1	raw	Per base sequence quality	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_1_fastqc.zip
+SRR35329995	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_1_fastqc.zip
+SRR35329995	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_1_fastqc.zip
+SRR35329995	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_1_fastqc.zip
+SRR35329995	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_1_fastqc.zip
+SRR35329995	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_1_fastqc.zip
+SRR35329995	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_2_fastqc.zip
+SRR35329995	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_2_fastqc.zip
+SRR35329995	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_2_fastqc.zip
+SRR35329995	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_2_fastqc.zip
+SRR35329995	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_2_fastqc.zip
+SRR35329995	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_2_fastqc.zip
+SRR35329995	2	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_2_fastqc.zip
+SRR35329995	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_2_fastqc.zip
+SRR35329995	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_2_fastqc.zip
+SRR35329995	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_2_fastqc.zip
+SRR35329995	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329995_2_fastqc.zip
+SRR35329996	1	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_1_fastqc.zip
+SRR35329996	1	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_1_fastqc.zip
+SRR35329996	1	raw	Overrepresented sequences	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_1_fastqc.zip
+SRR35329996	1	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_1_fastqc.zip
+SRR35329996	1	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_1_fastqc.zip
+SRR35329996	1	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_1_fastqc.zip
+SRR35329996	1	raw	Per sequence GC content	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_1_fastqc.zip
+SRR35329996	1	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_1_fastqc.zip
+SRR35329996	1	raw	Per tile sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_1_fastqc.zip
+SRR35329996	1	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_1_fastqc.zip
+SRR35329996	1	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_1_fastqc.zip
+SRR35329996	2	raw	Adapter Content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_2_fastqc.zip
+SRR35329996	2	raw	Basic Statistics	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_2_fastqc.zip
+SRR35329996	2	raw	Overrepresented sequences	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_2_fastqc.zip
+SRR35329996	2	raw	Per base N content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_2_fastqc.zip
+SRR35329996	2	raw	Per base sequence content	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_2_fastqc.zip
+SRR35329996	2	raw	Per base sequence quality	warn	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_2_fastqc.zip
+SRR35329996	2	raw	Per sequence GC content	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_2_fastqc.zip
+SRR35329996	2	raw	Per sequence quality scores	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_2_fastqc.zip
+SRR35329996	2	raw	Per tile sequence quality	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_2_fastqc.zip
+SRR35329996	2	raw	Sequence Duplication Levels	fail	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_2_fastqc.zip
+SRR35329996	2	raw	Sequence Length Distribution	pass	/Users/pitergarcia/DataScience/Semester5/BIOL550/group_project/mouse_new/qc_bundle_raw/SRR35329996_2_fastqc.zip

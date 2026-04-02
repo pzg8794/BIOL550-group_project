@@ -1,0 +1,12 @@
+stage	module	pass	warn	fail
+raw	Adapter Content	0	0	40
+raw	Per base sequence content	0	0	40
+raw	Sequence Duplication Levels	0	0	40
+raw	Per tile sequence quality	0	20	20
+raw	Per sequence GC content	3	37	0
+raw	Per base sequence quality	12	28	0
+raw	Overrepresented sequences	14	26	0
+raw	Basic Statistics	40	0	0
+raw	Per base N content	40	0	0
+raw	Per sequence quality scores	40	0	0
+raw	Sequence Length Distribution	40	0	0

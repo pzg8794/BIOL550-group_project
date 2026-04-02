@@ -1,0 +1,21 @@
+gsm	sample_title	source_name	geo_instrument_model	tissue	cell_type	genotype	treatment	sample_description	replicate	group_label
+GSM9228492	Replicate H64, CRE genotype, Ipsilateral tissue	Ipsi	Illumina NovaSeq X	Ipsi	DRG	CRE	Spinal Cord Injury - 1dpi	Library name: H64ffcre1dpiDRGipsi		Replicate H64, CRE genotype, Ipsilateral tissue
+GSM9228503	Replicate H65,  Wildtype, Ipsilateral tissue	Ipsi	Illumina NovaSeq X	Ipsi	DRG	FF	Spinal Cord Injury - 1dpi	Library name: H65ff1dpiDRGipsi		Replicate H65,  Wildtype, Ipsilateral tissue
+GSM9228497	Replicate H96,  Wildtype, Contralateral tissue	Contra	Illumina NovaSeq X	Contra	DRG	FF	Spinal Cord Injury - 1dpi	Library name: H96ff1dpiDRGcontra		Replicate H96,  Wildtype, Contralateral tissue
+GSM9228498	Replicate H97,  Wildtype, Contralateral tissue	Contra	Illumina NovaSeq X	Contra	DRG	FF	Spinal Cord Injury - 1dpi	Library name: H97ff1dpiDRGcontra		Replicate H97,  Wildtype, Contralateral tissue
+GSM9228499	Replicate H65,  Wildtype, Contralateral tissue	Contra	Illumina NovaSeq X	Contra	DRG	FF	Spinal Cord Injury - 1dpi	Library name: H65ff1dpiDRGcontra		Replicate H65,  Wildtype, Contralateral tissue
+GSM9228500	Replicate H62,  Wildtype, Contralateral tissue	Contra	Illumina NovaSeq X	Contra	DRG	FF	Spinal Cord Injury - 1dpi	Library name: H62ff1dpiDRGcontra		Replicate H62,  Wildtype, Contralateral tissue
+GSM9228501	Replicate H61, CRE genotype, Ipsilateral tissue	Ipsi	Illumina NovaSeq X	Ipsi	DRG	CRE	Spinal Cord Injury - 1dpi	Library name: H61ffcre1dpiDRGipsi		Replicate H61, CRE genotype, Ipsilateral tissue
+GSM9228502	Replicate H62,  Wildtype, Ipsilateral tissue	Ipsi	Illumina NovaSeq X	Ipsi	DRG	FF	Spinal Cord Injury - 1dpi	Library name: H62ff1dpiDRGipsi		Replicate H62,  Wildtype, Ipsilateral tissue
+GSM9228490	Replicate H64, CRE genotype, Contralateral tissue	Contra	Illumina NovaSeq X	Contra	DRG	CRE	Spinal Cord Injury - 1dpi	Library name: H64ffcre1dpiDRGcontra		Replicate H64, CRE genotype, Contralateral tissue
+GSM9228491	Replicate H63, Wildtype, Ipsilateral tissue	Ipsi	Illumina NovaSeq X	Ipsi	DRG	FF	Spinal Cord Injury - 1dpi	Library name: H63ff1dpiDRGipsi		Replicate H63, Wildtype, Ipsilateral tissue
+GSM9228493	Replicate H95, CRE genotype, Ipsilateral tissue	Ipsi	Illumina NovaSeq X	Ipsi	DRG	CRE	Spinal Cord Injury - 1dpi	Library name: H95ffcre1dpiDRGipsi		Replicate H95, CRE genotype, Ipsilateral tissue
+GSM9228494	Replicate H99, CRE genotype, Contralateral tissue	Contra	Illumina NovaSeq X	Contra	DRG	CRE	Spinal Cord Injury - 1dpi	Library name: H99ffcre1dpiDRGcontra		Replicate H99, CRE genotype, Contralateral tissue
+GSM9228495	Replicate H63,  Wildtype, Contralateral tissue	Contra	Illumina NovaSeq X	Contra	DRG	FF	Spinal Cord Injury - 1dpi	Library name: H63ff1dpiDRGcontra		Replicate H63,  Wildtype, Contralateral tissue
+GSM9228496	Replicate H100, CRE genotype, Contralateral tissue	Contra	Illumina NovaSeq X	Contra	DRG	CRE	Spinal Cord Injury - 1dpi	Library name: H100ffcre1dpiDRGcontra		Replicate H100, CRE genotype, Contralateral tissue
+GSM9228489	Replicate H96, Wildtype, Ipsilateral tissue	Ipsi	Illumina NovaSeq X	Ipsi	DRG	FF	Spinal Cord Injury - 1dpi	Library name: H96ff1dpiDRGipsi		Replicate H96, Wildtype, Ipsilateral tissue
+GSM9228488	Replicate H97, Wildtype, Ipsilateral tissue	Ipsi	Illumina NovaSeq X	Ipsi	DRG	FF	Spinal Cord Injury - 1dpi	Library name: H97ff1dpiDRGipsi		Replicate H97, Wildtype, Ipsilateral tissue
+GSM9228487	Replicate H99, CRE genotype, Ipsilateral tissue	Ipsi	Illumina NovaSeq X	Ipsi	DRG	CRE	Spinal Cord Injury - 1dpi	Library name: H99ffcre1dpiDRGipsi		Replicate H99, CRE genotype, Ipsilateral tissue
+GSM9228486	Replicate H100, CRE genotype, Ipsilateral tissue	Ipsi	Illumina NovaSeq X	Ipsi	DRG	CRE	Spinal Cord Injury - 1dpi	Library name: H100ffcre1dpiDRGipsi		Replicate H100, CRE genotype, Ipsilateral tissue
+GSM9228485	Replicate H95, CRE genotype, Contralateral tissue	Contra	Illumina NovaSeq X	Contra	DRG	CRE	Spinal Cord Injury - 1dpi	Library name: H95ffcre1dpiDRGcontra		Replicate H95, CRE genotype, Contralateral tissue
+GSM9228484	Replicate H6, CRE genotype, Contralateral tissue	Contra	Illumina NovaSeq X	Contra	DRG	CRE	Spinal Cord Injury - 1dpi	Library name: H61ffcre1dpiDRGcontra		Replicate H6, CRE genotype, Contralateral tissue
