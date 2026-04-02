@@ -18,6 +18,7 @@ OUT_ROOT = DE_ROOT / "derived_analysis"
 MAIN_CONTRASTS = ["ipsi_vs_contra_in_ff", "ipsi_vs_contra_in_cre"]
 GENO_CONTRASTS = ["geno_in_contra", "geno_in_ipsi"]
 ALL_CONTRASTS = MAIN_CONTRASTS + GENO_CONTRASTS + ["interaction"]
+BENDPOINT_CONTRASTS = ALL_CONTRASTS
 
 
 def ensure_dir(path: Path) -> None:
@@ -227,7 +228,7 @@ def main() -> None:
         df = load_contrast(contrast)
         save_top_gene_tables(contrast, df)
 
-        if contrast in MAIN_CONTRASTS:
+        if contrast in BENDPOINT_CONTRASTS:
             curve = save_pvalue_outputs(contrast, df)
             selected_ids = (
                 pd.read_csv(OUT_ROOT / contrast / "selected_genes_bendpoint.tsv", sep="\t")["gene_id"].dropna().astype(str).tolist()
@@ -236,37 +237,19 @@ def main() -> None:
             summaries.append(
                 {
                     "contrast_id": contrast,
-                    "analysis_focus": "main_side_specific",
+                    "analysis_focus": (
+                        "main_side_specific"
+                        if contrast in MAIN_CONTRASTS
+                        else "genotype" if contrast in GENO_CONTRASTS else "interaction"
+                    ),
                     "significant_padj_lt_0_05": curve["significant"],
                     "bendpoint_selected": curve["selected"],
                     "bendpoint_threshold": curve["threshold"],
                 }
             )
-        elif contrast in GENO_CONTRASTS:
+
+        if contrast in GENO_CONTRASTS:
             geno_frames[contrast] = df
-            sig_ids = df[df["padj"].fillna(1).lt(0.05)]["gene_id"].dropna().astype(str).tolist()
-            save_enrichment(contrast, sig_ids, "padj < 0.05 genes")
-            summaries.append(
-                {
-                    "contrast_id": contrast,
-                    "analysis_focus": "genotype",
-                    "significant_padj_lt_0_05": int(df["padj"].fillna(1).lt(0.05).sum()),
-                    "bendpoint_selected": np.nan,
-                    "bendpoint_threshold": np.nan,
-                }
-            )
-        else:
-            sig_ids = df[df["padj"].fillna(1).lt(0.05)]["gene_id"].dropna().astype(str).tolist()
-            save_enrichment(contrast, sig_ids, "padj < 0.05 genes")
-            summaries.append(
-                {
-                    "contrast_id": contrast,
-                    "analysis_focus": "interaction",
-                    "significant_padj_lt_0_05": int(df["padj"].fillna(1).lt(0.05).sum()),
-                    "bendpoint_selected": np.nan,
-                    "bendpoint_threshold": np.nan,
-                }
-            )
 
     genotype_summary(geno_frames)
     pd.DataFrame(summaries).to_csv(OUT_ROOT / "analysis_summary.tsv", sep="\t", index=False)

@@ -1,2 +1,7 @@
-contrast_id	gene_set_used	note
-geno_in_ipsi	padj < 0.05 genes	No enrichment results returned
+contrast_id	gene_set_used	source	native	name	p_value	term_size	query_size	intersection_size	effective_domain_size	parents
+geno_in_ipsi	bend-point selected genes	KEGG	KEGG:00562	Inositol phosphate metabolism	0.0027981448105749186	72	26	4	9330	['KEGG:00000']
+geno_in_ipsi	bend-point selected genes	KEGG	KEGG:04070	Phosphatidylinositol signaling system	0.008634469267063847	96	26	4	9330	['KEGG:00000']
+geno_in_ipsi	bend-point selected genes	GO:BP	GO:0003351	epithelial cilium movement involved in extracellular fluid movement	0.024119784017407282	51	70	4	25907	['GO:0003341', 'GO:0006858', 'GO:0099111']
+geno_in_ipsi	bend-point selected genes	GO:BP	GO:0006858	extracellular transport	0.03033803892193344	54	70	4	25907	['GO:0006810']
+geno_in_ipsi	bend-point selected genes	GO:BP	GO:0090660	cerebrospinal fluid circulation	0.04529783910535359	20	70	3	25907	['GO:0003351', 'GO:0050877']
+geno_in_ipsi	bend-point selected genes	GO:BP	GO:0006021	inositol biosynthetic process	0.0468524594382356	3	70	2	25907	['GO:0006020', 'GO:0046173']

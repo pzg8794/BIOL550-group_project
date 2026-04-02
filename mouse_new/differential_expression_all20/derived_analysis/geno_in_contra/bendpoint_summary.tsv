@@ -1,0 +1,2 @@
+contrast_id	genes_tested	significant_padj_lt_0_05	bend_pvalue_threshold	genes_below_bendpoint
+geno_in_contra	21466	891	0.0002134599679704	267

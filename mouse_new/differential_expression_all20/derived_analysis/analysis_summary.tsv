@@ -1,6 +1,6 @@
 contrast_id	analysis_focus	significant_padj_lt_0_05	bendpoint_selected	bendpoint_threshold
-ipsi_vs_contra_in_ff	main_side_specific	7023	709.0	1.37401793656806e-17
-ipsi_vs_contra_in_cre	main_side_specific	7541	870.0	8.3968379571549e-17
-geno_in_contra	genotype	891		
-geno_in_ipsi	genotype	2		
-interaction	interaction	14		
+ipsi_vs_contra_in_ff	main_side_specific	7023	709	1.37401793656806e-17
+ipsi_vs_contra_in_cre	main_side_specific	7541	870	8.3968379571549e-17
+geno_in_contra	genotype	891	267	0.0002134599679704
+geno_in_ipsi	genotype	2	113	0.0143432129027906
+interaction	interaction	14	1823	0.0456482432511116

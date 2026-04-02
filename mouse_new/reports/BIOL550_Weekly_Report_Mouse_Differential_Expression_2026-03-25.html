@@ -134,6 +134,38 @@ This family-specific structure keeps platform and sample-context boundaries expl
 </div>
 </div>
 
+<h2>Transcript-driven follow-up method addendum</h2>
+<p>
+After the original DE export package was built, this report path was extended with a transcript-driven follow-up pass under <code>mouse_new/differential_expression_all20/derived_analysis/</code>. The goal of this addendum is to help choose the strongest next weekly-report story from the <code>SRP618841</code> contingency dataset rather than relying only on raw significant-gene counts.
+</p>
+<p>
+The follow-up method now uses an ordered cumulative <code>p</code>-value curve and an elbow-style bend-point threshold for each contrast. In plain language, the bend-point threshold marks the transition between the steepest high-confidence part of the ranked gene list and the flatter long tail. The resulting bend-point-selected set is therefore a narrower and less arbitrary follow-up gene set than a fixed top-<code>100</code> cutoff.
+</p>
+<p>
+For the two main side-specific contrasts, enrichment was run on the bend-point-selected genes. The same bend-point method was then extended to <code>geno_in_contra</code>, <code>geno_in_ipsi</code>, and <code>interaction</code> so those secondary branches could be compared using the same rule. The current recommended story remains the side-specific DRG signal, with <code>geno_in_contra</code> kept as the strongest secondary genotype branch.
+</p>
+<table class="summary-table">
+<thead>
+<tr>
+<th>Contrast</th>
+<th>Role</th>
+<th>Significant genes<br/>(padj ≤ 0.05)</th>
+<th>Bend-point-selected genes</th>
+<th>Current reading</th>
+</tr>
+</thead>
+<tbody>
+<tr class="signal-strong"><td><code>ipsi_vs_contra_in_ff</code></td><td>Main side-specific</td><td>7,023</td><td>709</td><td>Best-aligned with the PCA-first story and a manageable enrichment-ready set.</td></tr>
+<tr class="signal-strong"><td><code>ipsi_vs_contra_in_cre</code></td><td>Main side-specific</td><td>7,541</td><td>870</td><td>Also strong and suitable for enrichment-based follow-up.</td></tr>
+<tr class="signal-moderate"><td><code>geno_in_contra</code></td><td>Secondary genotype</td><td>891</td><td>267</td><td>Strongest secondary branch; worth keeping in the report as supporting context.</td></tr>
+<tr class="signal-weak"><td><code>geno_in_ipsi</code></td><td>Exploratory genotype</td><td>2</td><td>113</td><td>Exploratory only; selected set is broader than the padj-significant core.</td></tr>
+<tr class="signal-weak"><td><code>interaction</code></td><td>Exploratory interaction</td><td>14</td><td>1,823</td><td>Needs caution; enrichment exists, but the selected set is much broader than the strict DE core.</td></tr>
+</tbody>
+</table>
+<p class="note">
+Derived outputs for this addendum now include bend-point summaries, selected-gene manifests, ordered-<code>p</code>-value plots, and g:Profiler enrichment tables/plots under <code>mouse_new/differential_expression_all20/derived_analysis/</code>. For pathway interpretation, the gene set used was the bend-point-selected set for the main side-specific contrasts and the bend-point-selected <code>geno_in_contra</code> set for the secondary genotype branch.
+</p>
+
 <h2>Results</h2>
 <table class="summary-table">
 <thead>

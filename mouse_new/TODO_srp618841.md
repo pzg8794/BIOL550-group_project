@@ -114,3 +114,13 @@
 - `geno_in_ipsi` stays much smaller:
   - `2` significant genes
 - Enrichment outputs are now available for the two bend-point-filtered side-specific sets and for the `geno_in_contra` significant-gene set.
+
+### 2026-04-02 extension — genotype + interaction bend-point
+
+- [x] Extend the bend-point method to:
+  - `geno_in_contra`
+  - `geno_in_ipsi`
+  - `interaction`
+- [x] Regenerate `mouse_new/differential_expression_all20/derived_analysis/analysis_summary.tsv` with real bend-point counts and thresholds for all exported contrasts.
+- [x] Update the canonical local notebook so the transcript-driven overview, bend-point method note, artifact index, story-selection criteria, risk checks, and weekly-report takeaways are all documented in one place.
+- [x] Update the local weekly DE report HTML under `mouse_new/reports/` so it explains the bend-point method, the gene sets used for enrichment, and the currently recommended story.

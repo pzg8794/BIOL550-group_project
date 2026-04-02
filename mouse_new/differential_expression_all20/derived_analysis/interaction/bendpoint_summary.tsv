@@ -1,0 +1,2 @@
+contrast_id	genes_tested	significant_padj_lt_0_05	bend_pvalue_threshold	genes_below_bendpoint
+interaction	21466	14	0.0456482432511116	1823

@@ -1446,3 +1446,30 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 - Keep the new transcript-driven outputs local under `mouse_new/differential_expression_all20/derived_analysis/`.
 - Use this expanded analysis pass to choose the strongest next weekly-report story rather than treating every derived result as automatically report-ready.
 - Continue treating the two side-specific contrasts as the main story and `geno_in_contra` as the strongest secondary genotype branch.
+
+## 2026-04-02 — Bend-point extension to genotype + interaction and report addendum
+
+### Step
+- Expanded `mouse_new/scripts/derive_de_analysis_all20.py` so bend-point outputs are now generated for every exported contrast, including:
+  - `geno_in_contra`
+  - `geno_in_ipsi`
+  - `interaction`
+- Re-ran the derived-analysis script to regenerate:
+  - `mouse_new/differential_expression_all20/derived_analysis/analysis_summary.tsv`
+  - contrast-specific bend-point tables, selected-gene manifests, and enrichment outputs
+- Extended the canonical local notebook with transcript-driven planning notes, method notes, artifact indexing, risk checks, and a weekly-report takeaway section.
+- Added a transcript-driven method addendum to:
+  - `mouse_new/reports/BIOL550_Weekly_Report_Mouse_Differential_Expression_2026-03-25.html`
+
+### Finding
+- The bend-point logic now applies consistently across the full contrast set instead of only the two side-specific contrasts.
+- Updated bend-point-selected counts are now available for the secondary branches:
+  - `geno_in_contra` = `267`
+  - `geno_in_ipsi` = `113`
+  - `interaction` = `1823`
+- This makes the genotype and interaction branches easier to compare, but it also makes the caution point clearer: a large bend-point-selected set does not automatically make a branch report-ready if the strict padj-significant core is still small.
+
+### Decision
+- Keep the side-specific DRG contrasts as the recommended lead story for the next weekly report.
+- Keep `geno_in_contra` as the strongest secondary genotype branch.
+- Treat `geno_in_ipsi` and `interaction` as exploratory until their bend-point-selected outputs hold up under stricter plot and enrichment sanity checks.
