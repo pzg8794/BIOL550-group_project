@@ -29,23 +29,6 @@ code { font-family: Menlo, Consolas, monospace; font-size: 8px; }
 img { max-width: 100%; height: auto; display: block; margin: 3px auto; border: 0.5px solid #ddd; }
 .img-row { display: flex; gap: 10px; align-items: flex-start; justify-content: center; margin: 1px 0 4px 0; }
 .img-col { flex: 1; display: flex; flex-direction: column; }
-table { border-collapse: collapse; table-layout: fixed; width: 100%; font-size: 8.6pt; margin: 3px 0; }
-th, td { border: 0.5px solid #bbb; padding: 1px 2px; vertical-align: top; word-wrap: break-word; overflow-wrap: anywhere; }
-th { background: none; border-bottom: 1.5px solid #999; font-weight: bold; text-align: center; }
-.summary-table td:first-child { font-weight: 700; }
-.summary-table td:nth-child(3),
-.summary-table td:nth-child(4) { text-align: center; }
-.summary-table th:nth-child(1), .summary-table td:nth-child(1) { width: 18%; }
-.summary-table th:nth-child(2), .summary-table td:nth-child(2) { width: 20%; }
-.summary-table th:nth-child(3), .summary-table td:nth-child(3) { width: 13%; }
-.summary-table th:nth-child(4), .summary-table td:nth-child(4) { width: 15%; }
-.summary-table th:nth-child(5), .summary-table td:nth-child(5) { width: 34%; }
-.summary-table tr.signal-strong td:nth-child(4),
-.summary-table tr.signal-strong td:nth-child(5) { background: #dff0d8; font-weight: 700; }
-.summary-table tr.signal-moderate td:nth-child(4),
-.summary-table tr.signal-moderate td:nth-child(5) { background: #fff4cc; }
-.summary-table tr.signal-weak td:nth-child(4),
-.summary-table tr.signal-weak td:nth-child(5) { background: #fff9e6; }
 .note { font-size: 9.5pt; line-height: 1.14; margin: 1px 0 3px 0; }
 ul.clist { margin: 0 0 1px 14px; padding: 0; }
 ul.clist li { margin: 0 0 1px 0; }
@@ -98,28 +81,18 @@ We also took seriously the concern that genotype labels should not be over-inter
 the dominant organizing axis, while genotype is present but secondary.
 </p>
 
-<h2>Results</h2>
-<table class="summary-table">
-<thead>
-<tr>
-<th>Contrast</th>
-<th>Role</th>
-<th>Significant genes<br/>(padj ≤ 0.05)</th>
-<th>Bend-point-selected genes</th>
-<th>Current reading</th>
-</tr>
-</thead>
-<tbody>
-<tr class="signal-strong"><td><code>ipsi_vs_contra_in_ff</code></td><td>Main side-specific</td><td>7,023</td><td>709</td><td>Strongest and cleanest story candidate; large DE signal narrows to an interpretable core set.</td></tr>
-<tr class="signal-strong"><td><code>ipsi_vs_contra_in_cre</code></td><td>Main side-specific</td><td>7,541</td><td>870</td><td>Also strong; confirms that the side-specific DRG pattern is reproducible across genotype contexts.</td></tr>
-<tr class="signal-moderate"><td><code>geno_in_contra</code></td><td>Secondary genotype</td><td>891</td><td>267</td><td>Best supporting branch; useful context, but still weaker than the main side-specific contrasts.</td></tr>
-<tr class="signal-weak"><td><code>geno_in_ipsi</code></td><td>Exploratory genotype</td><td>2</td><td>113</td><td>Too weak to lead the story; useful only as contrastive context for now.</td></tr>
-<tr class="signal-weak"><td><code>interaction</code></td><td>Exploratory interaction</td><td>14</td><td>1,823</td><td>Needs caution because the bend-point-selected set is much broader than the strict DE core.</td></tr>
-</tbody>
-</table>
-<p class="note">
-At the report level, the main biological takeaway is that the dataset supports a strong side-specific DRG differential-expression story.
-The genotype branch is still present, but the best current evidence places it in a supporting role rather than at the center.
+<h2>What changed in our reading of the data</h2>
+<p>
+This follow-up is not meant to restate the earlier DE package. Instead, it records what changed once we slowed down and interpreted the
+current <code>mouse_new</code> outputs more carefully. Three shifts matter most. First, the annotated PCA makes it much easier to see that
+side class explains more of the visible structure than genotype. Second, the side-specific DRG contrasts still carry the strongest signal
+after we apply a principled narrowing rule. Third, <code>geno_in_contra</code> is the one genotype branch that still adds useful context
+without competing with the main story.
+</p>
+<p>
+The practical result is that the report is now more selective. We are no longer treating every contrast as equally useful. We are instead
+using the strongest side-specific contrasts as the center of interpretation, keeping <code>geno_in_contra</code> as support, and leaving
+<code>geno_in_ipsi</code> and <code>interaction</code> in an exploratory category until they hold up better under stricter interpretation.
 </p>
 
 <div class="figure-title">Figure 1. PCA-first reading of the `mouse_new` DRG family</div>
@@ -148,6 +121,11 @@ genotype as secondary rather than as the primary organizing signal.
 These two panels do different jobs. The standalone view keeps the full DE result visible, while the before/after comparison shows what
 happens when the bend-point threshold is applied. This matters because the bend-point is not redefining significance; it is narrowing the
 very large significant-gene set into a smaller core subset that is easier to interpret and defend in the report.
+</p>
+<p class="note">
+This is the clearest place where the class feedback changed our approach. The question is no longer “how many significant genes are there?”
+but rather “what is the strongest interpretable core of this signal, and does that core still support the same biological story?” For this
+contrast, the answer is yes.
 </p>
 
 <div class="figure-title">Figure 3. Secondary genotype branch: `geno_in_contra`</div>
@@ -183,10 +161,10 @@ contrast itself.
 
 <h2>Interpretation and direction</h2>
 <p>
-The current DE follow-up points us in a clearer direction than the earlier package-only stage. The strongest story in the data is not “all possible
-contrasts are interesting”; it is that the DRG dataset shows a strong side-specific differential-expression pattern, and that this pattern remains the
-best anchor for interpretation after applying a principled narrowing method. The genotype branch matters, especially in <code>geno_in_contra</code>, but
-it is better used as supporting evidence than as the main claim.
+The current DE follow-up points us in a clearer direction than the earlier package-only stage. The strongest story in the data is not that every
+contrast should be treated equally. It is that the DRG dataset shows a strong side-specific differential-expression pattern, and that this pattern
+remains the best anchor for interpretation after applying a principled narrowing method. The genotype branch matters, especially in
+<code>geno_in_contra</code>, but it is better used as supporting evidence than as the main claim.
 </p>
 <p>
 This also clarifies how to read the class feedback. The point was not to add more analysis for its own sake. The point was to make the results easier

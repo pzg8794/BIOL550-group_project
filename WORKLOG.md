@@ -1557,3 +1557,19 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 ### Decision
 - Keep the `mouse_new` weekly report as the active DE follow-up document for the contingency dataset.
 - Use this report as the bridge between the current DE interpretation work and the Draft 1 paper story.
+
+## 2026-04-02 — Apr 2 DE report cleanup
+
+### Step
+- Revised the Apr 2 `mouse_new` follow-up report so it behaves like a true continuation of the earlier report instead of repeating the old summary structure.
+- Removed the repeated high-level results table from the Apr 2 report and rewrote that section as a “what changed in our reading of the data” interpretation section.
+
+### Finding
+- The follow-up report reads more cleanly when it focuses on the delta from last week:
+  - what class feedback changed,
+  - what the plots now make clearer,
+  - and what that means for the paper story.
+
+### Decision
+- Keep the Mar 25 report as the baseline DE package report.
+- Keep the Apr 2 report as the interpretation-focused follow-up, not as a second version of the same summary table.
