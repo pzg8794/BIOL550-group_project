@@ -58,6 +58,9 @@ Do not leave long analytical or experimental code on the server.
 - Do not make broad notebook layout changes unless explicitly requested.
 - Prefer generating or updating artifacts from scripts, then showing them in notebooks.
 - Keep explanations clear and comparison-driven.
+- Do not leave duplicate notebook variants in the repo when one canonical notebook is sufficient.
+- Delete obvious redundant notebook copies such as `*.broken_*.ipynb`, `*.executed.ipynb`, or similar scratch/export variants once the valid notebook is confirmed.
+- For BIOL550 notebook directories, keep the canonical notebook and remove clutter unless the user explicitly asks to preserve alternate versions.
 
 ## Current project context
 
@@ -65,4 +68,3 @@ Do not leave long analytical or experimental code on the server.
 - Mouse dataset is the active dataset.
 - `fastp` is the chosen default cleanup tool.
 - `cutadapt` is the targeted fallback.
-
