@@ -79,7 +79,7 @@ method to narrow very large gene lists into smaller follow-up sets for enrichmen
 <li>The goal of this follow-up is to understand the data and choose a defensible story, not just to generate more plots.</li>
 </ul>
 
-<h2>Results</h2>
+<h2>Transcript-driven follow-up method addendum</h2>
 <p>
 The strongest class feedback this week was that our DE interpretation should begin with what the data structure is telling us,
 not with an arbitrary top-gene list. The Apr 1 discussion emphasized three things that now guide this report: first, PCA should
@@ -103,6 +103,14 @@ without competing with the main story.
 The practical result is that the report is now more selective. We are no longer treating every contrast as equally useful. We are instead
 using the strongest side-specific contrasts as the center of interpretation, keeping <code>geno_in_contra</code> as support, and leaving
 <code>geno_in_ipsi</code> and <code>interaction</code> in an exploratory category until they hold up better under stricter interpretation.
+</p>
+
+<h2>Results</h2>
+<p class="note">
+The main result of this follow-up is that the current <code>mouse_new</code> dataset now has a clearer interpretation path than it did in the
+earlier DE package stage. The side-specific DRG contrasts remain the strongest result family, the bend-point method now gives us a more
+defensible way to narrow large DE sets, and <code>geno_in_contra</code> remains the strongest secondary branch worth carrying forward as
+supporting context.
 </p>
 
 <div class="figure-title">Figure 1. PCA-first reading of the `mouse_new` DRG family</div>
