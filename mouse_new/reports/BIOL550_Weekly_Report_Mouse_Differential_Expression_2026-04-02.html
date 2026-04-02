@@ -27,8 +27,6 @@ p { text-align: justify; margin: 0 0 4px 0; }
 code { font-family: Menlo, Consolas, monospace; font-size: 8px; }
 .figure-title { text-align: center; font-size: 9.8pt; font-weight: bold; margin: 4px 0 2px 0; }
 img { max-width: 100%; height: auto; display: block; margin: 3px auto; border: 0.5px solid #ddd; }
-.img-row { display: flex; gap: 10px; align-items: flex-start; justify-content: center; margin: 1px 0 4px 0; }
-.img-col { flex: 1; display: flex; flex-direction: column; }
 .note { font-size: 9.5pt; line-height: 1.14; margin: 1px 0 3px 0; }
 ul.clist { margin: 0 0 1px 14px; padding: 0; }
 ul.clist li { margin: 0 0 1px 0; }
@@ -96,11 +94,7 @@ using the strongest side-specific contrasts as the center of interpretation, kee
 </p>
 
 <div class="figure-title">Figure 1. PCA-first reading of the `mouse_new` DRG family</div>
-<div class="img-row">
-<div class="img-col">
 <img src="../differential_expression_all20/derived_analysis/family_structure/pca_side_genotype_annotated.png" alt="Annotated PCA for mouse_new DRG family" />
-</div>
-</div>
 <p class="note">
 This annotated PCA is the correct first read of the dataset because it shows the baseline structure before any gene-level filtering.
 Color now tracks side class and shape tracks genotype, which makes the main pattern much easier to see: the side-specific split is clearer
@@ -108,19 +102,12 @@ than the genotype split. Some <code>ff</code> and <code>cre</code> samples are s
 genotype as secondary rather than as the primary organizing signal.
 </p>
 
-<div class="figure-title">Figure 2. Main side-specific contrast: standalone view and bend-point comparison</div>
-<div class="img-row">
-<div class="img-col">
-<img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/volcano_with_counts.png" alt="Standalone volcano and counts for ipsi_vs_contra_in_ff" />
-</div>
-<div class="img-col">
+<div class="figure-title">Figure 2. Main side-specific contrast after class-guided filtering</div>
 <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/before_after_selection_comparison.png" alt="Before and after bend-point comparison for ipsi_vs_contra_in_ff" />
-</div>
-</div>
 <p class="note">
-These two panels do different jobs. The standalone view keeps the full DE result visible, while the before/after comparison shows what
-happens when the bend-point threshold is applied. This matters because the bend-point is not redefining significance; it is narrowing the
-very large significant-gene set into a smaller core subset that is easier to interpret and defend in the report.
+This single figure is the strongest visual for the main DE contrast because it already includes the before/after volcano view and the count
+change after bend-point filtering. The key point is that the bend-point does not redefine significance; it narrows a very large significant
+set into a smaller, interpretable core without changing the overall direction of the signal.
 </p>
 <p class="note">
 This is the clearest place where the class feedback changed our approach. The question is no longer “how many significant genes are there?”
@@ -129,34 +116,19 @@ contrast, the answer is yes.
 </p>
 
 <div class="figure-title">Figure 3. Secondary genotype branch: `geno_in_contra`</div>
-<div class="img-row">
-<div class="img-col">
-<img src="../differential_expression_all20/derived_analysis/geno_in_contra/volcano_with_counts.png" alt="Standalone volcano and counts for geno_in_contra" />
-</div>
-<div class="img-col">
 <img src="../differential_expression_all20/derived_analysis/geno_in_contra/before_after_selection_comparison.png" alt="Before and after bend-point comparison for geno_in_contra" />
-</div>
-</div>
 <p class="note">
-This is the strongest genotype-specific supporting branch. The raw contrast is weaker than the side-specific DRG contrasts, but it is not zero,
-and the bend-point comparison shows that the secondary genotype signal remains interpretable after narrowing. That makes <code>geno_in_contra</code>
-the best supporting result to retain in the report while keeping the main story centered on side-specific DE.
+This is the strongest genotype-specific supporting branch. It remains weaker than the side-specific DRG contrasts, but it is not zero, and the
+before/after view shows that the secondary genotype signal still has an interpretable core. That is why <code>geno_in_contra</code> stays as
+supporting context while the side-specific DE signal stays at the center.
 </p>
 
 <div class="figure-title">Figure 4. Enrichment summary for the main side-specific story</div>
-<div class="img-row">
-<div class="img-col">
-<img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/gprofiler_top_terms.png" alt="Top enrichment terms for ipsi_vs_contra_in_ff" />
-</div>
-<div class="img-col">
 <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/gprofiler_terms_and_overlap.png" alt="Enrichment terms and overlap for ipsi_vs_contra_in_ff" />
-</div>
-</div>
 <p class="note">
-The original enrichment summary plot is still useful for ranking terms quickly, but the companion overlap plot explains them better by showing
-how much of the bend-point-selected gene set each term actually covers. Together, these figures suggest broad regulation, signaling, and
-development/localization themes, but they are being interpreted as support for the DE story rather than as a replacement for direct reading of the
-contrast itself.
+This enrichment view is intentionally kept to one plot to avoid visual repetition. It still preserves the two things we need for interpretation:
+term strength and overlap coverage. The themes remain broad regulation, signaling, and development/localization, and they are treated as support
+for the DE story rather than a replacement for direct reading of the contrast.
 </p>
 
 <h2>Interpretation and direction</h2>

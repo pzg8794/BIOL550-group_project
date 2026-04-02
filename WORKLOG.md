@@ -1573,3 +1573,19 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 ### Decision
 - Keep the Mar 25 report as the baseline DE package report.
 - Keep the Apr 2 report as the interpretation-focused follow-up, not as a second version of the same summary table.
+
+## 2026-04-02 — Apr 2 report visual simplification
+
+### Step
+- Simplified the Apr 2 follow-up report layout to remove repeated side-by-side figure pairs that were not adding interpretation value.
+- Kept one purposeful figure per section:
+  - PCA structure
+  - main side-specific before/after contrast
+  - secondary `geno_in_contra` before/after contrast
+  - enrichment terms-plus-overlap companion view
+
+### Finding
+- The follow-up report is easier to scan when each section uses a single, decision-focused figure rather than duplicated paired image blocks.
+
+### Decision
+- Keep the Apr 2 report in this single-figure-per-section format unless a specific side-by-side comparison is explicitly needed for interpretation.
