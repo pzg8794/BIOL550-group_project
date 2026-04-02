@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import base64
+import io
 import json
 import math
 import urllib.request
@@ -125,11 +127,22 @@ def save_selection_comparison_plots(name: str, df: pd.DataFrame) -> None:
         "padj < 0.05 only": "#f0ad4e",
         "bend-point selected": "#d62728",
     }
+    before_color_map = {
+        "not significant": "#c7c7c7",
+        "significant": "#b14a5c",
+    }
 
     counts = working["selection_class"].value_counts().reindex(class_order, fill_value=0)
+    before_counts = pd.Series(
+        {
+            "not significant": int((~working["padj"].fillna(1).lt(0.05)).sum()),
+            "significant": int(working["padj"].fillna(1).lt(0.05).sum()),
+        }
+    )
     threshold = float(pd.read_csv(outdir / "bendpoint_summary.tsv", sep="	")["bend_pvalue_threshold"].iloc[0])
+    bend_y = -np.log10(max(threshold, 1e-300))
 
-    fig, axes = plt.subplots(1, 2, figsize=(13, 5.2))
+    standalone_fig, axes = plt.subplots(1, 2, figsize=(13, 5.2))
     for label in class_order:
         subset = working[working["selection_class"] == label]
         axes[0].scatter(
@@ -141,9 +154,8 @@ def save_selection_comparison_plots(name: str, df: pd.DataFrame) -> None:
             label=label,
             edgecolors="none",
         )
-    bend_y = -np.log10(max(threshold, 1e-300))
     axes[0].axhline(bend_y, color="#2ca02c", linestyle="--", linewidth=1.2)
-    axes[0].set_title(f"{name}: before/after threshold on volcano scale")
+    axes[0].set_title(f"{name}: standalone volcano with threshold classes")
     axes[0].set_xlabel("log2 fold change")
     axes[0].set_ylabel("-log10(p-value)")
     axes[0].text(
@@ -175,9 +187,107 @@ def save_selection_comparison_plots(name: str, df: pd.DataFrame) -> None:
         color="#b22222",
         fontweight="bold",
     )
-    fig.tight_layout()
-    fig.savefig(outdir / "before_after_selection_comparison.png", dpi=180, bbox_inches="tight")
-    plt.close(fig)
+    standalone_fig.tight_layout()
+    standalone_png = outdir / "volcano_with_counts.png"
+    standalone_fig.savefig(standalone_png, dpi=180, bbox_inches="tight")
+    plt.close(standalone_fig)
+
+    encoded = base64.b64encode(standalone_png.read_bytes()).decode("ascii")
+    (outdir / "volcano_with_counts.html").write_text(
+        "\n".join(
+            [
+                "<div style='font-family: Arial, sans-serif;'>",
+                f"<img src='data:image/png;base64,{encoded}' style='max-width:100%; height:auto;' />",
+                "</div>",
+            ]
+        )
+    )
+
+    comparison_fig, axes = plt.subplots(2, 2, figsize=(13.5, 9), height_ratios=[3.2, 1.6])
+    before_sig = working["padj"].fillna(1).lt(0.05)
+    axes[0, 0].scatter(
+        working.loc[~before_sig, "log2FoldChange"],
+        working.loc[~before_sig, "neglog10_pvalue"],
+        s=10,
+        alpha=0.35,
+        c=before_color_map["not significant"],
+        label="not significant",
+        edgecolors="none",
+    )
+    axes[0, 0].scatter(
+        working.loc[before_sig, "log2FoldChange"],
+        working.loc[before_sig, "neglog10_pvalue"],
+        s=12,
+        alpha=0.8,
+        c=before_color_map["significant"],
+        label="padj < 0.05",
+        edgecolors="none",
+    )
+    axes[0, 0].axhline(-np.log10(0.05), color="#7f7f7f", linestyle="--", linewidth=1.0)
+    axes[0, 0].set_title(f"{name}: before bend-point")
+    axes[0, 0].set_xlabel("log2 fold change")
+    axes[0, 0].set_ylabel("-log10(p-value)")
+    axes[0, 0].text(
+        0.98,
+        0.97,
+        f"significant = {int(before_counts['significant']):,}",
+        transform=axes[0, 0].transAxes,
+        ha="right",
+        va="top",
+        fontsize=8.5,
+        bbox={"facecolor": "white", "alpha": 0.9, "edgecolor": before_color_map["significant"]},
+    )
+    axes[0, 0].legend(frameon=True, fontsize=8)
+
+    for label in class_order:
+        subset = working[working["selection_class"] == label]
+        axes[0, 1].scatter(
+            subset["log2FoldChange"],
+            subset["neglog10_pvalue"],
+            s=10 if label == "not selected" else 16,
+            alpha=0.45 if label == "not selected" else 0.8,
+            c=color_map[label],
+            label=label,
+            edgecolors="none",
+        )
+    axes[0, 1].axhline(bend_y, color="#2ca02c", linestyle="--", linewidth=1.2)
+    axes[0, 1].set_title(f"{name}: after bend-point")
+    axes[0, 1].set_xlabel("log2 fold change")
+    axes[0, 1].set_ylabel("-log10(p-value)")
+    axes[0, 1].text(
+        0.98,
+        0.97,
+        f"bend-point p = {threshold:.2e}\nselected = {int(counts['bend-point selected']):,}",
+        transform=axes[0, 1].transAxes,
+        ha="right",
+        va="top",
+        fontsize=8.5,
+        bbox={"facecolor": "white", "alpha": 0.9, "edgecolor": "#2ca02c"},
+    )
+    axes[0, 1].legend(frameon=True, fontsize=8)
+
+    before_labels = list(before_counts.index)
+    before_vals = before_counts.values
+    axes[1, 0].bar(before_labels, before_vals, color=[before_color_map[x] for x in before_labels])
+    axes[1, 0].set_title(f"{name}: counts before bend-point")
+    axes[1, 0].set_ylabel("genes")
+    axes[1, 0].tick_params(axis="x", rotation=16)
+    before_ymax = max(before_vals) if len(before_vals) else 1
+    for idx, val in enumerate(before_vals):
+        axes[1, 0].text(idx, val + max(before_ymax * 0.02, 1), f"{int(val):,}", ha="center", va="bottom", fontsize=9)
+
+    axes[1, 1].bar(class_order, counts.values, color=[color_map[c] for c in class_order])
+    axes[1, 1].set_title(f"{name}: counts after bend-point")
+    axes[1, 1].set_ylabel("genes")
+    axes[1, 1].tick_params(axis="x", rotation=18)
+    after_ymax = max(counts.values) if len(counts.values) else 1
+    for idx, val in enumerate(counts.values):
+        axes[1, 1].text(idx, val + max(after_ymax * 0.02, 1), f"{int(val):,}", ha="center", va="bottom", fontsize=9)
+
+    comparison_fig.suptitle(f"{name}: before vs after bend-point filtering", fontsize=13, y=0.98)
+    comparison_fig.tight_layout()
+    comparison_fig.savefig(outdir / "before_after_selection_comparison.png", dpi=180, bbox_inches="tight")
+    plt.close(comparison_fig)
 
 
 def save_genotype_comparison_plots(geno_frames: dict[str, pd.DataFrame]) -> None:

@@ -1492,3 +1492,27 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 
 ### Decision
 - Use the new before/after and comparison plots as the default interpretation layer when deciding which contrast should lead the next weekly report.
+
+## 2026-04-02 — Standalone plus comparison volcano layout cleanup
+
+### Step
+- Updated `mouse_new/scripts/derive_de_analysis_all20.py` so each contrast now writes both:
+  - a standalone volcano-plus-count view
+  - a separate before/after bend-point comparison grid
+- Re-generated the derived-analysis artifacts for:
+  - `ipsi_vs_contra_in_ff`
+  - `ipsi_vs_contra_in_cre`
+  - `geno_in_contra`
+  - `geno_in_ipsi`
+  - `interaction`
+- Re-executed the canonical notebook to keep the standalone sections and the comparison sections together with matching markdown.
+
+### Finding
+- The notebook now shows the raw contrast view and the threshold-comparison view as separate layers instead of forcing them into one role.
+- This makes it easier to read each contrast on its own and then see how bend-point filtering changes the interpretation.
+
+### Decision
+- Keep both plot types in the notebook:
+  - standalone for the result itself
+  - combined before/after for threshold explanation
+- Use the combined comparison figure only as an added explanatory layer, not as a replacement for the standalone section.
