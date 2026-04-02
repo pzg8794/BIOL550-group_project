@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BIOL550 Weekly Report — Mouse Differential Expression Draft</title>
+<style>
+body {
+font-family: "Times New Roman", Times, serif;
+font-size: 10.8pt;
+margin: 0;
+padding: 0;
+line-height: 1.20;
+color: #111;
+}
+.page {
+width: 7.9in;
+margin: 0 auto;
+padding: 0.06in 0.06in 0.05in 0.06in;
+box-sizing: border-box;
+page-break-after: auto;
+}
+h1 { text-align: center; font-size: 14pt; margin: 0 0 2px 0; }
+.subtitle { text-align: center; font-size: 9.8pt; margin: 0 0 7px 0; color: #444; }
+h2 { font-size: 11.5pt; margin: 7px 0 3px 0; border-bottom: 0.5px solid #999; padding-bottom: 1px; }
+p { text-align: justify; margin: 0 0 4px 0; }
+pre {
+background: none; padding: 1px 2px; border: 0.5px solid #ddd; overflow-x: auto;
+font-size: 6.9px; line-height: 1.07; white-space: pre-wrap; word-break: break-word; margin: 0 0 4px 0;
+}
+code { font-family: Menlo, Consolas, monospace; font-size: 7.4px; }
+.figure-title { text-align: center; font-size: 9.8pt; font-weight: bold; margin: 3px 0 2px 0; }
+img { max-width: 100%; height: auto; display: block; margin: 3px auto; }
+.img-row { display: flex; gap: 10px; align-items: flex-start; justify-content: center; margin: 1px 0; }
+.img-col { flex: 1; display: flex; flex-direction: column; }
+table { border-collapse: collapse; table-layout: fixed; width: 100%; font-size: 8.5pt; margin: 3px 0; }
+th, td { border: 0.5px solid #bbb; padding: 0.5px 1px; vertical-align: top; word-wrap: break-word; overflow-wrap: anywhere; }
+th { background: none; border-bottom: 1.5px solid #999; font-weight: bold; text-align: center; }
+.summary-table td:first-child { font-weight: 700; }
+
+/* Center numeric columns in the Results table */
+.summary-table td:nth-child(3),
+.summary-table td:nth-child(4) { text-align: center; }
+
+.summary-table th:nth-child(1), .summary-table td:nth-child(1) { width: 16%; }
+.summary-table th:nth-child(2), .summary-table td:nth-child(2) { width: 21%; }
+.summary-table th:nth-child(3), .summary-table td:nth-child(3) { width: 08%; }
+.summary-table th:nth-child(4), .summary-table td:nth-child(4) { width: 14%; }
+.summary-table th:nth-child(5), .summary-table td:nth-child(5) { width: 36%; }
+
+/* Color-code by signal strength from the significant-gene counts */
+.summary-table tr.signal-strong td:nth-child(4),
+.summary-table tr.signal-strong td:nth-child(5) {
+background: #dff0d8;
+font-weight: 700;
+}
+.summary-table tr.signal-moderate td:nth-child(4),
+.summary-table tr.signal-moderate td:nth-child(5) {
+background: #fff4cc;
+}
+.summary-table tr.signal-weak td:nth-child(4),
+.summary-table tr.signal-weak td:nth-child(5) {
+background: #fff9e6;
+}
+.summary-table tr.signal-minimal td:nth-child(4),
+.summary-table tr.signal-minimal td:nth-child(5) {
+background: #f8d7da;
+}
+
+ul.clist { margin: 0 0 1px 12px; padding: 0; }
+ul.clist li { margin: 0 0 1px 0; }
+.note { font-size: 9.5pt; line-height: 1.14; margin: 1px 0 3px 0; }
+.two-col { display: flex; gap: 10px; align-items: flex-start; }
+.two-col .left { flex: 0 0 46%; }
+.two-col .right { flex: 1; }
+hr { border: none; border-top: 0.5px solid #ccc; margin: 4px 0; }
+</style>
+</head>
+<body>
+<div class="page">
+<h1>Mouse RNA-Seq — Differential Expression (Family-Specific DESeq2)</h1>
+<div class="subtitle">BIOL550 — Weekly Report — Mar 25, 2026</div>
+
+<h2>What I accomplished since the previous report</h2>
+<p>
+This week the mouse RNA-seq project moved from alignment validation into differential expression analysis. Using the reverse-stranded count matrix from the canonical STAR run and the sample summary table from the local alignment workflow, I ran the DESeq2 workflow and reorganized the 26 samples into three family-specific models instead of one pooled comparison. This change was made in collaboration with the team so that sequencing-platform and sample-context differences would stay separated and the results would be easier to interpret.
+</p>
+<p>
+I generated the DE package locally by adapting my previous DESeq2 scripts from my BIO630 course and organized the outputs into a shareable handoff for the team. For each family, I produced PCA plots, sample-distance heatmaps, dispersion plots, volcano plots, and ranked differential expression tables for the main contrasts. This gives the team a clear DE framework to use for interpretation and for the next phase of our project.
+</p>
+
+<h2>Methods used</h2>
+<div class="two-col">
+<div class="left">
+<pre><code>DESeq2 example inside the R script
+library(DESeq2)
+
+dds <- DESeqDataSetFromMatrix(
+  countData = counts_matrix,
+  colData  = sample_table,
+  design   = ~ condition
+)
+
+dds  <- DESeq(dds)
+res  <- results(dds, contrast = c("condition", "injury", "naive"))
+vsd  <- vst(dds, blind = FALSE)
+
+
+DE pipeline command example:
+Rscript pipelines/mouse_deseq2_all26.R \
+  --counts mouse/alignment_analysis_star_all26/tables/mouse_star_gene_counts_reverse_stranded.tsv \
+  --meta   mouse/alignment_analysis_star_all26/tables/mouse_alignment_sample_summary.tsv \
+  --outdir mouse/differential_expression_all26</code></pre>
+</div>
+<div class="right">
+<p class="note"><strong>Modeling strategy using DESeq2</strong></p>
+<ul class="clist note">
+<li>Used reverse-stranded STAR gene counts as the count-layer input.</li>
+<li>Used the alignment-stage sample summary as the DE metadata handoff.</li>
+<li>Separated the dataset into three DE families:</li>
+</ul>
+<ul class="clist note">
+<li>
+<ul class="clist note">
+<li><code>family_tissue_novaseq6000</code></li>
+<li><code>family_tissue_sham_novaseqx</code></li>
+<li><code>family_neurons_novaseqx</code></li>
+</ul>
+</li>
+</ul>
+<p class="note">
+This family-specific structure keeps platform and sample-context boundaries explicit instead of combining them in one confounded model. Within each family, only biologically interpretable contrasts were run, and all families were processed through the same DESeq2 workflow so the methods stayed consistent across the project.
+</p>
+</div>
+</div>
+
+<h2>Results</h2>
+<table class="summary-table">
+<thead>
+<tr>
+<th>Contrast</th>
+<th>Family</th>
+<th>Genes tested</th>
+<th>Significant genes<br/>(padj ≤ 0.05)</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="signal-strong"><td><code>injury_in_control</code></td><td><code>family_tissue_novaseq6000</code></td><td>18,888</td><td>4,667</td><td>Strongest signal in the full DE package.</td></tr>
+<tr class="signal-strong"><td><code>injury_in_cko</code></td><td><code>family_tissue_novaseq6000</code></td><td>18,888</td><td>4,088</td><td>Also strong and supports the tissue injury family as the main result family.</td></tr>
+<tr class="signal-weak"><td><code>ipsilateral_vs_contralateral_in_control</code></td><td><code>family_tissue_sham_novaseqx</code></td><td>19,498</td><td>52</td><td>Usable but weaker; better as supporting evidence than as the main result.</td></tr>
+<tr class="signal-moderate"><td><code>geno_in_neurons</code></td><td><code>family_neurons_novaseqx</code></td><td>18,985</td><td>139</td><td>Moderate signal that can be used as supporting context.</td></tr>
+<tr class="signal-minimal"><td><code>geno_in_naive</code></td><td><code>family_tissue_novaseq6000</code></td><td>18,888</td><td>2</td><td>Very small genotype-only effect in the naive tissue subset.</td></tr>
+</tbody>
+</table>
+<p class="note">
+The main result this week is that the family-specific DE strategy worked and produced a clear ranking of signal strength. The tissue <code>NovaSeq 6000</code> injury contrasts are the strongest part of the current dataset, while the sham and neuron families remain useful as supporting results.
+</p>
+
+<div class="figure-title">Family preview panels from the DE workflow</div>
+<div class="img-row">
+<div class="img-col">
+<img src="../differential_expression_all26/family_tissue_novaseq6000/figures/pca.png" alt="Tissue / NovaSeq 6000 / PCA" style="width:92%; margin:3px auto;" />
+</div>
+<div class="img-col">
+<img src="../differential_expression_all26/family_tissue_novaseq6000/figures/sample_distance_heatmap.png" alt="Tissue / NovaSeq 6000 / sample distance heatmap" style="width:82%; margin:3px auto;" />
+</div>
+</div>
+<p class="note">
+These two panels were used to check whether the <code>NovaSeq 6000</code> tissue subset behaves like a coherent dataset for DE analysis. The PCA and sample-distance heatmap show that the samples do not separate randomly and do not show a major outlier, which supports keeping this family as the main analysis set instead of forcing a pooled cross-platform model.
+</p>
+
+<div class="img-row">
+<div class="img-col">
+<img src="../differential_expression_all26/family_tissue_novaseq6000/figures/dispersion.png" alt="Tissue / NovaSeq 6000 / dispersion" style="width:85%; margin:3px auto;" />
+</div>
+<div class="img-col">
+<div style="width:92%; margin:3px auto; position:relative; overflow:hidden;">
+<div style="position:absolute; top:48px; left:32px; z-index:2; display:flex; gap:10px; align-items:center; font-size:8.0pt; font-weight:700; color:#444; background:rgba(255,255,255,0.75); padding:2px 4px; border-radius:2px; -webkit-print-color-adjust:exact; print-color-adjust:exact;">
+<span style="display:inline-flex; align-items:center; gap:5px;">
+<span style="width:8px; height:8px; border-radius:50%; display:inline-block; border:1px solid #888; box-shadow: inset 0 0 0 4px #b8b8b8;"></span>
+not significant (14,221)
+</span>
+<span style="display:inline-flex; align-items:center; gap:5px;">
+<span style="width:8px; height:8px; border-radius:50%; display:inline-block; border:1px solid #7a3a45; box-shadow: inset 0 0 0 4px #b65a6d;"></span>
+significant (4,667)
+</span>
+</div>
+<img src="../differential_expression_all26/family_tissue_novaseq6000/tables/injury_in_control_volcano.png" alt="Tissue / NovaSeq 6000 / volcano" style="width:100%; margin:0 auto;" />
+</div>
+</div>
+</div>
+<div style="display:flex; align-items:flex-start; gap:10px; margin-bottom:-18px;">
+<div class="left note" style="flex: 0 0 58%; max-width:58%; text-align:left;">
+<p style="margin:0 0 4px 0;">
+These panels show two different things. The dispersion plot shows that the DESeq2 model fit is stable, and the volcano plot shows that <code>injury_in_control</code> has the strongest signal in the current DE output. This supports keeping the <code>NovaSeq 6000</code> tissue injury family as the main result set.
+</p>
+<strong>Supporting families (NovaSeq X):</strong> The <code>NovaSeq X</code> data include two subgroups that were reviewed as supporting analyses. They are technically usable, but they are weaker than the <code>NovaSeq 6000</code> tissue injury family. The plot to the right confirms the same point:
+<ul style="margin-top:1px; margin-bottom:0px; padding-left:18px;">
+<li style="font-size:9pt;">The <code>NovaSeq X</code> neuron family has 139 significant genes and 18,846 genes that are not significant.</li>
+<li style="font-size:9pt;">This family provides a moderate supporting signal, but it does not replace the main tissue injury result.</li>
+</ul>
+</div>
+<div class="right note" style="flex: 0 0 39%; max-width:39%; text-align:center; padding-top:0px;">
+<img src="../differential_expression_all26/family_neurons_novaseqx/tables/geno_in_neurons_volcano.png" alt="NovaSeq X neuron family volcano plot" style="width:100%; height:auto; border: 1px solid #ccc; margin-top:0;" />
+</div>
+</div>
+
+<h2 style="margin-top:0px;">Problems encountered</h2>
+<p class="note">
+During this reporting period, the main challenge was deciding how to structure the DE analysis so the results would stay interpretable. A pooled model across all 26 samples would mix platform and sample-context effects, so the dataset had to be split into family-specific models. Another issue was that the sham and neuron contrasts produced weaker signals, so they are less useful than the tissue injury contrasts for the main report. Managing the data volume also remains ongoing, with SSRs, QC outputs, and DE tables being archived as they are generated to keep the analysis organized and in scope for the course.
+</p>
+<div style="overflow:auto; margin-bottom:1px;">
+<div style="float:left; width:52%; margin:0 10px 4px 0;">
+<img src="../../mouse_new/qc_analysis_raw_vs_trimmed/fastqc_per_sequence_gc_content_all.png" alt="Contingency dataset GC-content comparison raw versus fastp" style="width:100%; border:0.5px solid #ccc;" />
+</div>
+<p class="note" style="margin-bottom:0;">
+For the contingency requirement, the workflow was also rebuilt with an alternate dataset so that, if the current analysis plan is not accepted, there is already a backup computational path. This was done to avoid losing time if the professor does not approve the current family-based DE structure. The contingency pipeline has already completed raw QC, <code>fastp</code>, and post-trimming <code>MultiQC</code>, with alignment currently running. Because GC-content behavior was one of the concerns in the current data, the GC-content comparison is included here as a quick check in the backup workflow. The main improvement so far is that adapter-related signal decreased after trimming, while duplication and base-content bias remain. These issues were handled through team coordination and shared review of the analysis plan. The main remaining dependency is professor feedback on the family-based DE strategy and on how the contingency pipeline should be used if the current approach is not accepted.
+</p>
+</div>
+
+<h2>Goals for the coming week</h2>
+<p class="note">
+Next week the project moves into the paper-drafting phase. In collaboration with the team, I will finalize which DE figures best represent the main story, with primary emphasis on the <code>NovaSeq 6000</code> tissue injury contrasts and a small, clearly labeled set of <code>NovaSeq X</code> supporting panels. I will continue interpreting the main contrasts, especially <code>injury_in_control</code> and <code>injury_in_cko</code>, and connect those results to the project hypothesis.
+</p>
+<p class="note">
+At the same time, I will begin drafting the first part of the paper, including the project background, a short methods summary, and the opening results narrative based on the current DE package or, if needed, the contingency pipeline. The goal for next week is to leave the analysis stage with a clear first draft section that the team can build on for the full paper.
+</p>
+
+</div>
+</body>
+</html>
