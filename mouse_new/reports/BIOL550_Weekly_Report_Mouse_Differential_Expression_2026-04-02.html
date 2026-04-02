@@ -51,7 +51,7 @@ table.compact th { background: #f5f5f5; }
 <h1>Mouse RNA-Seq — Differential Expression Follow-up (`SRP618841`)</h1>
 <div class="subtitle">BIOL550 — Weekly Report Follow-up — Apr 2, 2026</div>
 
-<h2>What we accomplished since the previous report</h2>
+<h2>What I accomplished since the previous report</h2>
 <p>
 Since the previous differential-expression report, we shifted from simply exporting DE results to interpreting the
 <code>mouse_new</code> contingency dataset and deciding which part of the signal is strong enough to guide both the next weekly
@@ -79,7 +79,7 @@ method to narrow very large gene lists into smaller follow-up sets for enrichmen
 <li>The goal of this follow-up is to understand the data and choose a defensible story, not just to generate more plots.</li>
 </ul>
 
-<h2>Transcript-driven follow-up / class feedback</h2>
+<h2>Results</h2>
 <p>
 The strongest class feedback this week was that our DE interpretation should begin with what the data structure is telling us,
 not with an arbitrary top-gene list. The Apr 1 discussion emphasized three things that now guide this report: first, PCA should
@@ -92,8 +92,6 @@ We also took seriously the concern that genotype labels should not be over-inter
 <code>ff</code> and <code>cre</code> on the leading components. The updated annotated PCA now makes that point much clearer: side class is
 the dominant organizing axis, while genotype is present but secondary.
 </p>
-
-<h2>What changed in our reading of the data</h2>
 <p>
 This follow-up is not meant to restate the earlier DE package. Instead, it records what changed once we slowed down and interpreted the
 current <code>mouse_new</code> outputs more carefully. Three shifts matter most. First, the annotated PCA makes it much easier to see that
@@ -182,28 +180,25 @@ remain broad regulation, signaling, and development/localization, and they are t
 for direct reading of the contrast.
 </p>
 
-<h2>Interpretation and direction</h2>
+<h2>Problems encountered</h2>
 <p>
-The current DE follow-up points us in a clearer direction than the earlier package-only stage. The strongest story in the data is not that every
-contrast should be treated equally. It is that the DRG dataset shows a strong side-specific differential-expression pattern, and that this pattern
-remains the best anchor for interpretation after applying a principled narrowing method. The genotype branch matters, especially in
-<code>geno_in_contra</code>, but it is better used as supporting evidence than as the main claim.
+The main challenge this week was not generating more DE output, but deciding how to interpret it without forcing a misleading story. The raw
+significant-gene counts were large enough to be hard to use directly, and the genotype signal was easy to over-read if we looked at labels
+without grounding them in the PCA structure first. We also had to decide which figures actually explained the data and which ones simply repeated
+the same point in a different format.
 </p>
 <p>
-This also clarifies how to read the class feedback. The point was not to add more analysis for its own sake. The point was to make the results easier
-to explain: start with the structure, show the strongest contrast clearly, explain how the large DE list is narrowed, and then use enrichment to help
-name the biological themes in that narrowed set.
-</p>
-
-<h2>How this prepares the draft</h2>
-<p>
-This report follow-up helps the team move toward Draft 1 in the way described in <code>paper_strategy_story_first.md</code>. The DE interpretation is now
-closer to a paper-ready structure: the main claim candidate is the side-specific DRG signal, the strongest evidence is the two main side-specific contrasts,
-and the supporting evidence includes QC/alignment confidence, PCA structure, and the secondary <code>geno_in_contra</code> branch. That gives the team a clearer
-starting point for Draft 1 than simply carrying forward a large list of DE tables.
+Class feedback helped resolve that problem by pushing the analysis toward structure-first interpretation, bend-point-based narrowing, and clearer
+figure choices. That made the report more selective: the side-specific DRG contrasts stay central, <code>geno_in_contra</code> stays as supporting
+context, and the weaker genotype/interaction branches remain exploratory rather than being over-promoted.
 </p>
 
-<h2>Next steps</h2>
+<h2>Goals for the coming week</h2>
+<p>
+Next week the main goal is to turn this DE follow-up into a cleaner Draft 1 starting point. The strongest claim candidate is now clearer: the
+side-specific DRG signal is the main story, and the best supporting branch is <code>geno_in_contra</code>. We should keep using the PCA-first and
+bend-point-guided structure so the report and the paper draft stay aligned.
+</p>
 <ul class="clist">
 <li>Choose which side-specific contrast should be the hero figure for the next weekly report / Draft 1 handoff.</li>
 <li>Keep <code>geno_in_contra</code> as the main supporting genotype branch and avoid over-centering <code>geno_in_ipsi</code> or <code>interaction</code>.</li>
