@@ -1,0 +1,2 @@
+contrast_id	genes_tested	significant_padj_lt_0_05	bend_pvalue_threshold	genes_below_bendpoint
+ipsi_vs_contra_in_cre	21466	7541	8.3968379571549e-17	870

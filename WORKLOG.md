@@ -1410,3 +1410,39 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 - Keep the DESeq2 runtime private to `/home/pzg8794` and use it as the team environment.
 - Keep the long DESeq2 driver local as canonical code.
 - Keep only the short wrapper and shared input/output artifacts in the team-facing shared directory on the server.
+
+## 2026-04-02 — Transcript-driven `mouse_new` DE expansion for weekly-report story selection
+
+### Step
+- Read the `2026-03-31` and `2026-04-01` BIOL550 transcript notes and translated that guidance into a deeper local-only `mouse_new` DE follow-up pass.
+- Added a reusable local analysis script:
+  - `mouse_new/scripts/derive_de_analysis_all20.py`
+- Generated a structured derived-analysis output tree under:
+  - `mouse_new/differential_expression_all20/derived_analysis/`
+- Extended the canonical local DE notebook:
+  - `mouse_new/notebooks/mouse_differential_expression_all20.ipynb`
+- Re-executed the canonical notebook after the new sections were added so the notebook remains the single valid local notebook for this dataset.
+
+### Finding
+- The transcript guidance pushed the notebook toward a stronger interpretation order:
+  - interpret PCA first
+  - keep the side-specific DRG contrasts as the main story
+  - avoid arbitrary top-`100` style narrowing when the significant sets are very large
+- The new derived-analysis tree now includes:
+  - ordered-`pvalue` / cumulative curves for `ipsi_vs_contra_in_ff` and `ipsi_vs_contra_in_cre`
+  - bend-point summary tables and selected-gene manifests for those two main contrasts
+  - genotype comparison summaries for `geno_in_contra` vs `geno_in_ipsi`
+  - top-gene tables by `padj` and absolute `log2FoldChange`
+  - GO/pathway enrichment result tables and top-term plots for the selected main and secondary contrast sets
+- Main counts from this pass:
+  - `ipsi_vs_contra_in_ff`: `7023` significant genes, bend-point-selected set = `709`
+  - `ipsi_vs_contra_in_cre`: `7541` significant genes, bend-point-selected set = `870`
+  - `geno_in_contra`: `891` significant genes
+  - `geno_in_ipsi`: `2` significant genes
+- The enrichment outputs now give several candidate biological themes we can compare before choosing the next weekly report angle.
+
+### Decision
+- Keep `mouse_new/notebooks/mouse_differential_expression_all20.ipynb` as the canonical local notebook for this dataset.
+- Keep the new transcript-driven outputs local under `mouse_new/differential_expression_all20/derived_analysis/`.
+- Use this expanded analysis pass to choose the strongest next weekly-report story rather than treating every derived result as automatically report-ready.
+- Continue treating the two side-specific contrasts as the main story and `geno_in_contra` as the strongest secondary genotype branch.

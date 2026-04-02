@@ -83,3 +83,34 @@
   - `mouse_new/differential_expression_all20/tables/family_manifest.tsv`
   - `mouse_new/differential_expression_all20/tables/contrast_manifest.tsv`
   - family-specific figures/tables under `mouse_new/differential_expression_all20/family_drg_novaseqx/`
+
+## 2026-04-02 transcript-driven DE follow-up
+
+- [x] Keep `mouse_new/notebooks/mouse_differential_expression_all20.ipynb` as the canonical local DE notebook for the `SRP618841` candidate dataset.
+- [x] Add a PCA-first interpretation block so the notebook explicitly starts from the dominant side-driven family structure.
+- [x] Add cumulative / bend-point filtering for the two main side-specific contrasts:
+  - `ipsi_vs_contra_in_ff`
+  - `ipsi_vs_contra_in_cre`
+- [x] Add a stronger genotype-focused follow-up centered on `geno_in_contra`, with `geno_in_ipsi` retained as a comparison branch.
+- [x] Add GO/pathway enrichment for:
+  - bend-point-selected `ipsi_vs_contra_in_ff` genes
+  - bend-point-selected `ipsi_vs_contra_in_cre` genes
+  - `geno_in_contra` genes with `padj < 0.05`
+- [x] Save reusable derived outputs under:
+  - `mouse_new/differential_expression_all20/derived_analysis/`
+- [x] Keep this pass local-only for now; use it to choose the strongest next weekly-report story rather than treating it as the weekly report itself.
+
+### 2026-04-02 findings
+
+- The transcript-guided reading remains consistent: PCA should be interpreted first because side (`ipsi` vs `contra`) is the dominant visible split in the `family_drg_novaseqx` design.
+- The two main side-specific contrasts still drive the Draft 1 paper story, but both produce very large significant-gene sets:
+  - `ipsi_vs_contra_in_ff` = `7023` genes with `padj < 0.05`
+  - `ipsi_vs_contra_in_cre` = `7541` genes with `padj < 0.05`
+- Bend-point filtering gives a less-arbitrary narrowing rule than a fixed top-`N` cutoff:
+  - `ipsi_vs_contra_in_ff` bend-point set = `709` genes
+  - `ipsi_vs_contra_in_cre` bend-point set = `870` genes
+- `geno_in_contra` remains the strongest secondary genotype branch:
+  - `891` significant genes
+- `geno_in_ipsi` stays much smaller:
+  - `2` significant genes
+- Enrichment outputs are now available for the two bend-point-filtered side-specific sets and for the `geno_in_contra` significant-gene set.
