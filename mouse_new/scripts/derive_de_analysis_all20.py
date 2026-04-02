@@ -141,10 +141,21 @@ def save_selection_comparison_plots(name: str, df: pd.DataFrame) -> None:
             label=label,
             edgecolors="none",
         )
-    axes[0].axhline(-np.log10(max(threshold, 1e-300)), color="#2ca02c", linestyle="--", linewidth=1.2)
+    bend_y = -np.log10(max(threshold, 1e-300))
+    axes[0].axhline(bend_y, color="#2ca02c", linestyle="--", linewidth=1.2)
     axes[0].set_title(f"{name}: before/after threshold on volcano scale")
     axes[0].set_xlabel("log2 fold change")
     axes[0].set_ylabel("-log10(p-value)")
+    axes[0].text(
+        0.98,
+        0.97,
+        f"bend-point p = {threshold:.2e}\nselected = {int(counts['bend-point selected']):,}",
+        transform=axes[0].transAxes,
+        ha="right",
+        va="top",
+        fontsize=8.5,
+        bbox={"facecolor": "white", "alpha": 0.9, "edgecolor": "#2ca02c"},
+    )
     axes[0].legend(frameon=True, fontsize=8)
 
     axes[1].bar(class_order, counts.values, color=[color_map[c] for c in class_order])
@@ -154,6 +165,16 @@ def save_selection_comparison_plots(name: str, df: pd.DataFrame) -> None:
     ymax = max(counts.values) if len(counts.values) else 1
     for idx, val in enumerate(counts.values):
         axes[1].text(idx, val + max(ymax * 0.02, 1), f"{int(val):,}", ha="center", va="bottom", fontsize=9)
+    axes[1].text(
+        2,
+        counts.values[2] + max(ymax * 0.08, 1),
+        "core set after\nbend-point",
+        ha="center",
+        va="bottom",
+        fontsize=8.5,
+        color="#b22222",
+        fontweight="bold",
+    )
     fig.tight_layout()
     fig.savefig(outdir / "before_after_selection_comparison.png", dpi=180, bbox_inches="tight")
     plt.close(fig)
@@ -190,6 +211,90 @@ def save_genotype_comparison_plots(geno_frames: dict[str, pd.DataFrame]) -> None
     ax.legend(frameon=True)
     fig.tight_layout()
     fig.savefig(outdir / "geno_log2fc_density.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+    fig, axes = plt.subplots(2, 2, figsize=(13, 9), height_ratios=[3, 1.5])
+    stats = []
+    for col, name in enumerate(["geno_in_contra", "geno_in_ipsi"]):
+        df = geno_frames[name].copy()
+        df = df[df["pvalue"].notna()].copy()
+        df["neglog10_pvalue"] = -np.log10(np.clip(df["pvalue"].astype(float), 1e-300, 1.0))
+        df["sig"] = df["padj"].fillna(1).lt(0.05)
+        sig_count = int(df["sig"].sum())
+        nonsig_count = int((~df["sig"]).sum())
+        stats.append((name, nonsig_count, sig_count))
+
+        ax = axes[0, col]
+        ax.scatter(df.loc[~df["sig"], "log2FoldChange"], df.loc[~df["sig"], "neglog10_pvalue"], s=10, alpha=0.35, c="#bdbdbd", edgecolors="none")
+        ax.scatter(df.loc[df["sig"], "log2FoldChange"], df.loc[df["sig"], "neglog10_pvalue"], s=12, alpha=0.8, c="#b14a5c", edgecolors="none")
+        ax.set_title(name)
+        ax.set_xlabel("log2 fold change")
+        ax.set_ylabel("-log10(p-value)")
+
+    for col, (name, nonsig_count, sig_count) in enumerate(stats):
+        ax = axes[1, col]
+        ax.bar(["not significant", "significant"], [nonsig_count, sig_count], color=["#9ca3af", "#b14a5c"])
+        ax.set_title(f"{name}: gene counts")
+        ax.set_ylabel("genes")
+        ax.tick_params(axis="x", rotation=18)
+        ymax = max(nonsig_count, sig_count, 1)
+        for idx, val in enumerate([nonsig_count, sig_count]):
+            ax.text(idx, val + max(ymax * 0.03, 1), f"{val:,}", ha="center", va="bottom", fontsize=9)
+
+    fig.suptitle("Genotype contrasts: side-by-side volcanoes and gene-count breakdowns")
+    fig.tight_layout()
+    fig.savefig(outdir / "geno_volcano_and_counts_grid.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+    box_rows = []
+    for name in ["geno_in_contra", "geno_in_ipsi"]:
+        df = geno_frames[name].copy()
+        df["sig"] = df["padj"].fillna(1).lt(0.05)
+        for subset_name, subset in {
+            "all tested genes": df,
+            "padj < 0.05 genes": df[df["sig"]],
+        }.items():
+            vals = subset["log2FoldChange"].dropna().abs().astype(float)
+            for val in vals.tolist():
+                box_rows.append(
+                    {
+                        "contrast_id": name,
+                        "subset": subset_name,
+                        "abs_log2FoldChange": val,
+                    }
+                )
+    box_df = pd.DataFrame(box_rows)
+    box_df.to_csv(outdir / "geno_abs_log2fc_boxplot_source.tsv", sep="\t", index=False)
+
+    fig, axes = plt.subplots(1, 2, figsize=(12.5, 5))
+    summary = pd.read_csv(outdir / "geno_in_contra_vs_geno_in_ipsi_summary.tsv", sep="\t")
+    axes[0].bar(summary["contrast_id"], summary["significant_padj_lt_0_05"], color=["#1f77b4", "#ff7f0e"])
+    axes[0].set_title("Significant-gene counts")
+    axes[0].set_ylabel("genes")
+    ymax = max(summary["significant_padj_lt_0_05"].max(), 1)
+    for idx, val in enumerate(summary["significant_padj_lt_0_05"]):
+        axes[0].text(idx, val + max(ymax * 0.03, 1), f"{int(val):,}", ha="center", va="bottom", fontsize=9)
+
+    plotted = []
+    labels = []
+    colors = []
+    for contrast, color in [("geno_in_contra", "#1f77b4"), ("geno_in_ipsi", "#ff7f0e")]:
+        for subset in ["all tested genes", "padj < 0.05 genes"]:
+            vals = box_df[(box_df["contrast_id"] == contrast) & (box_df["subset"] == subset)]["abs_log2FoldChange"].to_numpy()
+            if len(vals):
+                plotted.append(vals)
+                labels.append(f"{contrast}\n{subset.replace(' genes', '')}")
+                colors.append(color)
+    bp = axes[1].boxplot(plotted, patch_artist=True, showfliers=False)
+    for patch, color in zip(bp["boxes"], colors):
+        patch.set_facecolor(color)
+        patch.set_alpha(0.45)
+    axes[1].set_title("Effect-size spread (zoom on genotype differences)")
+    axes[1].set_ylabel("|log2 fold change|")
+    axes[1].set_xticklabels(labels, rotation=18, ha="right")
+    fig.suptitle("Genotype contrasts: counts plus effect-size zoom")
+    fig.tight_layout()
+    fig.savefig(outdir / "geno_counts_and_boxplot_zoom.png", dpi=180, bbox_inches="tight")
     plt.close(fig)
 
 
@@ -261,9 +366,20 @@ def save_pvalue_outputs(name: str, df: pd.DataFrame) -> dict[str, float]:
     axes[0].plot(ranked["rank"], ranked["neglog10_pvalue"], color="#1f77b4", linewidth=1.5)
     bend_rank = int(ranked.loc[ranked["selected_by_bend"].idxmax(), "rank"]) if not selected.empty else 1
     axes[0].axvline(bend_rank, color="#d62728", linestyle="--", linewidth=1.5)
+    axes[0].axvspan(1, bend_rank, color="#fdd0a2", alpha=0.25)
     axes[0].set_title(f"{name}: ordered p-values")
     axes[0].set_xlabel("Rank (smallest p-value to largest)")
     axes[0].set_ylabel("-log10(p-value)")
+    axes[0].text(
+        bend_rank,
+        ranked["neglog10_pvalue"].max() * 0.95,
+        f"bend rank = {bend_rank:,}\nthreshold = {threshold:.2e}",
+        color="#b22222",
+        fontsize=8.5,
+        ha="right",
+        va="top",
+        bbox={"facecolor": "white", "alpha": 0.9, "edgecolor": "#d62728"},
+    )
 
     axes[1].plot(ranked["pvalue"], ranked["rank"], color="#2ca02c", linewidth=1.5)
     axes[1].axvline(threshold, color="#d62728", linestyle="--", linewidth=1.5)
@@ -271,6 +387,16 @@ def save_pvalue_outputs(name: str, df: pd.DataFrame) -> dict[str, float]:
     axes[1].set_xlabel("p-value")
     axes[1].set_ylabel("Cumulative genes")
     axes[1].set_xlim(left=0, right=min(0.5, max(0.05, float(ranked["pvalue"].quantile(0.95)))))
+    axes[1].text(
+        threshold,
+        ranked["rank"].max() * 0.15,
+        f"bend-point\np = {threshold:.2e}\nselected = {selected_count:,}",
+        color="#b22222",
+        fontsize=8.5,
+        ha="left",
+        va="bottom",
+        bbox={"facecolor": "white", "alpha": 0.9, "edgecolor": "#d62728"},
+    )
 
     fig.tight_layout()
     fig.savefig(outdir / "ordered_pvalue_and_cumulative_curve.png", dpi=180, bbox_inches="tight")
