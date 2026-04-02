@@ -27,13 +27,17 @@ p { text-align: justify; margin: 0 0 4px 0; }
 code { font-family: Menlo, Consolas, monospace; font-size: 8px; }
 .figure-title { text-align: center; font-size: 9.8pt; font-weight: bold; margin: 4px 0 2px 0; }
 img { max-width: 100%; height: auto; display: block; margin: 3px auto; border: 0.5px solid #ddd; }
-.img-main { width: 62%; }
+.img-main { width: 54%; }
 .img-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 2px 0 4px 0; }
 .img-grid img { width: 48%; max-width: 48%; }
 .pca-row { display: flex; gap: 10px; align-items: flex-start; margin: 2px 0 4px 0; }
-.pca-plot { flex: 0 0 58%; }
-.pca-table { flex: 0 0 40%; }
+.pca-plot { flex: 0 0 48%; }
+.pca-table { flex: 0 0 49%; }
 .pca-plot img { width: 100%; max-width: 100%; }
+.enrich-row { display: flex; gap: 10px; align-items: flex-end; margin: 2px 0 4px 0; }
+.enrich-left { flex: 0 0 63%; }
+.enrich-right { flex: 0 0 34%; }
+.enrich-left img, .enrich-right img { width: 100%; max-width: 100%; }
 .note { font-size: 9.5pt; line-height: 1.14; margin: 1px 0 3px 0; }
 ul.clist { margin: 0 0 1px 14px; padding: 0; }
 ul.clist li { margin: 0 0 1px 0; }
@@ -141,11 +145,10 @@ are genuinely close in PCA space, so genotype should be interpreted as a seconda
 <div class="img-grid">
 <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/before_after_selection_comparison.png" alt="Before and after bend-point comparison for ipsi_vs_contra_in_ff" />
 <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/ordered_pvalue_and_cumulative_curve.png" alt="Ordered p-value and cumulative curve for ipsi_vs_contra_in_ff" />
-<img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/volcano_with_counts.png" alt="Standalone volcano and count breakdown for ipsi_vs_contra_in_ff" />
 </div>
 <p class="note">
-This compact figure set shows three complementary views: the before/after comparison, the ordered p-value curve with bend-point, and the
-standalone volcano/count view. Together, they make the threshold logic clearer than any single plot alone.
+This compact figure set keeps only the two views that add distinct information: the before/after comparison and the ordered p-value curve with
+the bend-point marked directly. Together, they make the threshold logic clearer without repeating the same signal a third time.
 </p>
 <p class="note">
 This is the clearest place where the class feedback changed our approach. The question is no longer “how many significant genes are there?”
@@ -157,7 +160,6 @@ contrast, the answer is yes.
 <div class="img-grid">
 <img src="../differential_expression_all20/derived_analysis/geno_in_contra/before_after_selection_comparison.png" alt="Before and after bend-point comparison for geno_in_contra" />
 <img src="../differential_expression_all20/derived_analysis/genotype_comparison/geno_counts_and_boxplot_zoom.png" alt="Genotype count and effect-size zoom" />
-<img src="../differential_expression_all20/derived_analysis/genotype_comparison/geno_volcano_and_counts_grid.png" alt="Genotype volcano and count comparison grid" />
 </div>
 <p class="note">
 This is the strongest genotype-specific supporting branch. It remains weaker than the side-specific DRG contrasts, but it is not zero, and the
@@ -166,15 +168,18 @@ supporting context while the side-specific DE signal stays at the center.
 </p>
 
 <div class="figure-title">Figure 4. Enrichment summary for the main side-specific story</div>
-<div class="img-grid">
+<div class="enrich-row">
+<div class="enrich-left">
 <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/gprofiler_terms_and_overlap.png" alt="Enrichment terms and overlap for ipsi_vs_contra_in_ff" />
-<img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/gprofiler_top_terms.png" alt="Top enrichment terms for ipsi_vs_contra_in_ff" />
+</div>
+<div class="enrich-right">
 <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/gprofiler_source_summary.png" alt="Enrichment source summary for ipsi_vs_contra_in_ff" />
 </div>
+</div>
 <p class="note">
-This compact set keeps enrichment informative without oversized panels: term overlap coverage, top-term ranking, and source-level balance.
-The themes remain broad regulation, signaling, and development/localization, and they are treated as support for the DE story rather than a
-replacement for direct reading of the contrast.
+This enrichment block now keeps only the two non-redundant views: the combined term-plus-overlap figure and the source summary. The themes
+remain broad regulation, signaling, and development/localization, and they are treated as support for the DE story rather than a replacement
+for direct reading of the contrast.
 </p>
 
 <h2>Interpretation and direction</h2>
