@@ -1537,3 +1537,23 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 ### Decision
 - Keep the original top-term plot as the quick summary.
 - Use the new companion views next to it when deciding which enrichment figure best explains the biology for the weekly report.
+
+## 2026-04-02 — `mouse_new` DE weekly report rewrite
+
+### Step
+- Rewrote `mouse_new/reports/BIOL550_Weekly_Report_Mouse_Differential_Expression_2026-03-25.html` as a transcript-guided follow-up report for `SRP618841`.
+- Replaced the older `all26` / family-package framing with the current `mouse_new` interpretation path.
+- Rebuilt the report narrative around:
+  - PCA-first interpretation,
+  - side-specific DRG contrasts as the main story,
+  - bend-point narrowing,
+  - `geno_in_contra` as the main supporting genotype branch,
+  - and the link from this weekly report into Draft 1 planning.
+
+### Finding
+- The updated report now matches the current notebook and derived-analysis outputs instead of the retired package-first framing.
+- The report also reflects this week’s class feedback more directly by explaining what the data tells us, how thresholds shape the interpretation, and why the main story is side-specific rather than genotype-led.
+
+### Decision
+- Keep the `mouse_new` weekly report as the active DE follow-up document for the contingency dataset.
+- Use this report as the bridge between the current DE interpretation work and the Draft 1 paper story.
