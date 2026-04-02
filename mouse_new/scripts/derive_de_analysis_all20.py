@@ -21,6 +21,178 @@ ALL_CONTRASTS = MAIN_CONTRASTS + GENO_CONTRASTS + ["interaction"]
 BENDPOINT_CONTRASTS = ALL_CONTRASTS
 
 
+FAMILY_ROOT = DE_ROOT / "family_drg_novaseqx"
+FAMILY_FIGURES = FAMILY_ROOT / "figures"
+FAMILY_VST = FAMILY_TABLES / "vst_matrix.tsv"
+FAMILY_SAMPLE_TABLE = FAMILY_TABLES / "sample_table.tsv"
+
+
+def compute_pca_coordinates(vst: pd.DataFrame, sample_table: pd.DataFrame) -> pd.DataFrame:
+    matrix = vst.set_index("gene_id")
+    centered = matrix.sub(matrix.mean(axis=1), axis=0)
+    samples_by_genes = centered.T.to_numpy()
+    u, s, vt = np.linalg.svd(samples_by_genes, full_matrices=False)
+    coords = u[:, :2] * s[:2]
+    explained = (s**2) / np.sum(s**2)
+    frame = sample_table.copy()
+    frame["PC1"] = coords[:, 0]
+    frame["PC2"] = coords[:, 1]
+    frame["PC1_var_explained"] = explained[0] if len(explained) > 0 else np.nan
+    frame["PC2_var_explained"] = explained[1] if len(explained) > 1 else np.nan
+    return frame
+
+
+def save_family_structure_outputs() -> pd.DataFrame:
+    outdir = OUT_ROOT / "family_structure"
+    ensure_dir(outdir)
+
+    sample_table = pd.read_csv(FAMILY_SAMPLE_TABLE, sep="	")
+    vst = pd.read_csv(FAMILY_VST, sep="	")
+    coords = compute_pca_coordinates(vst, sample_table)
+    coords.to_csv(outdir / "pca_side_genotype_coordinates.tsv", sep="	", index=False)
+
+    color_map = {"ipsi": "#1f77b4", "contra": "#d62728"}
+    marker_map = {"ff": "o", "cre": "s"}
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+    for (_, row) in coords.iterrows():
+        ax.scatter(
+            row["PC1"],
+            row["PC2"],
+            s=90,
+            color=color_map.get(row["side_class"], "#7f7f7f"),
+            marker=marker_map.get(row["geno_class"], "o"),
+            edgecolor="black",
+            linewidth=0.5,
+            alpha=0.9,
+        )
+        ax.text(row["PC1"] + 0.12, row["PC2"] + 0.12, row["srr"].replace("SRR", ""), fontsize=7)
+
+    ax.set_xlabel(f"PC1 ({coords['PC1_var_explained'].iloc[0]*100:.1f}% variance)")
+    ax.set_ylabel(f"PC2 ({coords['PC2_var_explained'].iloc[0]*100:.1f}% variance)")
+    ax.set_title("DRG family PCA: side color, genotype shape")
+
+    from matplotlib.lines import Line2D
+    legend_handles = [
+        Line2D([0], [0], marker='o', color='w', label='ipsi', markerfacecolor=color_map['ipsi'], markeredgecolor='black', markersize=8),
+        Line2D([0], [0], marker='o', color='w', label='contra', markerfacecolor=color_map['contra'], markeredgecolor='black', markersize=8),
+        Line2D([0], [0], marker='o', color='black', label='ff', markerfacecolor='white', markersize=8),
+        Line2D([0], [0], marker='s', color='black', label='cre', markerfacecolor='white', markersize=8),
+    ]
+    ax.legend(handles=legend_handles, loc='best', frameon=True)
+    fig.tight_layout()
+    fig.savefig(outdir / "pca_side_genotype_annotated.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+    collision_rows = []
+    for side in sorted(coords["side_class"].unique()):
+        subset = coords[coords["side_class"] == side].copy()
+        ff = subset[subset["geno_class"] == "ff"]
+        cre = subset[subset["geno_class"] == "cre"]
+        for _, ff_row in ff.iterrows():
+            for _, cre_row in cre.iterrows():
+                dist = float(np.hypot(ff_row["PC1"] - cre_row["PC1"], ff_row["PC2"] - cre_row["PC2"]))
+                collision_rows.append({
+                    "side_class": side,
+                    "ff_srr": ff_row["srr"],
+                    "cre_srr": cre_row["srr"],
+                    "pca_distance": dist,
+                })
+    if collision_rows:
+        collisions = pd.DataFrame(collision_rows).sort_values("pca_distance")
+        collisions.to_csv(outdir / "pca_ff_cre_collision_pairs.tsv", sep="	", index=False)
+    return coords
+
+
+def save_selection_comparison_plots(name: str, df: pd.DataFrame) -> None:
+    outdir = OUT_ROOT / name
+    ensure_dir(outdir)
+    ranked = pd.read_csv(outdir / "ordered_pvalues_with_bendpoint.tsv", sep="	")
+    selected_ids = set(ranked.loc[ranked["selected_by_bend"], "gene_id"].astype(str))
+    working = df.copy()
+    working = working.replace([np.inf, -np.inf], np.nan)
+    working = working[working["pvalue"].notna()].copy()
+    working["neglog10_pvalue"] = -np.log10(np.clip(working["pvalue"].astype(float), 1e-300, 1.0))
+    working["abs_log2FoldChange"] = working["log2FoldChange"].abs()
+    working["selection_class"] = np.where(
+        working["gene_id"].astype(str).isin(selected_ids),
+        "bend-point selected",
+        np.where(working["padj"].fillna(1).lt(0.05), "padj < 0.05 only", "not selected"),
+    )
+    class_order = ["not selected", "padj < 0.05 only", "bend-point selected"]
+    color_map = {
+        "not selected": "#c7c7c7",
+        "padj < 0.05 only": "#f0ad4e",
+        "bend-point selected": "#d62728",
+    }
+
+    counts = working["selection_class"].value_counts().reindex(class_order, fill_value=0)
+    threshold = float(pd.read_csv(outdir / "bendpoint_summary.tsv", sep="	")["bend_pvalue_threshold"].iloc[0])
+
+    fig, axes = plt.subplots(1, 2, figsize=(13, 5.2))
+    for label in class_order:
+        subset = working[working["selection_class"] == label]
+        axes[0].scatter(
+            subset["log2FoldChange"],
+            subset["neglog10_pvalue"],
+            s=10 if label == "not selected" else 16,
+            alpha=0.45 if label == "not selected" else 0.8,
+            c=color_map[label],
+            label=label,
+            edgecolors="none",
+        )
+    axes[0].axhline(-np.log10(max(threshold, 1e-300)), color="#2ca02c", linestyle="--", linewidth=1.2)
+    axes[0].set_title(f"{name}: before/after threshold on volcano scale")
+    axes[0].set_xlabel("log2 fold change")
+    axes[0].set_ylabel("-log10(p-value)")
+    axes[0].legend(frameon=True, fontsize=8)
+
+    axes[1].bar(class_order, counts.values, color=[color_map[c] for c in class_order])
+    axes[1].set_title(f"{name}: count change after bend-point filtering")
+    axes[1].set_ylabel("genes")
+    axes[1].tick_params(axis='x', rotation=18)
+    ymax = max(counts.values) if len(counts.values) else 1
+    for idx, val in enumerate(counts.values):
+        axes[1].text(idx, val + max(ymax * 0.02, 1), f"{int(val):,}", ha="center", va="bottom", fontsize=9)
+    fig.tight_layout()
+    fig.savefig(outdir / "before_after_selection_comparison.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+
+def save_genotype_comparison_plots(geno_frames: dict[str, pd.DataFrame]) -> None:
+    outdir = OUT_ROOT / "genotype_comparison"
+    ensure_dir(outdir)
+
+    fig, axes = plt.subplots(1, 2, figsize=(13, 5))
+    for ax, name in zip(axes, ["geno_in_contra", "geno_in_ipsi"]):
+        df = geno_frames[name].copy()
+        df = df[df["pvalue"].notna()].copy()
+        df["neglog10_pvalue"] = -np.log10(np.clip(df["pvalue"].astype(float), 1e-300, 1.0))
+        df["sig"] = df["padj"].fillna(1).lt(0.05)
+        ax.scatter(df.loc[~df["sig"], "log2FoldChange"], df.loc[~df["sig"], "neglog10_pvalue"], s=10, alpha=0.35, c="#bdbdbd", edgecolors="none")
+        ax.scatter(df.loc[df["sig"], "log2FoldChange"], df.loc[df["sig"], "neglog10_pvalue"], s=12, alpha=0.8, c="#b14a5c", edgecolors="none")
+        ax.set_title(name)
+        ax.set_xlabel("log2 fold change")
+        ax.set_ylabel("-log10(p-value)")
+    fig.suptitle("Genotype contrasts: weaker is not zero")
+    fig.tight_layout()
+    fig.savefig(outdir / "geno_volcano_side_by_side.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+    fig, ax = plt.subplots(figsize=(8, 5))
+    bins = np.linspace(-2.5, 2.5, 80)
+    for name, color in [("geno_in_contra", "#1f77b4"), ("geno_in_ipsi", "#ff7f0e")]:
+        vals = geno_frames[name]["log2FoldChange"].dropna().astype(float)
+        ax.hist(vals, bins=bins, density=True, alpha=0.4, label=name, color=color)
+    ax.set_title("Genotype effect-size distributions")
+    ax.set_xlabel("log2 fold change")
+    ax.set_ylabel("density")
+    ax.legend(frameon=True)
+    fig.tight_layout()
+    fig.savefig(outdir / "geno_log2fc_density.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+
 def ensure_dir(path: Path) -> None:
     path.mkdir(parents=True, exist_ok=True)
 
@@ -251,7 +423,11 @@ def main() -> None:
         if contrast in GENO_CONTRASTS:
             geno_frames[contrast] = df
 
+    save_family_structure_outputs()
     genotype_summary(geno_frames)
+    save_genotype_comparison_plots(geno_frames)
+    for contrast in BENDPOINT_CONTRASTS:
+        save_selection_comparison_plots(contrast, load_contrast(contrast))
     pd.DataFrame(summaries).to_csv(OUT_ROOT / "analysis_summary.tsv", sep="\t", index=False)
 
 

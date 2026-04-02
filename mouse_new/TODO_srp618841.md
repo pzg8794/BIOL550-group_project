@@ -124,3 +124,10 @@
 - [x] Regenerate `mouse_new/differential_expression_all20/derived_analysis/analysis_summary.tsv` with real bend-point counts and thresholds for all exported contrasts.
 - [x] Update the canonical local notebook so the transcript-driven overview, bend-point method note, artifact index, story-selection criteria, risk checks, and weekly-report takeaways are all documented in one place.
 - [x] Update the local weekly DE report HTML under `mouse_new/reports/` so it explains the bend-point method, the gene sets used for enrichment, and the currently recommended story.
+
+### 2026-04-02 visualization upgrade
+
+- [x] Add annotated PCA structure outputs that show side by color and genotype by shape.
+- [x] Add explicit `ff` / `cre` PCA collision summaries so overlap can be discussed concretely.
+- [x] Add before/after bend-point comparison plots for each contrast so threshold effects are visible, not just tabulated.
+- [x] Add stronger genotype visuals (`geno_in_contra` vs `geno_in_ipsi`) so “weaker” does not read as “zero”.

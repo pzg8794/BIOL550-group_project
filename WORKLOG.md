@@ -1473,3 +1473,22 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 - Keep the side-specific DRG contrasts as the recommended lead story for the next weekly report.
 - Keep `geno_in_contra` as the strongest secondary genotype branch.
 - Treat `geno_in_ipsi` and `interaction` as exploratory until their bend-point-selected outputs hold up under stricter plot and enrichment sanity checks.
+
+## 2026-04-02 — Informative plot upgrade for DE interpretation
+
+### Step
+- Extended the local `mouse_new` DE follow-up script to generate more interpretable plots under `mouse_new/differential_expression_all20/derived_analysis/`.
+- Added:
+  - annotated PCA with side color and genotype shape
+  - PCA `ff` / `cre` collision summary table
+  - before/after bend-point comparison plots for each contrast
+  - genotype side-by-side volcanoes and log2 fold-change density plots
+- Updated and re-executed the canonical notebook so those plots now appear with supporting markdown.
+
+### Finding
+- The new visuals make two key points much clearer:
+  - genotype is weaker than the main side-specific signal, but not zero
+  - some `ff` and `cre` samples occupy nearby PCA space, which supports treating genotype as secondary to side rather than as the dominant structure
+
+### Decision
+- Use the new before/after and comparison plots as the default interpretation layer when deciding which contrast should lead the next weekly report.
