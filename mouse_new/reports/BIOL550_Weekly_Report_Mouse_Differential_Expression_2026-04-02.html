@@ -30,6 +30,10 @@ img { max-width: 100%; height: auto; display: block; margin: 3px auto; border: 0
 .img-main { width: 62%; }
 .img-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 2px 0 4px 0; }
 .img-grid img { width: 48%; max-width: 48%; }
+.pca-row { display: flex; gap: 10px; align-items: flex-start; margin: 2px 0 4px 0; }
+.pca-plot { flex: 0 0 58%; }
+.pca-table { flex: 0 0 40%; }
+.pca-plot img { width: 100%; max-width: 100%; }
 .note { font-size: 9.5pt; line-height: 1.14; margin: 1px 0 3px 0; }
 ul.clist { margin: 0 0 1px 14px; padding: 0; }
 ul.clist li { margin: 0 0 1px 0; }
@@ -100,13 +104,11 @@ using the strongest side-specific contrasts as the center of interpretation, kee
 </p>
 
 <div class="figure-title">Figure 1. PCA-first reading of the `mouse_new` DRG family</div>
-<img class="img-main" src="../differential_expression_all20/derived_analysis/family_structure/pca_side_genotype_annotated.png" alt="Annotated PCA for mouse_new DRG family" />
-<p class="note">
-This annotated PCA is the correct first read of the dataset because it shows the baseline structure before any gene-level filtering.
-Color now tracks side class and shape tracks genotype, which makes the main pattern much easier to see: the side-specific split is clearer
-than the genotype split. Some <code>ff</code> and <code>cre</code> samples are still close together in PCA space, which supports treating
-genotype as secondary rather than as the primary organizing signal.
-</p>
+<div class="pca-row">
+<div class="pca-plot">
+<img src="../differential_expression_all20/derived_analysis/family_structure/pca_side_genotype_annotated.png" alt="Annotated PCA for mouse_new DRG family" />
+</div>
+<div class="pca-table">
 <table class="compact">
 <thead>
 <tr>
@@ -122,6 +124,14 @@ genotype as secondary rather than as the primary organizing signal.
 <tr><td>contra</td><td>SRR35329980 vs SRR35329988</td><td>1.18</td><td>Cross-genotype proximity also appears in contra</td></tr>
 </tbody>
 </table>
+</div>
+</div>
+<p class="note">
+This annotated PCA is the correct first read of the dataset because it shows the baseline structure before any gene-level filtering.
+Color now tracks side class and shape tracks genotype, which makes the main pattern much easier to see: the side-specific split is clearer
+than the genotype split. Some <code>ff</code> and <code>cre</code> samples are still close together in PCA space, which supports treating
+genotype as secondary rather than as the primary organizing signal.
+</p>
 <p class="note">
 This table comes from the derived collision summary and directly answers the class concern: some <code>ff</code> and <code>cre</code> samples
 are genuinely close in PCA space, so genotype should be interpreted as a secondary axis in this report.
