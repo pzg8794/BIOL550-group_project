@@ -1604,3 +1604,15 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 
 ### Decision
 - Keep compact multi-plot blocks as the default report style for this follow-up report.
+
+## 2026-04-02 — Apr 2 PCA clarity fix
+
+### Step
+- Revised the PCA section in the Apr 2 report to directly address the `ff`/`cre` overlap concern.
+- Reduced PCA image size and added a compact table of closest cross-genotype sample pairs from the collision summary output.
+
+### Finding
+- The PCA section now shows explicit evidence for why genotype is treated as secondary in this dataset instead of only describing it in prose.
+
+### Decision
+- Keep the PCA evidence block (plot + compact collision table) as the default format for this report.

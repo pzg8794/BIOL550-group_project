@@ -27,12 +27,15 @@ p { text-align: justify; margin: 0 0 4px 0; }
 code { font-family: Menlo, Consolas, monospace; font-size: 8px; }
 .figure-title { text-align: center; font-size: 9.8pt; font-weight: bold; margin: 4px 0 2px 0; }
 img { max-width: 100%; height: auto; display: block; margin: 3px auto; border: 0.5px solid #ddd; }
-.img-main { width: 76%; }
+.img-main { width: 62%; }
 .img-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 2px 0 4px 0; }
 .img-grid img { width: 48%; max-width: 48%; }
 .note { font-size: 9.5pt; line-height: 1.14; margin: 1px 0 3px 0; }
 ul.clist { margin: 0 0 1px 14px; padding: 0; }
 ul.clist li { margin: 0 0 1px 0; }
+table.compact { width: 100%; border-collapse: collapse; font-size: 8.6pt; margin: 4px 0; }
+table.compact th, table.compact td { border: 0.5px solid #bbb; padding: 2px 4px; text-align: left; }
+table.compact th { background: #f5f5f5; }
 </style>
 </head>
 <body>
@@ -103,6 +106,25 @@ This annotated PCA is the correct first read of the dataset because it shows the
 Color now tracks side class and shape tracks genotype, which makes the main pattern much easier to see: the side-specific split is clearer
 than the genotype split. Some <code>ff</code> and <code>cre</code> samples are still close together in PCA space, which supports treating
 genotype as secondary rather than as the primary organizing signal.
+</p>
+<table class="compact">
+<thead>
+<tr>
+<th>Side class</th>
+<th>Closest <code>ff</code>/<code>cre</code> pair</th>
+<th>PCA distance</th>
+<th>Interpretation note</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>ipsi</td><td>SRR35329986 vs SRR35329987</td><td>0.27</td><td>Very close cross-genotype pair</td></tr>
+<tr><td>ipsi</td><td>SRR35329984 vs SRR35329987</td><td>0.67</td><td>Another near-overlap in the same side class</td></tr>
+<tr><td>contra</td><td>SRR35329980 vs SRR35329988</td><td>1.18</td><td>Cross-genotype proximity also appears in contra</td></tr>
+</tbody>
+</table>
+<p class="note">
+This table comes from the derived collision summary and directly answers the class concern: some <code>ff</code> and <code>cre</code> samples
+are genuinely close in PCA space, so genotype should be interpreted as a secondary axis in this report.
 </p>
 
 <div class="figure-title">Figure 2. Main side-specific contrast after class-guided filtering</div>
