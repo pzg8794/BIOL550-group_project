@@ -27,6 +27,9 @@ p { text-align: justify; margin: 0 0 4px 0; }
 code { font-family: Menlo, Consolas, monospace; font-size: 8px; }
 .figure-title { text-align: center; font-size: 9.8pt; font-weight: bold; margin: 4px 0 2px 0; }
 img { max-width: 100%; height: auto; display: block; margin: 3px auto; border: 0.5px solid #ddd; }
+.img-main { width: 76%; }
+.img-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 2px 0 4px 0; }
+.img-grid img { width: 48%; max-width: 48%; }
 .note { font-size: 9.5pt; line-height: 1.14; margin: 1px 0 3px 0; }
 ul.clist { margin: 0 0 1px 14px; padding: 0; }
 ul.clist li { margin: 0 0 1px 0; }
@@ -94,7 +97,7 @@ using the strongest side-specific contrasts as the center of interpretation, kee
 </p>
 
 <div class="figure-title">Figure 1. PCA-first reading of the `mouse_new` DRG family</div>
-<img src="../differential_expression_all20/derived_analysis/family_structure/pca_side_genotype_annotated.png" alt="Annotated PCA for mouse_new DRG family" />
+<img class="img-main" src="../differential_expression_all20/derived_analysis/family_structure/pca_side_genotype_annotated.png" alt="Annotated PCA for mouse_new DRG family" />
 <p class="note">
 This annotated PCA is the correct first read of the dataset because it shows the baseline structure before any gene-level filtering.
 Color now tracks side class and shape tracks genotype, which makes the main pattern much easier to see: the side-specific split is clearer
@@ -103,11 +106,14 @@ genotype as secondary rather than as the primary organizing signal.
 </p>
 
 <div class="figure-title">Figure 2. Main side-specific contrast after class-guided filtering</div>
+<div class="img-grid">
 <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/before_after_selection_comparison.png" alt="Before and after bend-point comparison for ipsi_vs_contra_in_ff" />
+<img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/ordered_pvalue_and_cumulative_curve.png" alt="Ordered p-value and cumulative curve for ipsi_vs_contra_in_ff" />
+<img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/volcano_with_counts.png" alt="Standalone volcano and count breakdown for ipsi_vs_contra_in_ff" />
+</div>
 <p class="note">
-This single figure is the strongest visual for the main DE contrast because it already includes the before/after volcano view and the count
-change after bend-point filtering. The key point is that the bend-point does not redefine significance; it narrows a very large significant
-set into a smaller, interpretable core without changing the overall direction of the signal.
+This compact figure set shows three complementary views: the before/after comparison, the ordered p-value curve with bend-point, and the
+standalone volcano/count view. Together, they make the threshold logic clearer than any single plot alone.
 </p>
 <p class="note">
 This is the clearest place where the class feedback changed our approach. The question is no longer “how many significant genes are there?”
@@ -116,7 +122,11 @@ contrast, the answer is yes.
 </p>
 
 <div class="figure-title">Figure 3. Secondary genotype branch: `geno_in_contra`</div>
+<div class="img-grid">
 <img src="../differential_expression_all20/derived_analysis/geno_in_contra/before_after_selection_comparison.png" alt="Before and after bend-point comparison for geno_in_contra" />
+<img src="../differential_expression_all20/derived_analysis/genotype_comparison/geno_counts_and_boxplot_zoom.png" alt="Genotype count and effect-size zoom" />
+<img src="../differential_expression_all20/derived_analysis/genotype_comparison/geno_volcano_and_counts_grid.png" alt="Genotype volcano and count comparison grid" />
+</div>
 <p class="note">
 This is the strongest genotype-specific supporting branch. It remains weaker than the side-specific DRG contrasts, but it is not zero, and the
 before/after view shows that the secondary genotype signal still has an interpretable core. That is why <code>geno_in_contra</code> stays as
@@ -124,11 +134,15 @@ supporting context while the side-specific DE signal stays at the center.
 </p>
 
 <div class="figure-title">Figure 4. Enrichment summary for the main side-specific story</div>
+<div class="img-grid">
 <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/gprofiler_terms_and_overlap.png" alt="Enrichment terms and overlap for ipsi_vs_contra_in_ff" />
+<img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/gprofiler_top_terms.png" alt="Top enrichment terms for ipsi_vs_contra_in_ff" />
+<img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/gprofiler_source_summary.png" alt="Enrichment source summary for ipsi_vs_contra_in_ff" />
+</div>
 <p class="note">
-This enrichment view is intentionally kept to one plot to avoid visual repetition. It still preserves the two things we need for interpretation:
-term strength and overlap coverage. The themes remain broad regulation, signaling, and development/localization, and they are treated as support
-for the DE story rather than a replacement for direct reading of the contrast.
+This compact set keeps enrichment informative without oversized panels: term overlap coverage, top-term ranking, and source-level balance.
+The themes remain broad regulation, signaling, and development/localization, and they are treated as support for the DE story rather than a
+replacement for direct reading of the contrast.
 </p>
 
 <h2>Interpretation and direction</h2>

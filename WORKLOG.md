@@ -1589,3 +1589,18 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 
 ### Decision
 - Keep the Apr 2 report in this single-figure-per-section format unless a specific side-by-side comparison is explicitly needed for interpretation.
+
+## 2026-04-02 — Apr 2 report compact multi-plot revision
+
+### Step
+- Reworked the Apr 2 report figure layout again to avoid oversized single panels.
+- Added compact multi-plot blocks per section so each section now shows more informative context at smaller size:
+  - main side-specific section now includes before/after, ordered-curve, and standalone volcano/count views
+  - genotype section now includes before/after plus genotype comparison and zoom views
+  - enrichment section now includes overlap, top-terms, and source-summary views
+
+### Finding
+- Smaller, multi-plot blocks improve readability and reduce the “one huge plot says too little” problem.
+
+### Decision
+- Keep compact multi-plot blocks as the default report style for this follow-up report.
