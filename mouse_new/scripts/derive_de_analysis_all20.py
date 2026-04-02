@@ -588,6 +588,8 @@ def save_enrichment(name: str, gene_ids: list[str], gene_set_label: str) -> None
     top = frame.sort_values("p_value").head(12).copy()
     top = top.iloc[::-1]
     top["neglog10_p"] = -np.log10(np.clip(top["p_value"], 1e-300, 1.0))
+    top["overlap_fraction"] = top["intersection_size"] / top["query_size"].replace(0, np.nan)
+    source_colors = {"GO:BP": "#4c78a8", "KEGG": "#f58518", "REAC": "#54a24b"}
 
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.barh(top["source"] + " | " + top["name"], top["neglog10_p"], color="#4c78a8")
@@ -595,6 +597,82 @@ def save_enrichment(name: str, gene_ids: list[str], gene_set_label: str) -> None
     ax.set_title(f"{name}: top enrichment terms")
     fig.tight_layout()
     fig.savefig(outdir / "gprofiler_top_terms.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+    fig, axes = plt.subplots(1, 2, figsize=(15, 6), gridspec_kw={"width_ratios": [1.2, 1]})
+    axes[0].barh(
+        top["source"] + " | " + top["name"],
+        top["neglog10_p"],
+        color=[source_colors.get(x, "#7f7f7f") for x in top["source"]],
+    )
+    axes[0].set_xlabel("-log10(p-value)")
+    axes[0].set_title(f"{name}: strongest enrichment terms")
+
+    y_positions = np.arange(len(top))
+    axes[1].scatter(
+        top["overlap_fraction"],
+        y_positions,
+        s=np.clip(top["intersection_size"] * 6, 40, 450),
+        c=[source_colors.get(x, "#7f7f7f") for x in top["source"]],
+        alpha=0.8,
+        edgecolors="black",
+        linewidths=0.4,
+    )
+    axes[1].set_yticks(y_positions)
+    axes[1].set_yticklabels(top["name"])
+    axes[1].set_xlabel("gene-set overlap fraction")
+    axes[1].set_title(f"{name}: how much of the selected set each term covers")
+    axes[1].grid(axis="x", alpha=0.25)
+    for xpos, ypos, count in zip(top["overlap_fraction"], y_positions, top["intersection_size"]):
+        axes[1].text(float(xpos) + 0.005, ypos, f"{int(count)} genes", va="center", fontsize=8)
+
+    from matplotlib.lines import Line2D
+    legend_handles = [
+        Line2D([0], [0], marker="o", color="w", label=source, markerfacecolor=color, markeredgecolor="black", markersize=8)
+        for source, color in source_colors.items()
+        if source in set(top["source"])
+    ]
+    if legend_handles:
+        axes[1].legend(handles=legend_handles, title="source", loc="lower right", frameon=True)
+    fig.tight_layout()
+    fig.savefig(outdir / "gprofiler_terms_and_overlap.png", dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+    source_summary = (
+        frame.assign(neglog10_p=-np.log10(np.clip(frame["p_value"], 1e-300, 1.0)))
+        .groupby("source", as_index=False)
+        .agg(
+            total_terms=("name", "count"),
+            strongest_term_neglog10=("neglog10_p", "max"),
+            median_overlap_fraction=("intersection_size", lambda s: float(np.median(s / frame.loc[s.index, "query_size"]))),
+        )
+        .sort_values("strongest_term_neglog10", ascending=False)
+    )
+    source_summary.to_csv(outdir / "gprofiler_source_summary.tsv", sep="\t", index=False)
+
+    fig, axes = plt.subplots(1, 2, figsize=(11, 4.5))
+    axes[0].bar(
+        source_summary["source"],
+        source_summary["total_terms"],
+        color=[source_colors.get(x, "#7f7f7f") for x in source_summary["source"]],
+    )
+    axes[0].set_title(f"{name}: terms returned per source")
+    axes[0].set_ylabel("enriched terms")
+    for idx, val in enumerate(source_summary["total_terms"]):
+        axes[0].text(idx, val + 0.5, f"{int(val)}", ha="center", va="bottom", fontsize=8)
+
+    axes[1].bar(
+        source_summary["source"],
+        source_summary["strongest_term_neglog10"],
+        color=[source_colors.get(x, "#7f7f7f") for x in source_summary["source"]],
+    )
+    axes[1].set_title(f"{name}: strongest signal by source")
+    axes[1].set_ylabel("best -log10(p-value)")
+    for idx, val in enumerate(source_summary["strongest_term_neglog10"]):
+        axes[1].text(idx, val + max(source_summary["strongest_term_neglog10"].max() * 0.02, 0.5), f"{val:.1f}", ha="center", va="bottom", fontsize=8)
+
+    fig.tight_layout()
+    fig.savefig(outdir / "gprofiler_source_summary.png", dpi=180, bbox_inches="tight")
     plt.close(fig)
 
 

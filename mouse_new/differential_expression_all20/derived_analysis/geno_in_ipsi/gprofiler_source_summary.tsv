@@ -1,0 +1,3 @@
+source	total_terms	strongest_term_neglog10	median_overlap_fraction
+KEGG	2	2.5531298135017266	0.15384615384615385
+GO:BP	4	1.6176265854401854	0.05

@@ -1516,3 +1516,24 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
   - standalone for the result itself
   - combined before/after for threshold explanation
 - Use the combined comparison figure only as an added explanatory layer, not as a replacement for the standalone section.
+
+## 2026-04-02 — Enrichment companion plot expansion
+
+### Step
+- Extended the enrichment output step in `mouse_new/scripts/derive_de_analysis_all20.py` to generate extra companion views for each contrast:
+  - ranked top-term summary
+  - term-strength plus overlap-coverage panel
+  - source-level enrichment summary
+- Re-generated the enrichment artifacts under `mouse_new/differential_expression_all20/derived_analysis/`.
+- Updated and re-executed the canonical notebook so the enrichment section now shows multiple companion views instead of only one summary plot.
+
+### Finding
+- The top-term bar plot is useful for ranking, but it does not explain term coverage or whether the story is carried mostly by `GO:BP`, `KEGG`, or `REAC`.
+- The new companion views make it easier to compare:
+  - which terms are strongest
+  - how much of the selected gene set they actually cover
+  - how the signal is distributed across enrichment sources
+
+### Decision
+- Keep the original top-term plot as the quick summary.
+- Use the new companion views next to it when deciding which enrichment figure best explains the biology for the weekly report.
