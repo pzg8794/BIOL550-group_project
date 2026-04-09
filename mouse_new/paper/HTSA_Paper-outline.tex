@@ -1,0 +1,298 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\doublespacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.2em}
+\setlistdepth{6}
+\renewlist{itemize}{itemize}{6}
+\setlist[itemize,1]{label=\textbullet,leftmargin=1.6em,itemsep=0.15em,topsep=0.15em}
+\setlist[itemize,2]{label=\textbullet,leftmargin=1.9em,itemsep=0.15em,topsep=0.15em}
+\setlist[itemize,3]{label=\textbullet,leftmargin=2.2em,itemsep=0.15em,topsep=0.15em}
+\setlist[itemize,4]{label=\textbullet,leftmargin=2.5em,itemsep=0.15em,topsep=0.15em}
+\setlist[itemize,5]{label=\textbullet,leftmargin=2.8em,itemsep=0.15em,topsep=0.15em}
+\setlist[itemize,6]{label=\textbullet,leftmargin=3.1em,itemsep=0.15em,topsep=0.15em}
+\definecolor{nikhicolor}{HTML}{8E7CC3}
+\definecolor{samcolor}{HTML}{6AA84F}
+\definecolor{pitercolor}{HTML}{CC6666}
+\begin{document}
+\begin{center}
+{\Large \textbf{HTSA Group Paper Outline}}\\
+{\normalsize BIOL550 Group Project (Draft 1)}\\[0.5em]
+{\normalsize Nikhi Boggavarapu}\\
+{\normalsize Sam Kopelev}\\
+{\normalsize Piter Garcia}\\
+\end{center}
+\vspace{0.5em}
+\noindent
+\begin{tabular}{|p{1.55in}|p{4.65in}|}
+\hline
+\textbf{Member} & \textbf{Note} \\ \hline
+\cellcolor[HTML]{D9D2E9}Nikhi Boggavarapu & \cellcolor[HTML]{D9D2E9}Highlighted text in light purple indicates Nikhi's contribution. \\ \hline
+\cellcolor[HTML]{B6D7A8}Sam Kopelev & \cellcolor[HTML]{B6D7A8}Highlighted text in light green indicates Sam's contribution. \\ \hline
+\cellcolor[HTML]{F4CCCC}Piter Garcia & \cellcolor[HTML]{F4CCCC}Highlighted text in light red indicates Piter's contribution. \\ \hline
+\end{tabular}
+\section*{\textcolor{nikhicolor}{Introduction}}
+\begin{itemize}
+\item \textcolor{nikhicolor}{Brief intro about high-throughput sequencing}
+\begin{itemize}
+\item \textcolor{pitercolor}{RNA-seq as a transcriptome-wide method for detecting gene expression changes}
+\item \textcolor{nikhicolor}{Types of NGS}
+\begin{itemize}
+\item \textcolor{nikhicolor}{Organized by read length}
+\item \textcolor{nikhicolor}{Applications}
+\end{itemize}
+\item \textcolor{nikhicolor}{Benefits of NGS}
+\begin{itemize}
+\item \textcolor{nikhicolor}{High throughput}
+\item \textcolor{nikhicolor}{Fast}
+\end{itemize}
+\item \textcolor{nikhicolor}{What our goal was in utilizing NGS}
+\begin{itemize}
+\item \textcolor{pitercolor}{Unbiased, transcriptome-wide detection of gene expression changes}
+\end{itemize}
+\end{itemize}
+\item \textcolor{samcolor}{Introduce paper/dataset}
+\begin{itemize}
+\item \textcolor{samcolor}{Experimental design}
+\item \textcolor{samcolor}{DRG after spinal cord injury}
+\item \textcolor{samcolor}{Goals of the paper}
+\begin{itemize}
+\item \textcolor{samcolor}{Why did they analyze DRG with cKO}
+\item \textcolor{samcolor}{Ipsilateral vs contralateral}
+\item \textcolor{pitercolor}{FF / cre context}
+\end{itemize}
+\end{itemize}
+\item \textcolor{samcolor}{How we wanted to use the paper}
+\begin{itemize}
+\item \textcolor{samcolor}{Explore and confirm suggested pathways}
+\begin{itemize}
+\item \textcolor{samcolor}{FF / cre}
+\end{itemize}
+\item \textcolor{samcolor}{Examine gene expression changes beyond the genes emphasized in the original paper}
+\end{itemize}
+\item \textcolor{pitercolor}{Claim}
+\begin{itemize}
+\item \textcolor{pitercolor}{\textit{Differential expression (DE):} transcriptome-wide RNA-seq helps identify genes involved beyond the ones the paper discussed}
+\item \textcolor{pitercolor}{\textit{Key contrasts:} expression differences were quantified across the main experimental comparisons, especially ipsilateral vs contralateral DRG, and genotype where relevant}
+\item \textcolor{pitercolor}{\textit{GO / pathway enrichment:} DE gene sets were interpreted in terms of broader biological processes and pathways linked to injury response and the cKO context}
+\end{itemize}
+\end{itemize}
+\section*{\textcolor{pitercolor}{Materials and Methods}}
+\begin{itemize}
+\item \textcolor{pitercolor}{Dataset and study design}
+\begin{itemize}
+\item \textcolor{pitercolor}{Public dataset accession}
+\item \textcolor{pitercolor}{Tissue and injury context}
+\item \textcolor{pitercolor}{Sample groups and contrasts}
+\item \textcolor{pitercolor}{Why was this subset retained}
+\end{itemize}
+\item \textcolor{nikhicolor}{Pipeline Steps}
+\begin{itemize}
+\item \textcolor{nikhicolor}{Data Collection and Preprocessing}
+\begin{itemize}
+\item \textcolor{nikhicolor}{Download SRR files (`.gz`)}
+\item \textcolor{pitercolor}{FASTQ organization}
+\item \textcolor{pitercolor}{Sample manifest / metadata table}
+\item \textcolor{pitercolor}{Tools used}
+\end{itemize}
+\item \textcolor{nikhicolor}{Data Quality Control and Trimming}
+\begin{itemize}
+\item \textcolor{nikhicolor}{Raw FastQC / MultiQC}
+\item \textcolor{nikhicolor}{FASTP trimming}
+\item \textcolor{nikhicolor}{Post-trim FastQC / MultiQC}
+\item \textcolor{nikhicolor}{Key QC checkpoint metrics}
+\end{itemize}
+\item \textcolor{nikhicolor}{Data Preparation (Alignment and count generation)}
+\begin{itemize}
+\item \textcolor{nikhicolor}{Reference genome and annotation}
+\begin{itemize}
+\item \textcolor{nikhicolor}{(mm39)}
+\end{itemize}
+\item \textcolor{nikhicolor}{STAR index and alignment}
+\begin{itemize}
+\item \textcolor{nikhicolor}{Building the STAR genome}
+\item \textcolor{nikhicolor}{Paired-end alignment}
+\end{itemize}
+\item \textcolor{pitercolor}{GeneCounts output}
+\item \textcolor{pitercolor}{BAM / log / count outputs}
+\item \textcolor{pitercolor}{Family count matrix assembly}
+\end{itemize}
+\item \textcolor{samcolor}{Data Analysis and Interpretation}
+\begin{itemize}
+\item \textcolor{samcolor}{MultiQC}
+\item \textcolor{samcolor}{Differential Expression Analysis}
+\begin{itemize}
+\item \textcolor{samcolor}{DESeq2 setup}
+\item \textcolor{samcolor}{DESeq2}
+\begin{itemize}
+\item \textcolor{samcolor}{Volcano plot}
+\item \textcolor{samcolor}{Heatmap of top DEGs (Regeneration-Enhancing)}
+\item \textcolor{pitercolor}{MA plot}
+\item \textcolor{samcolor}{Target validation (gene expression boxplots)}
+\end{itemize}
+\item \textcolor{pitercolor}{Filtering rule}
+\item \textcolor{pitercolor}{Modeled contrasts}
+\item \textcolor{pitercolor}{Thresholds / significance criteria}
+\end{itemize}
+\item \textcolor{samcolor}{Follow-up selection for functional interpretation}
+\begin{itemize}
+\item \textcolor{pitercolor}{Bend-point rule}
+\item \textcolor{samcolor}{GO analysis}
+\item \textcolor{samcolor}{GSEA analysis}
+\item \textcolor{samcolor}{Panther analysis}
+\item \textcolor{samcolor}{Extra analysis, if finalized}
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\section*{\textcolor{samcolor}{Results}}
+\begin{itemize}
+\item \textcolor{samcolor}{Dataset quality supported downstream analysis}
+\begin{itemize}
+\item \textcolor{samcolor}{Number of samples and read structure}
+\item \textcolor{samcolor}{Pre-trim}
+\begin{itemize}
+\item \textcolor{samcolor}{GC content}
+\item \textcolor{samcolor}{Adapter sequences}
+\end{itemize}
+\item \textcolor{samcolor}{Alignment stats}
+\begin{itemize}
+\item \textcolor{samcolor}{Unique mapping}
+\end{itemize}
+\end{itemize}
+\item \textcolor{pitercolor}{The sample structure showed the strongest separation by the main biological contrast}
+\begin{itemize}
+\item \textcolor{pitercolor}{PCA (key figure)}
+\item \textcolor{pitercolor}{Interpretation of PC1 / PC2}
+\item \textcolor{pitercolor}{Genotype analysis}
+\end{itemize}
+\item \textcolor{samcolor}{Differential expression identified the strongest transcriptomic changes}
+\begin{itemize}
+\item \textcolor{samcolor}{PCA (key figure)}
+\begin{itemize}
+\item \textcolor{samcolor}{Explain how it is separated, PC1 and PC2}
+\end{itemize}
+\item \textcolor{nikhicolor}{MA plot}
+\item \textcolor{nikhicolor}{Cumulative Distribution Plot (bend-point / elbow rule)}
+\item \textcolor{nikhicolor}{Volcano Plot (Important Genes)}
+\begin{itemize}
+\item \textcolor{nikhicolor}{Include a secondary Volcano Plot with a new threshold}
+\end{itemize}
+\item \textcolor{nikhicolor}{Heatmap}
+\begin{itemize}
+\item \textcolor{nikhicolor}{Including the interpretation of the distance heatmap between the two conditions}
+\end{itemize}
+\end{itemize}
+\item \textcolor{pitercolor}{Bend-point selection narrowed the main follow-up sets}
+\begin{itemize}
+\item \textcolor{pitercolor}{Cumulative plot}
+\item \textcolor{pitercolor}{Selected gene counts}
+\item \textcolor{pitercolor}{Why this helped interpretation}
+\item \textcolor{pitercolor}{Secondary volcano plot, if you keep it}
+\end{itemize}
+\item \textcolor{nikhicolor}{Functional enrichment connected DE results to broader biology}
+\begin{itemize}
+\item \textcolor{nikhicolor}{GO / pathway results}
+\item \textcolor{nikhicolor}{Pathway level / Panther analysis}
+\begin{itemize}
+\item \textcolor{nikhicolor}{Go through the plots listed by Panther}
+\end{itemize}
+\item \textcolor{nikhicolor}{Proteostasis}
+\item \textcolor{nikhicolor}{Translation}
+\item \textcolor{nikhicolor}{Metabolism}
+\item \textcolor{nikhicolor}{Extra analysis, once finalized}
+\end{itemize}
+\end{itemize}
+\section*{\textcolor{nikhicolor}{Discussion}}
+\begin{itemize}
+\item \textcolor{pitercolor}{Main biological interpretation (what does the data show)}
+\begin{itemize}
+\item \textcolor{pitercolor}{What the data show overall}
+\item \textcolor{pitercolor}{Strongest supported signal}
+\item \textcolor{pitercolor}{What is primary vs secondary}
+\item \textcolor{pitercolor}{Gene expression differences}
+\begin{itemize}
+\item \textcolor{pitercolor}{Injury vs control}
+\end{itemize}
+\item \textcolor{pitercolor}{Pathways being affected}
+\begin{itemize}
+\item \textcolor{pitercolor}{Proteostasis (AhR activation)}
+\item \textcolor{pitercolor}{Translation (suppression / upregulation of genes)}
+\item \textcolor{pitercolor}{Metabolism (energy output)}
+\end{itemize}
+\end{itemize}
+\item \textcolor{nikhicolor}{What was unusual or needs caution (things that were weird about the dataset to consider)}
+\begin{itemize}
+\item \textcolor{nikhicolor}{Odd volcano plots}
+\item \textcolor{nikhicolor}{The genotype signal appears weaker / secondary}
+\item \textcolor{nikhicolor}{PCA collisions / overlap}
+\item \textcolor{nikhicolor}{Interpretation vs causation}
+\end{itemize}
+\item \textcolor{pitercolor}{What this adds beyond the original paper}
+\begin{itemize}
+\item \textcolor{pitercolor}{Expands the analysis beyond the paper’s candidate genes}
+\begin{itemize}
+\item \textcolor{samcolor}{Helps link pathways}
+\begin{itemize}
+\item \textcolor{samcolor}{Proposed and new}
+\end{itemize}
+\end{itemize}
+\item \textcolor{pitercolor}{Helps link the pathways already proposed in the paper with additional transcriptomic signals}
+\item \textcolor{pitercolor}{Connects newly identified genes to the genes highlighted in the paper through broader transcriptomic patterns}
+\item \textcolor{pitercolor}{Moves interpretation from single-gene emphasis toward pathway- and network-level context}
+\end{itemize}
+\item \textcolor{samcolor}{NGS in the context of this paper}
+\begin{itemize}
+\item \textcolor{samcolor}{Global discovery}
+\item \textcolor{samcolor}{Reproducibility}
+\item \textcolor{samcolor}{External applications / biological relevance}
+\begin{itemize}
+\item \textcolor{samcolor}{How does our global discovery connect to the genes found in the paper}
+\item \textcolor{samcolor}{Two-hybrid screening}
+\end{itemize}
+\end{itemize}
+\item \textcolor{pitercolor}{Future validation (what it suggests for future validation)}
+\begin{itemize}
+\item \textcolor{pitercolor}{qPCR for key differentially expressed genes}
+\item \textcolor{pitercolor}{Functional follow-up experiments for injury-response candidates}
+\item \textcolor{pitercolor}{Two-hybrid screening only if it remains biologically justified}
+\end{itemize}
+\item \textcolor{pitercolor}{Limitations and cautions}
+\begin{itemize}
+\item \textcolor{pitercolor}{Weaker genotype signal}
+\item \textcolor{pitercolor}{PCA overlap / collisions}
+\item \textcolor{pitercolor}{Dependence on the original dataset design}
+\item \textcolor{pitercolor}{Interpretation vs causation}
+\end{itemize}
+\end{itemize}
+\section*{References (APA)}
+\begin{itemize}
+\item \href{https://www.nature.com/articles/s41586-026-10295-z\#code-availability}{Main Paper}
+\item NGS overview / background sources
+\item Additional papers using or reviewing NGS
+\item Background sources for the mouse study
+\item Minimum of 15 primary sources in the final paper
+\end{itemize}
+\section*{Code Availability}
+\begin{itemize}
+\item Git repository
+\item Notebook(s)
+\end{itemize}
+\section*{Source Data}
+\begin{itemize}
+\item CSVs / tables supporting plots
+\item Data frames / exported tables
+\end{itemize}
+\section*{Supplemental Material}
+\begin{itemize}
+\item Full figure set
+\item Additional supporting outputs
+\end{itemize}
+\end{document}

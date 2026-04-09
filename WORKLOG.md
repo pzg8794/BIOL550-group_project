@@ -20,6 +20,49 @@ Use this file as the dated change log. For exact current commands or pending tas
 
 > Server policy: keep the minimum on `sequoia`; keep most code and analysis local. See [SERVER_MINIMUM_POLICY.md](SERVER_MINIMUM_POLICY.md).
 
+## 2026-04-08 — Week 13 Draft 1 outline package built for `mouse_new/paper`
+
+### Step
+- Built a submission-ready Week 13 outline package in:
+  - `mouse_new/paper/HTSA_Paper-outline.md`
+  - `mouse_new/paper/HTSA_Paper-outline.docx`
+  - `mouse_new/paper/HTSA_Paper-outline.pdf`
+  - `mouse_new/paper/HTSA_Paper-outline.tex`
+- Added a local generator to keep the outline package synchronized:
+  - `mouse_new/paper/build_outline_draft1.py`
+- Kept the outline changes surgical by preserving the existing team wording wherever possible and limiting edits mainly to:
+  - section placement
+  - light wording cleanup
+  - duplicate PCA / plot placement cleanup
+  - visible contributor-color key and opening Word comments for Draft 1 compliance
+- Updated the contributor color mapping in the outline package to the final requested set:
+  - `Nikhi` = light purple
+  - `Sam` = light green
+  - `Piter` = light red
+- Matched the visible contributor-color styling to the Google Docs draft reference by using light highlight-style fills in the generated Word/PDF outputs.
+
+### Status
+- The Week 13 outline package now exists in the required Word/PDF/TeX formats.
+- The `.docx` is the canonical submission version and was rendered locally to the matching `.pdf`.
+- The `.tex` mirror was also validated with a separate compile check.
+- The final shareable outline outputs were copied to the shared repo at:
+  - `Semester5/BIOL550/mouse_group_project_work/docs/paper/`
+
+### Finding
+- The current outline already had a workable scientific-section backbone; the main needed improvements were structural rather than conceptual.
+- The class-compliance details that mattered most for this package were:
+  - `12 pt`
+  - Times New Roman
+  - double spacing
+  - `1 in` margins
+  - consistent bullets
+  - contributor color coding with identifying opening comments
+- A generator-based approach was the safest way to keep the `.md`, `.docx`, `.pdf`, and `.tex` versions aligned while making only minor edits.
+
+### Decision
+- Keep `mouse_new/paper/build_outline_draft1.py` as the local source-of-truth builder for the Week 13 outline package.
+- If the team revises the outline wording later, update the structured source in the builder and regenerate all formats together instead of hand-editing the output files separately.
+
 ## 2026-04-08 — Materials and Methods LaTeX draft enriched for `mouse_new`
 
 ### Step
