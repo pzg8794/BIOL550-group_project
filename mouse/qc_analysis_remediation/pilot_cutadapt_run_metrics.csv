@@ -1,4 +1,0 @@
-srr,tool,report_path,input_pairs,output_pairs,retained_pct
-SRR30333754,cutadapt,/home/pzg8794/mouse_qc_remediation/output/cutadapt/reports/SRR30333754.cutadapt.log,51091830,49820745,97.5
-SRR30333756,cutadapt,/home/pzg8794/mouse_qc_remediation/output/cutadapt/reports/SRR30333756.cutadapt.log,49776986,48607951,97.7
-SRR30333743,cutadapt,/home/pzg8794/mouse_qc_remediation/output/cutadapt/reports/SRR30333743.cutadapt.log,50095819,49201417,98.2

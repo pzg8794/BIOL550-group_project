@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BIOL550 Weekly Report — Mouse Differential Expression Follow-up (SRP618841)</title>
+  <style>
+    body { font-family: "Times New Roman", Times, serif; font-size: 12pt; margin: 16px; line-height: 1.15; color: #111; }
+    h1, h2, h3 { margin: 0 0 8px 0; }
+    h1 { text-align: center; }
+    .subtitle { text-align: center; font-size: 11pt; margin: 0 0 12px 0; }
+    h2 { margin-top: 16px; }
+    p { text-align: justify; margin: 0 0 10px 0; }
+    code { font-family: Menlo, Consolas, monospace; font-size: 9px; }
+    pre.mini-pre { background: #f5f5f5; padding: 2px 6px; margin: 0 auto 6px; max-width: 66%; font-size: 7.8px; line-height: 1.03; white-space: pre-wrap; word-break: break-word; overflow-x: hidden; }
+    pre.mini-pre code { font-size: 7.8px; }
+    .note { font-style: italic; margin: 0 0 4px 0; }
+    .note-mini { font-size: 10pt; line-height: 1.05; }
+    img { max-width: 100%; height: auto; display: block; }
+    .figure-title { text-align: center; font-size: 11pt; font-weight: bold; margin: 6px 0 3px 0; }
+    .after-row { margin-top: 4px; }
+    ul.clist { margin: 0 0 4px 14px; padding: 0; }
+    ul.clist li { margin: 0 0 2px 0; }
+    table { border-collapse: collapse; width: 100%; font-size: 10.5pt; }
+    th, td { border: 1px solid #ddd; padding: 4px 6px; vertical-align: top; }
+    th { background: #f5f5f5; font-weight: bold; text-align: left; }
+    .tight-table { font-size: 8.5pt; line-height: 1.02; }
+    .tight-table th, .tight-table td { padding: 1px 3px; }
+
+    /* Two-column layout: left=content, right=figures */
+    .two-col { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 10px; }
+    .two-col-left  { flex: 1 1 55%; }
+    .two-col-right { flex: 0 0 55%; display: flex; flex-direction: column; gap: 8px; }
+
+    /* PCA row: plot left, stacked (table + geno image) right */
+    .pca-row { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 6px; }
+    .pca-left  { flex: 0 0 50%; }
+    .pca-left img { width: 100%; max-height: 300px; object-fit: contain; object-position: top center; }
+    .pca-right { flex: 1 1 48%; display: flex; flex-direction: column; gap: 6px; }
+    .pca-right img { width: 100%; max-height: 130px; object-fit: contain; }
+
+    /* Figures 2+3 side by side */
+    .fig-merged { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 4px; }
+    .fig-merged-col { flex: 1 1 0; display: flex; flex-direction: column; gap: 4px; }
+    .fig-merged-col img { width: 100%; }
+
+    .panel-note-sm { font-size: 10pt; line-height: 1.05; }
+    .panel-inline-title { font-weight: bold; font-size: 10pt; margin: 0 0 2px 0; }
+
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      @page { margin: 0.2in; }
+      body { margin: 0.15in; }
+      .two-col, .pca-row, .fig-merged { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Mouse RNA-Seq &#8212; Differential Expression</h1>
+<div class="subtitle">BIOL550 &#8212; Weekly Report &#8212; Apr 2, 2026</div>
+
+<h2>What I accomplished since the previous report</h2>
+<p>
+  Since the previous differential-expression report, I shifted from simply exporting DE results to interpreting the
+  <code>mouse_new</code> contingency dataset and deciding which parts of the signal are strong enough to guide
+  both the next weekly report and the first paper draft. Using the current <code>SRP618841</code> notebook and
+  derived-analysis outputs, I reviewed the dataset structure, re-plotted the main contrasts, and added follow-up
+  analyses so the results are easier to understand rather than remaining a large list of significant genes.
+</p>
+<p>
+  The clearest conclusion is that the main side-specific DRG contrasts remain the strongest and cleanest signal,
+  while <code>geno_in_contra</code> is the strongest secondary branch. <code>geno_in_ipsi</code> and
+  <code>interaction</code> remain exploratory and are not the best lead story for either the report or Draft&nbsp;1.
+</p>
+
+<!-- Methods + bend-point plots side by side -->
+<div class="two-col">
+  <div class="two-col-left">
+    <h2 style="margin-top:0;">Methods used</h2>
+    <p>
+      This follow-up keeps the same DESeq2 result framework from the canonical <code>mouse_new</code> notebook,
+      but the emphasis is now interpretive rather than purely procedural. Following class feedback from Apr&nbsp;1,
+      I used PCA as the first sanity check, compared signal strength across contrasts using the DE plots, and then
+      applied an ordered-<code>p</code>-value / cumulative bend-point method to narrow large gene lists into
+      smaller follow-up sets for enrichment and story selection.
+    </p>
+    <ul class="clist">
+      <li>PCA is used first to separate intrinsic sample structure from contrast-specific signal.</li>
+      <li>Bend-point filtering defines a narrower core follow-up set from the larger significant-gene pool.</li>
+      <li>GO / KEGG / Reactome enrichment is run on bend-point&#8211;selected genes for the main side-specific contrasts and <code>geno_in_contra</code>.</li>
+      <li>The goal is to understand the data and choose a defensible story, not just to generate more plots.</li>
+    </ul>
+  </div>
+  <div class="two-col-right">
+    <div class="figure-title">Figure 2. Main side-specific contrast with bend-point filtering</div>
+    <!-- <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/before_after_selection_comparison.png"
+         alt="Before and after bend-point comparison for ipsi_vs_contra_in_ff" /> -->
+    <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/ordered_pvalue_and_cumulative_curve.png"
+         alt="Ordered p-value and cumulative curve for ipsi_vs_contra_in_ff" />
+    <img src="../differential_expression_all20/derived_analysis/genotype_comparison/geno_counts_and_boxplot_zoom.png"
+         alt="Genotype count and effect-size zoom" />     
+  </div>
+</div>
+
+<h2>Results</h2>
+<p>
+  The <code>mouse_new</code> dataset now has a clearer interpretation path than at the earlier DE package stage.
+  The side-specific DRG contrasts remain the strongest result family, the bend-point method gives a more defensible
+  way to narrow large DE sets, and <code>geno_in_contra</code> remains the strongest secondary branch worth
+  carrying forward as supporting context.
+</p>
+
+<!-- Figure 1: PCA left, table + geno image right -->
+<div class="figure-title">Figure 1. PCA-first view of the <code>mouse_new</code> DRG family</div>
+<div class="pca-row">
+  <div class="pca-left">
+    <img src="../differential_expression_all20/derived_analysis/family_structure/pca_side_genotype_annotated.png"
+         alt="Annotated PCA for mouse_new DRG family" />
+  </div>
+  <div class="pca-right">
+    
+    <table class="tight-table">
+      <thead>
+        <tr>
+          <th>Side class</th>
+          <th>Closest <code>ff</code>/<code>cre</code> pair</th>
+          <th>PCA dist.</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>ipsi</td><td>SRR35329986 vs SRR35329987</td><td>0.27</td><td>Very close cross-genotype pair</td></tr>
+        <tr><td>ipsi</td><td>SRR35329984 vs SRR35329987</td><td>0.67</td><td>Near-overlap, same side class</td></tr>
+        <tr><td>contra</td><td>SRR35329980 vs SRR35329988</td><td>1.18</td><td>Cross-genotype proximity in contra</td></tr>
+      </tbody>
+    </table>
+    
+    <!-- <img src="../differential_expression_all20/derived_analysis/genotype_comparison/geno_counts_and_boxplot_zoom.png"
+         alt="Genotype count and effect-size zoom" /> -->
+     <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/gprofiler_source_summary.png"
+         alt="Enrichment source summary for ipsi_vs_contra_in_ff" />
+  </div>
+</div>
+<p class="after-row">
+  Color tracks side class; shape tracks genotype. The side-specific split is clearer than the genotype split, and some
+  <code>ff</code>/<code>cre</code> samples remain close in PCA space &#8212; supporting genotype as a secondary axis.
+  The genotype count and effect-size zoom (top right) confirms <code>geno_in_contra</code> is the strongest secondary
+  branch while <code>geno_in_ipsi</code> remains weak.
+</p>
+
+<!-- Figures 2+3 merged caption (plots already shown above in methods col; here show geno_in_contra beside enrichment) -->
+<!-- Figure 3 right of Figure 2 -->
+<div class="figure-title">Figures 2 &amp; 3. Side-specific contrast (left) and <code>geno_in_contra</code> secondary branch (right)</div>
+<div class="fig-merged">
+  <div class="fig-merged-col">
+    <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/before_after_selection_comparison.png"
+         alt="Before and after bend-point comparison for ipsi_vs_contra_in_ff" />
+    <!-- <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/ordered_pvalue_and_cumulative_curve.png"
+         alt="Ordered p-value and cumulative curve for ipsi_vs_contra_in_ff" /> -->
+  </div>
+  <div class="fig-merged-col">
+    <img src="../differential_expression_all20/derived_analysis/geno_in_contra/before_after_selection_comparison.png"
+         alt="Before and after bend-point comparison for geno_in_contra" />
+  </div>
+</div>
+<p class="after-row">
+  Left: the before/after comparison and ordered p-value curve with bend-point marked show the threshold logic for the
+  main side-specific contrast &#8212; the strongest interpretable core still supports the same biological story after
+  filtering. Right: <code>geno_in_contra</code> is the strongest genotype-specific supporting branch; it is weaker than
+  the side-specific contrasts but retains an interpretable core, which is why it stays as supporting context while the
+  side-specific DE signal remains central.
+</p>
+
+<!-- Figure 4: enrichment -->
+<div class="figure-title">Figure 4. Enrichment summary for the main side-specific story</div>
+<!-- <div class="fig-merged"> -->
+  <div class="fig-merged-col" style="flex: 0 0 63%;">
+    <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/gprofiler_terms_and_overlap.png"
+         alt="Enrichment terms and overlap for ipsi_vs_contra_in_ff" />
+  <!-- </div> -->
+  <!-- <div class="fig-merged-col" style="flex: 0 0 34%;"> -->
+    <!-- <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/gprofiler_source_summary.png"
+         alt="Enrichment source summary for ipsi_vs_contra_in_ff" /> -->
+  <!-- </div> -->
+</div>
+<p class="after-row">
+  Only two non-redundant views: the combined term-plus-overlap figure and the source summary. Themes of regulation,
+  signaling, and development/localization are treated as support for the DE story, not a replacement for direct
+  reading of the contrast.
+</p>
+
+<h2>Problems encountered</h2>
+<p>
+  The main challenge this week was deciding how to interpret the large DE output without forcing a misleading story.
+  The raw significant-gene counts were too large to use directly, and the genotype signal was easy to over-read if
+  labels were examined without first grounding them in the PCA structure. Deciding which figures explained the data
+  versus which were redundant was also non-trivial.
+</p>
+<p>
+  Class feedback helped by pushing toward structure-first interpretation, bend-point&#8211;based narrowing, and cleaner
+  figure choices. The side-specific DRG contrasts stay central, <code>geno_in_contra</code> stays as supporting
+  context, and the weaker genotype/interaction branches remain exploratory rather than being over-promoted.
+</p>
+
+<h2>Goals for the coming week</h2>
+<p>
+  Next week the main goal is to turn this DE follow-up into a cleaner Draft&nbsp;1 starting point. The side-specific
+  DRG signal is the main story; <code>geno_in_contra</code> is the best supporting branch. I will keep using the
+  PCA-first and bend-point&#8211;guided structure so the weekly report and the paper draft stay aligned.
+</p>
+<ul class="clist">
+  <li>Choose which side-specific contrast will be the hero figure for the next weekly report / Draft&nbsp;1 handoff.</li>
+  <li>Keep <code>geno_in_contra</code> as the main supporting genotype branch; avoid over-centering <code>geno_in_ipsi</code> or <code>interaction</code>.</li>
+  <li>Use bend-point&#8211;selected gene sets and enrichment plots to identify the clearest biological themes for the paper story.</li>
+  <li>Carry this structure directly into the Draft&nbsp;1 writing outline so the report and paper stay aligned.</li>
+</ul>
+
+</body>
+</html>

@@ -131,3 +131,80 @@
 - [x] Add explicit `ff` / `cre` PCA collision summaries so overlap can be discussed concretely.
 - [x] Add before/after bend-point comparison plots for each contrast so threshold effects are visible, not just tabulated.
 - [x] Add stronger genotype visuals (`geno_in_contra` vs `geno_in_ipsi`) so “weaker” does not read as “zero”.
+
+## 2026-04-02 project reconstruction note
+
+- [x] Reconstruct the public records tied to `SRP618841` so the team can answer design and interpretation questions directly from the source study.
+
+### 2026-04-02 findings — `SRP618841` / `GSE243308` / `PRJNA1017789`
+
+- The current `mouse_new` contingency dataset is the `SRP618841` slice of the public mouse project already tracked elsewhere in BIOL550:
+  - SRA study: `SRP618841`
+  - GEO series: `GSE243308`
+  - BioProject: `PRJNA1017789`
+- Local design reconstruction confirms the exact working subset now used in `mouse_new`:
+  - `20` SRRs total
+  - one family only: `family_drg_novaseqx`
+  - tissue class: `drg`
+  - treatment: `Spinal Cord Injury - 1dpi`
+  - balanced design: `10` `ipsi`, `10` `contra`, `10` `ff`, `10` `cre`
+- The public paper associated with `GSE243308` is:
+  - “Aryl hydrocarbon receptor restricts axon regeneration of DRG neurons in response to injury”
+- The paper-level biology most relevant to our current interpretation includes:
+  - `Ahr`
+  - `HIF-1α` / `Hif1a`
+  - `Arnt`
+  - inflammation / stress signaling
+  - pro-growth / regeneration programs
+  - integrated stress response (`ISR`)
+
+### 2026-04-02 decision
+
+- Use the public study design to explain what the PCA split represents:
+  - `ipsi` = injury side
+  - `contra` = opposite side
+- Use the side-specific DE contrasts to explain which genes and pathways likely drive that split:
+  - `ipsi_vs_contra_in_ff`
+  - `ipsi_vs_contra_in_cre`
+- Treat the paper genes/pathways as biological context, not as assumed confirmed drivers in our subset until we check them directly against the DE tables and enrichment outputs.
+
+### 2026-04-02 extension — PCA driver-gene interpretation
+
+- [x] Compute the overlap between the bend-point-selected genes from:
+  - `ipsi_vs_contra_in_ff`
+  - `ipsi_vs_contra_in_cre`
+- [x] Check whether the shared side-driver genes move in the same direction across both genotype backgrounds.
+- [x] Resolve the strongest shared Ensembl IDs to gene symbols for interpretation.
+- [x] Document a compact note showing how we move from PCA separation to biological interpretation.
+
+#### 2026-04-02 findings — shared side-driver genes
+
+- The two main side-specific bend-point sets overlap strongly:
+  - `709` genes in `ipsi_vs_contra_in_ff`
+  - `870` genes in `ipsi_vs_contra_in_cre`
+  - `620` shared genes
+- The strongest shared genes are directionally consistent across both contrasts and are `ipsi_up`.
+- The strongest shared genes resolved so far include:
+  - `Atf3`
+  - `Gadd45a`
+  - `Flrt3`
+  - `Sox11`
+  - `Jun`
+  - `Sema6a`
+  - `Tubb6`
+  - `Gpr151`
+  - `Hspb1`
+  - `Plin2`
+- These genes support interpreting the PCA split as an injury-side transcriptional program involving stress response, neuronal injury signaling, and regeneration-related remodeling rather than a purely abstract clustering pattern.
+
+### 2026-04-02 conceptual interaction reference
+
+- [x] Record `two-hybrid screening` as a conceptual reference for interaction-oriented biological interpretation in the `SRP618841` project notes.
+
+#### 2026-04-02 decision — interaction framing
+
+- Keep `two-hybrid screening` as a background reference when discussing partner-dependent biology involving:
+  - `Ahr`
+  - `Hif1a`
+  - `Arnt`
+- Do **not** describe the current RNA-seq dataset as a two-hybrid experiment; use it only as an interaction-biology reference point.

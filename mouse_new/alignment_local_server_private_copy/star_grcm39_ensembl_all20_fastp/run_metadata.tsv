@@ -1,5 +1,0 @@
-key	value
-dataset	SRP618841
-cleaned_input_root	/home/zebrafish/mouse/SRP618841_parallel/qc_remediation/fastp/out
-reference_index	/home/pzg8794/SRP618841_pipeline/reference/grcm39_ensembl/star_index_sjdb150
-runs_file	/home/pzg8794/metadata/SRP618841/SRP618841_runs.all.txt

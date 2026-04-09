@@ -75,6 +75,10 @@ This file is the navigation hub for the active BIOL550 group-project documentati
 - `pipelines/mouse_deseq2_shared_server_run.sh`
 - `pipelines/mouse_deseq2_activate_shared.sh`
   - short shared-server wrapper that checks the private team DESeq2 environment and launches the DE driver against shared inputs
+- `pipelines/mouse_bendpoint_from_table.py`
+  - simple shared Python tool that takes a DE results table, computes the bend-point threshold, and writes the bend-point plot plus summary outputs
+- [Mouse bend-point tool simple guide](mouse/BENDPOINT_TOOL_SIMPLE_GUIDE.md)
+  - dummy-style usage note showing which DE tables to use, the basic command, what each parameter means, and the closest R method reference (`LOMAR::find_elbow`)
 - `mouse/qc_analysis_raw_vs_trimmed/`
   - baseline comparison tables and plots
 - `mouse/alignment_analysis_star_all26/`

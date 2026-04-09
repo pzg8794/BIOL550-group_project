@@ -1,0 +1,8 @@
+Project title:
+Aryl hydrocarbon receptor restricts axon regeneration of DRG neurons in response to injury
+
+Key BioProject description excerpt:
+Injured neurons sense environmental cues to balance neural protection and axon regeneration, but the mechanisms are unclear. Here, we unveil aryl hydrocarbon receptor (AhR), a ligand-activated bHLH-PAS transcription factor, as molecular sensor and key regulator of acute stress response at the expense of axon regeneration. Comparative transcriptomics revealed signaling interactions between AhR and HIF-1α, which shares the dimerization partner Arnt/HIF-1β. AhR activation favors stress coping and inflammation at the expense of axon regeneration; targeting AhR can enhance nerve repair.
+
+GEO overall design excerpt:
+Ahr cKO (Ahr fl/fl Thy1CRE-ERT2/EYFP) or control (Ahr f/f or f/+) were injected with tamoxifen. For the injury group, sciatic nerve lesion was performed and L4-L6 DRGs were isolated 1 day later. Contralateral and ipsilateral DRGs were profiled in the side-specific arm of the study.

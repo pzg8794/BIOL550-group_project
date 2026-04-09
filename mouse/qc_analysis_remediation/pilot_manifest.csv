@@ -1,4 +1,0 @@
-srr,pilot_reason,raw_severity,trimmed_severity,trimmed_adapter_content,trimmed_overrepresented_sequences,trimmed_sequence_duplication_levels,raw_adapter_max,raw_pbq_min_10th,trimmed_adapter_max,trimmed_pbq_min_10th,dominant_raw_report,dominant_raw_pattern,dominant_raw_pct,dominant_raw_source
-SRR30333754,highest severity plus strong poly-G signal in read 2,26,28,fail,fail,fail,45.13,12.0,45.09,21.6,SRR30333754_2,poly-G artifact,1.119,No Hit
-SRR30333756,highest severity plus strong poly-G signal in read 2,27,29,fail,fail,fail,32.53,18.0,32.49,24.0,SRR30333756_2,poly-G artifact,1.056,No Hit
-SRR30333743,high severity plus explicit TruSeq adapter signal in read 1,25,27,fail,warn,fail,49.43,12.0,49.39,12.0,SRR30333743_2,poly-G artifact,0.856,No Hit

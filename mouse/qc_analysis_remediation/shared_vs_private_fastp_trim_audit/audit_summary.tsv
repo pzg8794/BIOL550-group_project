@@ -1,5 +1,0 @@
-metric	shared	private
-samples	52	52
-sample_sets_equal	True	True
-overrep_nonpass_samples_shared	SRR30333756_2	none
-seq_length_shared_example	15-151	30-151

@@ -1,4 +1,0 @@
-srr,tool,report_path,input_reads,output_reads,retained_pct,input_bases,output_bases,q20_rate_after,q30_rate_after
-SRR30333754,fastp,/home/pzg8794/mouse_qc_remediation/output/fastp/reports/SRR30333754.fastp.json,102183660,97662886,95.57583472739184,15429732660,12918147994,0.982486,0.94695
-SRR30333756,fastp,/home/pzg8794/mouse_qc_remediation/output/fastp/reports/SRR30333756.fastp.json,99553972,95356330,95.7835514589011,15032649772,13238484563,0.982283,0.946339
-SRR30333743,fastp,/home/pzg8794/mouse_qc_remediation/output/fastp/reports/SRR30333743.fastp.json,100191638,96952822,96.76737893036542,15128937338,12623009946,0.982053,0.945622

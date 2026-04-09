@@ -1,4 +1,0 @@
-Sample	Cutadapt	fastp	FastQC
-Cutadapt	4.7		
-FastQC			0.11.9
-fastp		0.23.2	

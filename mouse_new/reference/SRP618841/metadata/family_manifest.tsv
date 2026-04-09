@@ -1,0 +1,2 @@
+family_id	family_label	samples_total	genes_before_filter	genes_after_filter	design
+family_drg_novaseqx	DRG / NovaSeq X / ipsilateral vs contralateral	20	78334	21481	~ side_class + geno_class + side_class:geno_class

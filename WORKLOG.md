@@ -20,6 +20,48 @@ Use this file as the dated change log. For exact current commands or pending tas
 
 > Server policy: keep the minimum on `sequoia`; keep most code and analysis local. See [SERVER_MINIMUM_POLICY.md](SERVER_MINIMUM_POLICY.md).
 
+## 2026-04-08 — Materials and Methods LaTeX draft enriched for `mouse_new`
+
+### Step
+- Built a standalone LaTeX draft for the `Materials and Methods` section at:
+  - `mouse_new/paper/materials_methods_piter_draft.tex`
+- Compiled the draft locally to:
+  - `mouse_new/paper/materials_methods_piter_draft.pdf`
+- Expanded the draft beyond plain prose by adding:
+  - a TikZ pipeline figure comparing a generic NGS workflow to the project-specific path
+  - a second workflow/design schematic for the post-alignment analysis logic
+  - color-coded tables for pipeline stages, sample design, QC transitions, DE filtering, bend-point summaries, enrichment summary, and representative target genes
+  - embedded figures pulled from existing local `mouse_new` QC notebook outputs rather than reusing the main biological result panels
+
+### Status
+- The draft compiles successfully as a standalone PDF.
+- Formatting follows the course paper requirements in the local notes:
+  - `12pt`
+  - double-spaced
+  - `1in` margins
+  - Times-like LaTeX font
+- The draft is still a working paper section, not the final submission format for Word/LibreOffice.
+
+### Finding
+- The current `mouse_new` project tree already contains enough polished local artifacts to make the Methods section more concrete without inventing placeholder results.
+- The most reusable visual assets for the Methods section came from:
+  - `mouse_new/qc_analysis_raw_vs_trimmed/`
+  - `mouse_new/differential_expression_all20/derived_analysis/`
+- Transcript guidance was especially useful for structuring the section around:
+  - clear subsections
+  - PCA-before-interpretation logic
+  - bend-point explanation as a data-derived narrowing rule
+  - pathways as support after gene identification, not before
+- Bioinformatics-journal figure conventions were used as a style cue:
+  - Methods figures should behave like workflow/QC support figures, not like duplicated Results figures
+
+### Decision
+- Keep this LaTeX draft as the computational-biology source draft for the section.
+- Next paper-draft work should focus on:
+  - replacing any remaining oversized tables with final journal-style versions if needed
+  - deciding which Methods visuals stay in the main paper versus Supplemental
+  - porting the approved section back into the required Word/LibreOffice group draft format when the team is ready
+
 ## 2026-03-02 — Dataset pivot + cleanup (zebrafish → mouse)
 
 ### What changed
@@ -216,6 +258,94 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 - First-pass tools:
   - `fastp` for paired-end adapter + poly-G cleanup
   - `cutadapt` for explicit-sequence / `NEXTSEQ_TRIM` comparison
+
+---
+
+## 2026-04-02 — `SRP618841` project reconstruction
+
+### What we did
+- Reconstructed the public records and local design details tied to the active `mouse_new` contingency dataset so the team can answer study-design and interpretation questions more directly.
+- Cross-checked the local `mouse_new` design table against the public identifiers already recorded in BIOL550 docs.
+
+### Finding
+- The active `mouse_new` dataset is the `SRP618841` slice of the public mouse project:
+  - SRA study: `SRP618841`
+  - GEO series: `GSE243308`
+  - BioProject: `PRJNA1017789`
+- The local working subset currently used for DE is:
+  - `20` runs (`SRR35329977`–`SRR35329996`)
+  - one balanced `DRG` family on `NovaSeq X`
+  - `Spinal Cord Injury - 1dpi`
+  - `10` `ipsi` + `10` `contra`
+  - `10` `ff` + `10` `cre`
+- The source study/paper context linked to `GSE243308` is the DRG injury/regeneration study:
+  - “Aryl hydrocarbon receptor restricts axon regeneration of DRG neurons in response to injury”
+
+### Decision
+- Use the public study design to explain what the PCA split means biologically:
+  - `ipsi` = injury side
+  - `contra` = opposite side
+- Use our DE contrasts plus enrichment outputs to explain what likely drives that split:
+  - `ipsi_vs_contra_in_ff`
+  - `ipsi_vs_contra_in_cre`
+- Treat paper-level genes/pathways such as `Ahr`, `Hif1a`, `Arnt`, injury-response signaling, and regeneration programs as contextual anchors that still need to be checked directly against our subset before we claim they are the main drivers in our current analysis.
+
+---
+
+## 2026-04-02 — From PCA separation to driver-gene interpretation
+
+### What we did
+- Used the bend-point-selected side-specific gene sets from:
+  - `ipsi_vs_contra_in_ff`
+  - `ipsi_vs_contra_in_cre`
+- Computed their overlap and checked whether the shared genes move in the same direction across both genotype backgrounds.
+- Resolved the strongest shared Ensembl gene IDs to gene symbols and wrote a compact interpretation note under the `mouse_new/reference/SRP618841/` bundle.
+
+### Finding
+- The two bend-point-selected side-specific sets overlap strongly:
+  - `709` genes in `ipsi_vs_contra_in_ff`
+  - `870` genes in `ipsi_vs_contra_in_cre`
+  - `620` shared genes
+- The strongest shared genes are consistently `ipsi_up` in both contrasts.
+- The strongest shared genes resolved so far include:
+  - `Atf3`
+  - `Gadd45a`
+  - `Flrt3`
+  - `Sox11`
+  - `Jun`
+  - `Sema6a`
+  - `Tubb6`
+  - `Gpr151`
+  - `Hspb1`
+  - `Plin2`
+- These genes support a biological reading of the PCA split as injury/stress/regeneration biology on the `ipsi` side rather than a purely geometric separation.
+
+### Decision
+- Use the PCA plus the shared side-driver genes together when explaining the data:
+  - PCA = shows the dominant injury-side vs opposite-side structure
+  - shared side-driver genes = explain what biological programs likely produce that structure
+- Keep the new reference artifacts as the local source-of-truth bundle for professor/class questions:
+  - `mouse_new/reference/SRP618841/text/pca_gene_interpretation_note_2026-04-02.md`
+  - `mouse_new/reference/SRP618841/metadata/shared_side_driver_overlap.tsv`
+  - `mouse_new/reference/SRP618841/metadata/top_shared_side_driver_genes.tsv`
+
+---
+
+## 2026-04-02 — Two-hybrid screening reference added
+
+### What we did
+- Added `two-hybrid screening` to the `SRP618841` reference bundle as a conceptual biology reference for interaction-oriented interpretation.
+
+### Finding
+- This reference is useful when discussing interaction-centered biological hypotheses involving:
+  - `Ahr`
+  - `Hif1a`
+  - `Arnt`
+- It helps frame questions about shared partners, regulatory coupling, and pathway crosstalk.
+
+### Decision
+- Keep `two-hybrid screening` as a conceptual reference only.
+- Do not describe the current RNA-seq dataset as if it were a two-hybrid assay.
 
 ---
 
@@ -1616,3 +1746,113 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 
 ### Decision
 - Keep the PCA evidence block (plot + compact collision table) as the default format for this report.
+
+## 2026-04-08 — Materials and Methods draft rebuilt as staged bioinformatics pipeline
+
+### Step
+- Rebuilt `mouse_new/paper/materials_methods_piter_draft.tex` around four explicit pipeline stages:
+  - Data Collection
+  - Data Cleaning
+  - Data Preparation
+  - Data Mining and Interpretation
+- Replaced the earlier crowded mixed-layout Methods draft with four stage-oriented figures and four stage-summary tables.
+- Kept Methods visuals workflow-focused and preprocessing-focused, while leaving PCA/volcano/heatmap-style biological result figures for later sections.
+- Recompiled the LaTeX draft and refreshed `materials_methods_piter_draft.pdf`.
+
+### Finding
+- The staged pipeline framing produces a cleaner, more paper-like Methods section than the earlier draft because figures now explain stage flow and tables carry stage outputs and metrics.
+
+### Decision
+- Keep this paper-style rule for the Methods section:
+  - figures document stage workflow
+  - tables summarize stage outputs/artifacts
+  - result-heavy analytical plots stay out of Methods unless explicitly needed.
+
+## 2026-04-08 — Methods visuals rebuilt from real stage artifacts
+
+### Step
+- Added new stage-specific Methods figures under `mouse_new/paper/assets_methods/` using project-derived artifacts and summaries:
+  - `data_collection_stage.png`
+  - `data_cleaning_stage.png`
+  - `data_preparation_stage.png`
+  - `data_mining_stage.png`
+- Replaced the generic Data Collection, Data Preparation, and Data Mining placeholder diagrams in `mouse_new/paper/materials_methods_piter_draft.tex` with artifact-based visuals.
+- Upgraded the Data Cleaning figure from a single QC heatmap to a composite built from retained QC and MultiQC outputs.
+- Recompiled the Methods draft PDF after the figure replacement.
+
+### Finding
+- The Methods section reads more like a project-backed paper workflow when each stage is represented by a real or reconstructed project artifact instead of repeated generic TikZ diagrams.
+
+### Decision
+- Continue using artifact-backed stage visuals for Methods whenever a real project output exists; only use abstract schematics for the one high-level orienting pipeline figure.
+
+## 2026-04-08 — Methods draft upgraded with stage-owned assets and checkpoint tables
+
+### Step
+- Added `mouse_new/paper/build_methods_assets.py` to reproducibly rebuild the Methods-stage figures from saved project artifacts and summary tables.
+- Reworked `mouse_new/paper/materials_methods_piter_draft.tex` again so the section now opens with:
+  - one overview ribbon figure
+  - one compact pipeline checkpoint table
+  - four stage figures
+  - four stage tables
+- Tightened the table language so the weekly-report style carries over into the paper draft:
+  - shorter checkpoint phrases
+  - stage-colored labels and metric cells
+  - denser but less squeezed handoff summaries
+- Regenerated the stage figures and recompiled `mouse_new/paper/materials_methods_piter_draft.pdf`.
+
+### Finding
+- The section looks stronger when the Methods figures are owned by real pipeline evidence and the tables act like compact checkpoint summaries instead of narrative paragraphs forced into columns.
+- The biggest layout improvement came from treating the pipeline checkpoint table as a short evidence matrix and keeping the stage figures focused on one real retained artifact set per stage.
+
+### Decision
+- Keep `build_methods_assets.py` as the canonical way to regenerate the Methods figures.
+- Keep the paper draft aligned to this rule:
+  - overview figure first
+  - compact checkpoint table second
+  - one evidence-driven figure plus one dense summary table per stage.
+
+## 2026-04-08 — Data Mining stage strengthened in the Methods draft
+
+### Step
+- Extended the Methods-stage asset builder to create an additional Data Mining figure:
+  - `mouse_new/paper/assets_methods/data_mining_selection_stage.png`
+- Used the saved ordered-\(p\)-value / cumulative bend-point artifacts from the two primary side-specific branches as retained workflow evidence.
+- Added that second Data Mining figure to `mouse_new/paper/materials_methods_piter_draft.tex` and added a compact branch-summary table for the `ff` and `cre` side-specific follow-up sets.
+- Recompiled `materials_methods_piter_draft.pdf` and visually checked the final Data Mining pages.
+
+### Finding
+- The Data Mining section reads more like the earlier stages when it has both:
+  - a stage-level summary figure, and
+  - a retained bend-point checkpoint figure plus a compact primary-branch summary table.
+
+### Decision
+- Keep the Data Mining stage in this two-figure format:
+  - one figure for overall modeling/enrichment outputs
+  - one figure for the bend-point narrowing checkpoint
+  - plus a compact branch-summary table for the two primary side-specific contrasts.
+
+## 2026-04-08 — Shared bend-point tool moved into the repo pipelines folder
+
+### Step
+- Moved the standalone bend-point CLI into the shared repo tool location:
+  - `pipelines/mouse_bendpoint_from_table.py`
+- Added a very simple team-facing guide at:
+  - `mouse/BENDPOINT_TOOL_SIMPLE_GUIDE.md`
+- Recorded the method provenance in the bend-point guides:
+  - the standalone Python tool is a project-specific implementation of a standard elbow/knee heuristic
+  - closest documented R reference used for writeup alignment: `LOMAR::find_elbow`
+- Validated the shared command from the group-project repo root against:
+  - `mouse_new/differential_expression_all20/family_drg_novaseqx/tables/ipsi_vs_contra_in_ff_full.tsv`
+- Wrote the example outputs to:
+  - `mouse_new/differential_expression_all20/shared_bendpoint_runs/ipsi_vs_contra_in_ff`
+
+### Finding
+- The bend-point logic is simple enough to share as one standalone script as long as teammates are pointed to the `*_full.tsv` DE tables and given the exact repo-root command.
+- Keeping the tool in `pipelines/` makes it easier to share than leaving it buried under the `mouse_new/scripts/` analysis subtree.
+- The provenance note matters because the tool was custom-coded by us, but the underlying method is not ad hoc; it matches a standard elbow/knee-style maximum-distance-to-line approach.
+
+### Decision
+- Treat `pipelines/mouse_bendpoint_from_table.py` as the canonical shared bend-point tool.
+- Use `mouse/BENDPOINT_TOOL_SIMPLE_GUIDE.md` as the simple handoff doc for teammates and server use.
+- When describing the method in class, Slack, or the paper, refer to it as a custom Python implementation of a standard elbow/knee heuristic and cite `LOMAR::find_elbow` as the closest documented R reference.

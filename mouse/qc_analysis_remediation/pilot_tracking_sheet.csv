@@ -1,7 +1,0 @@
-srr,tool,why_this_srr,baseline_trimmed_severity,baseline_trimmed_adapter_status,baseline_trimmed_overrep_status,baseline_trimmed_adapter_max,dominant_raw_pattern,run_status,post_adapter_status,post_overrep_status,post_adapter_max,reads_retained,decision_note
-SRR30333754,fastp,highest severity plus strong poly-G signal in read 2,28,fail,fail,45.09,poly-G artifact,pending run,pending run,pending run,pending run,pending run,pending run
-SRR30333754,cutadapt,highest severity plus strong poly-G signal in read 2,28,fail,fail,45.09,poly-G artifact,pending run,pending run,pending run,pending run,pending run,pending run
-SRR30333756,fastp,highest severity plus strong poly-G signal in read 2,29,fail,fail,32.49,poly-G artifact,pending run,pending run,pending run,pending run,pending run,pending run
-SRR30333756,cutadapt,highest severity plus strong poly-G signal in read 2,29,fail,fail,32.49,poly-G artifact,pending run,pending run,pending run,pending run,pending run,pending run
-SRR30333743,fastp,high severity plus explicit TruSeq adapter signal in read 1,27,fail,warn,49.39,poly-G artifact,pending run,pending run,pending run,pending run,pending run,pending run
-SRR30333743,cutadapt,high severity plus explicit TruSeq adapter signal in read 1,27,fail,warn,49.39,poly-G artifact,pending run,pending run,pending run,pending run,pending run,pending run

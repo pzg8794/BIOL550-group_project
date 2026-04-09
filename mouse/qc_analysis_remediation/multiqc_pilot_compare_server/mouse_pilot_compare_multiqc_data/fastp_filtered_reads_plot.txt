@@ -1,4 +1,0 @@
-Sample	Passed Filter	Low Quality	Too Many N	Low Complexity	Too Short	Too Long
-fastp | SRR30333743	96952822.0	2301618.0	15098.0	nan	922100.0	0.0
-fastp | SRR30333754	97662886.0	3286598.0	16100.0	nan	1218076.0	0.0
-fastp | SRR30333756	95356330.0	3058796.0	15878.0	nan	1122968.0	0.0
