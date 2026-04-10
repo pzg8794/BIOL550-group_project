@@ -1,0 +1,5 @@
+contrast_id	gene_set_used	source	native	name	p_value	term_size	query_size	intersection_size	effective_domain_size	parents
+ipsi_vs_contra_in_ff	bend-point selected genes (log2FC < 0)	GO:BP	GO:0099171	presynaptic modulation of chemical synaptic transmission	0.0035403652477577906	60	90	5	25907	['GO:0050804']
+ipsi_vs_contra_in_ff	bend-point selected genes (log2FC < 0)	REAC	REAC:R-MMU-162582	Signal Transduction	0.01153369325746722	2073	38	21	8469	['REAC:0000000']
+ipsi_vs_contra_in_ff	bend-point selected genes (log2FC < 0)	GO:BP	GO:0007399	nervous system development	0.03155374138609294	2593	90	23	25907	['GO:0048731']
+ipsi_vs_contra_in_ff	bend-point selected genes (log2FC < 0)	REAC	REAC:R-MMU-372790	Signaling by GPCR	0.04472915691447129	581	38	10	8469	['REAC:R-MMU-162582']

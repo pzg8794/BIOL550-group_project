@@ -551,21 +551,24 @@ def call_gprofiler(gene_ids: list[str]) -> list[dict]:
     return data.get("result", [])
 
 
-def save_enrichment(name: str, gene_ids: list[str], gene_set_label: str) -> None:
+def save_enrichment(name: str, gene_ids: list[str], gene_set_label: str, *, output_tag: str = "") -> None:
     outdir = OUT_ROOT / name
     ensure_dir(outdir)
+
+    if output_tag and not output_tag.startswith("_"):
+        raise ValueError(f"output_tag must be empty or start with '_', got: {output_tag!r}")
 
     if not gene_ids:
         pd.DataFrame(
             [{"contrast_id": name, "gene_set_used": gene_set_label, "note": "No genes available for enrichment"}]
-        ).to_csv(outdir / "gprofiler_enrichment.tsv", sep="\t", index=False)
+        ).to_csv(outdir / f"gprofiler_enrichment{output_tag}.tsv", sep="\t", index=False)
         return
 
     results = call_gprofiler(gene_ids)
     if not results:
         pd.DataFrame(
             [{"contrast_id": name, "gene_set_used": gene_set_label, "note": "No enrichment results returned"}]
-        ).to_csv(outdir / "gprofiler_enrichment.tsv", sep="\t", index=False)
+        ).to_csv(outdir / f"gprofiler_enrichment{output_tag}.tsv", sep="\t", index=False)
         return
 
     frame = pd.DataFrame(results)
@@ -583,7 +586,9 @@ def save_enrichment(name: str, gene_ids: list[str], gene_set_label: str) -> None
     frame = frame[keep].copy()
     frame.insert(0, "gene_set_used", gene_set_label)
     frame.insert(0, "contrast_id", name)
-    frame.sort_values(["p_value", "source", "name"]).to_csv(outdir / "gprofiler_enrichment.tsv", sep="\t", index=False)
+    frame.sort_values(["p_value", "source", "name"]).to_csv(
+        outdir / f"gprofiler_enrichment{output_tag}.tsv", sep="\t", index=False
+    )
 
     top = frame.sort_values("p_value").head(12).copy()
     top = top.iloc[::-1]
@@ -594,9 +599,9 @@ def save_enrichment(name: str, gene_ids: list[str], gene_set_label: str) -> None
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.barh(top["source"] + " | " + top["name"], top["neglog10_p"], color="#4c78a8")
     ax.set_xlabel("-log10(p-value)")
-    ax.set_title(f"{name}: top enrichment terms")
+    ax.set_title(f"{name}{output_tag}: top enrichment terms")
     fig.tight_layout()
-    fig.savefig(outdir / "gprofiler_top_terms.png", dpi=180, bbox_inches="tight")
+    fig.savefig(outdir / f"gprofiler_top_terms{output_tag}.png", dpi=180, bbox_inches="tight")
     plt.close(fig)
 
     fig, axes = plt.subplots(1, 2, figsize=(15, 6), gridspec_kw={"width_ratios": [1.2, 1]})
@@ -606,7 +611,7 @@ def save_enrichment(name: str, gene_ids: list[str], gene_set_label: str) -> None
         color=[source_colors.get(x, "#7f7f7f") for x in top["source"]],
     )
     axes[0].set_xlabel("-log10(p-value)")
-    axes[0].set_title(f"{name}: strongest enrichment terms")
+    axes[0].set_title(f"{name}{output_tag}: strongest enrichment terms")
 
     y_positions = np.arange(len(top))
     axes[1].scatter(
@@ -621,7 +626,7 @@ def save_enrichment(name: str, gene_ids: list[str], gene_set_label: str) -> None
     axes[1].set_yticks(y_positions)
     axes[1].set_yticklabels(top["name"])
     axes[1].set_xlabel("gene-set overlap fraction")
-    axes[1].set_title(f"{name}: how much of the selected set each term covers")
+    axes[1].set_title(f"{name}{output_tag}: how much of the selected set each term covers")
     axes[1].grid(axis="x", alpha=0.25)
     for xpos, ypos, count in zip(top["overlap_fraction"], y_positions, top["intersection_size"]):
         axes[1].text(float(xpos) + 0.005, ypos, f"{int(count)} genes", va="center", fontsize=8)
@@ -635,7 +640,7 @@ def save_enrichment(name: str, gene_ids: list[str], gene_set_label: str) -> None
     if legend_handles:
         axes[1].legend(handles=legend_handles, title="source", loc="lower right", frameon=True)
     fig.tight_layout()
-    fig.savefig(outdir / "gprofiler_terms_and_overlap.png", dpi=180, bbox_inches="tight")
+    fig.savefig(outdir / f"gprofiler_terms_and_overlap{output_tag}.png", dpi=180, bbox_inches="tight")
     plt.close(fig)
 
     source_summary = (
@@ -648,7 +653,7 @@ def save_enrichment(name: str, gene_ids: list[str], gene_set_label: str) -> None
         )
         .sort_values("strongest_term_neglog10", ascending=False)
     )
-    source_summary.to_csv(outdir / "gprofiler_source_summary.tsv", sep="\t", index=False)
+    source_summary.to_csv(outdir / f"gprofiler_source_summary{output_tag}.tsv", sep="\t", index=False)
 
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.5))
     axes[0].bar(
@@ -656,7 +661,7 @@ def save_enrichment(name: str, gene_ids: list[str], gene_set_label: str) -> None
         source_summary["total_terms"],
         color=[source_colors.get(x, "#7f7f7f") for x in source_summary["source"]],
     )
-    axes[0].set_title(f"{name}: terms returned per source")
+    axes[0].set_title(f"{name}{output_tag}: terms returned per source")
     axes[0].set_ylabel("enriched terms")
     for idx, val in enumerate(source_summary["total_terms"]):
         axes[0].text(idx, val + 0.5, f"{int(val)}", ha="center", va="bottom", fontsize=8)
@@ -666,13 +671,13 @@ def save_enrichment(name: str, gene_ids: list[str], gene_set_label: str) -> None
         source_summary["strongest_term_neglog10"],
         color=[source_colors.get(x, "#7f7f7f") for x in source_summary["source"]],
     )
-    axes[1].set_title(f"{name}: strongest signal by source")
+    axes[1].set_title(f"{name}{output_tag}: strongest signal by source")
     axes[1].set_ylabel("best -log10(p-value)")
     for idx, val in enumerate(source_summary["strongest_term_neglog10"]):
         axes[1].text(idx, val + max(source_summary["strongest_term_neglog10"].max() * 0.02, 0.5), f"{val:.1f}", ha="center", va="bottom", fontsize=8)
 
     fig.tight_layout()
-    fig.savefig(outdir / "gprofiler_source_summary.png", dpi=180, bbox_inches="tight")
+    fig.savefig(outdir / f"gprofiler_source_summary{output_tag}.png", dpi=180, bbox_inches="tight")
     plt.close(fig)
 
 
@@ -716,10 +721,25 @@ def main() -> None:
 
         if contrast in BENDPOINT_CONTRASTS:
             curve = save_pvalue_outputs(contrast, df)
-            selected_ids = (
-                pd.read_csv(OUT_ROOT / contrast / "selected_genes_bendpoint.tsv", sep="\t")["gene_id"].dropna().astype(str).tolist()
-            )
+            selected_df = pd.read_csv(OUT_ROOT / contrast / "selected_genes_bendpoint.tsv", sep="\t")
+            selected_ids = selected_df["gene_id"].dropna().astype(str).tolist()
             save_enrichment(contrast, selected_ids, "bend-point selected genes")
+
+            direction = selected_df["log2FoldChange"].astype(float)
+            up_ids = selected_df.loc[direction.gt(0), "gene_id"].dropna().astype(str).tolist()
+            down_ids = selected_df.loc[direction.lt(0), "gene_id"].dropna().astype(str).tolist()
+            save_enrichment(
+                contrast,
+                up_ids,
+                "bend-point selected genes (log2FC > 0)",
+                output_tag="_up",
+            )
+            save_enrichment(
+                contrast,
+                down_ids,
+                "bend-point selected genes (log2FC < 0)",
+                output_tag="_down",
+            )
             summaries.append(
                 {
                     "contrast_id": contrast,

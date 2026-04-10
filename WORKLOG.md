@@ -1899,3 +1899,33 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 - Treat `pipelines/mouse_bendpoint_from_table.py` as the canonical shared bend-point tool.
 - Use `mouse/BENDPOINT_TOOL_SIMPLE_GUIDE.md` as the simple handoff doc for teammates and server use.
 - When describing the method in class, Slack, or the paper, refer to it as a custom Python implementation of a standard elbow/knee heuristic and cite `LOMAR::find_elbow` as the closest documented R reference.
+
+## 2026-04-09 — Weekly report v2 reframed around side-specific DE + GO follow-up
+
+### Step
+- Added a new same-day revised report at:
+  - `mouse_new/reports/BIOL550_Weekly_Report_Mouse_Differential_Expression_2026-04-09_v2.html`
+- Kept the existing Apr 9 HTML report style, but shifted the story so:
+  - `ipsi_vs_contra_in_ff` is the lead side-specific branch
+  - `ipsi_vs_contra_in_cre` is the supporting side-specific comparison
+  - genotype branches remain secondary/supporting rather than headline figures
+- Added a compact anchor-gene companion artifact for the lead FF branch at:
+  - `mouse_new/differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/anchor_genes_up_down.tsv`
+- Extended the main notebook with a new section:
+  - `## Anchor-gene companion table — ipsi_vs_contra_in_ff`
+  - file: `mouse_new/notebooks/mouse_differential_expression_all20.ipynb`
+- Updated the report narrative so the GO follow-up now explicitly reflects transcript-guided interpretation:
+  - PCA-first reading
+  - bend-point narrowing instead of arbitrary top-N selection
+  - direction-split enrichment by `log2FoldChange`
+  - anchor genes as a bridge between DE ranking and pathway-level interpretation
+
+### Finding
+- The report reads more clearly when the side-specific DRG contrasts carry the main story and the genotype branch is kept in a supporting role.
+- A small anchor-gene table makes the GO discussion easier to defend statistically because it gives a concrete gene-level companion to the pathway-level summary.
+- For the FF branch, the bend-point core is strongly asymmetric (`607` up vs `102` down), and the enrichment signal is concentrated almost entirely on the upregulated side; this supports keeping the direction split explicit in the report.
+
+### Decision
+- Keep `ipsi_vs_contra_in_ff` as the main weekly-report example for side-specific DE + GO interpretation.
+- Keep `ipsi_vs_contra_in_cre` as the comparison branch and reserve a fuller CRE GO figure for later only if it materially improves the story.
+- Treat the anchor-gene companion table as a discussion aid for team interpretation, not yet as a fully polished biological Results subsection.

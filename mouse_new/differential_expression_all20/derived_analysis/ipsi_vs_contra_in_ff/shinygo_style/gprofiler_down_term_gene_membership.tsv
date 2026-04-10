@@ -1,0 +1,29 @@
+Direction	native	name	gene_id	symbol	evidence_codes
+Downregulated	GO:0099171	presynaptic modulation of chemical synaptic transmission	ENSMUSG00000031491	Chrna6	IDA, IMP
+Downregulated	GO:0099171	presynaptic modulation of chemical synaptic transmission	ENSMUSG00000039114	Nrn1	EXP, IDA, IMP, IEP
+Downregulated	GO:0099171	presynaptic modulation of chemical synaptic transmission	ENSMUSG00000048616	Nog	IDA
+Downregulated	GO:0099171	presynaptic modulation of chemical synaptic transmission	ENSMUSG00000045613	Chrm2	EXP, IMP
+Downregulated	GO:0099171	presynaptic modulation of chemical synaptic transmission	ENSMUSG00000024798	Htr7	ISO
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000045648	Vwc2l	IDA
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000034245	Hdac11	ISO, IEA
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000032593	Amigo3	IDA, ISO, IBA, IEA
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000058886	Deaf1	IMP, IEA
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000039114	Nrn1	IDA, IMP, ISO, IBA, IEA
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000055493	Epm2a	IMP, IGI
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000002058	Unc119	IBA
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000055782	Abcd2	IMP
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000071862	Lrrtm2	IDA, ISO, IEA
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000022861	Dgkg	IMP, IEA
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000042448	Hoxd1	IMP
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000027796	Smad9	IMP
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000048616	Nog	IMP, IGI, ISO, IEA
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000045318	Adra2c	IEA
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000045287	Rtn4rl1	IMP, IBA
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000042757	Tmem108	IMP, IBA
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000029053	Prkcz	IGI
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000010086	Rnf112	IMP, IEA
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000024798	Htr7	ISO
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000034648	Lrrn1	IDA
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000039706	Ldb2	IBA
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000048304	Slitrk3	IDA, IMP, IGI, IBA, IEA
+Downregulated	GO:0007399	nervous system development	ENSMUSG00000061288	Taok3	IBA

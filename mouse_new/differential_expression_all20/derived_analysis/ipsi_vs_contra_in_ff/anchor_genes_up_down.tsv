@@ -1,0 +1,11 @@
+Direction	Gene symbol	Gene ID	log2FoldChange	padj	Selection note
+Upregulated	Atf3	ENSMUSG00000026628	5.68928163041582	0.0	top within bend-point core by padj
+Upregulated	Flrt3	ENSMUSG00000051379	3.43244005995117	0.0	top within bend-point core by padj
+Upregulated	Gadd45a	ENSMUSG00000036390	3.37873003511734	0.0	top within bend-point core by padj
+Upregulated	Sox11	ENSMUSG00000063632	3.0510498914263	2.2397592254297e-311	top within bend-point core by padj
+Upregulated	Jun	ENSMUSG00000052684	1.6765574895019	2.54376184803662e-306	top within bend-point core by padj
+Downregulated	Vwc2l	ENSMUSG00000045648	-0.959394202027219	3.7043589046709e-38	top within bend-point core by padj
+Downregulated	Hdac11	ENSMUSG00000034245	-0.389179580538105	8.58118333191776e-35	top within bend-point core by padj
+Downregulated	B3gnt8	ENSMUSG00000059479	-0.701387686881189	2.77391020325779e-29	top within bend-point core by padj
+Downregulated	Pik3r2	ENSMUSG00000031834	-0.349356755002943	7.563062407156428e-29	top within bend-point core by padj
+Downregulated	Oprl1	ENSMUSG00000027584	-0.904440894471209	1.58419725895223e-27	top within bend-point core by padj
