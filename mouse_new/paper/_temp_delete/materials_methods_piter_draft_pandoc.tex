@@ -47,7 +47,7 @@
 
 \section{Materials and Methods}
 
-This project reanalyzed mouse DRG bulk RNA-seq after spinal cord injury using four stages: \textbf{Data Collection}, \textbf{Data Cleaning}, \textbf{Data Preparation}, and \textbf{Data Analysis and Interpretation}. The working subset comprised 20 NovaSeq X paired-end libraries from \artifact{SRP618841} (BioProject \artifact{PRJNA1017789}; GEO \artifact{GSE243308}) organized into a balanced side-by-genotype design before QC, alignment, and DE modeling began.
+This project reanalyzed mouse DRG bulk RNA-seq after sciatic nerve injury using four stages: \textbf{Data Collection}, \textbf{Data Cleaning}, \textbf{Data Preparation}, and \textbf{Data Analysis and Interpretation}. The working subset comprised 20 NovaSeq X paired-end libraries from \artifact{SRP618841} (BioProject \artifact{PRJNA1322439}; GEO \artifact{GSE243308}) organized into a balanced side-by-genotype design before QC, alignment, and DE modeling began.
 
 \begin{figure}[H]
 \centering
@@ -82,7 +82,7 @@ trimmed read pairs plus per-sample QC reports \\
 \stagecell{stageprep}{Preparation} &
 unique-mapping plot; STAR median summary &
 \artifact{STAR} + \artifact{GeneCounts} &
-\metriccell{stageprep}{93.23\% median unique mapping; 3.82\% median \artifact{noFeature}} &
+\metriccell{stageprep}{93.24\% median unique mapping; 3.82\% median \artifact{noFeature}} &
 sorted BAMs, STAR logs, count tables, and family matrix \\
 
 \stagecell{stagemine}{Analysis} &
@@ -98,7 +98,7 @@ DE tables, bend-point follow-up sets, and enrichment summaries \\
 \end{table}
 
 \subsection{Data Collection: SRA Acquisition and Sample Organization}
-The project started from the published DRG RNA-seq study \artifact{SRP618841}, which is linked to BioProject \artifact{PRJNA1017789} and GEO series \artifact{GSE243308}. Public runs were retrieved through the project's acquisition wrappers around \artifact{prefetch} and \artifact{fasterq-dump}, and the local workflow retained 20 paired-end NovaSeq X libraries from the 1-day-post-injury DRG subset. The accession lineage matters here because the downstream paper draft needs a precise record of what was reanalyzed, not just a verbal reference to ``the mouse dataset.''
+The project started from the published DRG RNA-seq study \artifact{SRP618841}, which is linked to BioProject \artifact{PRJNA1322439} and GEO series \artifact{GSE243308}. Public runs were retrieved through the project's acquisition wrappers around \artifact{prefetch} and \artifact{fasterq-dump}, and the local workflow retained 20 paired-end NovaSeq X libraries from the 1-day-post-injury DRG subset. The accession lineage matters here because the downstream paper draft needs a precise record of what was reanalyzed, not just a verbal reference to ``the mouse dataset.''
 
 Once the runs were local, metadata were consolidated into a design-aware sample table rather than being left as file-name strings. Each retained sample was tagged with \artifact{side\_class} (\artifact{ipsi} or \artifact{contra}), \artifact{geno\_class} (\artifact{ff} or \artifact{cre}), and the derived \artifact{condition\_family}. That step established the balanced 2$\times$2 design that later drove both the DESeq2 model and the interpretation strategy emphasized in class discussions.
 
@@ -123,7 +123,7 @@ Once the runs were local, metadata were consolidated into a design-aware sample 
 \stagecell{stagecollect}{Study provenance} &
 public accession records &
 SRA / GEO review &
-accession lineage shown in Figure~\ref{fig:data_collection}: \artifact{SRP618841} $\rightarrow$ \artifact{PRJNA1017789} $\rightarrow$ \artifact{GSE243308} &
+accession lineage shown in Figure~\ref{fig:data_collection}: \artifact{SRP618841} $\rightarrow$ \artifact{PRJNA1322439} $\rightarrow$ \artifact{GSE243308} &
 anchors the Methods section to the exact source study \\
 
 \stagecell{stagecollect}{Run acquisition} &
@@ -227,7 +227,7 @@ produces the alignment checkpoint and the count-ready artifacts in one run \\
 \stagecell{stageprep}{Alignment checkpoint} &
 saved STAR summaries &
 local alignment review &
-retained unique-mapping plot plus the STAR median summary table; unique 93.23\%, multi 5.10\%, \artifact{noFeature} 3.82\%, ambiguous 1.77\% &
+retained unique-mapping plot plus the STAR median summary table; unique 93.24\%, multi 5.10\%, \artifact{noFeature} 3.82\%, ambiguous 1.77\% &
 confirms the cleaned reads mapped well enough to move into DESeq2 \\
 
 \stagecell{stageprep}{Count handoff} &

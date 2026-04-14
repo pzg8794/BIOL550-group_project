@@ -5,9 +5,12 @@ This folder stores the public records and local metadata tied to the active `mou
 ## Core identifiers
 
 - SRA study: `SRP618841`
-- BioProject: `PRJNA1017789`
+- BioProject: `PRJNA1322439`
 - GEO series: `GSE243308`
 - Example run: `SRR35329980`
+
+Saved historical snapshot kept in the bundle:
+- `html/bioproject_PRJNA1017789.html`
 
 ## Study title
 
@@ -35,7 +38,7 @@ From `metadata/mouse_de_design_table.tsv`:
   - `10` `contra`
   - `10` `ff`
   - `10` `cre`
-- treatment label in the local table: `Spinal Cord Injury - 1dpi`
+- treatment label in the local table: `Sciatic Nerve Injury - 1dpi`
 
 ## Why this bundle matters
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -13,7 +14,7 @@ from PIL import Image
 
 
 PAPER_DIR = Path(__file__).resolve().parent
-ROOT = PAPER_DIR.parent
+ROOT = PAPER_DIR.parent.parent
 ASSET_DIR = PAPER_DIR / "assets_methods"
 
 QC_DIR = ROOT / "qc_analysis_raw_vs_trimmed"
@@ -38,6 +39,12 @@ SIDE_COLORS = {"ipsi": "#1F77B4", "contra": "#FF7F0E"}
 GENO_COLORS = {"ff": "#2CA02C", "cre": "#D62728"}
 TEXT_DARK = "#1F1F1F"
 GRID = "#D9D9D9"
+
+
+def round_half_up(value: float, places: int = 2) -> str:
+    quant = Decimal(f"1e-{places}")
+    d = Decimal(str(float(value))).quantize(quant, rounding=ROUND_HALF_UP)
+    return format(d, f".{places}f")
 
 
 def ensure_assets_dir() -> None:
@@ -208,7 +215,7 @@ def build_overview() -> None:
         (
             "collect",
             "Data Collection",
-            "SRP618841 / PRJNA1017789\nGSE243308\n20 paired-end SRRs retained\nbalanced side × genotype\ndesign",
+            "SRP618841 / PRJNA1322439\nGSE243308\n20 paired-end SRRs retained\nbalanced side × genotype\ndesign",
         ),
         (
             "clean",
@@ -270,7 +277,7 @@ def build_overview() -> None:
     ax.text(
         0.5,
         0.09,
-        "Public accessions and metadata → cleaned read pairs → count-ready alignments → contrast tables and enrichment products",
+        "Public accessions → cleaned read pairs → count-ready alignments → contrast tables and enrichment products",
         ha="center",
         va="center",
         fontsize=12.5,
@@ -296,14 +303,14 @@ def build_data_collection() -> None:
     add_stage_banner(
         ax,
         "Data Collection",
-        "Rebuilt from project metadata and the saved design tables",
+        "Rebuilt from accession records and saved design tables",
         STAGE_COLORS["collect"],
     )
 
     provenance_x = [0.05, 0.27, 0.49, 0.71]
     provenance = [
         ("SRA study", "SRP618841"),
-        ("BioProject", "PRJNA1017789"),
+        ("BioProject", "PRJNA1322439"),
         ("GEO series", "GSE243308"),
         ("Local subset", "20 SRRs retained"),
     ]
@@ -341,7 +348,7 @@ def build_data_collection() -> None:
         0.36,
         0.17,
         color=STAGE_COLORS["collect"],
-        title="Metadata fields carried forward",
+        title="Design fields carried forward",
         body="srr • sample_title • side_class • geno_class\ncondition_family • family_id • include_in_de",
         title_size=15,
         body_size=12.5,
@@ -480,7 +487,7 @@ def build_data_cleaning() -> None:
     ax_left = fig.add_subplot(gs[1, 0])
     ax_left.imshow(heatmap)
     ax_left.axis("off")
-    add_panel_title(ax_left, "Retained project artifact: FastQC module-status heatmap", STAGE_COLORS["clean"])
+    add_panel_title(ax_left, "Saved FastQC module-status heatmap", STAGE_COLORS["clean"])
     for spine in ax_left.spines.values():
         spine.set_visible(True)
         spine.set_color(STAGE_COLORS["clean"])
@@ -489,7 +496,7 @@ def build_data_cleaning() -> None:
     ax_right = fig.add_subplot(gs[1, 1])
     ax_right.imshow(severity)
     ax_right.axis("off")
-    add_panel_title(ax_right, "Retained project artifact: SRR-level severity delta", STAGE_COLORS["clean"])
+    add_panel_title(ax_right, "Saved SRR-level severity delta", STAGE_COLORS["clean"])
     for spine in ax_right.spines.values():
         spine.set_visible(True)
         spine.set_color(STAGE_COLORS["clean"])
@@ -579,7 +586,7 @@ def build_data_preparation() -> None:
     ax_plot = fig.add_subplot(gs[1, 0])
     ax_plot.imshow(unique_mapping)
     ax_plot.axis("off")
-    add_panel_title(ax_plot, "Retained project artifact: unique mapping by sample", STAGE_COLORS["prep"])
+    add_panel_title(ax_plot, "Saved unique-mapping summary", STAGE_COLORS["prep"])
     for spine in ax_plot.spines.values():
         spine.set_visible(True)
         spine.set_color(STAGE_COLORS["prep"])
@@ -599,10 +606,30 @@ def build_data_preparation() -> None:
     )
 
     card_positions = [
-        (0.00, 0.54, "Median unique\nmapping", f"{metrics['unique_pct']:.2f}%"),
-        (0.52, 0.54, "Median multi-\nmapping", f"{metrics['multi_pct']:.2f}%"),
-        (0.00, 0.22, "Median noFeature\nburden", f"{metrics['N_noFeature_pct_of_input']:.2f}%"),
-        (0.52, 0.22, "Median ambiguous\nburden", f"{metrics['N_ambiguous_pct_of_input']:.2f}%"),
+        (
+            0.00,
+            0.54,
+            "Median unique\nmapping",
+            f"{round_half_up(metrics['unique_pct'])}%",
+        ),
+        (
+            0.52,
+            0.54,
+            "Median multi-\nmapping",
+            f"{round_half_up(metrics['multi_pct'])}%",
+        ),
+        (
+            0.00,
+            0.22,
+            "Median noFeature\nburden",
+            f"{round_half_up(metrics['N_noFeature_pct_of_input'])}%",
+        ),
+        (
+            0.52,
+            0.22,
+            "Median ambiguous\nburden",
+            f"{round_half_up(metrics['N_ambiguous_pct_of_input'])}%",
+        ),
     ]
     for x, y, title, body in card_positions:
         add_card(ax_metrics, x, y, 0.44, 0.22, color=STAGE_COLORS["prep"], title=title, body=body, title_size=12.5, body_size=18)

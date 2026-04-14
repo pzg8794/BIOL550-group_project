@@ -1,6 +1,6 @@
 # SRP618841 — repeatable FASTQ → FastQC → fastp → FastQC workflow
 
-This is the staged process doc for the `SRP618841` parallel mouse candidate. It follows the same local-truth / minimal-server rule as the active mouse dataset, but keeps all runtime paths separate from `PRJNA1017789`.
+This is the staged process doc for the `SRP618841` parallel mouse candidate. It follows the same local-truth / minimal-server rule as the active mouse dataset, but keeps all runtime paths separate from the historical `PRJNA1017789` snapshot.
 
 ## Documentation links
 
@@ -98,7 +98,7 @@ Purpose:
 Start:
 
 ```bash
-source /home/zebrafish/mouse/PRJNA1017789_parallel/scripts/mouse_deseq2_activate_shared.sh 2>/dev/null || true
+source /home/zebrafish/mouse/SRP618841_parallel/scripts/mouse_deseq2_activate_shared.sh 2>/dev/null || true
 bash /home/pzg8794/pipelines/srp618841_pipeline.sh download-start
 ```
 

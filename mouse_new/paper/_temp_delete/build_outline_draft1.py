@@ -131,7 +131,7 @@ SECTIONS = (
             bullet(
                 "Introduce paper/dataset",
                 bullet("Experimental design"),
-                bullet("DRG after spinal cord injury"),
+                bullet("DRG after sciatic nerve injury"),
                 bullet(
                     "Goals of the paper",
                     bullet("Why did they analyze DRG with cKO"),

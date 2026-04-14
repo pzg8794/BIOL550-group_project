@@ -23,7 +23,7 @@ Piter Garcia
     * Unbiased, transcriptome-wide detection of gene expression changes
 * Introduce paper/dataset
   * Experimental design
-  * DRG after spinal cord injury
+  * DRG after sciatic nerve injury
   * Goals of the paper
     * Why did they analyze DRG with cKO
     * Ipsilateral vs contralateral

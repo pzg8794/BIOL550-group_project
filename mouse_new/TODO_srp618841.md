@@ -136,17 +136,17 @@
 
 - [x] Reconstruct the public records tied to `SRP618841` so the team can answer design and interpretation questions directly from the source study.
 
-### 2026-04-02 findings — `SRP618841` / `GSE243308` / `PRJNA1017789`
+### 2026-04-02 findings — `SRP618841` / `GSE243308` / `PRJNA1322439`
 
 - The current `mouse_new` contingency dataset is the `SRP618841` slice of the public mouse project already tracked elsewhere in BIOL550:
   - SRA study: `SRP618841`
   - GEO series: `GSE243308`
-  - BioProject: `PRJNA1017789`
+  - BioProject: `PRJNA1322439`
 - Local design reconstruction confirms the exact working subset now used in `mouse_new`:
   - `20` SRRs total
   - one family only: `family_drg_novaseqx`
   - tissue class: `drg`
-  - treatment: `Spinal Cord Injury - 1dpi`
+  - treatment: `Sciatic Nerve Injury - 1dpi`
   - balanced design: `10` `ipsi`, `10` `contra`, `10` `ff`, `10` `cre`
 - The public paper associated with `GSE243308` is:
   - “Aryl hydrocarbon receptor restricts axon regeneration of DRG neurons in response to injury”

@@ -12,7 +12,7 @@
 
 - Pulled the canonical SRA RunInfo table for `SRP618841`.
 - Derived a canonical 20-run list for the parallel candidate branch.
-- Reserved a separate server root and metadata root so this candidate dataset does not collide with `PRJNA1017789`.
+- Reserved a separate server root and metadata root so this candidate dataset does not collide with the historical `PRJNA1017789` snapshot.
 
 ## Status
 

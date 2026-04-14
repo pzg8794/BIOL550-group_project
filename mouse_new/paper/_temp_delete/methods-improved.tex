@@ -82,7 +82,7 @@
 \section{Materials and Methods}
 
 
-This section describes the \texttt{mouse\_new} analysis workflow as a reproducible bioinformatics pipeline organized around four computational stages: \textbf{Data Collection}, \textbf{Data Cleaning}, \textbf{Data Preparation}, and \textbf{Data Mining and Interpretation}. That structure makes both the biological context and the computational handoffs explicit, from raw sequence acquisition through differential expression and enrichment analysis. Each stage is documented by a pipeline summary table and a matching figure; figures explain how each stage works, while tables capture the concrete inputs, tools, outputs, and key metrics produced. Color coding within each table reflects stage identity at the row level, with additional within-stage shading used in the Data Mining section to distinguish primary, supporting, and contextual contrasts from one another.
+This section describes the \texttt{mouse\_new} analysis workflow as a reproducible bioinformatics pipeline organized around four computational stages: \textbf{Data Collection}, \textbf{Data Cleaning}, \textbf{Data Preparation}, and \textbf{Data Analysis and Interpretation}. That structure makes both the biological context and the computational handoffs explicit, from raw sequence acquisition through differential expression and enrichment analysis. Each stage is documented by a pipeline summary table and a matching figure; figures explain how each stage works, while tables capture the concrete inputs, tools, outputs, and key metrics produced. Color coding within each table reflects stage identity at the row level, with additional within-stage shading used in the Data Analysis section to distinguish primary, supporting, and contextual contrasts from one another.
 
 
 %% ── Overall pipeline figure ──────────────────────────────────────────────────
@@ -108,7 +108,7 @@ This section describes the \texttt{mouse\_new} analysis workflow as a reproducib
   {\textcolor{stageprep}{\textbf{Data Preparation}}\\
    reference selection, STAR indexing,\\alignment, and count handoff};
 \node[stage, fill=lightmine, draw=stagemine, right=of s3] (s4)
-  {\textcolor{stagemine}{\textbf{Data Mining \& Interpretation}}\\
+  {\textcolor{stagemine}{\textbf{Data Analysis \& Interpretation}}\\
    DESeq2 ($n=5$ contrasts), bend-point\\narrowing, and enrichment};
 
 \draw[arrow] (s1) -- (s2);
@@ -136,7 +136,7 @@ This section describes the \texttt{mouse\_new} analysis workflow as a reproducib
 \end{tikzpicture}%
 }
 \caption{End-to-end structure of the \texttt{mouse\_new} RNA-seq workflow organized into four
-  reproducible computational stages.  The Data Mining stage encompasses five DESeq2 contrasts
+  reproducible computational stages.  The Data Analysis stage encompasses five DESeq2 contrasts
   (two primary side-specific, two genotype-focused, one interaction); the primary side-specific
   contrasts are \texttt{ipsi\_vs\_contra\_in\_ff} and \texttt{ipsi\_vs\_contra\_in\_cre}.}
 \label{fig:overall_pipeline}
@@ -147,13 +147,13 @@ This section describes the \texttt{mouse\_new} analysis workflow as a reproducib
 \subsection{Data Collection: SRA Acquisition and Sample Organization}
 
 The study analyzed the mouse dorsal root ganglion (DRG) bulk RNA-seq dataset associated with
-\texttt{SRP618841} (BioProject \texttt{PRJNA1017789}; GEO \texttt{GSE243308}).
+\texttt{SRP618841} (BioProject \texttt{PRJNA1322439}; GEO \texttt{GSE243308}).
 Sequence runs were obtained from the NCBI Sequence Read Archive using local acquisition wrappers
 around \texttt{prefetch} and \texttt{fasterq-dump}, and the paired-end outputs were stored as
 compressed \texttt{FASTQ.gz} files so the same inputs could be reused across QC, alignment, and
 notebook-based downstream analysis without modification.
-The working subset consisted of 20 DRG samples generated on a NovaSeq X platform under a spinal
-cord injury (SCI) design, all sampled at 1 day post-injury (1~dpi).
+The working subset consisted of 20 DRG samples generated on a NovaSeq X platform under a sciatic
+nerve injury (SNI) design, all sampled at 1 day post-injury (1~dpi).
 
 Sample metadata were structured as a design table rather than as loose file names, with each run
 labeled by side class (\texttt{ipsi} or \texttt{contra}) and genotype class (\texttt{ff} or
@@ -173,7 +173,7 @@ pathway-level claims could be trusted.
 \small
 \caption{Per-sample design table for the \texttt{family\_drg\_novaseqx} subset
   ($n = 20$). Color shading encodes the four condition groups used in all DESeq2 contrasts.
-  All samples: tissue = DRG, treatment = Spinal Cord Injury 1\,dpi, platform = NovaSeq X,
+  All samples: tissue = DRG, treatment = Sciatic Nerve Injury 1\,dpi, platform = NovaSeq X,
   post-\texttt{fastp} GC status = WARN (monitored; alignment metrics confirmed no downstream
   penalty; see Section~\ref{sec:cleaning}).}
 \label{tab:design_table}
@@ -254,7 +254,7 @@ Public study accession (\texttt{SRP618841}) &
 SRA Toolkit and local acquisition wrappers &
 20 paired-end \texttt{FASTQ.gz} runs and run manifest &
 Reconstruct the working DRG subset locally from public data &
-BioProject \texttt{PRJNA1017789}; GEO \texttt{GSE243308};
+  BioProject \texttt{PRJNA1322439}; GEO \texttt{GSE243308};
 all 20 samples retained in the active DRG subset \\
 \rowcolor{deepcollect}
 Run metadata and sample annotations &
@@ -276,7 +276,7 @@ design formula =
 \centering
 \includegraphics[width=\textwidth]{assets_methods/data_collection_stage.png}
 \caption{Data Collection stage summary figure. The panel shows the public accession lineage
-  (\texttt{SRP618841} / \texttt{PRJNA1017789} / \texttt{GSE243308}), the local acquisition
+  (\texttt{SRP618841} / \texttt{PRJNA1322439} / \texttt{GSE243308}), the local acquisition
   handoff via \texttt{prefetch} and \texttt{fasterq-dump}, and the four balanced subgroups
   (\texttt{ipsi\_ff}, \texttt{ipsi\_cre}, \texttt{contra\_ff}, \texttt{contra\_cre})
   that define all downstream contrasts.}
@@ -467,7 +467,7 @@ final count matrix passed to DESeq2 \\
 
 
 %% ═══════════════════════════════════════════════════════════════════════════════
-\subsection{Data Mining and Interpretation: Differential Expression and Functional Analysis}
+\subsection{Data Analysis and Interpretation: Differential Expression and Functional Analysis}
 
 The STAR count outputs were merged into a gene-by-sample count matrix for the
 \texttt{family\_drg\_novaseqx} subset and modeled with \texttt{DESeq2}.
@@ -516,7 +516,7 @@ five contrasts and are reserved for the Results section.
 \begin{table}[H]
 \centering
 \small
-\caption{Data Mining and Interpretation stage summary. Rows are ordered by contrast priority
+\caption{Data Analysis and Interpretation stage summary. Rows are ordered by contrast priority
   (primary $\rightarrow$ supporting $\rightarrow$ contextual) and shaded accordingly.
   Bend-point thresholds and selected gene counts are derived directly from the saved
   per-contrast \texttt{bendpoint\_summary.tsv} files.}
@@ -626,7 +626,7 @@ bend-point threshold $= 0.046$;
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{assets_methods/data_mining_stage.png}
-\caption{Data Mining and Interpretation stage summary derived from the saved \texttt{DESeq2},
+\caption{Data Analysis and Interpretation stage summary derived from the saved \texttt{DESeq2},
   bend-point, and enrichment outputs.
   Panel~(a): VST PCA showing the dominant \texttt{side\_class} separation on PC1 and the
   secondary genotype structure, with annotated FF/CRE pair distances.

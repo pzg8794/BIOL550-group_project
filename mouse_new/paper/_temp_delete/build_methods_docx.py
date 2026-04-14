@@ -13,8 +13,8 @@ from docx.oxml.ns import qn
 from docx.shared import Inches, Pt
 
 PAPER_DIR = Path(__file__).resolve().parent
-TEX_PATH = PAPER_DIR / "materials_methods_piter_draft.tex"
-DOCX_PATH = PAPER_DIR / "materials_methods_piter_draft.docx"
+TEX_PATH = PAPER_DIR / "methods-improved.tex"
+DOCX_PATH = PAPER_DIR / "methods-improved.docx"
 
 STAGE_COLORS = {
     "stagecollect": "365C8D",
@@ -216,9 +216,18 @@ def build_docx() -> None:
             r.font.size = Pt(12)
             r.bold = True
         elif tok.startswith("\\begin{figure}"):
-            image = re.search(r"\\includegraphics\[.*?\]\{(.*?)\}", tok, re.S).group(1)
+            image_match = re.search(r"\\includegraphics(?:\[.*?\])?\{(.*?)\}", tok, re.S)
             caption = clean_tex(re.search(r"\\caption\{(.*?)\}", tok, re.S).group(1))
-            add_figure(doc, image, caption, fig_num)
+            if image_match is not None:
+                image = image_match.group(1)
+            else:
+                label_match = re.search(r"\\label\{(.*?)\}", tok, re.S)
+                label = label_match.group(1) if label_match else ""
+                image = "assets_methods/overview_pipeline_stage.png" if label == "fig:overall_pipeline" else None
+            if image is not None:
+                add_figure(doc, image, caption, fig_num)
+            else:
+                add_caption(doc, "Figure", fig_num, caption)
             fig_num += 1
         elif tok.startswith("\\begin{table}"):
             caption, rows = parse_table_block(tok)
