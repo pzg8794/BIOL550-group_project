@@ -1929,3 +1929,25 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 - Keep `ipsi_vs_contra_in_ff` as the main weekly-report example for side-specific DE + GO interpretation.
 - Keep `ipsi_vs_contra_in_cre` as the comparison branch and reserve a fuller CRE GO figure for later only if it materially improves the story.
 - Treat the anchor-gene companion table as a discussion aid for team interpretation, not yet as a fully polished biological Results subsection.
+
+## 2026-04-14 — Methods draft validated against subsection hub
+
+### Step
+- Cross-checked `mouse_new/paper/materials_methods_piter_draft.tex` against the subsection-level validation hub in:
+  - `mouse_new/notebooks/mouse_new_methods_validation_hub.ipynb`
+- Tightened the validation hub so each Methods figure is now followed immediately by its own validation block:
+  - image
+  - then the data-point provenance/validation for that image
+- Corrected the draft's BioProject lineage mismatch in:
+  - `mouse_new/paper/materials_methods_piter_draft.tex`
+  - changed `PRJNA1322439` to `PRJNA1017789` in the overview paragraph, Data Collection paragraph, and Data Collection table
+
+### Finding
+- The draft was broadly aligned with the validated Methods data, figures, and tables.
+- The main confirmed manuscript mismatch was the BioProject accession, not the stage metrics or DE/GO summary counts.
+- The figure-validation hub is clearer when provenance is attached directly after each image instead of grouped later.
+
+### Decision
+- Keep the subsection-level validation hub as the canonical Methods validation workspace.
+- Treat `materials_methods_piter_draft.tex` as aligned to the current validated sources after the BioProject fix.
+- Use the hub for any further figure/table claim checks rather than revalidating from scratch.
