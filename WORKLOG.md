@@ -20,6 +20,55 @@ Use this file as the dated change log. For exact current commands or pending tas
 
 > Server policy: keep the minimum on `sequoia`; keep most code and analysis local. See [SERVER_MINIMUM_POLICY.md](SERVER_MINIMUM_POLICY.md).
 
+## 2026-04-14 — Methods citations + Discussion section integrated into `mouse_new` paper draft
+
+### Step
+- Updated the active paper-section draft at:
+  - `mouse_new/paper/materials_methods_piter_draft.tex`
+- Replaced inline URL-style citation text with proper LaTeX APA citations using:
+  - `mouse_new/paper/materials_methods_piter_draft.bib`
+- Added a new `Discussion` section directly in the same draft, built from the shared storyline in:
+  - `mouse_new/reports/BIOL550_Weekly_Report_Mouse_Differential_Expression_2026-03-25.html`
+  - `mouse_new/reports/BIOL550_Weekly_Report_Mouse_Differential_Expression_2026-04-02.html`
+  - `mouse_new/reports/BIOL550_Weekly_Report_Mouse_Differential_Expression_2026-04-09_GO_Methods.html`
+  - `mouse_new/reports/Nikhi_Reports/`
+- Added three discussion-facing visuals copied into:
+  - `mouse_new/paper/assets_discussion/`
+  - `pca_side_genotype_annotated.png`
+  - `ordered_pvalue_and_cumulative_curve.png`
+  - `ff_up_tree_view.png`
+- Extended the validation notebook so it now tracks:
+  - actual bibliography coverage
+  - discussion-claim support
+  - discussion-figure source trails and point-by-point validation
+
+### Status
+- The draft now contains:
+  - Materials and Methods
+  - Discussion
+  - APA-style LaTeX citation commands
+  - a working bibliography file
+- The PDF rebuild succeeded at:
+  - `mouse_new/paper/materials_methods_piter_draft.pdf`
+- The validation hub notebook now bridges from Methods validation into the start of a paper-wide claim/figure validation flow.
+
+### Finding
+- The most stable cross-report discussion path remains:
+  - PCA-first interpretation
+  - side-specific contrasts first
+  - bend-point narrowing before pathway analysis
+  - `ipsi_vs_contra_in_ff` as the clearest pathway-level branch
+- Nikhi’s reports align best when used as reinforcement for:
+  - the side-vs-genotype contrast hierarchy
+  - the value of bend-point narrowing
+  - the biological usefulness of the FF pathway follow-up
+- The LaTeX build is clean enough for drafting, with the main remaining formatting issue limited to one pre-existing overfull table warning in the cleaning-stage table.
+
+### Decision
+- Keep `materials_methods_piter_draft.tex` as the canonical file for this phase instead of splitting Discussion into a separate local draft.
+- Keep `materials_methods_piter_draft.bib` as the canonical references source for this section.
+- Use the new discussion figures selectively; they support the prose but should not replace it.
+
 ## 2026-04-08 — Week 13 Draft 1 outline package built for `mouse_new/paper`
 
 ### Step
@@ -1951,3 +2000,21 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 - Keep the subsection-level validation hub as the canonical Methods validation workspace.
 - Treat `materials_methods_piter_draft.tex` as aligned to the current validated sources after the BioProject fix.
 - Use the hub for any further figure/table claim checks rather than revalidating from scratch.
+
+## 2026-04-15 — FF GO network label readability update
+
+### Step
+- Updated the shared notebook for the FF GO network figure:
+  - `Semester5/BIOL550/mouse_group_project_work/notebooks/mouse_differential_expression_ff_shinygo_style.ipynb`
+- Changed the network-label rendering so the GO accession is visually emphasized in a white rounded box while the term label remains plain text.
+- Regenerated the corresponding exported figure in:
+  - `mouse_new/differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/shinygo_style/ff_up_network_view.png`
+
+### Finding
+- The prior label treatment made the entire label compete visually with the node and edge structure.
+- Splitting the label into plain term text plus a boxed GO accession makes the accession easier to spot while preserving the original term wording.
+
+### Decision
+- Keep the FF network figure in the split-label format for team sharing and discussion use.
+- Use the shared notebook as the editable source of truth and the regenerated PNG as the manuscript/shareable artifact.
+
