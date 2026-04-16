@@ -1,0 +1,7 @@
+[TO DO: Replace this placeholder with the updated Materials and Methods section, matching the LaTeX content.]
+
+This project reanalyzed mouse DRG bulk RNA-seq after sciatic nerve injury using a four-stage workflow modeled after a CRISP-style progression: Data Collection, Data Cleaning, Data Preparation, and Data Analysis and Interpretation. That structure reflects how the mouse_new workflow was built and refined across the weekly deliverables, where each stage owned a specific deliverable, a checkpoint artifact, and a reusable output for the next stage. This staged structure made it possible to reuse the pipeline after earlier dataset-selection problems, because accession tracking, QC review, alignment review, and downstream modeling were separated into explicit, repeatable, and reproducible checkpoints.
+
+The working subset comprised 20 NovaSeq X paired-end libraries from SRP618841 (BioProject PRJNA1322439; GEO GSE307639), organized so that each genotype and side combination was equally represented before performing quality control, alignment, and differential expression analysis. At each stage, the dataset was narrowed, checked, and advanced based on predefined criteria, ensuring reproducibility and consistency throughout the analysis.
+
+[...full section continues, matching the LaTeX content...]

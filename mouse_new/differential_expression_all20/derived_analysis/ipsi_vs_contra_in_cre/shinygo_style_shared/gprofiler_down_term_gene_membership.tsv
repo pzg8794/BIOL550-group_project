@@ -1,0 +1,95 @@
+Direction	native	name	gene_id	symbol	evidence_codes
+CRE downregulated	GO:0099171	presynaptic modulation of chemical synaptic transmission	ENSMUSG00000048616	Nog	IDA
+CRE downregulated	GO:0099171	presynaptic modulation of chemical synaptic transmission	ENSMUSG00000045613	Chrm2	EXP, IMP
+CRE downregulated	GO:0099171	presynaptic modulation of chemical synaptic transmission	ENSMUSG00000039114	Nrn1	EXP, IDA, IMP, IEP
+CRE downregulated	GO:0099171	presynaptic modulation of chemical synaptic transmission	ENSMUSG00000039959	ENSMUSG00000039959	IDA, IMP
+CRE downregulated	GO:0099171	presynaptic modulation of chemical synaptic transmission	ENSMUSG00000031491	Chrna6	IDA, IMP
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000045648	Vwc2l	IGI, IBA
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000027584	Oprl1	ISO, IEA
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000045318	Adra2c	IBA, IEA
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000048616	Nog	IDA, IMP, IGI, IBA, IEA
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000073155	Stmp1	IMP
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000045613	Chrm2	EXP, IMP
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000038967	Pdk2	IMP
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000039114	Nrn1	EXP, IDA, IMP, IEP
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000048706	Lurap1l	IBA, IEA
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000031834	Pik3r2	IEA
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000057315	Arhgap24	IMP, IBA
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000031618	ENSMUSG00000031618	IEA
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000057329	ENSMUSG00000057329	IDA, ISO, IEA
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000025422	ENSMUSG00000025422	IMP, ISO, IEA
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000096606	Tpbgl	IBA
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000009633	ENSMUSG00000009633	ISS, IBA, IEA
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000048004	ENSMUSG00000048004	IMP
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000074345	ENSMUSG00000074345	IDA
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000039959	ENSMUSG00000039959	IDA, IMP, IEA
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000031491	Chrna6	IDA, IMP
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000024975	ENSMUSG00000024975	ISS, IEA
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000022861	Dgkg	IMP
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000055493	Epm2a	ISO
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000023571	ENSMUSG00000023571	IDA, IBA
+CRE downregulated	GO:0023051	regulation of signaling	ENSMUSG00000021974	ENSMUSG00000021974	IDA, IMP, IGI, ISO, IBA
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000045648	Vwc2l	IGI, IBA
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000027584	Oprl1	ISO, IEA
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000045318	Adra2c	IBA, IEA
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000048616	Nog	IDA, IMP, IGI, IBA, IEA
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000073155	Stmp1	IMP
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000045613	Chrm2	EXP, IMP
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000038967	Pdk2	IMP
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000039114	Nrn1	EXP, IDA, IMP, IEP
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000048706	Lurap1l	IBA, IEA
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000031834	Pik3r2	IEA
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000057315	Arhgap24	IMP, IBA
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000031618	ENSMUSG00000031618	IEA
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000057329	ENSMUSG00000057329	IDA, ISO, IEA
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000025422	ENSMUSG00000025422	IMP, ISO, IEA
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000096606	Tpbgl	IBA
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000009633	ENSMUSG00000009633	ISS, IBA, IEA
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000048004	ENSMUSG00000048004	IMP
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000074345	ENSMUSG00000074345	IDA
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000039959	ENSMUSG00000039959	IDA, IMP, IEA
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000031491	Chrna6	IDA, IMP
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000024975	ENSMUSG00000024975	ISS, IEA
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000022861	Dgkg	IMP
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000055493	Epm2a	ISO
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000023571	ENSMUSG00000023571	IDA, IBA
+CRE downregulated	GO:0010646	regulation of cell communication	ENSMUSG00000021974	ENSMUSG00000021974	IDA, IMP, IGI, ISO, IBA
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000045648	Vwc2l	IGI, IBA
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000027584	Oprl1	ISO, IEA
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000045318	Adra2c	IBA, IEA
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000048616	Nog	IDA, IMP, IGI, IBA, IEA
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000073155	Stmp1	IMP
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000038967	Pdk2	IMP
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000048706	Lurap1l	IBA, IEA
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000031834	Pik3r2	IEA
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000057315	Arhgap24	IMP, IBA
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000031618	ENSMUSG00000031618	IEA
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000057329	ENSMUSG00000057329	IDA, ISO, IEA
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000025422	ENSMUSG00000025422	IMP, ISO, IEA
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000096606	Tpbgl	IBA
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000009633	ENSMUSG00000009633	ISS, IBA, IEA
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000048004	ENSMUSG00000048004	IMP
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000074345	ENSMUSG00000074345	IDA
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000039959	ENSMUSG00000039959	IEA
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000024975	ENSMUSG00000024975	ISS, IEA
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000022861	Dgkg	IMP
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000055493	Epm2a	ISO
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000023571	ENSMUSG00000023571	IDA, IBA
+CRE downregulated	GO:0009966	regulation of signal transduction	ENSMUSG00000021974	ENSMUSG00000021974	IDA, IMP, IGI, ISO, IBA
+CRE downregulated	GO:1902531	regulation of intracellular signal transduction	ENSMUSG00000027584	Oprl1	ISO, IEA
+CRE downregulated	GO:1902531	regulation of intracellular signal transduction	ENSMUSG00000045318	Adra2c	IBA, IEA
+CRE downregulated	GO:1902531	regulation of intracellular signal transduction	ENSMUSG00000048616	Nog	IEA
+CRE downregulated	GO:1902531	regulation of intracellular signal transduction	ENSMUSG00000073155	Stmp1	IMP
+CRE downregulated	GO:1902531	regulation of intracellular signal transduction	ENSMUSG00000038967	Pdk2	IMP
+CRE downregulated	GO:1902531	regulation of intracellular signal transduction	ENSMUSG00000048706	Lurap1l	IEA
+CRE downregulated	GO:1902531	regulation of intracellular signal transduction	ENSMUSG00000031834	Pik3r2	IEA
+CRE downregulated	GO:1902531	regulation of intracellular signal transduction	ENSMUSG00000057315	Arhgap24	IMP, IBA
+CRE downregulated	GO:1902531	regulation of intracellular signal transduction	ENSMUSG00000031618	ENSMUSG00000031618	IEA
+CRE downregulated	GO:1902531	regulation of intracellular signal transduction	ENSMUSG00000057329	ENSMUSG00000057329	IEA
+CRE downregulated	GO:1902531	regulation of intracellular signal transduction	ENSMUSG00000025422	ENSMUSG00000025422	ISO, IEA
+CRE downregulated	GO:1902531	regulation of intracellular signal transduction	ENSMUSG00000074345	ENSMUSG00000074345	IDA
+CRE downregulated	GO:1902531	regulation of intracellular signal transduction	ENSMUSG00000024975	ENSMUSG00000024975	ISS, IEA
+CRE downregulated	GO:1902531	regulation of intracellular signal transduction	ENSMUSG00000022861	Dgkg	IMP
+CRE downregulated	GO:1902531	regulation of intracellular signal transduction	ENSMUSG00000055493	Epm2a	ISO
+CRE downregulated	GO:1902531	regulation of intracellular signal transduction	ENSMUSG00000023571	ENSMUSG00000023571	IDA
+CRE downregulated	GO:1902531	regulation of intracellular signal transduction	ENSMUSG00000021974	ENSMUSG00000021974	ISO, IBA

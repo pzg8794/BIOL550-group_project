@@ -1,0 +1,444 @@
+00:01:34 Speaker 1
+So.
+00:02:23 Speaker 1
+Hello. Hello.
+00:03:17 Speaker 1
+Hello. Hey.
+00:03:23 Speaker 2
+How are you guys doing?
+00:03:25 Speaker 3
+All right, how are you?
+00:03:28 Speaker 2
+I'm so sleepy.
+00:03:31 Speaker 3
+Okay, we can try and keep it short meeting.
+00:03:33 Speaker 2
+I was taking a nap, yeah. Yeah, like like like what's the plan for tomorrow? I was thinking, I don't know, like maybe just show do the same thing we did last week.
+00:03:48 Speaker 3
+What do you mean Oh, what you mean for presenting tomorrow? Yeah. I also haveum a bunch of graphs that I wanted to show, so I'm not I can run it tomorrow.
+00:04:01 Speaker 2
+Yeah, I. I started what we talked about but I haven't finished cause so tired but.
+00:04:10 Speaker 3
+Yeah, I can just take care of it tomorrow.
+00:04:11 Speaker 2
+Yeah, definitely finishing it tonight.
+00:04:17 Speaker 3
+Oh, like finish it. Wait, finishing?
+00:04:19 Speaker 2
+Uh, what we said? The images that we talked about? That's as far as I got and I haven't gotten any further.
+00:04:29 Speaker 3
+I'm not sure what images you're talking about.
+00:04:31 Speaker 2
+Oh, you remember you sent me like the screenshot for the configuration?
+00:04:36 Speaker 3
+Yeah, why don't we just use the ones I have?
+00:04:39 Speaker 2
+Oh, oh, you got them. Perfect. Even better. Even better. Yeah. Yeah That's even better Yeah, Let's use that and see what he Oh Okay yeah Yeah like last week with Titan type parentheses.
+00:04:58 Speaker 3
+Yeah So I'll show him those. And we can just see what he says Um.
+00:05:03 Speaker 2
+I'm putting the references right now. The way you said, like in parentheses,
+00:05:07 Speaker 3
+Okay cool. Um. And that's I'll work on the I'll, just add the citations before we submit the second draft.
+00:05:17 Speaker 1
+Yes. Um.
+00:05:19 Speaker 3
+Um Also, don't forget thatum tools also need version numbers like all tools.
+00:05:25 Speaker 2
+Yes, or every tool right? Yeah.
+00:05:40 Speaker 1
+Let me just write it down, just in case. But that's a good one. Okay, Um.
+00:06:07 Speaker 3
+Peter, I roughly looked over what you wrote, and it roughly looks good. The only thing I wanted to know is I'm not sure if you've written a paper in biology before, but it's not super normal to have that many figures in the methods section.
+00:06:23 Speaker 2
+Oh, we can we can just choose whatever you guys like.
+00:06:27 Speaker 3
+Oh okay they were just there as options?
+00:06:29 Speaker 2
+Yeah yeah yeah.
+00:06:31 Speaker 3
+Cool. I real I like the first pipeline imageum, Here, you know what? Let me just share my screen.
+00:06:38 Speaker 1
+Yeah, yeah.
+00:06:39 Speaker 3
+Um, I sent a request to be able to share my screen. Cool.
+00:06:53 Speaker 2
+I'm writing down what you said because I didn't. Okay, great. Because I have like a list that I like bullets.
+00:07:08 Speaker 3
+Tools. Um, I like this pipeline figure. Yeah. I think it's good because I feel like it best shows how we kind of did everything, um. In my opinion, this one isn't needed.
+00:07:24 Speaker 2
+That's theum oh the breakdown yeah.
+00:07:28 Speaker 3
+Because tech basically most of theseum, Tables we should have in like paragraph form, not in table form.
+00:07:35 Speaker 2
+If that makes sense. Yeah.
+00:07:39 Speaker 3
+Um, So I don't know if you all if you already have that in paragraph form.
+00:07:44 Speaker 2
+Uh, we can make it. Yeah, write a comment in there like not needed maybe paragraph form. Yeah yeah.
+00:07:58 Speaker 3
+This one's good. I know this is based on him asking us for it. Yeah,
+00:08:03 Speaker 2
+That was directly for him. Yeah,
+00:08:09 Speaker 3
+I'm not entirely sure why he's actually asking for it, but whatever, I guess.
+00:08:13 Speaker 2
+Yeah, me neither. I thought it was a lawyer thing. Mhm- hmm- hmm- hmm- hmm Okay, All right, at least that's good to know because in my papers, I have never seen this. Ca use I I remember once I had similar call like that, and my supervisor was like, no, we don't need that.
+00:08:38 Speaker 3
+Like there are some papers that might make sense. The kind of paper that we're writing, that just doesn't make sense for it. Like for example, Tapnal was a paper solely for here's how you run this exact analysis. So that was like a paper where it makes sense to actually have commands. Typically ours doesn't make sense, but I guess he just wants to see what we've been doing, I guess.
+00:08:56 Speaker 2
+Yeah, And I agree with you because if we are like basically following something like trap now, Right, It really make more sense to like repeat this code that we that we've been using. So yeah, we just reference it. Usually that's what happens. You reference it. Okay Yeah.
+00:09:18 Speaker 3
+Okay Um This bigger as well I don't think is needed, And I think you actually honestly already wrote this out in like. Paragraph form, so I feel like. No need. I personally think we can delete it or are you okay with that? I'm not. I just want to make sure.
+00:09:38 Speaker 2
+This one, I don't, I don't mind this one.
+00:09:40 Speaker 1
+Yeah Okay You can put in in in yeah, like no need to.
+00:09:46 Speaker 3
+Okay cool Um Yeah. This one's the same deal Yeah Um.
+00:10:01 Speaker 3
+Yeah, I'm just going to remove these two as well.
+00:10:03 Speaker 2
+Yeah, whatever. Whatever you don't think. If you if you don't if you if it's already described in paragraph form, that's fine.
+00:10:13 Speaker 3
+Yeah, let me actually confirm. Yeah, I think you did because this is just based on yeah, I think I did see that.
+00:10:27 Speaker 3
+Oh, and I did like how you made this blue. So all I did wasum, I italicized it to like separate it more,
+00:10:34 Speaker 2
+But Yeah, that oh yeah, yeah. The the, to.
+00:10:39 Speaker 3
+Just to separate it even more. Yeah.
+00:10:41 Speaker 2
+Separate it even more. Yeah yeah.
+00:10:45 Speaker 3
+Um. Okay. Yeah, this is the same deal again. And then I already have this image in the results section, so I'm also going to remove this too. Yeah.
+00:10:56 Speaker 1
+Fine. If.
+00:11:07 Speaker 2
+You guys think of like an image that might help, just let me know.
+00:11:12 Speaker 3
+Yeah, absolutely.
+00:11:14 Speaker 2
+Yeah, if I can if I have time to generate it, I do especially HTML those are very easy. Okay.
+00:11:26 Speaker 3
+Um, and also, I something that I think we should do. I know we've been labeling everything as like FF and CRE, but I think we should relabel FF to me to say wild type, And then CRE to sayum CKO, because that's those are more meaningful namings rather than FF and CRE.
+00:11:50 Speaker 2
+I would do that too as well. Yeah.
+00:11:53 Speaker 3
+So, um,
+00:11:54 Speaker 2
+Especially because like if if I was reading it right, I would I would wonder.
+00:12:00 Speaker 1
+Yeah. And then okay,
+00:12:12 Speaker 3
+I am just gonna we're doingum CKO because that's like common like short form for knockout in biology. Yes so, Okay, I put both of those comments, and you can just um fix. I think every mention of it here. Um. Yeah, and I currently have X's for all the figures, but we're gonna. I mean, I don't know if you saw this specific comment comment, but. Mm hmm. I usually just update when I'm about to submit it because sometimes we end up adding figures last minute. And have to go through individually and change all the numbers. So yeah.
+00:12:52 Speaker 2
+I don't deal with that. I let the I let the program do it, so don't worry about it. Okay, cool. Yeah, when I when I copy the programum theum. The uh the LaTeX right handles that. And then you know then I convert it to Word, and that's it. So it's fine.
+00:13:14 Speaker 3
+Okay, great. Um.
+00:13:17 Speaker 2
+That's one thing we don't have to worry. That's why I like LaTeX, cause I don't have to worry about those small little details. They're very annoying.
+00:13:25 Speaker 3
+Yeah, okay cool. Under some sense. Um, also uh if it's okay, I might the sentence I have highlighted is talking about g: P rof iler, but I'm not using g: P rof iler. So I might justum change that to the tool. I'm using.
+00:13:44 Speaker 2
+Okay, that's fine.
+00:13:46 Speaker 3
+Also, right? Okay, cool.
+00:13:47 Speaker 2
+If we need to use J profile, ah we we we actually using J profile. So you can leave it there.
+00:13:53 Speaker 3
+Oh, we do? Oh okay. When did we use J profile?
+00:13:55 Speaker 2
+We used J profile for uh the last thing we did, uh, which remember professor asked us I can share that. Let me see, let me share the uh, yeah, that isn't no, it's in in the notebook. Yeah. Um go to theum last notebook I. Yeah, I. I think I did put it there, but if I didn't, I'll just i share it quickly. But it should be there. Go all the way to the end. Okay. Alright, yeah, didn't share it, But yeah, we did let me share with you. Um is actually is a very small notebook. I'll just share with you.
+00:14:39 Speaker 3
+Um Um is in where is it?
+00:14:42 Speaker 2
+I'll share it with you guys. I never got to share it, but it's a very small notebook, so I'll just share it completely. Okay, cool. Let me copy and push. Where is this? Is notebooks Because since you're already talking about it, yeah, don't you don't need to delete it.
+00:15:00 Speaker 3
+We have Okay, As long as they're using a result, figure that uses g: profiler or like our data is based on something that g: profiler gave us, then yeah, we can keep it. I just saw G profile was only used for those figures, and we're not using those figures anymore. So that's why I asked.
+00:15:18 Speaker 2
+Yeah, yeah, yeah. Um, Ium I used it because of the link that you gave me. As, that's why I use uh key profiler hold on. Uh,
+00:15:30 Speaker 3
+Oh, are you still in the process during it? Okay,
+00:15:33 Speaker 2
+Yes, um okay, cool I'll, wait. Um finding there you go. Yes. So and. Let me just search. Okay.
+00:15:55 Speaker 2
+Yes, it's right here. Yep, okay. Let me uh copy it. And so there you go notebooks paste, and he just says, shiny go. So let me just uh commit and push quickly. Um.
+00:16:13 Speaker 1
+I have.
+00:16:47 Speaker 1
+Alright. Yeah, so. Alright,
+00:16:57 Speaker 2
+So yeah, so and. Yeah. This is the one that I did with all.
+00:17:09 Speaker 3
+Are you sharing your screen or something? Sorry, I don't know where I'm supposed to be looking at.
+00:17:12 Speaker 2
+Oh no No, I'm I'm pushing it right now. Are we just Oh oh, are we just talking as I'm, pushing it Ah, this is the one that. Alright, I got a little conflict.
+00:18:19 Speaker 2
+I Didn't notice I was outside of my. I have an environment for like every course so the things don't conflict. Alright, so let me go now.
+00:18:36 Speaker 2
+Okay. Yes,
+00:18:38 Speaker 1
+That is. Yeah, come in. G profile. There.
+00:18:57 Speaker 2
+You go. Get pushed, okay. So now it should be there. I was pushing, but I I was in the wrong environment. So if you go to your notebooks, just refresh, you should see another notebook in there that says Shiny Go. Let's see. There you go. Shiny, shiny. Yep, there you are. So if you just search for profile, you'll find it. Yeah, right there.
+00:19:23 Speaker 3
+Okay cool. Um.
+00:19:26 Speaker 1
+Oh this is interesting.
+00:19:34 Speaker 2
+Yeah, which I think you already had those images in there. Think I saw it.
+00:19:42 Speaker 3
+Well, okay, so the result figure that I added was that I got not.
+00:19:47 Speaker 2
+Oh yeah yeah yeah yeah, I rememberum.
+00:19:51 Speaker 3
+Yeah, let me take a look at the notebook again. Oh yeah, If one of these figures is worth adding, then maybe then we can keep it.
+00:20:03 Speaker 2
+Yeah, yeah, yeah. Those those were the the ones that that we talked about from the three different data sets, right? The one that you have in the in the in the Google Doc, right?
+00:20:15 Speaker 3
+Yeah. Wait. Like The three versions A one B one A one.
+00:20:20 Speaker 2
+Yeah. Yep.
+00:20:20 Speaker 3
+Yeah, yeah. Those are the three data sets Um Perfect Biological process, cellular component molecular function. And honestly gave interesting results. I'm not fully done writing these paragraphs because I want to read the paper before I do it, but. Yeah. Um okay. Are these two figures?
+00:20:41 Speaker 2
+Yes, combined. Yeah, I love that.
+00:20:42 Speaker 3
+Oh, they are a combined figure?
+00:20:44 Speaker 2
+Yeah, the tree and the uh and the heat and the heat map. Yep.
+00:20:51 Speaker 3
+Could you explain what the figure is?
+00:20:55 Speaker 2
+I I stole it from your side. Uh. But if if you read, but I did I did look up how to read it. So in there, Okay, It's right there, right under the image. Yeah, yeah, this one. Yeah, how to read it. Yep. Yeah,
+00:21:12 Speaker 3
+Oh, it's just based on the tree tab. Okay, Exactly. Yeah yeah, the tree tab only gives this top thing. It doesn't give the heat map. So that's why I was asking. But.
+00:21:26 Speaker 2
+Yeah, I haven't gotten as far as like, um making good sense out of them. But they they did yield some good result, like like three ones that you have right. So the one that is there is with all of them. Um if you go and see the network, uh the graph is all of them so but.
+00:21:56 Speaker 2
+Um. But what you did was that's something that, we discussed and I I was gonna look into it. That's perfect that you did it because you can see different behavior with, the data sets.
+00:22:11 Speaker 3
+Okay cool I, I think I'll actually use this figure, then and then it'll be good, because that gives us another figure to talk about yeah.
+00:22:21 Speaker 2
+And I like it the way you're putting it because you have them with each dataset. And then all of them. I like that.
+00:22:27 Speaker 3
+Okay, cool. Yeah. Okay, in that case we can keep that since the G profile for that, but I'll add a paragraph underneath about usingum ShinyGo.
+00:22:36 Speaker 2
+Yeah, yeah.
+00:22:37 Speaker 3
+If that's good, okay.
+00:22:38 Speaker 2
+Yeah and you can link this site that you gave me as well. Um yeah I can also if there's anything that you want me to uh reference. I can go over the and cite cite and put it right in in parentheses like I'm doing with mine. Yeah. If if that may that may help, may help. Okay, yeah. And for you too, Sam, like there's anything like you need cited, just let me know. If we don't have time, let me know I can I can try to help and speed that up.
+00:23:12 Speaker 3
+First yeah yeahum, Yeah, And I can also take care of citations since I have my tool as well. So yeah.
+00:23:19 Speaker 2
+Yeah, yeah. Um, And I'm doing it like that. So you canum so it's easy for you because I'm doing exactly what you wanted parentheses and link. Perfect. And link, yeah. But for the tool uh for LaTeX, rightum is going to generate itself, but it's good to have yours. And because sometimes we are missing, we can miss something right? So I like having both to make sure because he really wants his citations.
+00:23:48 Speaker 3
+Yeah. Okay. Um, one more question that I had for you, Peter, Wasum could you give us permission for all the files in the server? Because I think for some of them, we don't have permissions like Sam and I? And, is there another place to see the code you're running? Besides like the notebooks?
+00:24:12 Speaker 2
+This server has oh you don't have permission in the server.
+00:24:16 Speaker 3
+I think for certain files we don't have permission to like.
+00:24:19 Speaker 2
+Let me, let me let me take care of that because that's that's a big. No, no hold on. Yeah, It's not. It's not right.
+00:24:27 Speaker 1
+No, you're good. Uh, this is such.
+00:24:58 Speaker 2
+I I mean oh, no wonder I'm like why am I not I need the network Jesus. Connect. Oh.
+00:25:36 Speaker 2
+Like a whole login situation, VPN, all the stuff. Okay,
+00:25:43 Speaker 1
+Okay. I'm finally in. Let me go. Yes,
+00:25:52 Speaker 2
+So yeah, because the first place is the server and the notebooks are second that I have.
+00:26:00 Speaker 3
+So does server have all the code?
+00:26:02 Speaker 2
+It isum.
+00:26:05 Speaker 2
+You mean all the code? Yeah. Oh, for the pipeline? Yeah, yeah. Oh, that like uh it depends. It depends which pipeline you're talking about, right? Hold on. Right. Yeah. Because we have been cleaning up things so Right. Yeah All right so let me just.
+00:26:27 Speaker 1
+Check and see what.
+00:26:56 Speaker 1
+Zero. We.
+00:27:00 Speaker 2
+Can't really write. I'm I'm able to think, having slept, because I had three papers. I've been writing papers.
+00:27:14 Speaker 3
+It's a lot of end of the semester assignments.
+00:27:17 Speaker 2
+Yeah no because I also work as a graduate assistant. So I'm also I'm also writing papers and. Out of out of all the weeks, he wanted me to have the draft ready this week, like now, like this Monday. Out of all the weeks. Uh. But I finished one, I drafted that one and now I'm wrapping up hours.
+00:27:47 Speaker 3
+Okay yeah good luck with that Yeah.
+00:27:53 Speaker 2
+Alright, so I see the permissions and yeah, they all have access here. Let me let me send you aum let me send in in Slack. So you see the permission.
+00:28:09 Speaker 4
+I don't have access to delete.
+00:28:11 Speaker 2
+Oh, to you mean to delete? Okay, Alright alright, okay Yeah all all access for all files Got. It got it, got it full full access You man, okay, got it, yeah. I thought it was just like accessing them. Yeah, okay. Yeah, that way, that way you guys can clean it up. Yeah. Alright, especially now that we have. Completely gone. We uh without the other data. Yeah.
+00:28:56 Speaker 3
+Yeah, Also Peter, just are just honestly all the code because to be fair, like I I mean, I don't know about Sam, but I haven't seen any of the code. So I, just it's also just kind of like for my understanding for the paper.
+00:29:09 Speaker 2
+We, we have gone through. Yeah. Yeah, that's fine. Um okay,
+00:29:12 Speaker 3
+Yeah, that's why we're asking for like,
+00:29:14 Speaker 2
+Yeah. Yeah, um do you if you if you guys so all the code, all the code, right? Yeah okay alright that's fine. Because I haven't shared anything like, well, other than in the server. It's always in the server when we run it. And when I tell you guys to run it, right? It's obviously in the server. Otherwise it wouldn't run. Butum but yeah other other than that, I haven't purposely put it in documentation or anything because I'd I don't want it to be too much, you know what I mean?
+00:29:46 Speaker 3
+Yeah that's fair.
+00:29:47 Speaker 2
+Yeah butum, If you guys if you guys are okay with that, I can create a script folder in the GitHub that we're sharing and just put it and put everything in. Okay, that's fine. Okay, I'll do that.
+00:29:59 Speaker 3
+You would just make like I don't know like a read me file detailing what each script is?
+00:30:03 Speaker 2
+Yeah, yeah yeah I I have that personally. So I'll just copy that for you guys to and and remove as much as possible and just keep it as simple as possible. Let me uh, Alright, so okay, let me run this. Let's see if.
+00:30:25 Speaker 1
+It makes sense now. You.
+00:30:37 Speaker 2
+Want to try now somewhere and see if you have the permissions? I let me see. I run something but uh, Okay, well, Can you tell me specific directory where you don't have permission because I can't see at the higher level. But I run something that will uh rewrite the permissions for every or one subdirectory.
+00:31:01 Speaker 4
+The one I wanted to delete it's called delete.
+00:31:05 Speaker 2
+Okay, let me okay, I wasn't I wasn't at that level. Let me go higher. Yeah.
+00:31:12 Speaker 4
+Like anything under zbrush.
+00:31:15 Speaker 2
+Got it, Okay, um,
+00:31:17 Speaker 4
+Because we had data like folders from the previous data sets, which I wasn't sure why we had that. So. The only thing we did on thezebrafish folder is the mouse data. No one which I renamed them. I renamed them so. That's.
+00:31:42 Speaker 2
+Good yeah which is fine because we don't, We don't need, uh. We, don't we don't need it for like we don't need any specific naming for any automation anymore, so it's fine.
+00:31:59 Speaker 3
+Also Peter I don't know if you know this, but do you know if we're actually supposed to submit our code for this paper?
+00:32:05 Speaker 2
+Yeah. Yeah We are? Oh, sorry. I thought you were asking me. I I was I I say yeah as a notebook. I don't know if you need because the way we do it is that we have a GitHub, right? And the GitHub, the GitHub can be private, and the notebook just pulls it, and you can share the notebook. That's what I was gonna do. So, I don't know if you no no no,
+00:32:27 Speaker 3
+I mean, for i mean, for like submission for this class Do. We need to submit code? Yeah.
+00:32:38 Speaker 4
+No, I haven't. But we can't submit if we submit the any code, it cannot be the workbook that you have like it's not organized. No offense, but like that we can't submit.
+00:32:52 Speaker 2
+Can you can you try delete now and see if it deletes Yeah, cause Ium I updated a.
+00:33:07 Speaker 2
+I still.
+00:33:08 Speaker 4
+Uh, no, I don't have permission. If it'sum, I don't think that's. I mean, we're not really adding files to the server anymore. So it doesn't really matter. But could you just delete yeah, just delete the folder that says, delete yeah,
+00:33:23 Speaker 2
+Because my I'm running the command, but it's not taking it. I don't know why so It might be that I didn't sleep andum I'm not running it right. But uh, I'm running this this stupid check command, Which is always works.
+00:33:43 Speaker 3
+Alright, we can ask him tomorrow then if we need to submit the code.
+00:33:47 Speaker 2
+Yeah, yeah. Um, andum, well I I two thing right if he wants toum what is it? Well what's the word I was going to say? Oh reproducible right? Soum yeah. So if he just wanted to be reproducible, can. Just have a notebook that can run every stage of our analysis, and I'll say like, um, If he wants code code, then yeah, then we can like someone else said um organize it in a way that he likes it and submit I guess. Yeah. Yeah sounds good. Yeah so I did lead today.
+00:34:36 Speaker 2
+And that was the only directory that didn't have delete permission. I don't know why. Isn't that crazy? Yeah. Okay,
+00:34:51 Speaker 3
+Cool. Um, okay, that's all that I had. Um, we should probably just alsoum.
+00:35:04 Speaker 3
+Sam, Were you gonna do work on the intro at all before tomorrow Cause for the draft, he told us we need half the pros, not half the paper. And I don't know if that means he's gonna be picky that we need more writing.
+00:35:19 Speaker 4
+Um, I am planning on doing it. I just like. I can't tell you a time. I mean, I'll definitely try to work on it. I don't know how much of it's gonna be done.
+00:35:34 Speaker 3
+We just need more text.
+00:35:39 Speaker 4
+Okay, I mean the minimum I or I can I can start putting just like notes like I could answer like why did we analyze DRG with knockouts versus Oh,
+00:35:53 Speaker 2
+That works. Okay,
+00:35:55 Speaker 3
+Sam, if you want to put notes, then I'll connect them because i don't want I don't want to lose points. I can't lose any more points in this class.
+00:36:07 Speaker 3
+Gotcha. So I want to get points for the dress.
+00:36:11 Speaker 2
+Yeah, if if you if you if you do if you like, If you don't have time and you and you, uh do points or anything right I I can I can try, You know take some time andum also help connect those points and write, so yeah, whatever you can. Um.
+00:36:32 Speaker 4
+Yeah, I'llum, I mean I'll after dinner. I'll see how much I get done and then I'll work on it. It's not it's not due tomorrow though right? No, we just.
+00:36:46 Speaker 3
+It's due Thursday morning.
+00:36:48 Speaker 4
+Yeah exactly yeah, it's due Thursday. Yeah, but that's still a day. So like okay,
+00:36:51 Speaker 3
+I want to submit it tomorrow. I stated this last week that wanted to submit A before, and you both agreed. Yeah.
+00:37:00 Speaker 3
+Right, Frankly, I need to submit it tonight. Me too.
+00:37:02 Speaker 2
+Yeah, but we're not done. No, we couldn't. It was not feasible. Yeah. And I try, I try, Nikki. I didn't sleep because I was like, I want to submit this tonight but it just. Yeah,
+00:37:17 Speaker 3
+I did the same thing that's why I worked on it yesterday but. Like Sam, I'm not gonna. I don't want to submit it on Thursday. I want to submit it tomorrow.
+00:37:28 Speaker 4
+Okay. Um. I mean, I'll work on it. I'll, I'll text you later to see how much uh I get done. Yeah Don't, yeah yeah, that's fine.
+00:37:39 Speaker 3
+Yeah Cause I think it's fine if we haven't reached the discussion yet, because if he's like, oh, why didn't you? We can just tell him. Oh, we weren't done with analysis. So we wanted to figure that outum, I can also make sure. I also add a like paragraph describing the, This figure that we can add more text.
+00:37:59 Speaker 2
+I also have a strategy like discussion is a lot about what happened. While you know, the whole. Um, Uh experiment was taking place, right? The pipeline, the results and everything we have a lot of those in our weekly reports, you know what I mean. So yeah, so that like that's why I haven't worried about discussion because I feel like our weekly reports will that's why when I asked you guys about your weekly report. It was for that.
+00:38:26 Speaker 3
+Okay, Okay. I see.
+00:38:27 Speaker 2
+Yeah, it was to get very key important stuff in there because, If if we all have like similar stuff patterns, that in our weekly reports, that definitely has to go into discussion, right and how we address them differently. Um. Soum yeah, if we uh if you get to like share the the weekly report, uh. I I put it in there, just like Nick did and and drive as well, that would help us you know drive. Um, uh, discussion for for the paper. And, at least we'll give us at least at least a decent one to two page.
+00:39:04 Speaker 3
+Yeah. Okay, cool. Yeah. Um, right now we with the current figures and text were at fifteen pages, So we need fifteen more pages. So yeah, yeah And I think I would say maybe set I think approximately seven pages or honestly less are figures. So we do have more writing than figures, but we got to figure that out.
+00:39:29 Speaker 2
+And there is a lot of figures. I just haven't focused on that because I want to get the most important things, like, like, you know, like that were main draft. And then because we all like I have the notebooks that I said I am going to share with you. And there are a lot of images in there. So I am going to share those separately. So we can go through the images and see if anything makes sense. And we want to add it to it, right? Yeah. Just as a supplementary, um, uh material right. Uh so if it works great if it doesn't then it doesn't. So.
+00:40:02 Speaker 3
+No I don't think supplementary counts for the page count right?
+00:40:07 Speaker 2
+No I I meant like supplementary but not like supplementary as a paper supplement.
+00:40:12 Speaker 3
+Oh oh oh, I see what you're saying?
+00:40:13 Speaker 2
+Yeah, yeah, yeah. I mean. I mean like supporting something that we're saying, yeah, okay cool,
+00:40:17 Speaker 3
+We can reevaluate that next week. I just next week want to be able to submit a full draft to him for our third draft.
+00:40:24 Speaker 2
+No, yeah, Next week, we will we will. Um yes, we we I. My my goal is to like have the the paper done next week.
+00:40:35 Speaker 3
+Yeah, that's that's what I'd like too.
+00:40:38 Speaker 2
+But I'm I'm I'm like that's my goal more than likely won't happen, but at least if like I feel like if we go with that goal, we're gonna be in good shape. So.
+00:40:50 Speaker 3
+Yeah. Um, okay. Cool. I guessum. Can we just decide on a time that we submit the paper tomorrow Though.
+00:41:02 Speaker 4
+Um, I don't, I don't know. I can't give you a late time right now,
+00:41:10 Speaker 2
+Let let let's do this uh Samuel I'll, I'll say as late as. As you need me to and I'll submit it, so don't worry about it. Tomorrow night.
+00:41:25 Speaker 3
+I appreciate that, but I do also want it. I don't wanna stay up for this one assignment when I don't even have anything more to add, And I do wanna try and get it done be like submitted before I can sleep or else. I will be stressed about it.
+00:41:40 Speaker 3
+As Long as we can submit it by ten, I am not gonna make a fuss about it. P. M.
+00:41:48 Speaker 4
+Oh, oh, okay, no that's totally doable. I'll look at it after this Zoom. Um, yeah, I guess just ah Peter, can you letum let us know in the chat when you share the code.
+00:42:06 Speaker 2
+The the code for the uh uh, wait, are we sharing code for this draft. No no no no no just like in general.
+00:42:16 Speaker 4
+Oh, yeah yeah yeah yeah of course, yeah, yeah, yeah. I just I'm I'm not gonna be touch that now cause, I want to uh be able to get content in here for the draft is that okay. Yeah. Yeah. Alrightum I'm gonna go work on the, Yeah sorry go ahead work uh work on the, draft, I'll see you guys later.
+00:42:40 Speaker 2
+Yeah, I am. I add if if there is any um citation that you guys think I'm missing, just write a comment in there and I'll address it. But I think I already did all my citations with every tool and everything. Um, I'm going to start looking into the discussion to add stuff in there um from the weekly reports. Okay, cool. And and that will include uh your weekly report as well. Nikki um okay. And then you yeah go ahead.
+00:43:12 Speaker 3
+At this point, then it whatever we can get done before ten p m tomorrow, that would be great. And then Peter, you're submitting it at ten.
+00:43:20 Speaker 2
+Yeah, that's fine. Yeah. Okay, cool.
+00:43:22 Speaker 3
+Can you also yeah Um Will it. Take you long to get us theum Word doc version again,
+00:43:30 Speaker 2
+No, It didn't take me long before. Uh It's just that before I was. Uh It doesn't take me long. It just yeah It converts like one two three, Before it what happened was that I left the things in white, the things that I was adding, and then it it all got your colors. So I had to go to the version history, and then I realized that I was missing more stuff. So I kept adding stuff in there for methodology for my section. And okay, and that's why it took longer. And. And then but this this time is not going to happen because okay cool, I purposely.
+00:44:08 Speaker 2
+You know, went ahead all of this, for that one for that same reason. So when you guys are ready, I'm ready. Yeah.
+00:44:16 Speaker 3
+Yeah cause I know he only wants one person to submit it, but I don't want the assignment to appear asum. I didn't submit it. So I also want to turn it in just for my courses.
+00:44:27 Speaker 2
+Yeah that's fine yeah yeah as long as you know his like I don't, I I don't see why he would get mad about it so.
+00:44:39 Speaker 3
+Yeah, okay. Um also, if you have any more figures, you want to add to the paper, just send it to me. And I can add it, and like do the write up for it.
+00:44:48 Speaker 2
+Yeah what I'm going to doum is uh, And and you tell me, if that makes sense, you guys I'm gonna shift to the discussion now, And yeah.
+00:45:00 Speaker 3
+No that sounds good.
+00:45:01 Speaker 2
+And with that, I'm gonna put images in there as well from the notebooks that I have. So that's gonna give us option to choose, you know, what we want, what we don't want. Right? Just the same way we did here. Yeah. Pick and choose. Um and uh yeah and then um I'll share the one or two notebooks separately. Um so so you guys don't get confused I'll, just create another branch and another just for that we can later delete.
+00:45:31 Speaker 2
+That has images and stuff like that, we can pick in there. Cause I use the notebook as educational tools, so I have the stuff in there how to read them and everything. So it might be helpful also as well. Yeah.
+00:45:45 Speaker 3
+Okay then yeah, it's good. Okay I think we can call it here then.
+00:45:48 Speaker 2
+Yeah perfect, yeah, let me work on that and I'll ping you guys in the slack.
+00:45:53 Speaker 3
+Yeah yeah cool see you.
+00:45:56 Speaker 2
+See you guys.
