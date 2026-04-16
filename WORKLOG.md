@@ -2018,3 +2018,75 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 - Keep the FF network figure in the split-label format for team sharing and discussion use.
 - Use the shared notebook as the editable source of truth and the regenerated PNG as the manuscript/shareable artifact.
 
+## 2026-04-15 — Transcript-driven paper support refresh
+
+### Step
+- Reviewed the recent April transcript materials relevant to the paper workflow and draft revision, especially:
+  - `Semester5/BIOL550/group_project/mouse_new/reports/2026-04-14 Weekly Meeting_ Draft Submission, Methods Streamlining, Labeling Conventions, and Citations-transcript.txt`
+  - `Semester5/BIOL550/transcripts/2026-04-01 Navigating Data Overload in Gene Expression Analysis_ Pivoting from Arbitrary Cutoffs to a P-Value Distribution Method-summary.md`
+  - `Semester5/BIOL550/transcripts/2026-03-31 Team Meeting_ RNA-seq NovaSeq 6000 Analysis, Presentation Prep, and Course Participation Decision-summary.md`
+  - `Semester5/BIOL550/transcripts/2026-04-07 Weekly Meeting_ Team Conflicts, Paper Structure, and Data Pipeline-transcript.txt`
+- Added paper-facing transcript summaries for the April meeting artifacts so the paper-support updates can cite transcript-derived guidance directly.
+
+### Finding
+- The 2026-04-14 meeting adds concrete paper-direction guidance beyond the earlier DE/bend-point summaries:
+  - reduce Methods figure load
+  - prefer prose over redundant tables where possible
+  - use reader-facing `WT` / `cKO` naming when appropriate
+  - keep tool versions and citations explicit
+  - only retain figures that materially help explain the story
+- The 2026-04-01 and 2026-03-31 transcript summaries remain the main source for analysis-story priorities:
+  - PCA first
+  - side-specific contrasts as the main story
+  - bend-point narrowing before pathway interpretation
+- The 2026-04-07 meeting is mostly interpersonal/process material and should only influence paper docs where it clarifies how support notes vs final prose should be handled.
+
+### Decision
+- Use the April transcript package to drive a transcript-grounded update of the HTSA feedback log and the tonight/tomorrow paper-analysis TODO.
+- Keep transcript-derived support material separate from canonical draft prose, but make the paper-facing action items easy to trace through shared docs.
+
+
+## 2026-04-15 — Dual-track citation cleanup and AhR paper support pass
+
+### Step
+- Added shared paper-support docs for the HTSA drafting workflow:
+  - `Semester5/BIOL550/group_project/mouse_new/paper/HTSA_Citation_Support_Map.md`
+  - `Semester5/BIOL550/group_project/mouse_new/paper/HTSA_AhR_Source_Paper_Summary.md`
+  - `Semester5/BIOL550/group_project/mouse_new/paper/HTSA_Outline_Alignment_Notes.md`
+- Rewrote the teammate-facing introduction paragraph in:
+  - `Semester5/BIOL550/group_project/mouse_new/paper/HTSA_Introduction_Replacement_Piter.md`
+  so that factual claims now use inline validation links.
+- Cleaned the shared draft at:
+  - `Semester5/BIOL550/group_project/mouse_new/paper/HTSA_Paper.md`
+  by replacing the uncited intro prompt block with a cited paragraph and by correcting the retained g:Profiler citation link to the paper DOI set.
+- Updated the formal manuscript files:
+  - `Semester5/BIOL550/group_project/mouse_new/paper/materials_methods_piter_draft.tex`
+  - `Semester5/BIOL550/group_project/mouse_new/paper/materials_methods_piter_draft.bib`
+  to keep the LaTeX track aligned with the same source set, including the `GSE243308` GEO accession and reader-facing `ff` / `cre` glosses.
+- Rebuilt `materials_methods_piter_draft.pdf` successfully with `latexmk` / `biber` after the bibliography update.
+
+### Finding
+- The main citation drift was between the teammate-facing markdown and the formal LaTeX draft, not a complete absence of sources.
+- The shared docs especially needed a reusable rule for translating the same claim into inline-link format for Nikhi and bibliography format for the `.tex` draft.
+- The LaTeX draft still contained an outdated GEO accession key (`GSE307639`) and benefited from clearer first-use wording for the genotype labels.
+
+### Decision
+- Treat `HTSA_Citation_Support_Map.md` as the dual-track citation bridge for future paragraph generation.
+- Treat `HTSA_AhR_Source_Paper_Summary.md` as the canonical teammate-facing source-paper summary for intro/discussion background claims.
+- Keep `materials_methods_piter_draft.tex` as the formal citation source of truth and keep teammate-facing markdown on the inline-link validation style.
+
+## 2026-04-15 — HTSA internal working docs relocated out of `mouse_group_project_work`
+
+### Step
+- Moved the generated HTSA internal support/tracker docs out of:
+  - `Semester5/BIOL550/mouse_group_project_work/docs/paper/`
+- Relocated them into the active paper workspace:
+  - `Semester5/BIOL550/group_project/mouse_new/paper/`
+- Updated references so the worklog and remaining drafting notes now point to the new `mouse_new/paper` locations.
+
+### Finding
+- The generated tracking/support docs were useful for drafting, but they did not belong in the shared `mouse_group_project_work` area unless explicitly requested.
+- Keeping these files under `mouse_new/paper` better matches their real role as private paper-working artifacts.
+
+### Decision
+- Treat `Semester5/BIOL550/group_project/mouse_new/paper/` as the default location for internal HTSA tracking, support, and drafting-improvement files unless the user explicitly asks for a different destination.

@@ -1,4 +1,5 @@
 \documentclass[12pt]{article}
+\usepackage[american]{babel}
 \usepackage[margin=1in]{geometry}
 \usepackage{setspace}
 \usepackage[T1]{fontenc}
@@ -12,8 +13,12 @@
 \usepackage{caption}
 \usepackage[table]{xcolor}
 \usepackage{hyperref}
+\usepackage{csquotes}
+\usepackage[style=apa,backend=biber]{biblatex}
 \usepackage{colortbl}
 \usepackage{hhline}
+\DeclareLanguageMapping{american}{american-apa}
+\addbibresource{materials_methods_piter_draft.bib}
 
 \doublespacing
 \setlength{\parindent}{0pt}
@@ -25,6 +30,7 @@
 \captionsetup{font={small,stretch=1},labelfont=bf}
 \setlength{\arrayrulewidth}{1.0pt}
 \arrayrulecolor{black}
+\urlstyle{same}
 
 \definecolor{stagecollect}{HTML}{365C8D}
 \definecolor{stageclean}{HTML}{2E7D6E}
@@ -57,9 +63,10 @@
 
 \section{Materials and Methods}
 
-This project reanalyzed mouse DRG bulk RNA-seq after sciatic nerve injury using a four-stage workflow modeled after a CRISP-style progression: \textbf{Data Collection}, \textbf{Data Cleaning}, \textbf{Data Preparation}, and \textbf{Data Analysis and Interpretation}. That structure was not added only for presentation. It reflects how the \artifact{mouse\_new} workflow was built and refined across the weekly reports, where each stage owned a specific handoff, a checkpoint artifact, and a reusable output for the next stage. The same staged structure also made it possible to reuse the pipeline after earlier dataset-selection problems, because accession tracking, QC review, alignment review, and downstream modeling were separated into explicit, repeatable checkpoints instead of being handled as one monolithic notebook run.
 
-The working subset comprised 20 NovaSeq X paired-end libraries from \artifact{SRP618841} (BioProject \artifact{PRJNA1017789}; GEO \artifact{GSE243308}), organized as a balanced side-by-genotype design before quality control, alignment, and differential expression modeling. In practice, the weekly reports served as the running record of how this dataset was narrowed, checked, and carried forward, while the final Methods draft translates that same path into manuscript prose.
+This project reanalyzed mouse DRG bulk RNA-seq after sciatic nerve injury using a four-stage workflow modeled after a CRISP-style progression: \textbf{Data Collection}, \textbf{Data Cleaning}, \textbf{Data Preparation}, and \textbf{Data Analysis and Interpretation} \parencite{crispdm2000}. That structure reflects how the \artifact{mouse\_new} workflow was built and refined across the weekly deliverables, where each stage owned a specific deliverable, a checkpoint artifact, and a reusable output for the next stage. This staged structure made it possible to reuse the pipeline after earlier dataset-selection problems, because accession tracking, QC review, alignment review, and downstream modeling were separated into explicit, repeatable, and reproducible checkpoints.
+
+The working subset comprised 20 NovaSeq X paired-end libraries from \artifact{SRP618841} (BioProject \artifact{PRJNA1322439}; GEO \artifact{GSE243308}), representing L4--L6 dorsal root ganglion samples collected 1 day after sciatic nerve injury \parencite{halawani2023ahr,sraStudySRP618841,bioprojectPRJNA1322439,geoGSE243308}. The local subset was organized as a balanced side-by-genotype design within the \artifact{family\_drg\_novaseqx} family, with equal representation of ipsilateral and contralateral samples and of \artifact{ff} (wild-type control) and \artifact{cre} (Ahr conditional knockout) genotype classes before quality control, alignment, and differential expression analysis. At each stage, outputs were reviewed and advanced through defined checkpoints to maintain consistency and reproducibility throughout the analysis.
 
 \begin{figure}[H]
 \centering
@@ -80,14 +87,14 @@ The working subset comprised 20 NovaSeq X paired-end libraries from \artifact{SR
 \textbf{Stage} & \textbf{Primary artifacts} & \textbf{Core tools} & \textbf{Checkpoint metric} & \textbf{Handoff} \\
 \HlineFive
 \stagecell{stagecollect}{Collection} &
-sample table; family sheet &
+sample table; family manifest &
 \artifact{prefetch} + \artifact{fasterq-dump} &
 \metriccell{stagecollect}{20 SRRs retained; 4 balanced subgroups ($n=5$ each)} &
 \artifact{FASTQ.gz} pairs + manifest \\
 \HlineFive
 
 \stagecell{stageclean}{Cleaning} &
-QC heatmap; severity delta &
+QC heatmap; severity delta summary &
 \artifact{FastQC} + \artifact{MultiQC} + \artifact{fastp} &
 \metriccell{stageclean}{raw adapter-content failures resolved after trimming} &
 trimmed read pairs plus per-sample QC reports \\
@@ -111,7 +118,7 @@ DE tables, bend-point follow-up sets, and enrichment summaries \\
 \end{table}
 
 \subsection{Representative command examples}
-The course draft requirements asked for sample commands for each major tool. Table~\ref{tab:command_examples} therefore provides short representative examples showing how the main workflow stages were executed. These examples are included to document the computational path and major non-default parameters; they are illustrative rather than exhaustive wrapper scripts.
+The corresponding table summarizes representative examples of the commands used to execute the main workflow stages, with emphasis on the computational path and key non-default parameters.
 
 \begin{table}[H]
 \centering
@@ -124,7 +131,7 @@ The course draft requirements asked for sample commands for each major tool. Tab
 \rowcolor{tableheader}
 \textbf{Stage} & \textbf{Tool} & \textbf{Representative command / code example} \\
 \hline
-\stagecell{stagecollect}{Collection} & \cellstack{\artifact{prefetch}\\\artifact{fasterq-dump}} & \cmd{prefetch SRRXXXXXXX && fasterq-dump SRRXXXXXXX --split-files -O fastq/} \\
+\stagecell{stagecollect}{Collection} & \cellstack{\artifact{prefetch}\\\artifact{fasterq-dump}} & \cmd{prefetch SRR35329980 && fasterq-dump SRR35329980 --split-files -O fastq/} \\
 \hline
 \stagecell{stageclean}{Cleaning} & \artifact{FastQC} & \cmd{fastqc raw/*.fastq.gz trimmed/*.fastq.gz --outdir fastqc_reports/} \\
 \hline
@@ -136,7 +143,7 @@ The course draft requirements asked for sample commands for each major tool. Tab
 \hline
 \stagecell{stagemine}{Analysis} & \artifact{DESeq2} & \cmd{dds <- DESeqDataSetFromMatrix(countData, colData, design = ~ side_class * geno_class); dds <- DESeq(dds)} \\
 \hline
-\stagecell{stagemine}{Analysis} & bend-point scripts & \cmd{python3 run_bendpoint_followup.py --contrast ipsi_vs_contra_in_ff --padj-column padj} \\
+\stagecell{stagemine}{Analysis} & bend-point script & \cmd{python3 run_bendpoint_followup.py --contrast ipsi_vs_contra_in_ff --padj-column padj} \\
 \hline
 \stagecell{stagemine}{Analysis} & \artifact{g:Profiler} & \cmd{gp.profile(organism = "mmusculus", query = selected_genes, sources = c("GO:BP","KEGG","REAC"))} \\
 \hline
@@ -145,9 +152,9 @@ The course draft requirements asked for sample commands for each major tool. Tab
 \end{table}
 
 \subsection{Data Collection: SRA Acquisition and Sample Organization}
-The analysis began with the published DRG RNA-seq study \artifact{SRP618841}, linked to BioProject \artifact{PRJNA1017789} and GEO series \artifact{GSE243308}. Public runs were retrieved using the project wrappers around \artifact{prefetch} and \artifact{fasterq-dump}, and the local workflow retained 20 paired-end NovaSeq X libraries from the 1-day-post-injury DRG subset. Recording this accession lineage was important because the pipeline had to remain reusable across candidate mouse datasets; explicit accession-to-run tracking prevented later stages from being tied to an ambiguous ``mouse'' source.
+The analysis began with the published DRG RNA-seq study \artifact{SRP618841}, linked to BioProject \artifact{PRJNA1322439} and GEO series \artifact{GSE243308} \parencite{halawani2023ahr,sraStudySRP618841,bioprojectPRJNA1322439,geoGSE243308}. Public runs were retrieved using the project wrappers around \artifact{prefetch} and \artifact{fasterq-dump} \parencite{sratoolkit}, and the local workflow retained 20 paired-end NovaSeq X libraries from the 1-day-post-injury DRG subset. Recording this accession lineage was important because the pipeline had to remain reusable across candidate mouse datasets; explicit accession-to-run tracking prevented later stages from being tied to an ambiguous source dataset.
 
-After download, metadata were consolidated into a design-aware sample table rather than being left as file-name strings. Each retained sample was annotated by \artifact{side\_class} (\artifact{ipsi} or \artifact{contra}), \artifact{geno\_class} (\artifact{ff} or \artifact{cre}), and the derived \artifact{condition\_family}. This step established the balanced 2$\times$2 design used in the DESeq2 model and in subsequent interpretation. It also created a reusable family manifest that could be re-read by downstream notebooks and figure builders without having to reconstruct group identity from filenames each time.
+After download, metadata were consolidated into a design-aware sample table. Each retained sample was annotated by \artifact{side\_class} (\artifact{ipsi} or \artifact{contra}), \artifact{geno\_class} (\artifact{ff} or \artifact{cre}), and the derived \artifact{condition\_family}. This step established a balanced 2 $\times$ 2 experimental design, with two genotypes (\artifact{ff} wild-type controls, \artifact{cre} Ahr conditional knockouts) by two sides (ipsi, contra) and five samples per group, which was then used in the DESeq2 model and subsequent interpretation. It also created a reusable family manifest that could be re-read by downstream notebooks without reconstructing group identity from filenames.
 
 \begin{figure}[H]
 \centering
@@ -170,7 +177,7 @@ After download, metadata were consolidated into a design-aware sample table rath
 \stagecell{stagecollect}{Study provenance} &
 public accession records &
 SRA / GEO review &
-accession lineage shown in Figure~\ref{fig:data_collection}: \artifact{SRP618841} $\rightarrow$ \artifact{PRJNA1017789} $\rightarrow$ \artifact{GSE243308} &
+accession lineage shown in Figure~\ref{fig:data_collection}: \artifact{SRP618841} $\rightarrow$ \artifact{PRJNA1322439} $\rightarrow$ \artifact{GSE243308} &
 anchors the Methods section to the exact source study \\
 \HlineFive
 
@@ -184,7 +191,7 @@ creates the fixed read set used throughout the pipeline \\
 \stagecell{stagecollect}{Design mapping} &
 run manifest + sample titles &
 local manifest assembly &
-design table and family sample sheet; 5 samples in each subgroup &
+design table and family manifest; 5 samples in each subgroup &
 makes the side/genotype structure explicit before PCA and DE modeling \\
 \HlineFive
 \end{tabularx}
@@ -192,9 +199,9 @@ makes the side/genotype structure explicit before PCA and DE modeling \\
 \end{table}
 
 \subsection{Data Cleaning: Quality Control and Read Trimming}
-Raw read quality was evaluated with \artifact{FastQC}, and cohort-level summaries were consolidated with \artifact{MultiQC}. This stage was treated as a documented checkpoint rather than a minimal preprocessing step, so before-and-after QC artifacts were retained to show the effect of trimming explicitly. The local workflow used \artifact{fastp} v0.23.2 as the canonical cleanup tool because it provided a reproducible paired-end workflow, generated per-sample reports that could be reviewed later, and resolved adapter-related signal more effectively than the earlier baseline.
+Raw read quality was evaluated with \artifact{FastQC} \parencite{fastqc}, and cohort-level summaries were consolidated with \artifact{MultiQC} \parencite{multiqc}. This stage was treated as a documented checkpoint, so pre- and post-trimming QC outputs were retained to show the effect of trimming explicitly. The local workflow used \artifact{fastp} v0.23.2 as the canonical cleanup tool because it provided a reproducible paired-end workflow, generated per-sample reports, and resolved adapter-related signal more effectively than the earlier baseline \parencite{fastp}.
 
-The retained \artifact{fastp} configuration used paired-end adapter detection, poly-G trimming, a mean-quality cutoff of 20, a minimum retained length of 30 bases, and per-sample HTML/JSON reporting. In Figure~\ref{fig:data_cleaning}, the left panel shows the module-status heatmap and the right panel shows the SRR-level severity-change plot. Together, these artifacts document a consistent improvement in read quality across the cohort before alignment. Keeping both the raw and trimmed checkpoints made this stage reusable for later dataset screening, because poor candidate subsets could be rejected or repaired using the same evidence trail rather than by ad hoc trimming decisions.
+The retained \artifact{fastp} configuration used paired-end adapter detection, poly-G trimming, a mean-quality cutoff of 20, a minimum retained length of 30 bases, and per-sample HTML/JSON reporting. In Figure~\ref{fig:data_cleaning}, the left panel shows the module-status heatmap and the right panel shows the SRR-level severity-change plot. Together, these artifacts document a consistent improvement in read quality across the cohort before alignment. Retaining both the raw and trimmed checkpoints also made this stage reusable for later dataset screening, because poor candidate subsets could be rejected or repaired using the same QC evidence.
 
 \begin{figure}[H]
 \centering
@@ -232,7 +239,7 @@ standardizes cleanup across all retained libraries \\
 \stagecell{stageclean}{Post-trim checkpoint} &
 trimmed read pairs &
 \artifact{FastQC} + \artifact{MultiQC} &
-saved SRR-level severity summary; all retained severity deltas moved in the negative direction after trimming &
+SRR-level severity summary: all retained severity deltas shifted in the negative direction after trimming &
 justifies using the cleaned reads, not the raw reads, for alignment \\
 \HlineFive
 \end{tabularx}
@@ -240,9 +247,9 @@ justifies using the cleaned reads, not the raw reads, for alignment \\
 \end{table}
 
 \subsection{Data Preparation: Reference Selection and Alignment}
-Trimmed read pairs were aligned to the \textit{Mus musculus} \artifact{GRCm39} primary assembly with the matching Ensembl release 115 annotation. The reference pair used in the local workflow consisted of \artifact{Mus\_musculus.GRCm39.dna.primary\_assembly.fa} and \artifact{Mus\_musculus.GRCm39.115.gtf}. A STAR genome index was generated with \artifact{sjdbOverhang = 150} to match the 151-bp paired-end reads. Alignment was performed with STAR using gzip-aware input handling, coordinate-sorted BAM output, and \artifact{GeneCounts} so that the same run also produced per-sample count tables.
+Trimmed read pairs were aligned to the \textit{Mus musculus} \artifact{GRCm39} primary assembly with the matching Ensembl release 115 annotation \parencite{ensemblRelease115}. The reference pair used in the local workflow consisted of \artifact{Mus\_musculus.GRCm39.dna.primary\_assembly.fa} and \artifact{Mus\_musculus.GRCm39.115.gtf}. A STAR genome index was generated with \artifact{sjdbOverhang = 150} to match the 151-bp paired-end reads. Alignment was performed with STAR using gzip-aware input handling, coordinate-sorted BAM output, and GeneCounts, so that the same run also produced per-sample count tables \parencite{star}.
 
-This stage linked cleaned reads to downstream modeling through a stable alignment handoff. For each sample, the workflow retained three key outputs: a coordinate-sorted BAM file, a STAR \artifact{Log.final.out} summary, and a \artifact{ReadsPerGene.out.tab} count table. These outputs provided both the alignment checkpoint and the count-level handoff used to assemble the final family matrix for the DRG subset. Treating the alignment review and the count-matrix assembly as explicit handoffs made it possible to reuse the same preparation stage across datasets without rewriting the downstream DE workflow.
+This stage linked cleaned reads to downstream modeling through a stable alignment handoff. For each sample, the workflow retained three key outputs: a coordinate-sorted BAM file, a STAR \artifact{Log.final.out} summary, and a \artifact{ReadsPerGene.out.tab} count table. These outputs provided both the alignment checkpoint and the count-level handoff used to assemble the final family matrix for the DRG subset. Reverse-stranded counts (column 4 of each \artifact{ReadsPerGene.out.tab} file) were used as the input for downstream DESeq2 modeling, consistent with the strandedness assumption used in the project workflow. Treating alignment review and count-matrix assembly as explicit handoffs also made the same preparation stage reusable across candidate datasets.
 
 \begin{figure}[H]
 \centering
@@ -294,11 +301,11 @@ converts per-sample STAR outputs into the DE-ready family matrix \\
 \end{table}
 
 \subsection{Data Analysis and Interpretation: Differential Expression and Functional Analysis}
-The merged family count matrix was analyzed with \artifact{DESeq2} using the explicit side-by-genotype design carried forward from the sample manifest. Before modeling, low-support genes were filtered, reducing the tested set from 78{,}334 genes to 21{,}481 while retaining all 20 DRG samples. Five contrasts were then evaluated: \artifact{ipsi\_vs\_contra\_in\_ff}, \artifact{ipsi\_vs\_contra\_in\_cre}, \artifact{geno\_in\_contra}, \artifact{geno\_in\_ipsi}, and \artifact{interaction}. This contrast inventory was kept fixed so that later interpretation did not drift when one branch became more interpretable than another.
+The merged family count matrix was analyzed with DESeq2 using the explicit side-by-genotype design carried forward from the sample manifest \parencite{deseq2}. An interaction design formula (\artifact{\textasciitilde{} side\_class * geno\_class}) was specified so that the effect of side could differ by genotype, while all five contrast branches were extracted from a single fitted model. Before modeling, low-support genes were filtered, reducing the tested set from 78{,}334 to 21{,}481 genes while retaining all 20 DRG samples. Five contrasts were then evaluated: \artifact{ipsi\_vs\_contra\_in\_ff}, \artifact{ipsi\_vs\_contra\_in\_cre}, \artifact{geno\_in\_contra}, \artifact{geno\_in\_ipsi}, and \artifact{interaction}. This contrast inventory was kept fixed so that later interpretation did not drift when one branch became more interpretable than another.
 
-As documented in the weekly reports, downstream interpretation followed a PCA-first and branch-priority logic rather than a raw gene-count logic. PCA was used to read sample structure before long DE tables were emphasized, and the side-specific branches were then carried forward as the primary follow-up path. To avoid reducing very large DE outputs to unstructured gene lists, the workflow applied a bend-point rule to the ordered adjusted-\textit{p}-value curve for each contrast. These bend-point-derived follow-up sets were therefore reported alongside the \artifact{padj < 0.05} results rather than treated as interchangeable with them. For the two primary side-specific contrasts, this step retained 709 and 870 genes, respectively.
+Downstream interpretation followed a PCA-first, branch-priority logic. PCA was used to evaluate sample structure before long DE tables were emphasized, and the side-specific branches were then carried forward as the primary follow-up path. To avoid reducing very large DE outputs to unstructured gene lists, the workflow applied a bend-point rule to the ordered adjusted-\textit{p}-value curve for each contrast. These bend-point-derived follow-up sets were reported alongside the \artifact{padj < 0.05} results. For the two primary side-specific contrasts, this step retained 709 and 870 genes, respectively.
 
-The resulting follow-up sets were then submitted to \artifact{g:Profiler} using GO Biological Process, KEGG, and Reactome layers. In the \artifact{ff} branch, which remained the clearest pathway-level follow-up in the weekly reports, enrichment outputs were later re-read through shared-gene chart, tree, and network views to reduce redundancy among overlapping GO labels. In this Methods framing, those enrichment products are described as reusable downstream summaries of the DE workflow rather than as final biological claims.
+The resulting follow-up sets were then submitted to g:Profiler using GO Biological Process, KEGG, and Reactome layers \parencite{gprofiler2021,geneOntology2021,kegg2025,reactome2022}. In the \artifact{ff} branch, which remained the clearest pathway-level follow-up, enrichment outputs were further summarized using shared-gene chart, tree, and network views to reduce redundancy among overlapping GO labels. These enrichment products are described here as downstream summaries of the differential-expression workflow rather than as final biological claims.
 
 \begin{figure}[H]
 \centering
@@ -387,5 +394,62 @@ captures the terminal functional-summary products without replacing the gene-lev
 \end{tabularx}
 \end{singlespace}
 \end{table}
+
+\section{Discussion}
+
+\subsection{Main biological interpretation}
+
+\textbf{Overall pattern in the data.} Across the weekly reports, the most stable shared finding was that the side-specific injury contrasts carried the clearest structure in the \artifact{mouse\_new} dataset. The early alignment and QC checkpoints supported using this 20-sample DRG subset for downstream modeling, but the stronger discussion point emerged only after the PCA-first review: side separated more clearly than genotype, while genotype behaved as a secondary axis with substantial overlap between paired \artifact{ff}/\artifact{cre} samples. That pattern was already visible in the project’s first differential-expression checkpoint and remained consistent through the later bend-point and GO follow-up reports. Nikhi’s intermediate report reached the same practical conclusion from the PCA and sample-distance views, namely that ipsilateral-versus-contralateral structure was clearer than genotype structure and therefore more defensible as the main biological path for interpretation.
+
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{\includegraphics[width=0.92\textwidth]{assets_discussion/pca_side_genotype_annotated.png}}
+\caption{PCA-first view of the \artifact{family\_drg\_novaseqx} subset used in Discussion. The dominant separation occurs along the side axis rather than by genotype, supporting the decision to prioritize side-specific branches in the downstream interpretation.}
+\label{fig:discussion_pca}
+\end{figure}
+
+\textbf{Strongest supported signal; primary versus secondary findings.} The PCA-first reading mattered because it disciplined how the large DE outputs were interpreted. Instead of treating every modeled contrast as equally informative, the reports converged on a branch-priority logic in which \artifact{ipsi\_vs\_contra\_in\_ff} and \artifact{ipsi\_vs\_contra\_in\_cre} served as the primary follow-up branches, while \artifact{geno\_in\_contra} was retained as the best supporting genotype comparison. This common structure also explains why the discussion should emphasize what the reports share instead of over-weighting report-specific exploratory details. The secondary branches are still informative, especially when they help show that genotype effects are not absent, but they do not displace the side-specific injury signal as the central story.
+
+\subsection{Gene-expression differences across the main biological contrasts}
+
+\textbf{Ipsilateral versus contralateral.} The bend-point step was the key transition from broad differential-expression output to a more interpretable follow-up set. Both the weekly reports and the internal notebooks used the ordered adjusted-\textit{p}-value curve as a reproducible narrowing rule rather than relying only on arbitrary top-\(N\) lists or on raw \artifact{padj < 0.05} counts. For the two main side-specific contrasts, that rule reduced 7{,}023 and 7{,}541 significant genes to 709 and 870 genes, respectively, producing smaller sets that were still strongly supported statistically and were practical for pathway analysis. Nikhi’s follow-up report highlighted the same value of this reduction step: it preserved a highly significant subset while making pathway-level interpretation manageable enough to compare against known injury and regeneration mechanisms.
+
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{\includegraphics[width=0.92\textwidth]{assets_discussion/ordered_pvalue_and_cumulative_curve.png}}
+\caption{Bend-point diagnostic for \artifact{ipsi\_vs\_contra\_in\_ff}. The ordered adjusted-\textit{p}-value curve and cumulative-count view show how the follow-up set was reduced to a reproducible core rather than chosen as an arbitrary top-gene list.}
+\label{fig:discussion_bendpoint}
+\end{figure}
+
+\textbf{FF versus CRE; genotype-related comparisons.} Among the follow-up branches, \artifact{ipsi\_vs\_contra\_in\_ff} remained the clearest pathway-level result. The reports consistently showed that this branch combined a strong side-driven separation, a large but reducible DE set, and the most coherent enrichment profile. GO Biological Process dominated the enrichment summary, and the later FF GO follow-up clarified that the apparent abundance of terms was not best understood as many unrelated pathways. Instead, once shared-gene structure was examined through the chart, tree, and network views, the strongest upregulated terms clustered around signaling, migration, morphogenesis, stress-response, and neurogenic remodeling themes. This convergence made the FF branch the most defensible biological centerpiece for Discussion. By contrast, the \artifact{ipsi\_vs\_contra\_in\_cre} branch still supports the same side-specific biological logic but is slightly less clean as a headline pathway result, while \artifact{geno\_in\_contra} works best as the strongest secondary genotype comparison rather than as a co-equal story.
+
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{\includegraphics[width=0.90\textwidth]{assets_discussion/ff_up_tree_view.png}}
+\caption{Shared-gene tree view for the upregulated \artifact{ipsi\_vs\_contra\_in\_ff} GO follow-up. The clustering pattern supports interpreting the FF enrichment result as a connected injury-response neighborhood rather than as many independent pathway stories.}
+\label{fig:discussion_ff_tree}
+\end{figure}
+
+\subsection{Biological processes implicated by the analysis}
+
+The most defensible process-level interpretation is that the dataset reflects a broad injury-response transcriptional program rather than a small number of isolated candidate-gene effects. The strongest shared terms across the FF follow-up involve signaling, migration, morphogenesis, response to stimulus, and neurogenic or developmental remodeling. These themes fit the idea that the injured DRG state is being captured as a coordinated systems-level response after nerve injury rather than as a single-pathway perturbation.
+
+Supporting terms in the saved enrichment tables suggest additional process classes that are worth discussing more cautiously. Oxidative-stress and related response terms appear in both the FF upregulated follow-up and in supporting genotype-related branches, which makes stress-response and proteostasis-adjacent regulation reasonable secondary themes. Translation-related terms are also present, especially translational initiation and regulation-of-translation signals in the bend-point-selected outputs, suggesting that injury-associated remodeling may include active control over protein-synthesis programs rather than only transcription-factor-level changes. Metabolic and energy-related terms are weaker and less central in the main FF story, but they appear in supporting branches and therefore may still help contextualize how the transcriptomic response coordinates signaling with cellular resource use. These process classes should be treated as transcriptomic associations, not as direct proof of mechanism, and any AhR-related or other pathway-specific hypotheses should remain tentative unless they are explicitly supported by the selected gene memberships and by later biological validation.
+
+\subsection{What was unusual or needs caution}
+
+Several patterns still require caution. First, some volcano plots are visibly asymmetric, which supports the idea of directionally biased injury-response changes but also warns against treating the entire significant set as one uniform biological block. Second, the genotype signal appears weaker and more secondary than the side signal, a conclusion supported by the PCA overlap and the near-collision pairs discussed in the reports. Third, the visible sample structure can support interpretation, but it does not by itself establish causation. The current pipeline therefore supports prioritization and biological framing, not mechanistic proof.
+
+\subsection{What this adds beyond the original paper}
+
+This reanalysis adds value beyond the original paper by expanding the interpretation from highlighted candidate genes to a broader transcriptomic context. In practice, that means the workflow does three useful things: it extends the analysis beyond a small candidate list, it links pathways that would otherwise appear as disconnected labels, and it connects newly identified genes back to the genes emphasized in the original study through shared pathway and network structure. In that sense, the NGS-based analysis contributes both global discovery and reproducibility. It does not replace the paper’s focal genes or experimental logic, but it helps show how those genes sit inside a wider injury-response program and which additional genes or pathways may be biologically linked to them.
+
+\subsection{Future validation and limitations}
+
+The strongest immediate follow-up would be targeted validation of key differentially expressed genes by qPCR, especially for genes that anchor the main side-specific branches and for genes that help connect the original paper’s candidates to the broader pathway-level result. Functional follow-up experiments would then be the next step for the most plausible injury-response candidates. Two-hybrid screening or similar interaction-focused assays should only be pursued if the selected genes and pathway context make that biologically justified, rather than being treated as a default next step.
+
+The main limitations remain the same across the reports: the genotype signal is weaker than the side signal, PCA overlap limits how strongly genotype-specific effects can be claimed, the analysis depends on the original dataset design, and pathway interpretation should not be confused with causal proof. GO redundancy is especially important here, because overlapping annotations can exaggerate how many distinct biological stories are present unless the shared-gene structure is examined directly. Within those limits, however, the weekly reports support a coherent conclusion: the \artifact{mouse\_new} workflow converged on a robust side-specific injury-response program, and the FF branch provided the clearest pathway-level window into that response.
+
+\printbibliography[title={References}]
 
 \end{document}
