@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BIOL550 Weekly Report — Mouse Differential Expression + GO Final Wrap-up (SRP618841)</title>
+<style>
+body {
+font-family: "Times New Roman", Times, serif;
+font-size: 10.8pt;
+margin: 0;
+padding: 0;
+line-height: 1.20;
+color: #111;
+}
+.page {
+width: 8.35in;
+margin: 0 auto;
+padding: 0.03in;
+box-sizing: border-box;
+page-break-after: auto;
+}
+h1 { text-align: center; font-size: 14pt; margin: 0 0 2px 0; }
+.subtitle { text-align: center; font-size: 9.8pt; margin: 0 0 7px 0; color: #444; }
+h2 { font-size: 11.5pt; margin: 7px 0 3px 0; border-bottom: 0.5px solid #999; padding-bottom: 1px; }
+p { text-align: justify; margin: 0 0 4px 0; }
+pre {
+background: none;
+padding: 2px 3px;
+border: 0.5px solid #ddd;
+overflow-x: auto;
+font-size: 7.4px;
+line-height: 1.07;
+white-space: pre-wrap;
+word-break: break-word;
+margin: 0 0 4px 0;
+}
+code { font-family: Menlo, Consolas, monospace; font-size: 8.1px; }
+.figure-title { text-align: center; font-size: 9.8pt; font-weight: bold; margin: 3px 0 2px 0; }
+img { max-width: 100%; height: auto; display: block; margin: 3px auto; }
+.note { font-size: 9.5pt; line-height: 1.14; margin: 1px 0 3px 0; }
+ul.clist { margin: 0 0 2px 14px; padding: 0; }
+ul.clist li { margin: 0 0 1px 0; }
+.go-row { display: flex; gap: 8px; align-items: flex-start; justify-content: center; margin: 1px 0; }
+.go-col { flex: 1; }
+.go-col img { margin: 0; border: 0.5px solid #ccc; width: 100%; height: 3.25in; object-fit: contain; object-position: center; }
+.go-col img.crop-match-height { object-fit: contain; object-position: center; }
+.go-row-top .go-col img { height: 3.65in; object-fit: contain; }
+.methods-row { display: flex; gap: 10px; align-items: stretch; justify-content: center; margin: 2px 0; }
+.methods-left { flex: 0 0 48%; display: flex; flex-direction: column; }
+.methods-right { flex: 1; display: flex; flex-direction: column; }
+.methods-row pre { flex: 1; }
+.data-table {
+width: 100%;
+table-layout: auto;
+font-size: 8.4pt;
+line-height: 1.05;
+margin: 4px 0;
+border-collapse: collapse;
+}
+.data-table th, .data-table td {
+border: 0.5px solid #bbb;
+padding: 2px 5px;
+vertical-align: top;
+}
+.data-table th {
+font-weight: bold;
+text-align: left;
+border-bottom: 1px solid #999;
+background: #f5f5f5;
+}
+.data-table td.num { text-align: right; font-family: Menlo, Consolas, monospace; font-size: 7.8pt; }
+.data-table tr.up td:first-child { background: #fff0f0; }
+.data-table tr.down td:first-child { background: #f0f4ff; }
+.methods-table {
+width: 100%;
+table-layout: auto;
+font-size: 8.2pt;
+line-height: 1.02;
+margin: 3px 0;
+border-collapse: collapse;
+}
+.methods-table th, .methods-table td {
+border: 0.5px solid #bbb;
+padding: 2px 4px;
+vertical-align: top;
+}
+.methods-table th {
+font-weight: bold;
+text-align: left;
+border-bottom: 1px solid #999;
+}
+.methods-table td:first-child {
+font-weight: 700;
+white-space: nowrap;
+}
+.methods-table tr.stage-collection td:first-child { background: #eaf3ff; }
+.methods-table tr.stage-cleaning td:first-child { background: #fff2e6; }
+.methods-table tr.stage-preparation td:first-child { background: #eaf7ea; }
+.methods-table tr.stage-analysis td:first-child { background: #f1eaff; }
+.section-gap { height: 2.4em; }
+@media print {
+* { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+@page { margin: 0; }
+body { margin: 0; }
+.go-row, .methods-row, .methods-table, .data-table { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+<h1>Mouse RNA-Seq &mdash; Differential Expression + GO Final Wrap-up (<code>SRP618841</code>)</h1>
+<div class="subtitle">BIOL550 &mdash; Weekly Report &mdash; Apr 16, 2026</div>
+
+<h2>Summary of completed work</h2>
+<p>
+This report closes out the FF GO analysis for the group project. Since the previous report (Apr 9), I completed three final extensions. First, I confirmed the direction asymmetry quantitatively: the upregulated branch of <code>ipsi_vs_contra_in_ff</code> is the only side that carries interpretable pathway-level signal, and that framing now anchors the entire biological discussion. Second, I ran a deeper GO scoring pass that weights terms by both statistical significance and gene-set coverage, so the top terms presented below earn their position on both axes rather than on p-value alone. Third, I collapsed redundant GO terms using shared-gene overlap, reducing the 388 upregulated enrichments to a small set of independent biological themes suitable for the paper. The anchor-gene table is finalized and tied directly to those themes.
+</p>
+
+<div class="section-gap" aria-hidden="true"></div>
+<h2>Direction split — upregulated vs. downregulated</h2>
+<p>
+The first analytic step, following transcript feedback to stop mixing directions, was to characterize the two branches separately before interpreting any GO term. The table below shows why the upregulated side must lead the biological narrative.
+</p>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Branch</th>
+      <th class="num">Query genes</th>
+      <th class="num">Enriched GO terms</th>
+      <th class="num">Best &minus;log&#8321;&#8320;(p)</th>
+      <th class="num">Median gene coverage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Upregulated</strong></td>
+      <td class="num">567</td>
+      <td class="num">388</td>
+      <td class="num">32.0</td>
+      <td class="num">0.089</td>
+    </tr>
+    <tr>
+      <td><strong>Downregulated</strong></td>
+      <td class="num">90</td>
+      <td class="num">4</td>
+      <td class="num">2.45</td>
+      <td class="num">0.259</td>
+    </tr>
+  </tbody>
+</table>
+<p class="note">
+The downregulated side yields only 4 weakly significant GO terms and does not support an independent biological narrative. It is retained below as a contrast footnote, not as a parallel story.
+</p>
+
+<div class="section-gap" aria-hidden="true"></div>
+<h2>Anchor genes (bend-point core)</h2>
+<p>
+Genes were ranked by adjusted p-value and a bend-point algorithm identified the inflection separating the statistically compelling core from the long tail. The ten genes below are the top members of that core, split by direction. The upregulated set tells a coherent injury-response and regeneration story.
+</p>
+
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Direction</th>
+      <th>Gene</th>
+      <th>Ensembl ID</th>
+      <th class="num">log&#8322;FC</th>
+      <th class="num">padj</th>
+      <th>Biological role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="up">
+      <td>Upregulated</td>
+      <td><strong>Atf3</strong></td>
+      <td>ENSMUSG00000026628</td>
+      <td class="num">+5.69</td>
+      <td class="num">&sim;0</td>
+      <td>Canonical injury-response transcription factor (ATF/CREB family); rapidly induced after axonal damage</td>
+    </tr>
+    <tr class="up">
+      <td>Upregulated</td>
+      <td><strong>Flrt3</strong></td>
+      <td>ENSMUSG00000051379</td>
+      <td class="num">+3.43</td>
+      <td class="num">&sim;0</td>
+      <td>Fibronectin leucine-rich repeat transmembrane protein; axon guidance and cell&ndash;cell adhesion</td>
+    </tr>
+    <tr class="up">
+      <td>Upregulated</td>
+      <td><strong>Gadd45a</strong></td>
+      <td>ENSMUSG00000036390</td>
+      <td class="num">+3.38</td>
+      <td class="num">&sim;0</td>
+      <td>DNA-damage/stress sensor; mediates growth arrest and JNK signaling</td>
+    </tr>
+    <tr class="up">
+      <td>Upregulated</td>
+      <td><strong>Sox11</strong></td>
+      <td>ENSMUSG00000063632</td>
+      <td class="num">+3.05</td>
+      <td class="num">2.2e&minus;311</td>
+      <td>Transcription factor required for regenerative axon growth in DRG neurons</td>
+    </tr>
+    <tr class="up">
+      <td>Upregulated</td>
+      <td><strong>Jun</strong></td>
+      <td>ENSMUSG00000052684</td>
+      <td class="num">+1.68</td>
+      <td class="num">2.5e&minus;306</td>
+      <td>c-Jun; cooperates with ATF3 in the injury-response transcriptional program</td>
+    </tr>
+    <tr class="down">
+      <td>Downregulated</td>
+      <td><strong>Vwc2l</strong></td>
+      <td>ENSMUSG00000045648</td>
+      <td class="num">&minus;0.96</td>
+      <td class="num">3.7e&minus;38</td>
+      <td>VWC-domain extracellular protein; nervous system development</td>
+    </tr>
+    <tr class="down">
+      <td>Downregulated</td>
+      <td><strong>Hdac11</strong></td>
+      <td>ENSMUSG00000034245</td>
+      <td class="num">&minus;0.39</td>
+      <td class="num">8.6e&minus;35</td>
+      <td>Histone deacetylase 11; epigenetic regulation</td>
+    </tr>
+    <tr class="down">
+      <td>Downregulated</td>
+      <td><strong>B3gnt8</strong></td>
+      <td>ENSMUSG00000059479</td>
+      <td class="num">&minus;0.70</td>
+      <td class="num">2.8e&minus;29</td>
+      <td>UDP-GlcNAc transferase; glycan biosynthesis</td>
+    </tr>
+    <tr class="down">
+      <td>Downregulated</td>
+      <td><strong>Pik3r2</strong></td>
+      <td>ENSMUSG00000031834</td>
+      <td class="num">&minus;0.35</td>
+      <td class="num">7.6e&minus;29</td>
+      <td>PI3K regulatory subunit; PI3K&ndash;Akt signaling modulation</td>
+    </tr>
+    <tr class="down">
+      <td>Downregulated</td>
+      <td><strong>Oprl1</strong></td>
+      <td>ENSMUSG00000027584</td>
+      <td class="num">&minus;0.90</td>
+      <td class="num">1.6e&minus;27</td>
+      <td>Opioid receptor-like 1; nociceptive / synaptic modulation</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-gap" aria-hidden="true"></div>
+<h2>GO enrichment — upregulated branch</h2>
+<p>
+Following transcript feedback, the GO analysis was re-run separately for each direction. The upregulated query (567 genes, Biological Process, g:Profiler API, Benjamini&ndash;Hochberg FDR &lt; 0.05, mouse background) returned 388 significant terms. A <em>term_score</em> was computed as the product of &minus;log&#8321;&#8320;(p) and fractional gene coverage to identify terms strong on both axes. Shared-gene Jaccard similarity was then used to cluster and collapse redundant terms. The result reduces to four non-redundant biological themes:
+</p>
+
+<ul class="clist">
+  <li><strong>Injury-response transcriptional program.</strong> Driven by <em>Atf3</em>, <em>Jun</em>, and <em>Gadd45a</em>. Top GO labels include <em>response to stress</em>, <em>response to wounding</em>, and <em>regulation of apoptotic process</em>. This theme carries the single highest &minus;log&#8321;&#8320;(p) = 32 in the entire dataset.</li>
+  <li><strong>Regenerative axon growth.</strong> Driven by <em>Sox11</em> and <em>Flrt3</em>. Top labels include <em>axon development</em>, <em>nervous system development</em>, and <em>neuron projection morphogenesis</em>. These terms cluster together and share large gene-set overlap with the injury theme above.</li>
+  <li><strong>Cell migration and morphogenesis.</strong> A partially overlapping cluster with the axon-growth theme, separable by its GO labels: <em>cell migration</em>, <em>regulation of cell shape</em>, <em>positive regulation of locomotion</em>.</li>
+  <li><strong>Signaling and kinase regulation.</strong> Broader cluster including <em>MAPK cascade</em>, <em>regulation of signal transduction</em>, and <em>positive regulation of phosphorylation</em>. Consistent with the JNK arm activated downstream of ATF3/GADD45A.</li>
+</ul>
+
+<div class="go-row go-row-top">
+  <div class="go-col">
+    <div class="figure-title">Figure 1. FF upregulated GO &mdash; chart view (ranked by term_score)</div>
+    <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/shinygo_style/ff_up_chart_view.png"
+         alt="FF GO chart view" />
+  </div>
+  <div class="go-col">
+    <div class="figure-title">Figure 3. FF upregulated GO &mdash; network view (shared-gene edges)</div>
+    <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/shinygo_style/ff_up_network_view.png"
+         alt="FF GO network view" />
+  </div>
+</div>
+<p class="note">
+Figure&nbsp;1: terms ranked by term_score (&minus;log&#8321;&#8320;(p) &times; fractional coverage) so that the highest bars earn their position on both significance and gene membership. Figure&nbsp;3: edges connect GO terms sharing &ge;20% of their gene members (Jaccard); the four non-redundant themes described above emerge as distinct clusters with few cross-cluster edges.
+</p>
+
+<div class="go-row">
+  <div class="go-col">
+    <div class="figure-title">Figure 2. FF upregulated GO &mdash; tree view (hierarchical clustering)</div>
+    <img class="crop-match-height" src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/shinygo_style/ff_up_tree_view.png"
+         alt="FF GO tree view" />
+  </div>
+  <div class="go-col">
+    <div class="figure-title">Figure 4. FF downregulated GO &mdash; distance heatmap (contrast)</div>
+    <img src="../differential_expression_all20/derived_analysis/ipsi_vs_contra_in_ff/shinygo_style/ff_down_distance_heatmap.png"
+         alt="FF downregulated GO distance heatmap" />
+  </div>
+</div>
+<p class="note">
+Figure&nbsp;2: hierarchical clustering of upregulated GO terms by shared-gene Jaccard distance, confirming the four-theme structure. Figure&nbsp;4: the downregulated branch yields only 4 enriched terms (synaptic modulation, nervous system development); shown here for completeness as a contrast, not as an independent narrative.
+</p>
+
+<div class="section-gap" aria-hidden="true"></div>
+<h2>Biological interpretation</h2>
+<p>
+Taken together, the anchor genes and the non-redundant GO themes tell a single coherent story: <strong>ipsilateral FF neurons are running a transcriptional injury-response and regeneration program relative to contralateral FF neurons.</strong> The strongest anchor, <em>Atf3</em> (log&#8322;FC = +5.69, padj &sim; 0), is the most well-established injury-response transcription factor in DRG biology, rapidly induced after peripheral axotomy and sufficient on its own to drive a pro-regenerative transcriptional state. Its co-expression with <em>Jun</em>, <em>Gadd45a</em>, and <em>Sox11</em> reinforces this reading: c-Jun cooperates with ATF3 in the AP-1 complex; GADD45A feeds into the MAPK/JNK arm of that complex; SOX11 is independently required for regenerative axon elongation downstream of injury. <em>Flrt3</em> adds an axon-guidance dimension consistent with structural remodeling during the same process.
+</p>
+<p>
+The downregulated anchor genes (modest fold-changes, weaker statistics) do not contradict this picture. <em>Oprl1</em> and <em>Hdac11</em> reductions are consistent with a shift away from homeostatic synaptic tone toward a regenerative transcriptional state, but the signal is too weak to make that argument independently.
+</p>
+<p>
+The CRE condition (<code>ipsi_vs_contra_in_cre</code>) was loaded and compared in parallel. The FF upregulation pattern is not simply a generic ipsilateral effect; the CRE branch does not recapitulate the same ATF3/SOX11/JUN signature at comparable effect sizes, which supports the interpretation that the injury-response program in the FF comparison reflects a cell-type-specific or region-specific response rather than a shared bilateral baseline artifact.
+</p>
+
+<div class="section-gap" aria-hidden="true"></div>
+<h2>Methods</h2>
+
+<table class="methods-table">
+  <thead>
+    <tr>
+      <th>Pipeline stage</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="stage-collection">
+      <td>Data Collection</td>
+      <td>Public DRG RNA-seq dataset, accession <code>SRP618841</code>. Raw FASTQ files retrieved from NCBI SRA. Dataset covers ipsilateral and contralateral DRG from FF (FoxP2-Fezf2) and CRE neuron subpopulations across 20 samples.</td>
+    </tr>
+    <tr class="stage-cleaning">
+      <td>Data Cleaning</td>
+      <td>Adapter trimming and quality filtering with <code>fastp</code>; per-sample QC with <code>FastQC</code>; aggregate QC summary with <code>MultiQC</code>. Low-quality reads and adapter sequences removed prior to alignment.</td>
+    </tr>
+    <tr class="stage-preparation">
+      <td>Data Preparation</td>
+      <td>Alignment to <em>Mus musculus</em> reference genome <code>GRCm39</code> with Ensembl release 115 annotation using <code>STAR</code> (two-pass mode). Gene-level read counts generated with <code>HTSeq-count</code> in union mode.</td>
+    </tr>
+    <tr class="stage-analysis">
+      <td>Data Analysis and Interpretation</td>
+      <td>Differential expression with <code>DESeq2</code> (Wald test, BH FDR &lt; 0.05, |log&#8322;FC| &gt; 1 for the upregulated anchor set). Bend-point selection applied to the ranked adjusted-p-value curve to define the statistically compelling gene core. GO Biological Process enrichment via the g:Profiler API (<code>gprofiler2</code>, organism <code>mmusculus</code>, correction method <code>g_SCS</code>, sources restricted to <code>GO:BP</code>, ordered query, retained term&ndash;gene membership). Term redundancy collapsed using pairwise Jaccard similarity on gene membership sets; terms with Jaccard &ge; 0.5 to a higher-scoring neighbor treated as redundant. Visualizations: ranked bubble chart (term_score = &minus;log&#8321;&#8320;(p) &times; fractional coverage), hierarchical clustering tree (Ward linkage on 1&nbsp;&minus;&nbsp;Jaccard distance matrix), and shared-gene network (edges at Jaccard &ge; 0.2).</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="methods-row">
+  <div class="methods-left">
+    <pre><code># direction split + term_score
+UP   = pd.read_csv(FF_DIR / "gprofiler_enrichment_up.tsv",   sep="\t")
+DOWN = pd.read_csv(FF_DIR / "gprofiler_enrichment_down.tsv", sep="\t")
+for df in [UP, DOWN]:
+    df["neglog10_p"]  = -np.log10(df["p_value"])
+    df["coverage"]    = df["intersection_size"] / df["query_size"]
+    df["term_score"]  = df["neglog10_p"] * df["coverage"]
+
+# anchor genes
+ANCHOR  = pd.read_csv(FF_DIR / "anchor_genes_up_down.tsv", sep="\t")
+TOP_ADJ = pd.read_csv(FF_DIR / "top_genes_by_padj.tsv",    sep="\t")</code></pre>
+  </div>
+  <div class="methods-right">
+    <pre><code># Jaccard redundancy collapse
+members   = pd.read_csv(FF_DIR / "gprofiler_up_term_gene_membership.tsv", sep="\t")
+term_sets = members.groupby("native")["gene_id"].apply(set)
+
+n = len(term_sets)
+sim = np.zeros((n, n))
+idx = list(term_sets.index)
+for i in range(n):
+    for j in range(n):
+        a, b = term_sets[idx[i]], term_sets[idx[j]]
+        sim[i,j] = len(a & b) / max(1, len(a | b))
+
+# Ward linkage on distance matrix
+Z = linkage(1 - sim[np.triu_indices(n, k=1)], method="ward")</code></pre>
+  </div>
+</div>
+
+<div class="section-gap" aria-hidden="true"></div>
+<h2>Problems encountered</h2>
+<p>
+The main interpretive challenge throughout this analysis was distinguishing genuine independent biological themes from statistical artifacts of GO term hierarchy, where a parent term and many of its children can all appear as individually significant entries. The term_score weighting and Jaccard collapse resolved most of this by forcing each retained term to justify itself on gene membership as well as p-value. A secondary issue is that the GO result is structurally asymmetric: almost all the signal is upregulated, which is analytically cleaner but means any attempt to present a balanced bidirectional story would misrepresent the data.
+</p>
+
+<div class="section-gap" aria-hidden="true"></div>
+<h2>Status and next steps for the paper</h2>
+<p>
+The FF GO analysis is complete. The anchor-gene table, the four non-redundant biological themes, and the figures above are ready for inclusion in the group paper draft. The remaining work is editorial: selecting which two or three figures to include in the final manuscript, writing the Results paragraph that ties the anchor genes to the GO themes, and confirming that the Methods language above matches the group&rsquo;s shared pipeline description. No further computational work is expected unless the team requests a comparison with the CRE branch at the same depth.
+</p>
+<ul class="clist">
+  <li>Insert anchor-gene table and GO bubble chart (Figure&nbsp;1) into the Results section of the group draft.</li>
+  <li>Write one Results paragraph: injury-response theme (ATF3, JUN, GADD45A) &rarr; regeneration theme (SOX11, FLRT3) &rarr; note asymmetry vs. downregulated branch.</li>
+  <li>Confirm Methods language matches the group&rsquo;s shared pipeline description (GRCm39, Ensembl 115, DESeq2, g:Profiler).</li>
+  <li>Decide whether CRE branch needs equivalent GO depth for the final paper; if so, the same pipeline applies directly.</li>
+</ul>
+
+</div>
+</body>
+</html>
