@@ -13,8 +13,8 @@ from docx.oxml.ns import qn
 from docx.shared import Inches, Pt
 
 PAPER_DIR = Path(__file__).resolve().parent
-TEX_PATH = PAPER_DIR / "methods-improved.tex"
-DOCX_PATH = PAPER_DIR / "methods-improved.docx"
+TEX_PATH = PAPER_DIR / "materials_methods_piter_draft.tex"
+DOCX_PATH = PAPER_DIR / "materials_methods_piter_draft_clean.docx"
 
 STAGE_COLORS = {
     "stagecollect": "365C8D",
@@ -68,6 +68,7 @@ def clean_tex(text: str) -> str:
     text = re.sub(r"\\[a-zA-Z]+", "", text)
     text = text.replace("{", "").replace("}", "")
     text = re.sub(r"\s+", " ", text)
+    text = text.replace("__AMPAMP__", "&&")
     return text.strip()
 
 
@@ -75,6 +76,7 @@ def parse_table_block(block: str) -> tuple[str, List[List[str]]]:
     caption = clean_tex(re.search(r"\\caption\{(.*?)\}", block, re.S).group(1))
     tabular = re.search(r"\\begin\{tabularx\}\{.*?\}(.*?)\\end\{tabularx\}", block, re.S).group(1)
     tabular = tabular.replace("\r", "")
+    tabular = tabular.replace("&&", "__AMPAMP__")
     tabular = re.sub(r"^\{\|.*?\|\}\s*", "", tabular, flags=re.S)
     tabular = re.sub(r"\\rowcolor\{[^}]*\}", "", tabular)
     tabular = re.sub(r"\\Hline[A-Za-z]+", "\\\\HLINE", tabular)

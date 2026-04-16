@@ -69,6 +69,79 @@ Use this file as the dated change log. For exact current commands or pending tas
 - Keep `materials_methods_piter_draft.bib` as the canonical references source for this section.
 - Use the new discussion figures selectively; they support the prose but should not replace it.
 
+## 2026-04-15 — HTSA Draft 2 paper package rebuilt as `.tex` + `.docx`
+
+### Step
+- Built a full paper-format LaTeX version of the active HTSA draft at:
+  - `mouse_new/paper/HTSA_Paper.tex`
+- Used the highlighted PDF draft as the contributor-ownership source so the new paper package preserves member color coding in the Draft 2 format:
+  - `Nikhi` = light purple
+  - `Sam` = light green
+  - `Piter` = light red
+- Reconstructed the paper into these sections:
+  - `Introduction`
+  - `Materials and Methods`
+  - `Results`
+  - `Discussion`
+  - `References`
+- Added formal APA-style citations in the LaTeX version using:
+  - `mouse_new/paper/materials_methods_piter_draft.bib`
+- Extracted embedded figure assets from the shared markdown draft into:
+  - `mouse_new/paper/assets_htsa/`
+- Added a Word builder for the paper package:
+  - `mouse_new/paper/build_htsa_paper_docx.py`
+- Generated the Draft 2 Word deliverable at:
+  - `mouse_new/paper/HTSA_Paper.docx`
+- Ran a local render loop (`docx -> pdf -> page images`) to check formatting and patched the builder so the command-example table does not leak LaTeX column-spec content into the Word output.
+- Added a quick-share figure/table inventory for team handoff:
+  - `mouse_new/paper/HTSA_Paper_Asset_Inventory.md`
+
+### Status
+- The paper now exists as synchronized drafting artifacts in:
+  - `mouse_new/paper/HTSA_Paper.tex`
+  - `mouse_new/paper/HTSA_Paper.pdf`
+  - `mouse_new/paper/HTSA_Paper.docx`
+- The `.docx` uses:
+  - `12 pt` Times New Roman
+  - double spacing
+  - `1 in` margins
+  - contributor color key near the top
+- The results section and its figures are now present in the paper package instead of being omitted from the earlier draft path.
+
+### Finding
+- The PDF highlight pass was the safest source of truth for contribution ownership; the markdown draft alone was not reliable enough to reconstruct who wrote which block.
+- The cleanest paper-ready figure set still comes from the same notebook-derived outputs we were already carrying forward:
+  - QC adapter comparison
+  - alignment mapping summaries
+  - PCA
+  - sample-distance heatmap
+  - bend-point / volcano comparison
+  - FF / CRE GO figures
+- A small custom Word builder was more reliable than trying to round-trip the LaTeX directly through ad hoc export because it let us preserve the required color-coding and paper-specific layout rules.
+
+### Decision
+- Keep `mouse_new/paper/HTSA_Paper.tex` as the canonical paper-package source for this Draft 2 pass.
+- Keep `mouse_new/paper/HTSA_Paper.docx` as the share/submission-facing editable artifact.
+- Use `mouse_new/paper/HTSA_Paper_Asset_Inventory.md` as the quick reference when sending figure/table options to teammates.
+
+### Refinement update
+- Refined the HTSA paper presentation in both LaTeX and Word by:
+  - restyling Table 1 with stage-color coding and code-style command cells
+  - enlarging the requested figures in the Results section
+  - tightening image-to-caption spacing
+  - forcing each major section to start on its own page
+  - forcing the references to begin on their own page
+- The Word builder was updated in parallel so `HTSA_Paper.docx` mirrors the same layout decisions instead of drifting from the LaTeX version.
+
+### QA update
+- Ran a follow-up QA pass focused on the HTSA bibliography and rebuilt both outputs after catching capitalization/formatting problems that made several references look like typos.
+- Fixed protected-capitalization issues in:
+  - `mouse_new/paper/materials_methods_piter_draft.bib`
+- Rebuilt:
+  - `mouse_new/paper/HTSA_Paper.pdf`
+  - `mouse_new/paper/HTSA_Paper.docx`
+- Removed a broken global section-page-break override in `HTSA_Paper.tex` that was interfering with the bibliography heading and replaced it with explicit page breaks between major sections.
+
 ## 2026-04-08 — Week 13 Draft 1 outline package built for `mouse_new/paper`
 
 ### Step
@@ -2090,3 +2163,22 @@ awk 'NF && $1 !~ /^#/{print $1}' "$RUNS" | while read -r s; do [[ -s "$ROOT/fast
 
 ### Decision
 - Treat `Semester5/BIOL550/group_project/mouse_new/paper/` as the default location for internal HTSA tracking, support, and drafting-improvement files unless the user explicitly asks for a different destination.
+
+## 2026-04-15 — Introduction inserted into `materials_methods_piter_draft.tex`
+
+### Step
+- Added a new `Introduction` section before `Materials and Methods` in:
+  - `Semester5/BIOL550/group_project/mouse_new/paper/materials_methods_piter_draft.tex`
+- Inserted three cohesive introduction paragraphs to capture:
+  - the source paper's AhR-centered biological framing
+  - the DRG / sciatic nerve injury / conditional knockout design context
+  - the scope of this reanalysis relative to the original study
+- Used formal LaTeX citations for the source paper and dataset-accession context, then rebuilt the PDF with `latexmk`.
+
+### Finding
+- The draft already had polished Methods and Discussion content, but the manuscript still began directly at `Materials and Methods`.
+- The user's and Nikhi's intro-ready material could be integrated cleanly now, and Sam's contribution was best represented as a polished bridge paragraph based on the intent already present in the outline notes.
+
+### Decision
+- Keep the new `Introduction` in the LaTeX draft as the current paper-facing version for the submitted manuscript.
+- Continue treating the introduction support docs in `mouse_new/paper/` as drafting aids, while the `.tex` remains the canonical formatted paper draft.

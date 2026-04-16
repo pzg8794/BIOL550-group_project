@@ -7,7 +7,7 @@ The PCA tells us that the strongest sample split in the active `mouse_new` subse
 ## What we used
 
 ### Study-design anchor
-- Public study: `SRP618841` / `PRJNA1322439` / `GSE243308`
+- Public study: `SRP618841` / `PRJNA1322439` / `GSE307639`
 - Source study title: `Aryl hydrocarbon receptor restricts axon regeneration of DRG neurons in response to injury`
 - Local working subset:
   - tissue = `DRG`

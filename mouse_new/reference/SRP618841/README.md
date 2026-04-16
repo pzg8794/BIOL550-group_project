@@ -6,11 +6,12 @@ This folder stores the public records and local metadata tied to the active `mou
 
 - SRA study: `SRP618841`
 - BioProject: `PRJNA1322439`
-- GEO series: `GSE243308`
+- GEO series: `GSE307639`
 - Example run: `SRR35329980`
 
 Saved historical snapshot kept in the bundle:
 - `html/bioproject_PRJNA1017789.html`
+- `html/geo_GSE243308.html` (legacy GEO alias snapshot)
 
 ## Study title
 
@@ -54,14 +55,16 @@ This is the source-of-truth reference set we can use when we need to answer:
 - `sra_search.html`
 - `sra_study.html`
 - `bioproject_PRJNA1017789.html`
-- `geo_GSE243308.html`
+- `geo_GSE307639.html`
+- `geo_GSE243308.html` (legacy GEO alias snapshot)
 - `sra_run_SRR35329980.html`
 
 ### `data/`
-- `GSE243308_counts_genic_matrix.txt.gz`
-- `GSE243308_fpkm_genic_matrix.txt.gz`
-- `GSE243308_supplemental_counts_genic_matrix.txt.gz`
-- `GSE243308_supplemental_fpkm_genic_matrix.txt.gz`
+- Legacy matrices downloaded under the older GEO alias (`GSE243308`) and kept for audit:
+  - `GSE243308_counts_genic_matrix.txt.gz`
+  - `GSE243308_fpkm_genic_matrix.txt.gz`
+  - `GSE243308_supplemental_counts_genic_matrix.txt.gz`
+  - `GSE243308_supplemental_fpkm_genic_matrix.txt.gz`
 
 ### `metadata/`
 - `mouse_de_design_table.tsv`

@@ -17,6 +17,45 @@
 \usepackage[style=apa,backend=biber]{biblatex}
 \usepackage{colortbl}
 \usepackage{hhline}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, backgrounds}
+\usepackage{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+\definecolor{collect}{HTML}{2F5E8C}
+\definecolor{collectbg}{HTML}{EEF4FA}
+\definecolor{clean}{HTML}{2F7A66}
+\definecolor{cleanbg}{HTML}{EEF8F5}
+\definecolor{prep}{HTML}{B87523}
+\definecolor{prepbg}{HTML}{FCF3E8}
+\definecolor{analysis}{HTML}{7A4F9E}
+\definecolor{analysisbg}{HTML}{F5EFFA}
+\definecolor{ink}{HTML}{1D1D1F}
+\definecolor{muted}{HTML}{5C6166}
+\definecolor{linegray}{HTML}{A8AEB6}
+\definecolor{softgray}{HTML}{F5F6F7}
+
+\tikzset{
+  >={Latex[length=2.8mm,width=2.0mm]},
+  stage/.style={rounded corners=7pt, line width=1.1pt, minimum height=13.2cm, inner sep=0pt},
+  stagehead/.style={rounded corners=7pt, minimum height=0.95cm, text=white, font=\bfseries\fontsize{12}{13}\selectfont, inner sep=0pt},
+  modulebox/.style={rounded corners=5pt, line width=0.9pt, fill=white, align=left, inner sep=7pt},
+  handoff/.style={rounded corners=5pt, line width=0.9pt, align=center, inner sep=6pt, font=\fontsize{8.0}{9.1}\selectfont},
+  flow/.style={-{Latex[length=2.8mm,width=2.2mm]}, draw=linegray, line width=1.05pt},
+  vflow/.style={-{Latex[length=2.4mm,width=1.8mm]}, draw=muted!80, line width=0.9pt},
+  note/.style={rounded corners=4pt, draw=linegray!80, fill=softgray, line width=0.7pt, align=left, inner sep=5pt, font=\fontsize{8.2}{9.2}\selectfont},
+}
+
+\newcommand{\modtitle}[1]{{\bfseries\fontsize{9.7}{11}\selectfont #1}}
+\newcommand{\modbody}[1]{{\fontsize{8.45}{9.6}\selectfont #1}}
+\newcommand{\bul}{\textbullet\;}
+
+
+
 \DeclareLanguageMapping{american}{american-apa}
 \addbibresource{materials_methods_piter_draft.bib}
 
@@ -61,6 +100,14 @@
 \begin{document}
 \maketitle
 
+\section{Introduction}
+
+The published study behind this dataset investigates how injured neurons balance stress adaptation with regenerative growth, with particular emphasis on the aryl hydrocarbon receptor (AhR) as a regulator of that switch \parencite{halawani2023ahr}. In the source paper, AhR is presented as a neuronal brake on axon regeneration after injury, with mechanistic evidence linking AhR-dependent responses to stress preservation, proteostasis, and restraint of growth-associated programs \parencite{halawani2023ahr}. This biological context makes the dataset useful for reanalysis because it does not only capture whether injury changes gene expression, but also how those changes may relate to the larger transition between protective and regenerative states in sensory neurons \parencite{halawani2023ahr}.
+
+The study focuses on dorsal root ganglion (DRG) neurons because they provide a strong model for peripheral axon regrowth after sciatic nerve injury, and the RNA-seq design compares ipsilateral DRGs from the injured side against contralateral DRGs from the uninjured side \parencite{halawani2023ahr}. The source paper also uses neuronal conditional knockout models of \textit{Ahr}, which are especially important here because they isolate neuron-intrinsic effects more cleanly than a constitutive knockout background with broader baseline pathology \parencite{halawani2023ahr}. In the reanalyzed subset used in this paper, genotype remains a relevant second layer of comparison between \artifact{ff} wild-type controls and \artifact{cre} Ahr conditional knockouts, but the side-specific injury contrast remains the main biological axis carried forward through the transcriptomic analysis \parencite{halawani2023ahr,sraStudySRP618841,bioprojectPRJNA1322439,geoGSE243308}.
+
+Our paper uses the original study as a mechanistic anchor, but extends beyond its candidate-gene emphasis by applying transcriptome-wide differential expression, bend-point narrowing, and pathway-level analysis to the full RNA-seq dataset. Rather than repeating the paper's full experimental program, our aim is to test whether the strongest signals in the data remain centered on injury-side differences, evaluate how strongly genotype contributes relative to that main contrast, and connect the resulting gene sets to broader biological processes that support interpretation of the injury response \parencite{halawani2023ahr}. In that sense, this reanalysis uses the published dataset both to confirm the major biological hierarchy suggested by the source paper and to place the most reproducible expression changes into a broader pathway-level context.
+
 \section{Materials and Methods}
 
 
@@ -70,133 +117,11 @@ The working subset comprised 20 NovaSeq X paired-end libraries from \artifact{SR
 
 \begin{figure}[H]
 \centering
-\makebox[\textwidth][c]{\includegraphics[width=1.02\textwidth]{assets_methods/overview_pipeline_stage.png}}
+\makebox[\textwidth][c]{\includegraphics[width=1.02\textwidth]{assets_methods/BIOL550-Group_Project_drawio_light.png}}
 \caption{Overview ribbon summarizing the four computational stages and their stage-owned handoffs in the \artifact{mouse\_new} workflow.}
 \label{fig:overall_pipeline}
 \end{figure}
 
-\begin{table}[H]
-\centering
-\begin{singlespace}
-\fontsize{7.0}{7.7}\selectfont
-\caption{Pipeline checkpoint table used to anchor the Methods section to stage-specific evidence.}
-\label{tab:pipeline_checkpoint}
-\begin{tabularx}{\textwidth}{|Y|Y|Y|Y|Y|}
-\HlineFive
-\rowcolor{tableheader}
-\textbf{Stage} & \textbf{Primary artifacts} & \textbf{Core tools} & \textbf{Checkpoint metric} & \textbf{Handoff} \\
-\HlineFive
-\stagecell{stagecollect}{Collection} &
-sample table; family manifest &
-\artifact{prefetch} + \artifact{fasterq-dump} &
-\metriccell{stagecollect}{20 SRRs retained; 4 balanced subgroups ($n=5$ each)} &
-\artifact{FASTQ.gz} pairs + manifest \\
-\HlineFive
-
-\stagecell{stageclean}{Cleaning} &
-QC heatmap; severity delta summary &
-\artifact{FastQC} + \artifact{MultiQC} + \artifact{fastp} &
-\metriccell{stageclean}{raw adapter-content failures resolved after trimming} &
-trimmed read pairs plus per-sample QC reports \\
-\HlineFive
-
-\stagecell{stageprep}{Preparation} &
-unique-mapping plot; STAR median summary &
-\artifact{STAR} + \artifact{GeneCounts} &
-\metriccell{stageprep}{93.24\% median unique mapping; 3.82\% median \artifact{noFeature}} &
-sorted BAMs, STAR logs, count tables, and family matrix \\
-\HlineFive
-
-\stagecell{stagemine}{Analysis} &
-\cellstack{filtering summary\\analysis summary\\g:Profiler source tables} &
-\artifact{DESeq2} + bend-point + \artifact{g:Profiler} &
-\metriccell{stagemine}{78{,}334 $\rightarrow$ 21{,}481 genes after filtering; 5 modeled contrasts} &
-DE tables, bend-point follow-up sets, and enrichment summaries \\
-\HlineFive
-\end{tabularx}
-\end{singlespace}
-\end{table}
-
-\subsection{Representative command examples}
-The corresponding table summarizes representative examples of the commands used to execute the main workflow stages, with emphasis on the computational path and key non-default parameters.
-
-\begin{table}[H]
-\centering
-\begin{singlespace}
-\fontsize{6.6}{7.2}\selectfont
-\caption{Representative command examples for the tools used in the \artifact{mouse\_new} workflow.}
-\label{tab:command_examples}
-\begin{tabularx}{\textwidth}{|L{0.16\textwidth}|L{0.20\textwidth}|Y|}
-\hline
-\rowcolor{tableheader}
-\textbf{Stage} & \textbf{Tool} & \textbf{Representative command / code example} \\
-\hline
-\stagecell{stagecollect}{Collection} & \cellstack{\artifact{prefetch}\\\artifact{fasterq-dump}} & \cmd{prefetch SRR35329980 && fasterq-dump SRR35329980 --split-files -O fastq/} \\
-\hline
-\stagecell{stageclean}{Cleaning} & \artifact{FastQC} & \cmd{fastqc raw/*.fastq.gz trimmed/*.fastq.gz --outdir fastqc_reports/} \\
-\hline
-\stagecell{stageclean}{Cleaning} & \artifact{MultiQC} & \cmd{multiqc fastqc_reports/ fastp_reports_full/ -o multiqc/} \\
-\hline
-\stagecell{stageclean}{Cleaning} & \artifact{fastp} & \cellstack{\cmd{fastp -i sample_R1.fastq.gz -I sample_R2.fastq.gz}\\\cmd{-o clean_R1.fastq.gz -O clean_R2.fastq.gz}\\\cmd{--detect_adapter_for_pe --trim_poly_g}\\\cmd{--cut_mean_quality 20 --length_required 30}\\\cmd{-h sample.html -j sample.json}} \\
-\hline
-\stagecell{stageprep}{Preparation} & \artifact{STAR} & \cellstack{\cmd{STAR --runThreadN 8 --genomeDir star_index}\\\cmd{--readFilesIn clean_R1.fastq.gz clean_R2.fastq.gz}\\\cmd{--readFilesCommand zcat}\\\cmd{--sjdbGTFfile Mus_musculus.GRCm39.115.gtf}\\\cmd{--outSAMtype BAM SortedByCoordinate --quantMode GeneCounts}} \\
-\hline
-\stagecell{stagemine}{Analysis} & \artifact{DESeq2} & \cmd{dds <- DESeqDataSetFromMatrix(countData, colData, design = ~ side_class * geno_class); dds <- DESeq(dds)} \\
-\hline
-\stagecell{stagemine}{Analysis} & bend-point script & \cmd{python3 run_bendpoint_followup.py --contrast ipsi_vs_contra_in_ff --padj-column padj} \\
-\hline
-\stagecell{stagemine}{Analysis} & \artifact{g:Profiler} & \cmd{gp.profile(organism = "mmusculus", query = selected_genes, sources = c("GO:BP","KEGG","REAC"))} \\
-\hline
-\end{tabularx}
-\end{singlespace}
-\end{table}
-
-\subsection{Data Collection: SRA Acquisition and Sample Organization}
-The analysis began with the published DRG RNA-seq study \artifact{SRP618841}, linked to BioProject \artifact{PRJNA1322439} and GEO series \artifact{GSE243308} \parencite{halawani2023ahr,sraStudySRP618841,bioprojectPRJNA1322439,geoGSE243308}. Public runs were retrieved using the project wrappers around \artifact{prefetch} and \artifact{fasterq-dump} \parencite{sratoolkit}, and the local workflow retained 20 paired-end NovaSeq X libraries from the 1-day-post-injury DRG subset. Recording this accession lineage was important because the pipeline had to remain reusable across candidate mouse datasets; explicit accession-to-run tracking prevented later stages from being tied to an ambiguous source dataset.
-
-After download, metadata were consolidated into a design-aware sample table. Each retained sample was annotated by \artifact{side\_class} (\artifact{ipsi} or \artifact{contra}), \artifact{geno\_class} (\artifact{ff} or \artifact{cre}), and the derived \artifact{condition\_family}. This step established a balanced 2 $\times$ 2 experimental design, with two genotypes (\artifact{ff} wild-type controls, \artifact{cre} Ahr conditional knockouts) by two sides (ipsi, contra) and five samples per group, which was then used in the DESeq2 model and subsequent interpretation. It also created a reusable family manifest that could be re-read by downstream notebooks without reconstructing group identity from filenames.
-
-\begin{figure}[H]
-\centering
-\makebox[\textwidth][c]{\includegraphics[width=1.02\textwidth]{assets_methods/data_collection_stage.png}}
-\caption{Rebuilt Data Collection stage figure derived from the saved project metadata and design tables.}
-\label{fig:data_collection}
-\end{figure}
-
-\begin{table}[H]
-\centering
-\begin{singlespace}
-\fontsize{7.2}{8.1}\selectfont
-\caption{Data Collection stage table.}
-\label{tab:data_collection}
-\begin{tabularx}{\textwidth}{|Y|Y|Y|Y|Y|}
-\HlineFive
-\rowcolor{tableheader}
-\textbf{Substage} & \textbf{Input} & \textbf{Tool} & \textbf{Checkpoint artifact / evidence} & \textbf{Why it mattered} \\
-\HlineFive
-\stagecell{stagecollect}{Study provenance} &
-public accession records &
-SRA / GEO review &
-accession lineage shown in Figure~\ref{fig:data_collection}: \artifact{SRP618841} $\rightarrow$ \artifact{PRJNA1322439} $\rightarrow$ \artifact{GSE243308} &
-anchors the Methods section to the exact source study \\
-\HlineFive
-
-\stagecell{stagecollect}{Run acquisition} &
-public SRA runs &
-\cellstack{\artifact{prefetch}\\\artifact{fasterq-dump}} &
-paired-end \artifact{FASTQ.gz} files plus the local run manifest; 20 retained SRRs from the DRG / NovaSeq X subset &
-creates the fixed read set used throughout the pipeline \\
-\HlineFive
-
-\stagecell{stagecollect}{Design mapping} &
-run manifest + sample titles &
-local manifest assembly &
-design table and family manifest; 5 samples in each subgroup &
-makes the side/genotype structure explicit before PCA and DE modeling \\
-\HlineFive
-\end{tabularx}
-\end{singlespace}
-\end{table}
 
 \subsection{Data Cleaning: Quality Control and Read Trimming}
 Raw read quality was evaluated with \artifact{FastQC} \parencite{fastqc}, and cohort-level summaries were consolidated with \artifact{MultiQC} \parencite{multiqc}. This stage was treated as a documented checkpoint, so pre- and post-trimming QC outputs were retained to show the effect of trimming explicitly. The local workflow used \artifact{fastp} v0.23.2 as the canonical cleanup tool because it provided a reproducible paired-end workflow, generated per-sample reports, and resolved adapter-related signal more effectively than the earlier baseline \parencite{fastp}.
@@ -213,7 +138,7 @@ The retained \artifact{fastp} configuration used paired-end adapter detection, p
 \begin{table}[H]
 \centering
 \begin{singlespace}
-\fontsize{7.2}{8.1}\selectfont
+\fontsize{7.2}{5.1}\selectfont
 \caption{Data Cleaning stage table.}
 \label{tab:data_cleaning}
 \fontsize{6.9}{7.8}\selectfont

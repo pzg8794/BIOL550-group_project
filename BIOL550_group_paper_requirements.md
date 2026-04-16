@@ -62,7 +62,7 @@ This document summarizes the official requirements and expectations for the BIOL
 ---
 
 ## Draft Feedback Process
-
+- All tools with version number
 - Feedback will be given as general suggestions to the group
 - Inline feedback requires editable formats (not PDF)
 - Only one group member needs to submit each draft
