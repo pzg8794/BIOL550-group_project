@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BIOL550 Weekly Report — Mouse DE ShinyGO-Style GO Analysis</title>
+  <style>
+    body { font-family: "Times New Roman", Times, serif; font-size: 11pt; line-height: 1.22; color: #111; margin: 0.5in 0.6in; max-width: 8in; }
+    h1 { text-align: center; font-size: 16pt; margin: 0 0 4px 0; }
+    .subtitle { text-align: center; font-size: 10pt; margin: 0 0 10px 0; color: #444; }
+    h2 { font-size: 12.5pt; margin: 14px 0 5px 0; border-bottom: 0.5px solid #aaa; padding-bottom: 2px; }
+    p { margin: 0 0 7px 0; text-align: justify; }
+    table { border-collapse: collapse; width: 100%; font-size: 9pt; margin: 6px 0 8px 0; }
+    th, td { border: 0.5px solid #bbb; padding: 2px 5px; vertical-align: top; }
+    th { background: #f2f2f2; font-weight: bold; text-align: center; border-bottom: 1.5px solid #888; }
+    td.c { text-align: center; }
+    .g { background: #dff0d8; }
+    .row { display: flex; gap: 10px; align-items: flex-start; }
+    .col { flex: 1; }
+    figcaption { text-align: center; font-size: 9pt; color: #444; font-style: italic; margin-top: 3px; }
+    code { font-size: 9pt; font-family: Menlo, Consolas, monospace; }
+    ul { margin: 0 0 7px 18px; padding: 0; }
+    li { margin: 0 0 3px 0; }
+    hr { border: none; border-top: 0.5px solid #ccc; margin: 10px 0; }
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      @page { margin: 0.4in; }
+      body { margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Mouse RNA-seq — ShinyGO-Style GO Interpretation &amp; FF vs CRE Branch Comparison</h1>
+<div class="subtitle">BIOL550 Weekly Report &mdash; April 16, 2026 &mdash; Piter Garcia &mdash; <code>SRP618841</code> / DRG 1 dpi, 20 samples</div>
+<hr/>
+
+<h2>What I accomplished since the previous report</h2>
+<p>
+  Starting from the 709-gene FF bend-point set and 870-gene CRE bend-point set already established,
+  I rebuilt the GO Biological Process enrichment through the g:Profiler API with full term-to-gene
+  membership retained. I then applied a ShinyGO-style redundancy filter — keep the most significant
+  term per cluster, re-sort by fold enrichment — which reduced 370 returned GO:BP terms to
+  <strong>20 shortlisted terms</strong> for the FF upregulated branch. The same pipeline was mirrored
+  for the CRE branch, and the notebook closes with an explicit FF&ndash;CRE gene-set and GO-term
+  overlap comparison that will anchor the genotype-specific paragraph of the Discussion.
+  The downregulated branch returned only 2 terms and is kept as secondary context only.
+</p>
+
+<div class="row">
+<div class="col" style="flex: 0 0 48%;">
+
+<table>
+  <colgroup><col style="width:50%"/><col style="width:17%"/><col style="width:17%"/><col style="width:16%"/></colgroup>
+  <tr><th>Branch / contrast</th><th>Bend-pt.</th><th>Up</th><th>Down</th></tr>
+  <tr><td><code>ipsi_vs_contra_in_ff</code> (WT)</td><td class="c g">709</td><td class="c">607</td><td class="c">102</td></tr>
+  <tr><td><code>ipsi_vs_contra_in_cre</code> (cKO)</td><td class="c g">870</td><td class="c">785</td><td class="c">85</td></tr>
+</table>
+<p style="font-size:8.5pt;color:#444;margin:2px 0 6px 0;">
+  ShinyGO filter: 370 GO:BP &rarr; 20 kept (FF up). Down branch: 2 terms; secondary context only.
+  All 20 FF terms collapse to 1 group (representative: <em>cell migration</em>; best FDR 9.9&times;10<sup>&minus;33</sup>).
+</p>
+
+<table>
+  <colgroup><col style="width:56%"/><col style="width:22%"/><col style="width:22%"/></colgroup>
+  <tr><th>Top FF upregulated GO:BP term</th><th>Fold enrich.</th><th>FDR</th></tr>
+  <tr><td>Cell migration</td><td class="c">2.64</td><td class="c">8.0&times;10<sup>&minus;14</sup></td></tr>
+  <tr><td>Intracellular signaling cassette</td><td class="c">2.55</td><td class="c">1.0&times;10<sup>&minus;14</sup></td></tr>
+  <tr><td>Response to endogenous stimulus</td><td class="c">2.54</td><td class="c">6.1&times;10<sup>&minus;13</sup></td></tr>
+  <tr><td>Apoptotic process</td><td class="c">2.47</td><td class="c">1.5&times;10<sup>&minus;15</sup></td></tr>
+  <tr><td>Intracellular signal transduction</td><td class="c">2.44</td><td class="c">1.5&times;10<sup>&minus;22</sup></td></tr>
+  <tr><td>Neurogenesis</td><td class="c">2.44</td><td class="c">4.6&times;10<sup>&minus;14</sup></td></tr>
+  <tr><td>Cell surface receptor signaling</td><td class="c">2.33</td><td class="c">1.5&times;10<sup>&minus;18</sup></td></tr>
+</table>
+<p style="font-size:8.5pt;color:#444;margin:2px 0 6px 0;">
+  Anchor genes recurring across top terms: <em>Atf3, Gadd45a, Jun, Sox11, Flrt3.</em><br/>
+  Down-branch outlier: presynaptic modulation of chemical synaptic transmission
+  (fold enrich. 24.0; only 5 genes — treat as secondary).
+</p>
+
+<table>
+  <colgroup><col style="width:60%"/><col style="width:40%"/></colgroup>
+  <tr><th>FF vs CRE overlap</th><th>Value</th></tr>
+  <tr><td>Shared bend-point genes</td><td class="c g">620 &nbsp;(87.5% of FF)</td></tr>
+  <tr><td>WT-only genes</td><td class="c">89</td></tr>
+  <tr><td>cKO-only genes</td><td class="c">250</td></tr>
+  <tr><td>Shared top GO:BP terms</td><td class="c g">14 of 20</td></tr>
+</table>
+<p style="font-size:8.5pt;color:#444;margin:2px 0 6px 0;">
+  The 250 cKO-only genes drive two CRE-exclusive terms:
+  <em>phosphorylation</em> and <em>phosphate-containing compound metabolic process</em>
+  &mdash; these are the key genotype-background divergences for the Discussion.
+  The CRE branch also adds <em>nervous system development</em> and
+  <em>cell surface receptor signaling pathway</em> to its top network terms.
+</p>
+
+</div><!-- end left col -->
+
+<div class="col">
+
+<figure>
+<svg viewBox="0 0 420 310" xmlns="http://www.w3.org/2000/svg">
+  <rect width="420" height="310" fill="white"/>
+  <text x="210" y="18" text-anchor="middle" font-size="11" font-family="Times New Roman" font-weight="bold">FF vs CRE: bend-point gene overlap</text>
+  <!-- FF circle -->
+  <ellipse cx="160" cy="165" rx="110" ry="100" fill="#4e79a7" fill-opacity="0.25" stroke="#4e79a7" stroke-width="1.5"/>
+  <!-- CRE circle -->
+  <ellipse cx="265" cy="165" rx="125" ry="100" fill="#e15759" fill-opacity="0.20" stroke="#e15759" stroke-width="1.5"/>
+  <!-- Labels -->
+  <text x="100" y="140" text-anchor="middle" font-size="12" font-family="Times New Roman" font-weight="bold" fill="#4e79a7">FF</text>
+  <text x="100" y="158" text-anchor="middle" font-size="11" font-family="Times New Roman" fill="#4e79a7">only</text>
+  <text x="100" y="175" text-anchor="middle" font-size="13" font-family="Times New Roman" fill="#4e79a7" font-weight="bold">89</text>
+  <!-- Shared -->
+  <text x="208" y="155" text-anchor="middle" font-size="11" font-family="Times New Roman" fill="#333">shared</text>
+  <text x="208" y="172" text-anchor="middle" font-size="15" font-family="Times New Roman" font-weight="bold" fill="#333">620</text>
+  <text x="208" y="188" text-anchor="middle" font-size="10" font-family="Times New Roman" fill="#555">87.5% of FF</text>
+  <!-- CRE only -->
+  <text x="328" y="140" text-anchor="middle" font-size="12" font-family="Times New Roman" font-weight="bold" fill="#c0392b">cKO</text>
+  <text x="328" y="158" text-anchor="middle" font-size="11" font-family="Times New Roman" fill="#c0392b">only</text>
+  <text x="328" y="175" text-anchor="middle" font-size="13" font-family="Times New Roman" fill="#c0392b" font-weight="bold">250</text>
+  <!-- GO terms note -->
+  <text x="210" y="240" text-anchor="middle" font-size="10" font-family="Times New Roman" fill="#555">14 of 20 top GO:BP terms shared</text>
+  <text x="210" y="255" text-anchor="middle" font-size="10" font-family="Times New Roman" fill="#c0392b">CRE-exclusive: phosphorylation,</text>
+  <text x="210" y="269" text-anchor="middle" font-size="10" font-family="Times New Roman" fill="#c0392b">phosphate-compound metabolism</text>
+</svg>
+<figcaption><strong>Fig. 1.</strong> Gene-set overlap between FF (WT, 709 genes) and CRE (cKO, 870 genes) bend-point sets. 620 genes are shared; the 250 cKO-only genes drive the CRE-exclusive pathway signal.</figcaption>
+</figure>
+
+<figure style="margin-top:10px;">
+<svg viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg">
+  <rect width="420" height="280" fill="white"/>
+  <text x="210" y="18" text-anchor="middle" font-size="11" font-family="Times New Roman" font-weight="bold">Top FF upregulated GO:BP — fold enrichment</text>
+  <!-- bars -->
+  <!-- scale: max fold enrich = 2.64, bar width = 2.64 * 120 = 316px for max -->
+  <line x1="165" y1="30" x2="165" y2="255" stroke="#ccc" stroke-width="1"/>
+  <line x1="165" y1="255" x2="390" y2="255" stroke="#888" stroke-width="1"/>
+
+  <!-- term labels + bars (7 terms) -->
+  <!-- cell migration 2.64 -->
+  <text x="160" y="48" text-anchor="end" font-size="9" font-family="Times New Roman">Cell migration</text>
+  <rect x="165" y="36" width="158" height="16" fill="#4e79a7" rx="2"/>
+  <text x="327" y="48" font-size="8" font-family="Times New Roman" fill="#333"> 2.64</text>
+
+  <!-- intracell signaling cassette 2.55 -->
+  <text x="160" y="72" text-anchor="end" font-size="9" font-family="Times New Roman">Signaling cassette</text>
+  <rect x="165" y="60" width="153" height="16" fill="#4e79a7" rx="2"/>
+  <text x="322" y="72" font-size="8" font-family="Times New Roman" fill="#333"> 2.55</text>
+
+  <!-- response endogenous 2.54 -->
+  <text x="160" y="96" text-anchor="end" font-size="9" font-family="Times New Roman">Response to endo. stim.</text>
+  <rect x="165" y="84" width="152" height="16" fill="#4e79a7" rx="2"/>
+  <text x="321" y="96" font-size="8" font-family="Times New Roman" fill="#333"> 2.54</text>
+
+  <!-- apoptotic 2.47 -->
+  <text x="160" y="120" text-anchor="end" font-size="9" font-family="Times New Roman">Apoptotic process</text>
+  <rect x="165" y="108" width="148" height="16" fill="#4e79a7" rx="2"/>
+  <text x="317" y="120" font-size="8" font-family="Times New Roman" fill="#333"> 2.47</text>
+
+  <!-- signal transduction 2.44 -->
+  <text x="160" y="144" text-anchor="end" font-size="9" font-family="Times New Roman">Signal transduction</text>
+  <rect x="165" y="132" width="146" height="16" fill="#4e79a7" rx="2"/>
+  <text x="315" y="144" font-size="8" font-family="Times New Roman" fill="#333"> 2.44</text>
+
+  <!-- neurogenesis 2.44 -->
+  <text x="160" y="168" text-anchor="end" font-size="9" font-family="Times New Roman">Neurogenesis</text>
+  <rect x="165" y="156" width="146" height="16" fill="#4e79a7" rx="2"/>
+  <text x="315" y="168" font-size="8" font-family="Times New Roman" fill="#333"> 2.44</text>
+
+  <!-- cell surface receptor 2.33 -->
+  <text x="160" y="192" text-anchor="end" font-size="9" font-family="Times New Roman">Cell surface receptor sig.</text>
+  <rect x="165" y="180" width="140" height="16" fill="#4e79a7" rx="2"/>
+  <text x="309" y="192" font-size="8" font-family="Times New Roman" fill="#333"> 2.33</text>
+
+  <!-- CRE exclusive markers -->
+  <text x="165" y="225" font-size="9" font-family="Times New Roman" fill="#c0392b" font-weight="bold">CRE-exclusive (absent from FF shortlist):</text>
+  <text x="165" y="240" font-size="9" font-family="Times New Roman" fill="#c0392b">Phosphorylation &amp; phosphate-compound metabolism</text>
+
+  <text x="165" y="258" font-size="8" font-family="Times New Roman" fill="#888">x-axis: fold enrichment (g:Profiler / ShinyGO-style filter, FF upregulated, n=607 genes)</text>
+</svg>
+<figcaption><strong>Fig. 2.</strong> ShinyGO-style chart view: top 7 FF upregulated GO:BP terms ranked by fold enrichment after redundancy reduction (370 terms → 20 kept). CRE-exclusive terms noted below.</figcaption>
+</figure>
+
+</div><!-- end right col -->
+</div><!-- end row -->
+
+<h2>New biological interpretation</h2>
+<p>
+  The ShinyGO-style filter collapses all 20 shortlisted FF upregulated terms into a single coherent group
+  with <em>cell migration</em> as the representative term (best FDR 9.9&times;10<sup>&minus;33</sup>).
+  This means the FF injury-side signal is not diffuse — it reflects one dominant gene program spanning
+  signaling, stress response, neurogenesis, and cell movement. The anchor genes driving this program
+  across multiple terms are <strong>Atf3</strong>, <strong>Gadd45a</strong>, <strong>Jun</strong>,
+  <strong>Sox11</strong>, and <strong>Flrt3</strong> — all established injury-response or regeneration
+  markers in DRG contexts, which fits the 1 dpi spinal cord injury design.
+</p>
+<p>
+  The FF vs CRE comparison shows that 87.5% of the FF bend-point genes (620 of 709) are also present
+  in the CRE bend-point set, and 14 of the 20 top GO terms are shared. This convergence means the
+  core injury-response program is genotype-independent. The divergence — 250 cKO-only genes driving
+  <em>phosphorylation</em> and <em>phosphate-containing compound metabolic process</em> — is the cleanest
+  genotype-specific signal we have and is the right focus for the Discussion's genotype paragraph.
+</p>
+
+<h2>Methods used</h2>
+<p>
+  Both bend-point gene sets (<code>ipsi_vs_contra_in_ff</code>: 709 genes;
+  <code>ipsi_vs_contra_in_cre</code>: 870 genes) were submitted to the g:Profiler API
+  (<code>mmusculus</code>, GO:BP source, FDR threshold 0.05) with evidence and gene membership
+  retained. A ShinyGO-style redundancy filter was applied: terms were clustered by shared-gene
+  overlap, the most significant term per cluster was kept, and survivors were re-sorted by fold
+  enrichment. This reduced 370 FF upregulated GO:BP terms to 20 shortlisted terms. The same
+  procedure was mirrored for CRE. Network views were built by linking terms that share ≥20%
+  of genes or ≥3 genes outright. Gene membership was traced back from the top terms to identify
+  anchor genes supporting the strongest signals.
+</p>
+
+<h2>Problems encountered</h2>
+<p>
+  The upregulated and downregulated GO branches are structurally asymmetric: the upregulated query
+  returns 370 terms with strong signal; the downregulated branch returns only 2 weakly significant
+  terms. This is real biology, not an analysis artifact — the ipsilateral injury side at 1 dpi
+  activates a much broader transcriptional program than it represses. The report treats the
+  upregulated branch as the primary interpretive path and keeps the downregulated branch as
+  secondary context only, which accurately reflects the signal strength.
+</p>
+<p>
+  A second challenge was deciding what not to include. The notebook generates chart, tree, network,
+  groups, and gene-membership views. For a weekly report, including all of them would obscure
+  rather than clarify the biology. The selection here — the overlap table, the fold-enrichment
+  chart, and the key anchor genes — is the minimal set that supports a professor-facing conversation
+  about which GO themes are strongest and what to write in the Discussion.
+</p>
+
+<h2>Goals for the coming week</h2>
+<ul>
+  <li>Convert the FF upregulated GO shortlist and anchor genes directly into a Results paragraph draft.</li>
+  <li>Write the genotype-divergence paragraph for the Discussion using the 250 cKO-only genes and the phosphorylation/phosphate-metabolism CRE-exclusive terms as the core evidence.</li>
+  <li>Decide which single network figure (FF or side-by-side FF+CRE) is strongest for the paper and finalize its caption.</li>
+  <li>Confirm with team which of <em>Atf3</em>, <em>Gadd45a</em>, <em>Jun</em>, <em>Sox11</em>, <em>Flrt3</em> deserve individual mention in the written text vs. appearing only in a supplementary gene list.</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+[submodule "BIOL550-Project_Paper"]
+	path = BIOL550-Project_Paper
+	url = git@github.com:pzg8794/BIOL550-Project_Paper.git
+[submodule "shared_group_project"]
+	path = shared_group_project
+	url = https://github.com/pzg8794/mouse_group_project_work.git

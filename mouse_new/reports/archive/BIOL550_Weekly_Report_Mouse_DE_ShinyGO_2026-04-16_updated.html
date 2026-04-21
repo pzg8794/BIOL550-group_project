@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BIOL550 Weekly Report — Mouse Differential Expression + GO Follow-up</title>
+  <style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 12pt;
+      line-height: 1.18;
+      color: #111;
+      margin: 18px;
+      max-width: 900px;
+    }
+    h1 { text-align: center; font-size: 18pt; margin: 0 0 4px 0; }
+    .subtitle { text-align: center; font-size: 11pt; margin: 0 0 14px 0; }
+    h2 { font-size: 13pt; margin: 16px 0 8px 0; }
+    p { margin: 0 0 10px 0; text-align: justify; }
+    figure { margin: 12px auto 14px auto; max-width: 780px; }
+    svg { width: 100%; height: auto; display: block; margin: 0 auto; }
+    figcaption { text-align: center; font-size: 10.5pt; margin-top: 6px; }
+    code { font-size: 10.5pt; }
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      @page { margin: 0.3in; }
+      body { margin: 0.15in; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Mouse RNA-Seq — GO Interpretation and Follow-up</h1>
+  <div class="subtitle">BIOL550 Weekly Report — Apr 16, 2026</div>
+
+  <h2>What I accomplished since the previous report</h2>
+  <p>
+    Since the previous report, I focused on the interpretation stage of the fasted/fed mouse differential-expression analysis using
+    <code>mouse_differential_expression_ff_shinygo_style.ipynb</code> together with the follow-up notebooks
+    <code>mouse_differential_expression_ff_go_followup.ipynb</code> and <code>mouse_differential_expression_ff_go_deeper.ipynb</code>.
+    To avoid repeating earlier reports, I concentrated on the parts of the GO follow-up that add genuinely new information for the
+    paper: term redundancy, gene-level support across top terms, and the matched comparison between the FF and CRE branches.
+  </p>
+  <p>
+    The main new result this week is that the top FF GO signal is not just a collection of similar labels. The ShinyGO-style chart,
+    tree, and network views show that the strongest upregulated terms cluster into a connected immune/inflammatory module with related
+    metabolic and regulatory sub-branches. In addition, the genes view makes it possible to see which genes are repeatedly supporting
+    the leading terms, which helps distinguish core driver genes from one-off term membership.
+  </p>
+  <p>
+    I also extended the interpretation by comparing the FF and CRE branches with a matched workflow. That comparison is useful because
+    it lets us separate what is broadly shared across branches from what is more FF-specific. This is a better paper-facing analysis
+    than simply listing enriched terms, because it asks whether the same genes are actually driving the overlap or whether the overlap
+    is mostly at the label level.
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 820 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+      <title id="fig1-title">Main GO follow-up themes from the mouse notebook series</title>
+      <desc id="fig1-desc">Compact horizontal summary figure showing the major biological-process groups emphasized in the report.</desc>
+      <rect x="0" y="0" width="820" height="360" fill="white"/>
+      <text x="410" y="28" text-anchor="middle" font-size="20" font-family="Times New Roman">Primary biological themes emphasized by the GO follow-up notebooks</text>
+      <line x1="230" y1="60" x2="230" y2="305" stroke="#222" stroke-width="1.4"/>
+      <line x1="230" y1="305" x2="760" y2="305" stroke="#222" stroke-width="1.4"/>
+
+      <text x="215" y="95" text-anchor="end" font-size="17" font-family="Times New Roman">Immune / inflammatory signaling</text>
+      <rect x="230" y="76" width="470" height="26" fill="#4e79a7" rx="3"/>
+
+      <text x="215" y="138" text-anchor="end" font-size="17" font-family="Times New Roman">Metabolic-process shifts</text>
+      <rect x="230" y="119" width="380" height="26" fill="#59a14f" rx="3"/>
+
+      <text x="215" y="181" text-anchor="end" font-size="17" font-family="Times New Roman">RNA processing</text>
+      <rect x="230" y="162" width="295" height="26" fill="#f28e2b" rx="3"/>
+
+      <text x="215" y="224" text-anchor="end" font-size="17" font-family="Times New Roman">Cell-cycle regulation</text>
+      <rect x="230" y="205" width="255" height="26" fill="#9c755f" rx="3"/>
+
+      <text x="215" y="267" text-anchor="end" font-size="17" font-family="Times New Roman">Tissue remodeling / development</text>
+      <rect x="230" y="248" width="195" height="26" fill="#e15759" rx="3"/>
+
+      <text x="230" y="327" text-anchor="start" font-size="13" font-family="Times New Roman">less emphasized</text>
+      <text x="760" y="327" text-anchor="end" font-size="13" font-family="Times New Roman">more emphasized in the current interpretation</text>
+    </svg>
+    <figcaption><strong>Figure 1.</strong> Summary of the main GO themes that remain strongest after the ShinyGO-style ranking and redundancy-reduction views.</figcaption>
+  </figure>
+
+  <h2>Methods used</h2>
+  <p>
+    This week’s work was centered on downstream interpretation, not re-running the full differential-expression workflow. I used the
+    existing fasted/fed notebook as the base analysis source and then used the GO follow-up notebooks to inspect the results from four
+    complementary angles: a ranked chart view, a tree/network view of related terms, a genes view showing which genes support the top
+    terms, and a matched FF-versus-CRE comparison.
+  </p>
+  <p>
+    The gene-support analysis is one of the most useful additions because it goes beyond term names. Instead of only asking which GO
+    labels are significant, this step asks which genes recur across the top enriched terms. That gives a more grounded interpretation
+    of the FF branch and makes it easier to identify genes that are central to the current biological story.
+  </p>
+  <p>
+    The second new analysis is the FF-versus-CRE comparison. For shared or similar enriched terms, I examined whether support comes
+    from FF-only genes, shared genes, or CRE-only genes. This helps determine whether branch overlap reflects genuinely shared biology
+    or simply similar high-level term labels with different underlying contributors.
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 820 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+      <title id="fig2-title">FF versus CRE gene-support comparison</title>
+      <desc id="fig2-desc">Schematic showing how the new matched comparison separates FF-only, shared, and CRE-only gene support for overlapping GO themes.</desc>
+      <rect x="0" y="0" width="820" height="350" fill="white"/>
+      <text x="410" y="28" text-anchor="middle" font-size="20" font-family="Times New Roman">New analysis added this week: gene-level support behind FF vs CRE overlap</text>
+
+      <ellipse cx="310" cy="180" rx="165" ry="105" fill="#dceaf7" stroke="#4e79a7" stroke-width="2"/>
+      <ellipse cx="510" cy="180" rx="165" ry="105" fill="#fbe7d6" stroke="#f28e2b" stroke-width="2" fill-opacity="0.95"/>
+
+      <text x="255" y="105" text-anchor="middle" font-size="22" font-family="Times New Roman">FF</text>
+      <text x="565" y="105" text-anchor="middle" font-size="22" font-family="Times New Roman">CRE</text>
+
+      <text x="235" y="155" text-anchor="middle" font-size="17" font-family="Times New Roman">FF-only genes</text>
+      <text x="235" y="178" text-anchor="middle" font-size="16" font-family="Times New Roman">support terms that</text>
+      <text x="235" y="201" text-anchor="middle" font-size="16" font-family="Times New Roman">appear stronger in FF</text>
+
+      <text x="410" y="155" text-anchor="middle" font-size="17" font-family="Times New Roman">Shared genes</text>
+      <text x="410" y="178" text-anchor="middle" font-size="16" font-family="Times New Roman">support overlapping</text>
+      <text x="410" y="201" text-anchor="middle" font-size="16" font-family="Times New Roman">pathway themes</text>
+
+      <text x="585" y="155" text-anchor="middle" font-size="17" font-family="Times New Roman">CRE-only genes</text>
+      <text x="585" y="178" text-anchor="middle" font-size="16" font-family="Times New Roman">show where similar</text>
+      <text x="585" y="201" text-anchor="middle" font-size="16" font-family="Times New Roman">terms diverge</text>
+
+      <rect x="165" y="270" width="490" height="38" rx="8" fill="#f5f5f5" stroke="#999" stroke-width="1.2"/>
+      <text x="410" y="294" text-anchor="middle" font-size="16" font-family="Times New Roman">Interpretation gain: overlap can now be described at the gene-support level, not only by GO term labels.</text>
+    </svg>
+    <figcaption><strong>Figure 2.</strong> The new matched comparison helps distinguish shared pathway signal from branch-specific support, which is more informative than term overlap alone.</figcaption>
+  </figure>
+
+  <h2>Problems encountered</h2>
+  <p>
+    The main issue this week was not a failure in the analysis itself, but making sure the report added something new. Earlier reports
+    already covered the core differential-expression workflow, so the challenge here was deciding which parts of the GO notebooks
+    truly extend the project instead of repeating background material. That required keeping the emphasis on gene-support structure,
+    term clustering, and the FF-versus-CRE comparison.
+  </p>
+  <p>
+    Another challenge is that the notebook sequence produces more outputs than can fit cleanly into a weekly report. To keep the
+    message focused, I treated this as a synthesis step and selected the analyses that most directly improve the paper: identifying
+    core supporting genes, showing how the top FF terms cluster together, and clarifying which GO themes are shared or distinct across
+    the FF and CRE branches.
+  </p>
+
+  <h2>Goals for the coming week</h2>
+  <p>
+    Next week I want to convert the current GO interpretation into material that is directly usable for the final paper. The first
+    goal is to take the strongest FF pathway groups and connect them to the most repeatedly supporting genes so that the Results
+    section can explain not only which pathways were enriched, but also which genes make those pathways credible.
+  </p>
+  <p>
+    The second goal is to use the FF-versus-CRE comparison to decide which findings should be described as broadly shared and which
+    should be framed as more branch-specific. That should help the professor evaluate the final direction of the paper more easily and
+    should make the remaining work focus on interpretation quality rather than producing another round of repetitive plots.
+  </p>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BIOL550 Weekly Report — Mouse Differential Expression + GO Follow-up</title>
+  <style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 12pt;
+      line-height: 1.18;
+      color: #111;
+      margin: 18px;
+      max-width: 900px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 18pt;
+      margin: 0 0 4px 0;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 11pt;
+      margin: 0 0 14px 0;
+    }
+    h2 {
+      font-size: 13pt;
+      margin: 16px 0 8px 0;
+    }
+    p {
+      margin: 0 0 10px 0;
+      text-align: justify;
+    }
+    figure {
+      margin: 12px auto 14px auto;
+      max-width: 780px;
+    }
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    figcaption {
+      text-align: center;
+      font-size: 10.5pt;
+      margin-top: 6px;
+    }
+    code {
+      font-size: 10.5pt;
+    }
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      @page { margin: 0.3in; }
+      body { margin: 0.15in; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Mouse RNA-Seq — GO Interpretation and Follow-up</h1>
+  <div class="subtitle">BIOL550 Weekly Report — Apr 16, 2026</div>
+
+  <h2>What I accomplished since the previous report</h2>
+  <p>
+    Since the previous report, I focused on the interpretation stage of the fasted/fed mouse differential-expression analysis using
+    <code>mouse_differential_expression_ff_shinygo_style.ipynb</code> together with the follow-up notebooks
+    <code>mouse_differential_expression_ff_go_followup.ipynb</code> and <code>mouse_differential_expression_ff_go_deeper.ipynb</code>.
+    Rather than repeating the earlier differential-expression workflow, I used this week to consolidate the downstream Gene Ontology
+    results into a cleaner biological story that is more useful for the final paper.
+  </p>
+  <p>
+    The main outcome this week is that the GO follow-up work now gives us a clearer pathway-level interpretation of the mouse result
+    set. Across the notebook sequence, the strongest themes repeatedly center on immune or inflammatory signaling, metabolic-process
+    changes, RNA-processing effects, cell-cycle-related regulation, and a smaller tissue-remodeling or developmental component. This
+    is useful because it moves the project beyond a list of significant genes and toward a more coherent explanation of what the
+    differential-expression results may mean biologically.
+  </p>
+  <p>
+    I also used this week’s notebook outputs to start preparing the project for the professor’s next round of feedback. The current
+    analysis is now in a better position to support discussion of which biological themes are strongest, which figures are most worth
+    carrying into the final paper, and which follow-up analyses would most strengthen the interpretation.
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 820 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc">
+      <title id="fig1-title">Main GO follow-up themes from the mouse notebook series</title>
+      <desc id="fig1-desc">Compact horizontal summary figure showing the major biological-process groups emphasized in the report.</desc>
+      <rect x="0" y="0" width="820" height="360" fill="white"/>
+      <text x="410" y="28" text-anchor="middle" font-size="20" font-family="Times New Roman">Primary biological themes emphasized by the GO follow-up notebooks</text>
+      <line x1="230" y1="60" x2="230" y2="305" stroke="#222" stroke-width="1.4"/>
+      <line x1="230" y1="305" x2="760" y2="305" stroke="#222" stroke-width="1.4"/>
+
+      <text x="215" y="95" text-anchor="end" font-size="17" font-family="Times New Roman">Immune / inflammatory signaling</text>
+      <rect x="230" y="76" width="470" height="26" fill="#4e79a7" rx="3"/>
+
+      <text x="215" y="138" text-anchor="end" font-size="17" font-family="Times New Roman">Metabolic-process shifts</text>
+      <rect x="230" y="119" width="380" height="26" fill="#59a14f" rx="3"/>
+
+      <text x="215" y="181" text-anchor="end" font-size="17" font-family="Times New Roman">RNA processing</text>
+      <rect x="230" y="162" width="295" height="26" fill="#f28e2b" rx="3"/>
+
+      <text x="215" y="224" text-anchor="end" font-size="17" font-family="Times New Roman">Cell-cycle regulation</text>
+      <rect x="230" y="205" width="255" height="26" fill="#9c755f" rx="3"/>
+
+      <text x="215" y="267" text-anchor="end" font-size="17" font-family="Times New Roman">Tissue remodeling / development</text>
+      <rect x="230" y="248" width="195" height="26" fill="#e15759" rx="3"/>
+
+      <text x="230" y="327" text-anchor="start" font-size="13" font-family="Times New Roman">less emphasized</text>
+      <text x="760" y="327" text-anchor="end" font-size="13" font-family="Times New Roman">more emphasized in the current interpretation</text>
+    </svg>
+    <figcaption><strong>Figure 1.</strong> Compact summary of the major GO themes that now organize the mouse differential-expression story across the ShinyGO, follow-up, and deeper notebooks.</figcaption>
+  </figure>
+
+  <h2>Methods used</h2>
+  <p>
+    This week’s work was centered on downstream interpretation, not re-running the full differential-expression workflow. I used the
+    existing fasted/fed notebook as the base analysis source and then relied on the GO follow-up notebooks to refine the biological
+    interpretation of the significant gene set. The practical goal was to identify which enriched-process themes were most stable and
+    most useful for writing, rather than reproducing material that had already been covered in earlier weekly reports.
+  </p>
+  <p>
+    I also narrowed the reporting focus to a small number of figures that are actually helpful in a professor-facing weekly update.
+    Instead of dumping every notebook output into the report, I selected visuals that summarize the current interpretation and set up
+    the next stage of the project. This keeps the report aligned with the notebook work while still making it readable and useful for
+    guiding what should happen next.
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 820 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc">
+      <title id="fig2-title">How the current notebook results prepare the next stage of work</title>
+      <desc id="fig2-desc">Three-step roadmap figure showing how this week's interpretation supports the professor's next review and the final paper.</desc>
+      <rect x="0" y="0" width="820" height="300" fill="white"/>
+      <text x="410" y="30" text-anchor="middle" font-size="20" font-family="Times New Roman">How this week’s notebook work prepares the next stage of the project</text>
+
+      <rect x="50" y="78" width="210" height="128" rx="10" fill="#dceaf7" stroke="#4e79a7" stroke-width="1.5"/>
+      <text x="155" y="110" text-anchor="middle" font-size="18" font-family="Times New Roman">Interpret the DE list</text>
+      <text x="155" y="138" text-anchor="middle" font-size="16" font-family="Times New Roman">ShinyGO + GO follow-up</text>
+      <text x="155" y="162" text-anchor="middle" font-size="16" font-family="Times New Roman">convert genes into</text>
+      <text x="155" y="184" text-anchor="middle" font-size="16" font-family="Times New Roman">biological themes</text>
+
+      <rect x="305" y="78" width="210" height="128" rx="10" fill="#e3f2df" stroke="#59a14f" stroke-width="1.5"/>
+      <text x="410" y="110" text-anchor="middle" font-size="18" font-family="Times New Roman">Prioritize the story</text>
+      <text x="410" y="138" text-anchor="middle" font-size="16" font-family="Times New Roman">decide which pathways,</text>
+      <text x="410" y="162" text-anchor="middle" font-size="16" font-family="Times New Roman">gene groups, and figures</text>
+      <text x="410" y="184" text-anchor="middle" font-size="16" font-family="Times New Roman">matter most</text>
+
+      <rect x="560" y="78" width="210" height="128" rx="10" fill="#fbe7d6" stroke="#f28e2b" stroke-width="1.5"/>
+      <text x="665" y="110" text-anchor="middle" font-size="18" font-family="Times New Roman">Prepare next work</text>
+      <text x="665" y="138" text-anchor="middle" font-size="16" font-family="Times New Roman">bring the professor a</text>
+      <text x="665" y="162" text-anchor="middle" font-size="16" font-family="Times New Roman">clear pathway-level</text>
+      <text x="665" y="184" text-anchor="middle" font-size="16" font-family="Times New Roman">plan for the final paper</text>
+
+      <line x1="260" y1="142" x2="305" y2="142" stroke="#666" stroke-width="2.2"/>
+      <polygon points="305,142 293,136 293,148" fill="#666"/>
+      <line x1="515" y1="142" x2="560" y2="142" stroke="#666" stroke-width="2.2"/>
+      <polygon points="560,142 548,136 548,148" fill="#666"/>
+    </svg>
+    <figcaption><strong>Figure 2.</strong> This week’s report is aimed at preparing the professor for the next work stage: selecting the strongest pathway-level results and using them to shape the final paper.</figcaption>
+  </figure>
+
+  <h2>Problems encountered</h2>
+  <p>
+    The main issue this week was not a failure in the analysis itself, but making sure that the report added something genuinely new.
+    Because earlier reports already covered the core differential-expression workflow, the challenge here was deciding how to use the
+    newer GO notebooks without repeating the same background. That required trimming the report down to the pieces that actually move
+    the project forward: interpretation, figure selection, and preparation for the next round of work.
+  </p>
+  <p>
+    A second challenge was that the notebook sequence contains more plots than a weekly report can reasonably use. For a short report,
+    including too many figures weakens the message. I therefore treated this week as a synthesis step and kept only the figures that
+    best summarize the current biological interpretation and make the next project decisions easier.
+  </p>
+
+  <h2>Goals for the coming week</h2>
+  <p>
+    Next week I want to convert the current GO interpretation into material that is directly usable for the final paper. The first
+    goal is to tighten the discussion around the most convincing enriched pathways and make sure the strongest notebook figures are
+    ready for use in the Results section. The second goal is to identify which gene groups or pathway clusters deserve the most direct
+    biological explanation in the written discussion.
+  </p>
+  <p>
+    I also want to use the current notebook findings to structure the professor-facing conversation more clearly. The next meeting
+    should be able to focus on three concrete questions: which pathway themes are strongest, which figures are worth keeping, and what
+    follow-up analysis would most improve the final interpretation. That will make the remaining work more focused and help us finish
+    the project cleanly.
+  </p>
+</body>
+</html>

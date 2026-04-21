@@ -1,0 +1,21 @@
+source	native	name	p_value	intersection_size	query_size	term_size
+GO:BP	GO:0048518	positive regulation of biological process	3.5653150808089466e-35	368	808	6447
+GO:BP	GO:0048522	positive regulation of cellular process	1.330502163601098e-33	351	808	6095
+GO:BP	GO:0051179	localization	8.66013967447153e-29	309	808	5309
+GO:BP	GO:0065007	biological regulation	8.104387458964108e-28	580	808	13503
+GO:BP	GO:0048523	negative regulation of cellular process	1.2075329685851878e-27	315	808	5540
+GO:BP	GO:0048519	negative regulation of biological process	1.648341754030707e-27	323	808	5759
+GO:BP	GO:0051234	establishment of localization	3.871345812867554e-26	277	808	4666
+GO:BP	GO:0048856	anatomical structure development	8.096807378916298e-26	338	808	6280
+GO:BP	GO:0006810	transport	8.626823778673477e-26	264	808	4364
+GO:BP	GO:0032502	developmental process	1.409798099245264e-25	359	808	6873
+GO:BP	GO:0048731	system development	3.4348088513874315e-25	254	808	4155
+GO:BP	GO:0048583	regulation of response to stimulus	6.104347611935488e-24	242	808	3939
+GO:BP	GO:0023051	regulation of signaling	6.934197690076747e-24	226	808	3558
+GO:BP	GO:0050789	regulation of biological process	1.1537264537307767e-23	557	808	13108
+GO:BP	GO:0007275	multicellular organism development	1.1928763974985489e-23	280	808	4907
+GO:BP	GO:0050794	regulation of cellular process	3.161230032234976e-23	544	808	12715
+GO:BP	GO:0010646	regulation of cell communication	4.811244740553994e-23	224	808	3560
+GO:BP	GO:0035556	intracellular signal transduction	9.299086173198456e-23	191	808	2810
+GO:BP	GO:0006950	response to stress	2.433506202729718e-22	237	808	3917
+GO:BP	GO:0009966	regulation of signal transduction	4.919742484865402e-22	195	808	2940
