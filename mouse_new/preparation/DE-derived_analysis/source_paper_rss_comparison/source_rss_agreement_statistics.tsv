@@ -1,0 +1,5 @@
+comparison	n_gene_id_rows	pearson_r	spearman_r	directional_agreement_fraction	directionally_consistent_symbols
+Source control log2FC vs our WT/FF log2FC	1027	0.9738301287088026	0.9636261923116817		
+Source cKO log2FC vs our cKO/CRE log2FC	1027	0.9785917495094931	0.9627221977654936		
+Source RSS shift vs our cKO-minus-WT log2FC delta	1027	0.9409795167205679	0.9162193162489507		
+RSS sign agreement among matched source symbols	1025			0.9629268292682926	987.0

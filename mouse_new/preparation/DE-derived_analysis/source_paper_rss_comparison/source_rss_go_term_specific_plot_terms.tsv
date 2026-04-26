@@ -1,0 +1,25 @@
+branch	go_direction	native	name	term_selected_gene_count	rss_gene_count	example_rss_genes	rss_fraction_of_term_genes	generic_label_filtered
+WT/FF	up	GO:0006950	response to stress	182	17	Angptl2, Ankrd1, Bpifc, Cckbr, Ccn4, Cd207, Cited2, Clca1	0.09340659340659341	False
+WT/FF	up	GO:0010646	regulation of cell communication	171	16	Ankrd1, Cckbr, Ccn4, Cited2, Dusp9, Gpr151, Grp, Il6	0.0935672514619883	False
+WT/FF	up	GO:0023051	regulation of signaling	173	16	Ankrd1, Cckbr, Ccn4, Cited2, Dusp9, Gpr151, Grp, Il6	0.09248554913294797	False
+WT/FF	up	GO:0048513	animal organ development	142	15	2210017I01Rik, Ankrd1, Cckbr, Ccn4, Cited2, Fgf3, Hmx3, Il6	0.1056338028169014	False
+WT/FF	up	GO:0030154	cell differentiation	196	15	2210017I01Rik, Ankrd1, Ccn4, Cited2, Fgf3, Hmx3, Il6, Krt6a	0.07653061224489796	False
+WT/FF	up	GO:0048869	cellular developmental process	196	15	2210017I01Rik, Ankrd1, Ccn4, Cited2, Fgf3, Hmx3, Il6, Krt6a	0.07653061224489796	False
+cKO/CRE	up	GO:0010646	regulation of cell communication	199	15	Ankrd1, Cckbr, Dusp9, ENSMUSG00000030223, Gpr151, Grp, Il6, Plaur	0.07537688442211055	False
+cKO/CRE	up	GO:0023051	regulation of signaling	201	15	Ankrd1, Cckbr, Dusp9, ENSMUSG00000030223, Gpr151, Grp, Il6, Plaur	0.07462686567164178	False
+WT/FF	up	GO:0007275	multicellular organism development	204	15	Adm2, Ankrd1, Cckbr, Ccn4, Cited2, Fgf3, Hmx3, Il6	0.07352941176470588	False
+cKO/CRE	up	GO:0009605	response to external stimulus	138	14	Ankrd1, Bpifc, Cd207, ENSMUSG00000025279, ENSMUSG00000030223, ENSMUSG00000076434, Grp, Il6	0.10144927536231885	False
+cKO/CRE	up	GO:0048513	animal organ development	174	14	2210017I01Rik, Ankrd1, Cckbr, ENSMUSG00000030223, ENSMUSG00000061947, ENSMUSG00000067006, Fgf3, Il6	0.08045977011494253	False
+WT/FF	up	GO:0009605	response to external stimulus	114	13	Ankrd1, Bpifc, Ccn4, Cd207, Cited2, Grp, Il6, Krt6a	0.11403508771929824	False
+cKO/CRE	up	GO:0006952	defense response	112	12	Bpifc, Cckbr, Cd207, ENSMUSG00000025279, ENSMUSG00000076434, Grp, Il6, Krt6a	0.10714285714285714	False
+WT/FF	up	GO:0051239	regulation of multicellular organismal process	152	12	Adm2, Cckbr, Ccn4, Cited2, Fgf3, Grp, Il6, Plaur	0.07894736842105263	False
+WT/FF	up	GO:0048583	regulation of response to stimulus	183	12	Ankrd1, Cckbr, Ccn4, Cited2, Dusp9, Grp, Il6, Plaur	0.06557377049180328	False
+WT/FF	up	GO:0010468	regulation of gene expression	190	12	Adm2, Ankrd1, Ccn4, Cited2, Grp, Hmx3, Il6, Plaur	0.06315789473684211	False
+WT/FF	up	GO:0010556	regulation of macromolecule biosynthetic process	194	12	Adm2, Ankrd1, Ccn4, Cited2, Grp, Hmx3, Il6, Plaur	0.061855670103092786	False
+WT/FF	up	GO:0009889	regulation of biosynthetic process	197	12	Adm2, Ankrd1, Ccn4, Cited2, Grp, Hmx3, Il6, Plaur	0.06091370558375635	False
+cKO/CRE	up	GO:0048583	regulation of response to stimulus	220	12	Ankrd1, Cckbr, Dusp9, ENSMUSG00000025279, ENSMUSG00000030223, Grp, Il6, Plaur	0.05454545454545454	False
+WT/FF	up	GO:0006952	defense response	92	11	Bpifc, Cckbr, Ccn4, Cd207, Grp, Il6, Krt6a, Serpine1	0.11956521739130435	False
+WT/FF	up	GO:0009888	tissue development	93	11	2210017I01Rik, Ankrd1, Ccn4, Cited2, Fgf3, Il6, Krt6a, Lce1g	0.11827956989247312	False
+cKO/CRE	up	GO:0002376	immune system process	144	11	Bpifc, ENSMUSG00000025279, ENSMUSG00000030223, ENSMUSG00000076434, Grp, Il6, Krt6a, Sectm1b	0.0763888888888889	False
+WT/FF	up	GO:0009966	regulation of signal transduction	148	11	Ankrd1, Ccn4, Cited2, Dusp9, Grp, Il6, Plaur, Serpine1	0.07432432432432433	False
+cKO/CRE	up	GO:0051239	regulation of multicellular organismal process	176	11	Adm2, Cckbr, ENSMUSG00000030223, Fgf3, Grp, Il6, Plaur, Procr	0.0625	False

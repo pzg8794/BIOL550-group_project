@@ -1,0 +1,7 @@
+analysis_membership	positive	negative
+shared WT/cKO bend-point	27	7
+cKO-only bend-point	9	2
+WT-only bend-point	2	7
+DE-significant outside bend-point	225	544
+tested, not significant	83	119
+not in our tested universe	187	219

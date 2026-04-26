@@ -1,0 +1,6 @@
+figure	role	what_it_shows	paper_use
+source_rss_apples_to_apples_comparison_panel.png	Recommended main comparison figure	Source control/cKO/RSS values against our WT/cKO DESeq2 values, plus bend-point overlap in one compact panel.	Use when explaining direct validation of the pathway-level framework against source-paper RSS genes.
+source_rss_bendpoint_venn_style.png	Overlap explanation figure	How source RSS genes overlap WT/FF and cKO/CRE bend-point follow-up sets.	Use if the paper needs a simpler visual than the full multi-panel comparison.
+source_rss_membership_matrix.png	Interpretation matrix	Where positive and negative RSS genes land: shared bend-point, branch-specific bend-point, significant-only, tested-only, or unmatched.	Use in discussion/supporting material to explain why the comparison is meaningful but not a full reproduction.
+source_rss_go_term_overlap_scatter.png	Pathway-level bridge	Which non-generic retained GO/pathway terms contain source-paper RSS genes and how concentrated that support is.	Use when connecting source-study stress/growth themes to our retained GO interpretation.
+source_rss_overlap_counts.png	Audit/check figure	Simple count recovery across workflow stages.	Keep as a sanity-check output; not recommended as the main paper figure.

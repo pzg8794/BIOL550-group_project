@@ -1,0 +1,762 @@
+branch	go_direction	native	name	term_selected_gene_count	rss_gene_count	example_rss_genes	rss_fraction_of_term_genes	generic_label_filtered
+cKO/CRE	up	GO:0009987	cellular process	680	33	2210017I01Rik, Adm2, Ankrd1, Cckbr, Clca1, Dusp9, ENSMUSG00000025279, ENSMUSG00000030223	0.04852941176470588	True
+WT/FF	up	GO:0009987	cellular process	523	32	2210017I01Rik, Adm2, Ankrd1, Cckbr, Ccn4, Cited2, Clca1, Dusp9	0.06118546845124283	True
+cKO/CRE	up	GO:0050896	response to stimulus	423	30	Adm2, Ankrd1, Bpifc, Cckbr, Cd207, Clca1, Dusp9, ENSMUSG00000025279	0.07092198581560284	True
+WT/FF	up	GO:0065007	biological regulation	417	29	Adm2, Angptl2, Ankrd1, Cckbr, Ccn4, Cited2, Dusp9, Ecel1	0.06954436450839328	True
+cKO/CRE	up	GO:0065007	biological regulation	532	29	Adm2, Ankrd1, Cckbr, Dusp9, ENSMUSG00000025279, ENSMUSG00000030223, ENSMUSG00000051209, ENSMUSG00000061947	0.05451127819548872	True
+WT/FF	up	GO:0050896	response to stimulus	338	28	Adm2, Angptl2, Ankrd1, Bpifc, Cckbr, Ccn4, Cd207, Cited2	0.08284023668639054	True
+WT/FF	up	GO:0050789	regulation of biological process	400	27	Adm2, Ankrd1, Cckbr, Ccn4, Cited2, Dusp9, Ecel1, Fgf3	0.0675	True
+cKO/CRE	up	GO:0050789	regulation of biological process	510	27	Adm2, Ankrd1, Cckbr, Dusp9, ENSMUSG00000025279, ENSMUSG00000030223, ENSMUSG00000051209, ENSMUSG00000067006	0.052941176470588235	True
+WT/FF	up	GO:0032501	multicellular organismal process	288	25	2210017I01Rik, Adm2, Angptl2, Ankrd1, Cckbr, Ccn4, Cited2, Ecel1	0.08680555555555555	True
+WT/FF	up	GO:0050794	regulation of cellular process	389	25	Adm2, Ankrd1, Cckbr, Ccn4, Cited2, Dusp9, Ecel1, Fgf3	0.06426735218508997	True
+cKO/CRE	up	GO:0050794	regulation of cellular process	497	25	Adm2, Ankrd1, Cckbr, Dusp9, ENSMUSG00000025279, ENSMUSG00000030223, ENSMUSG00000051209, ENSMUSG00000067006	0.05030181086519115	True
+WT/FF	up	GO:0051716	cellular response to stimulus	282	24	Adm2, Ankrd1, Cckbr, Ccn4, Cited2, Clca1, Dusp9, Ecel1	0.0851063829787234	True
+cKO/CRE	up	GO:0051716	cellular response to stimulus	352	24	Adm2, Ankrd1, Cckbr, Clca1, Dusp9, ENSMUSG00000030223, ENSMUSG00000051209, Ecel1	0.06818181818181818	True
+WT/FF	up	GO:0007165	signal transduction	239	23	Adm2, Ankrd1, Cckbr, Ccn4, Cited2, Dusp9, Ecel1, Fgf3	0.09623430962343096	True
+WT/FF	up	GO:0007154	cell communication	258	23	Adm2, Ankrd1, Cckbr, Ccn4, Cited2, Dusp9, Ecel1, Fgf3	0.08914728682170543	True
+WT/FF	up	GO:0023052	signaling	259	23	Adm2, Ankrd1, Cckbr, Ccn4, Cited2, Dusp9, Ecel1, Fgf3	0.0888030888030888	True
+cKO/CRE	up	GO:0007165	signal transduction	288	23	Adm2, Ankrd1, Cckbr, Dusp9, ENSMUSG00000030223, ENSMUSG00000051209, Ecel1, Fgf3	0.0798611111111111	True
+cKO/CRE	up	GO:0007154	cell communication	312	23	Adm2, Ankrd1, Cckbr, Dusp9, ENSMUSG00000030223, ENSMUSG00000051209, Ecel1, Fgf3	0.07371794871794872	True
+cKO/CRE	up	GO:0023052	signaling	313	23	Adm2, Ankrd1, Cckbr, Dusp9, ENSMUSG00000030223, ENSMUSG00000051209, Ecel1, Fgf3	0.07348242811501597	True
+cKO/CRE	up	GO:0032501	multicellular organismal process	360	23	2210017I01Rik, Adm2, Ankrd1, Cckbr, ENSMUSG00000025279, ENSMUSG00000030223, ENSMUSG00000061947, ENSMUSG00000067006	0.06388888888888888	True
+WT/FF	up	GO:0048856	anatomical structure development	242	19	2210017I01Rik, Adm2, Ankrd1, Cckbr, Ccn4, Cited2, Fgf3, Hmx3	0.07851239669421488	True
+WT/FF	up	GO:0032502	developmental process	254	19	2210017I01Rik, Adm2, Ankrd1, Cckbr, Ccn4, Cited2, Fgf3, Hmx3	0.07480314960629922	True
+cKO/CRE	up	GO:0048856	anatomical structure development	312	18	2210017I01Rik, Adm2, Ankrd1, Cckbr, ENSMUSG00000025279, ENSMUSG00000030223, ENSMUSG00000061947, ENSMUSG00000067006	0.057692307692307696	True
+cKO/CRE	up	GO:0032502	developmental process	330	18	2210017I01Rik, Adm2, Ankrd1, Cckbr, ENSMUSG00000025279, ENSMUSG00000030223, ENSMUSG00000061947, ENSMUSG00000067006	0.05454545454545454	True
+WT/FF	up	GO:0006950	response to stress	182	17	Angptl2, Ankrd1, Bpifc, Cckbr, Ccn4, Cd207, Cited2, Clca1	0.09340659340659341	False
+cKO/CRE	up	GO:0006950	response to stress	221	17	Ankrd1, Bpifc, Cckbr, Cd207, Clca1, ENSMUSG00000025279, ENSMUSG00000061947, ENSMUSG00000076434	0.07692307692307693	False
+cKO/CRE	up	GO:0006810	transport	244	17	Ankrd1, Cckbr, Clca1, ENSMUSG00000038115, ENSMUSG00000051209, Gpr151, Grp, Il6	0.06967213114754098	True
+cKO/CRE	up	GO:0051234	establishment of localization	256	17	Ankrd1, Cckbr, Clca1, ENSMUSG00000038115, ENSMUSG00000051209, Gpr151, Grp, Il6	0.06640625	True
+cKO/CRE	up	GO:0051179	localization	286	17	Ankrd1, Cckbr, Clca1, ENSMUSG00000038115, ENSMUSG00000051209, Gpr151, Grp, Il6	0.05944055944055944	True
+WT/FF	up	GO:0008152	metabolic process	372	17	Adm2, Ankrd1, Ccn4, Cited2, Clca1, Dusp9, Ecel1, Grp	0.0456989247311828	True
+WT/FF	up	GO:0010646	regulation of cell communication	171	16	Ankrd1, Cckbr, Ccn4, Cited2, Dusp9, Gpr151, Grp, Il6	0.0935672514619883	False
+WT/FF	up	GO:0023051	regulation of signaling	173	16	Ankrd1, Cckbr, Ccn4, Cited2, Dusp9, Gpr151, Grp, Il6	0.09248554913294797	False
+cKO/CRE	up	GO:0008152	metabolic process	477	16	Adm2, Ankrd1, Clca1, Dusp9, ENSMUSG00000025279, ENSMUSG00000030223, ENSMUSG00000051209, Ecel1	0.033542976939203356	True
+WT/FF	up	GO:0048513	animal organ development	142	15	2210017I01Rik, Ankrd1, Cckbr, Ccn4, Cited2, Fgf3, Hmx3, Il6	0.1056338028169014	False
+cKO/CRE	up	GO:0065008	regulation of biological quality	183	15	Adm2, Cckbr, ENSMUSG00000030223, ENSMUSG00000051209, ENSMUSG00000061947, Grp, Il6, Kcnk16	0.08196721311475409	True
+WT/FF	up	GO:0006810	transport	193	15	Ankrd1, Cckbr, Clca1, Gpr151, Grp, Il6, Kcnk16, Nkain1	0.07772020725388601	True
+WT/FF	up	GO:0030154	cell differentiation	196	15	2210017I01Rik, Ankrd1, Ccn4, Cited2, Fgf3, Hmx3, Il6, Krt6a	0.07653061224489796	False
+WT/FF	up	GO:0048869	cellular developmental process	196	15	2210017I01Rik, Ankrd1, Ccn4, Cited2, Fgf3, Hmx3, Il6, Krt6a	0.07653061224489796	False
+WT/FF	up	GO:0051234	establishment of localization	199	15	Ankrd1, Cckbr, Clca1, Gpr151, Grp, Il6, Kcnk16, Nkain1	0.07537688442211055	True
+cKO/CRE	up	GO:0010646	regulation of cell communication	199	15	Ankrd1, Cckbr, Dusp9, ENSMUSG00000030223, Gpr151, Grp, Il6, Plaur	0.07537688442211055	False
+cKO/CRE	up	GO:0023051	regulation of signaling	201	15	Ankrd1, Cckbr, Dusp9, ENSMUSG00000030223, Gpr151, Grp, Il6, Plaur	0.07462686567164178	False
+WT/FF	up	GO:0007275	multicellular organism development	204	15	Adm2, Ankrd1, Cckbr, Ccn4, Cited2, Fgf3, Hmx3, Il6	0.07352941176470588	False
+WT/FF	up	GO:0051179	localization	220	15	Ankrd1, Cckbr, Clca1, Gpr151, Grp, Il6, Kcnk16, Nkain1	0.06818181818181818	True
+WT/FF	up	GO:0043170	macromolecule metabolic process	314	15	Adm2, Ankrd1, Ccn4, Cited2, Clca1, Dusp9, Ecel1, Grp	0.04777070063694268	True
+cKO/CRE	up	GO:0009605	response to external stimulus	138	14	Ankrd1, Bpifc, Cd207, ENSMUSG00000025279, ENSMUSG00000030223, ENSMUSG00000076434, Grp, Il6	0.10144927536231885	False
+cKO/CRE	up	GO:0048513	animal organ development	174	14	2210017I01Rik, Ankrd1, Cckbr, ENSMUSG00000030223, ENSMUSG00000061947, ENSMUSG00000067006, Fgf3, Il6	0.08045977011494253	False
+WT/FF	up	GO:0048731	system development	185	14	Adm2, Ankrd1, Cckbr, Ccn4, Cited2, Fgf3, Hmx3, Il6	0.07567567567567568	True
+WT/FF	up	GO:0048519	negative regulation of biological process	241	14	Ankrd1, Ccn4, Cited2, Dusp9, Fgf3, Grp, Il6, Plaur	0.058091286307053944	True
+WT/FF	up	GO:0009605	response to external stimulus	114	13	Ankrd1, Bpifc, Ccn4, Cd207, Cited2, Grp, Il6, Krt6a	0.11403508771929824	False
+WT/FF	up	GO:0065008	regulation of biological quality	151	13	Adm2, Angptl2, Cckbr, Grp, Il6, Kcnk16, Plaur, Plppr4	0.08609271523178808	True
+cKO/CRE	up	GO:0048731	system development	233	13	Adm2, Ankrd1, Cckbr, ENSMUSG00000030223, ENSMUSG00000061947, ENSMUSG00000067006, Fgf3, Il6	0.055793991416309016	True
+cKO/CRE	up	GO:0030154	cell differentiation	242	13	2210017I01Rik, Ankrd1, ENSMUSG00000025279, ENSMUSG00000030223, Fgf3, Il6, Krt6a, Lce1g	0.05371900826446281	False
+cKO/CRE	up	GO:0048869	cellular developmental process	242	13	2210017I01Rik, Ankrd1, ENSMUSG00000025279, ENSMUSG00000030223, Fgf3, Il6, Krt6a, Lce1g	0.05371900826446281	False
+cKO/CRE	up	GO:0007275	multicellular organism development	259	13	Adm2, Ankrd1, Cckbr, ENSMUSG00000030223, ENSMUSG00000061947, ENSMUSG00000067006, Fgf3, Il6	0.05019305019305019	False
+WT/FF	up	GO:0048522	positive regulation of cellular process	266	13	Adm2, Ankrd1, Cckbr, Ccn4, Cited2, Fgf3, Grp, Il6	0.04887218045112782	True
+WT/FF	up	GO:0048518	positive regulation of biological process	278	13	Adm2, Ankrd1, Cckbr, Ccn4, Cited2, Fgf3, Grp, Il6	0.046762589928057555	True
+cKO/CRE	up	GO:0043170	macromolecule metabolic process	401	13	Adm2, Ankrd1, Clca1, Dusp9, ENSMUSG00000025279, ENSMUSG00000030223, Ecel1, Grp	0.032418952618453865	True
+cKO/CRE	up	GO:0006952	defense response	112	12	Bpifc, Cckbr, Cd207, ENSMUSG00000025279, ENSMUSG00000076434, Grp, Il6, Krt6a	0.10714285714285714	False
+WT/FF	up	GO:0051239	regulation of multicellular organismal process	152	12	Adm2, Cckbr, Ccn4, Cited2, Fgf3, Grp, Il6, Plaur	0.07894736842105263	False
+WT/FF	up	GO:0048583	regulation of response to stimulus	183	12	Ankrd1, Cckbr, Ccn4, Cited2, Dusp9, Grp, Il6, Plaur	0.06557377049180328	False
+WT/FF	up	GO:0010468	regulation of gene expression	190	12	Adm2, Ankrd1, Ccn4, Cited2, Grp, Hmx3, Il6, Plaur	0.06315789473684211	False
+WT/FF	up	GO:0010556	regulation of macromolecule biosynthetic process	194	12	Adm2, Ankrd1, Ccn4, Cited2, Grp, Hmx3, Il6, Plaur	0.061855670103092786	False
+WT/FF	up	GO:0009889	regulation of biosynthetic process	197	12	Adm2, Ankrd1, Ccn4, Cited2, Grp, Hmx3, Il6, Plaur	0.06091370558375635	False
+cKO/CRE	up	GO:0048583	regulation of response to stimulus	220	12	Ankrd1, Cckbr, Dusp9, ENSMUSG00000025279, ENSMUSG00000030223, Grp, Il6, Plaur	0.05454545454545454	False
+WT/FF	up	GO:0060255	regulation of macromolecule metabolic process	224	12	Adm2, Ankrd1, Ccn4, Cited2, Grp, Hmx3, Il6, Plaur	0.05357142857142857	False
+WT/FF	up	GO:0048523	negative regulation of cellular process	235	12	Ankrd1, Ccn4, Cited2, Dusp9, Grp, Il6, Plaur, Satb2	0.05106382978723404	True
+WT/FF	up	GO:0019222	regulation of metabolic process	237	12	Adm2, Ankrd1, Ccn4, Cited2, Grp, Hmx3, Il6, Plaur	0.05063291139240506	True
+cKO/CRE	up	GO:0048519	negative regulation of biological process	300	12	Ankrd1, Dusp9, ENSMUSG00000030223, Fgf3, Grp, Il6, Plaur, Procr	0.04	True
+WT/FF	up	GO:0044238	primary metabolic process	328	12	Ankrd1, Cited2, Clca1, Dusp9, Ecel1, Hmx3, Il6, Plaur	0.036585365853658534	True
+WT/FF	up	GO:0006952	defense response	92	11	Bpifc, Cckbr, Ccn4, Cd207, Grp, Il6, Krt6a, Serpine1	0.11956521739130435	False
+WT/FF	up	GO:0009888	tissue development	93	11	2210017I01Rik, Ankrd1, Ccn4, Cited2, Fgf3, Il6, Krt6a, Lce1g	0.11827956989247312	False
+cKO/CRE	up	GO:0002376	immune system process	144	11	Bpifc, ENSMUSG00000025279, ENSMUSG00000030223, ENSMUSG00000076434, Grp, Il6, Krt6a, Sectm1b	0.0763888888888889	False
+WT/FF	up	GO:0009966	regulation of signal transduction	148	11	Ankrd1, Ccn4, Cited2, Dusp9, Grp, Il6, Plaur, Serpine1	0.07432432432432433	False
+cKO/CRE	up	GO:0051239	regulation of multicellular organismal process	176	11	Adm2, Cckbr, ENSMUSG00000030223, Fgf3, Grp, Il6, Plaur, Procr	0.0625	False
+cKO/CRE	up	GO:0016043	cellular component organization	305	11	Ankrd1, ENSMUSG00000025279, ENSMUSG00000030223, ENSMUSG00000067006, Il6, Krt6a, Plaur, Plppr4	0.036065573770491806	True
+cKO/CRE	up	GO:0071840	cellular component organization or biogenesis	314	11	Ankrd1, ENSMUSG00000025279, ENSMUSG00000030223, ENSMUSG00000067006, Il6, Krt6a, Plaur, Plppr4	0.03503184713375796	True
+cKO/CRE	up	GO:0044238	primary metabolic process	430	11	Ankrd1, Clca1, Dusp9, ENSMUSG00000025279, ENSMUSG00000030223, Ecel1, Il6, Plaur	0.02558139534883721	True
+cKO/CRE	up	GO:0043207	response to external biotic stimulus	98	10	Ankrd1, Bpifc, Cd207, ENSMUSG00000076434, Grp, Il6, Krt6a, Serpine1	0.10204081632653061	False
+cKO/CRE	up	GO:0009607	response to biotic stimulus	101	10	Ankrd1, Bpifc, Cd207, ENSMUSG00000076434, Grp, Il6, Krt6a, Serpine1	0.09900990099009901	False
+WT/FF	up	GO:0048584	positive regulation of response to stimulus	109	10	Ankrd1, Cckbr, Ccn4, Cited2, Grp, Il6, Plaur, Serpine1	0.09174311926605505	False
+cKO/CRE	up	GO:0009888	tissue development	113	10	2210017I01Rik, Ankrd1, ENSMUSG00000030223, ENSMUSG00000067006, Fgf3, Il6, Krt6a, Lce1g	0.08849557522123894	False
+WT/FF	up	GO:0009653	anatomical structure morphogenesis	134	10	Adm2, Ankrd1, Cited2, Hmx3, Il6, Krt6a, Plppr4, Satb2	0.07462686567164178	False
+WT/FF	up	GO:0042221	response to chemical	169	10	Ankrd1, Cited2, Clca1, Grp, Il6, Or8b53, Serpine1, Slamf1	0.05917159763313609	False
+cKO/CRE	up	GO:0009966	regulation of signal transduction	173	10	Ankrd1, Dusp9, ENSMUSG00000030223, Grp, Il6, Plaur, Serpine1, Slamf1	0.057803468208092484	False
+WT/FF	up	GO:0016043	cellular component organization	236	10	Ankrd1, Ccn4, Il6, Krt6a, Plaur, Plppr4, Satb2, Serpine1	0.0423728813559322	True
+WT/FF	up	GO:0071840	cellular component organization or biogenesis	243	10	Ankrd1, Ccn4, Il6, Krt6a, Plaur, Plppr4, Satb2, Serpine1	0.0411522633744856	True
+cKO/CRE	up	GO:0048523	negative regulation of cellular process	293	10	Ankrd1, Dusp9, ENSMUSG00000030223, Grp, Il6, Plaur, Serpine1, Slamf1	0.034129692832764506	True
+cKO/CRE	up	GO:0019222	regulation of metabolic process	297	10	Adm2, Ankrd1, ENSMUSG00000030223, ENSMUSG00000051209, Grp, Il6, Plaur, Serpine1	0.03367003367003367	True
+cKO/CRE	up	GO:0048522	positive regulation of cellular process	323	10	Adm2, Ankrd1, Cckbr, Fgf3, Grp, Il6, Plaur, Serpine1	0.030959752321981424	True
+cKO/CRE	up	GO:0048518	positive regulation of biological process	340	10	Adm2, Ankrd1, Cckbr, Fgf3, Grp, Il6, Plaur, Serpine1	0.029411764705882353	True
+WT/FF	up	GO:0051241	negative regulation of multicellular organismal process	69	9	Ccn4, Cited2, Fgf3, Il6, Plaur, Procr, Serpine1, Slamf1	0.13043478260869565	False
+cKO/CRE	up	GO:0007267	cell-cell signaling	69	9	Cckbr, ENSMUSG00000051209, Gpr151, Grp, Il6, Plppr4, Rin1, Ucn	0.13043478260869565	False
+WT/FF	up	GO:0043207	response to external biotic stimulus	81	9	Ankrd1, Bpifc, Cd207, Grp, Il6, Krt6a, Serpine1, Slamf1	0.1111111111111111	False
+WT/FF	up	GO:0009607	response to biotic stimulus	82	9	Ankrd1, Bpifc, Cd207, Grp, Il6, Krt6a, Serpine1, Slamf1	0.10975609756097561	False
+WT/FF	up	GO:0010647	positive regulation of cell communication	87	9	Ankrd1, Cckbr, Ccn4, Cited2, Grp, Il6, Plaur, Slamf1	0.10344827586206896	False
+WT/FF	up	GO:0023056	positive regulation of signaling	88	9	Ankrd1, Cckbr, Ccn4, Cited2, Grp, Il6, Plaur, Slamf1	0.10227272727272728	False
+WT/FF	up	GO:0051240	positive regulation of multicellular organismal process	92	9	Adm2, Cckbr, Ccn4, Cited2, Grp, Il6, Serpine1, Slamf1	0.09782608695652174	False
+WT/FF	up	GO:0051049	regulation of transport	94	9	Ankrd1, Cckbr, Gpr151, Grp, Il6, Nkain1, Serpine1, Slamf1	0.09574468085106383	False
+cKO/CRE	up	GO:0051707	response to other organism	97	9	Ankrd1, Bpifc, Cd207, ENSMUSG00000076434, Il6, Krt6a, Serpine1, Slamf1	0.09278350515463918	False
+cKO/CRE	up	GO:0044419	biological process involved in interspecies interaction between organisms	106	9	Ankrd1, Bpifc, Cd207, ENSMUSG00000076434, Il6, Krt6a, Serpine1, Slamf1	0.08490566037735849	False
+cKO/CRE	up	GO:0051049	regulation of transport	109	9	Ankrd1, Cckbr, Gpr151, Grp, Il6, Nkain1, Serpine1, Slamf1	0.08256880733944955	False
+WT/FF	up	GO:0032879	regulation of localization	114	9	Ankrd1, Cckbr, Gpr151, Grp, Il6, Nkain1, Serpine1, Slamf1	0.07894736842105263	False
+WT/FF	up	GO:0002376	immune system process	119	9	Bpifc, Cited2, Grp, Il6, Krt6a, Sectm1b, Serpine1, Slamf1	0.07563025210084033	False
+cKO/CRE	up	GO:0032879	regulation of localization	137	9	Ankrd1, Cckbr, Gpr151, Grp, Il6, Nkain1, Serpine1, Slamf1	0.06569343065693431	False
+WT/FF	up	GO:0007166	cell surface receptor signaling pathway	139	9	Ccn4, Cited2, Fgf3, Il6, Krt6a, Plaur, Serpine1, Slamf1	0.06474820143884892	False
+WT/FF	up	GO:0035556	intracellular signal transduction	150	9	Ankrd1, Cckbr, Cited2, Dusp9, Ecel1, Il6, Plaur, Slamf1	0.06	False
+cKO/CRE	up	GO:0060255	regulation of macromolecule metabolic process	276	9	Adm2, Ankrd1, ENSMUSG00000030223, Grp, Il6, Plaur, Serpine1, Slamf1	0.03260869565217391	False
+WT/FF	up	GO:0007267	cell-cell signaling	59	8	Cckbr, Gpr151, Grp, Il6, Plppr4, Rin1, Ucn, Vgf	0.13559322033898305	False
+cKO/CRE	up	GO:0032940	secretion by cell	66	8	Ankrd1, Cckbr, ENSMUSG00000051209, Gpr151, Grp, Il6, Ucn, Vgf	0.12121212121212122	False
+cKO/CRE	up	GO:0140352	export from cell	67	8	Ankrd1, Cckbr, ENSMUSG00000051209, Gpr151, Grp, Il6, Ucn, Vgf	0.11940298507462686	False
+cKO/CRE	up	GO:0051241	negative regulation of multicellular organismal process	70	8	ENSMUSG00000030223, Fgf3, Il6, Plaur, Procr, Serpine1, Slamf1, Ucn	0.11428571428571428	False
+cKO/CRE	up	GO:0046903	secretion	72	8	Ankrd1, Cckbr, ENSMUSG00000051209, Gpr151, Grp, Il6, Ucn, Vgf	0.1111111111111111	False
+cKO/CRE	up	GO:0060429	epithelium development	73	8	2210017I01Rik, ENSMUSG00000030223, ENSMUSG00000067006, Il6, Krt6a, Lce1g, Plaur, Serpine1	0.1095890410958904	False
+cKO/CRE	up	GO:0098542	defense response to other organism	74	8	Bpifc, Cd207, ENSMUSG00000076434, Il6, Krt6a, Serpine1, Slamf1, Vgf	0.10810810810810811	False
+WT/FF	up	GO:0009967	positive regulation of signal transduction	76	8	Ankrd1, Ccn4, Cited2, Grp, Il6, Plaur, Slamf1, Ucn	0.10526315789473684	False
+WT/FF	up	GO:0051707	response to other organism	80	8	Ankrd1, Bpifc, Cd207, Il6, Krt6a, Serpine1, Slamf1, Vgf	0.1	False
+WT/FF	up	GO:0044419	biological process involved in interspecies interaction between organisms	88	8	Ankrd1, Bpifc, Cd207, Il6, Krt6a, Serpine1, Slamf1, Vgf	0.09090909090909091	False
+cKO/CRE	up	GO:0006955	immune response	100	8	Bpifc, ENSMUSG00000025279, ENSMUSG00000076434, Grp, Il6, Krt6a, Sectm1b, Slamf1	0.08	False
+cKO/CRE	up	GO:0010648	negative regulation of cell communication	106	8	Dusp9, ENSMUSG00000030223, Il6, Plaur, Serpine1, Slamf1, Tmem88b, Ucn	0.07547169811320754	False
+cKO/CRE	up	GO:0023057	negative regulation of signaling	106	8	Dusp9, ENSMUSG00000030223, Il6, Plaur, Serpine1, Slamf1, Tmem88b, Ucn	0.07547169811320754	False
+WT/FF	up	GO:0051128	regulation of cellular component organization	112	8	Ankrd1, Ccn4, Il6, Plaur, Plppr4, Serpine1, Slamf1, Ucn	0.07142857142857142	False
+cKO/CRE	up	GO:0048585	negative regulation of response to stimulus	115	8	Dusp9, ENSMUSG00000030223, Il6, Plaur, Serpine1, Slamf1, Tmem88b, Ucn	0.06956521739130435	False
+WT/FF	up	GO:0010557	positive regulation of macromolecule biosynthetic process	122	8	Adm2, Ankrd1, Cited2, Il6, Satb2, Serpine1, Slamf1, Ucn	0.06557377049180328	False
+WT/FF	up	GO:0009891	positive regulation of biosynthetic process	124	8	Adm2, Ankrd1, Cited2, Il6, Satb2, Serpine1, Slamf1, Ucn	0.06451612903225806	False
+cKO/CRE	up	GO:0048584	positive regulation of response to stimulus	128	8	Ankrd1, Cckbr, Grp, Il6, Plaur, Serpine1, Slamf1, Ucn	0.0625	False
+WT/FF	up	GO:0048468	cell development	140	8	Ankrd1, Ccn4, Cited2, Il6, Plppr4, Satb2, Slamf1, Ucn	0.05714285714285714	False
+cKO/CRE	up	GO:0051128	regulation of cellular component organization	144	8	Ankrd1, ENSMUSG00000030223, Il6, Plaur, Plppr4, Serpine1, Slamf1, Ucn	0.05555555555555555	False
+WT/FF	up	GO:0010604	positive regulation of macromolecule metabolic process	152	8	Adm2, Ankrd1, Cited2, Il6, Satb2, Serpine1, Slamf1, Ucn	0.05263157894736842	False
+cKO/CRE	up	GO:0007166	cell surface receptor signaling pathway	161	8	ENSMUSG00000030223, Fgf3, Il6, Krt6a, Plaur, Serpine1, Slamf1, Tmem88b	0.049689440993788817	False
+WT/FF	up	GO:0009893	positive regulation of metabolic process	163	8	Adm2, Ankrd1, Cited2, Il6, Satb2, Serpine1, Slamf1, Ucn	0.049079754601226995	False
+cKO/CRE	up	GO:0009653	anatomical structure morphogenesis	164	8	Adm2, Ankrd1, ENSMUSG00000030223, ENSMUSG00000067006, Il6, Krt6a, Plppr4, Serpine1	0.04878048780487805	False
+cKO/CRE	up	GO:0035556	intracellular signal transduction	172	8	Ankrd1, Cckbr, Dusp9, Ecel1, Il6, Plaur, Slamf1, Ucn	0.046511627906976744	False
+WT/FF	up	GO:0080090	regulation of primary metabolic process	200	8	Ankrd1, Cited2, Hmx3, Il6, Plaur, Satb2, Serpine1, Ucn	0.04	False
+cKO/CRE	up	GO:0010468	regulation of gene expression	229	8	Adm2, Ankrd1, Grp, Il6, Plaur, Serpine1, Slamf1, Ucn	0.034934497816593885	False
+cKO/CRE	up	GO:0010556	regulation of macromolecule biosynthetic process	232	8	Adm2, Ankrd1, Grp, Il6, Plaur, Serpine1, Slamf1, Ucn	0.034482758620689655	False
+cKO/CRE	up	GO:0009889	regulation of biosynthetic process	238	8	Adm2, Ankrd1, Grp, Il6, Plaur, Serpine1, Slamf1, Ucn	0.03361344537815126	False
+cKO/CRE	up	GO:0019538	protein metabolic process	247	8	Clca1, Dusp9, ENSMUSG00000030223, Ecel1, Il6, Plaur, Serpine1, Ucn	0.032388663967611336	False
+WT/FF	up	GO:0009611	response to wounding	33	7	Angptl2, Ccn4, Il6, Krt6a, Plaur, Procr, Serpine1	0.21212121212121213	False
+cKO/CRE	up	GO:0023061	signal release	42	7	Cckbr, ENSMUSG00000051209, Gpr151, Grp, Il6, Ucn, Vgf	0.16666666666666666	False
+WT/FF	up	GO:0032940	secretion by cell	56	7	Ankrd1, Cckbr, Gpr151, Grp, Il6, Ucn, Vgf	0.125	False
+WT/FF	up	GO:0140352	export from cell	57	7	Ankrd1, Cckbr, Gpr151, Grp, Il6, Ucn, Vgf	0.12280701754385964	False
+WT/FF	up	GO:0098542	defense response to other organism	60	7	Bpifc, Cd207, Il6, Krt6a, Serpine1, Slamf1, Vgf	0.11666666666666667	False
+WT/FF	up	GO:0046903	secretion	61	7	Ankrd1, Cckbr, Gpr151, Grp, Il6, Ucn, Vgf	0.11475409836065574	False
+WT/FF	up	GO:0060429	epithelium development	62	7	2210017I01Rik, Cited2, Il6, Krt6a, Lce1g, Plaur, Serpine1	0.11290322580645161	False
+WT/FF	up	GO:0080134	regulation of response to stress	69	7	Ankrd1, Cckbr, Ccn4, Grp, Plaur, Serpine1, Ucn	0.10144927536231885	False
+cKO/CRE	up	GO:0080134	regulation of response to stress	84	7	Ankrd1, Cckbr, ENSMUSG00000025279, Grp, Plaur, Serpine1, Ucn	0.08333333333333333	False
+WT/FF	up	GO:0042981	regulation of apoptotic process	89	7	Ankrd1, Cited2, Grp, Il6, Plaur, Serpine1, Ucn	0.07865168539325842	False
+WT/FF	up	GO:0043067	regulation of programmed cell death	91	7	Ankrd1, Cited2, Grp, Il6, Plaur, Serpine1, Ucn	0.07692307692307693	False
+WT/FF	up	GO:0010648	negative regulation of cell communication	94	7	Dusp9, Il6, Plaur, Serpine1, Slamf1, Tmem88b, Ucn	0.07446808510638298	False
+WT/FF	up	GO:0023057	negative regulation of signaling	94	7	Dusp9, Il6, Plaur, Serpine1, Slamf1, Tmem88b, Ucn	0.07446808510638298	False
+cKO/CRE	up	GO:0009968	negative regulation of signal transduction	96	7	Dusp9, ENSMUSG00000030223, Il6, Plaur, Serpine1, Slamf1, Tmem88b	0.07291666666666667	False
+WT/FF	up	GO:0048585	negative regulation of response to stimulus	98	7	Dusp9, Il6, Plaur, Serpine1, Slamf1, Tmem88b, Ucn	0.07142857142857142	False
+WT/FF	up	GO:0010558	negative regulation of macromolecule biosynthetic process	99	7	Ankrd1, Cited2, Il6, Satb2, Serpine1, Slamf1, Ucn	0.0707070707070707	False
+WT/FF	up	GO:1902531	regulation of intracellular signal transduction	99	7	Ankrd1, Cited2, Dusp9, Il6, Plaur, Slamf1, Ucn	0.0707070707070707	False
+cKO/CRE	up	GO:0051240	positive regulation of multicellular organismal process	100	7	Adm2, Cckbr, Grp, Il6, Serpine1, Slamf1, Ucn	0.07	False
+cKO/CRE	up	GO:0010647	positive regulation of cell communication	101	7	Ankrd1, Cckbr, Grp, Il6, Plaur, Slamf1, Ucn	0.06930693069306931	False
+WT/FF	up	GO:0009890	negative regulation of biosynthetic process	102	7	Ankrd1, Cited2, Il6, Satb2, Serpine1, Slamf1, Ucn	0.06862745098039216	False
+cKO/CRE	up	GO:0023056	positive regulation of signaling	102	7	Ankrd1, Cckbr, Grp, Il6, Plaur, Slamf1, Ucn	0.06862745098039216	False
+WT/FF	up	GO:0070887	cellular response to chemical stimulus	103	7	Ankrd1, Cited2, Clca1, Grp, Il6, Serpine1, Slamf1	0.06796116504854369	False
+WT/FF	up	GO:0006915	apoptotic process	109	7	Ankrd1, Cited2, Grp, Il6, Plaur, Serpine1, Ucn	0.06422018348623854	False
+WT/FF	up	GO:0008219	cell death	111	7	Ankrd1, Cited2, Grp, Il6, Plaur, Serpine1, Ucn	0.06306306306306306	False
+WT/FF	up	GO:0012501	programmed cell death	111	7	Ankrd1, Cited2, Grp, Il6, Plaur, Serpine1, Ucn	0.06306306306306306	False
+WT/FF	up	GO:0010605	negative regulation of macromolecule metabolic process	114	7	Ankrd1, Cited2, Il6, Satb2, Serpine1, Slamf1, Ucn	0.06140350877192982	False
+cKO/CRE	up	GO:0071705	nitrogen compound transport	117	7	Ankrd1, Cckbr, ENSMUSG00000051209, Grp, Il6, Ucn, Vgf	0.05982905982905983	False
+WT/FF	up	GO:0009892	negative regulation of metabolic process	123	7	Ankrd1, Cited2, Il6, Satb2, Serpine1, Slamf1, Ucn	0.056910569105691054	False
+cKO/CRE	up	GO:0070887	cellular response to chemical stimulus	123	7	Ankrd1, Clca1, ENSMUSG00000030223, Grp, Il6, Serpine1, Slamf1	0.056910569105691054	False
+WT/FF	up	GO:0007399	nervous system development	128	7	Ankrd1, Cited2, Hmx3, Il6, Plppr4, Satb2, Ucn	0.0546875	False
+cKO/CRE	up	GO:0006915	apoptotic process	133	7	Ankrd1, ENSMUSG00000025279, Grp, Il6, Plaur, Serpine1, Ucn	0.05263157894736842	False
+cKO/CRE	up	GO:0008219	cell death	136	7	Ankrd1, ENSMUSG00000025279, Grp, Il6, Plaur, Serpine1, Ucn	0.051470588235294115	False
+cKO/CRE	up	GO:0012501	programmed cell death	136	7	Ankrd1, ENSMUSG00000025279, Grp, Il6, Plaur, Serpine1, Ucn	0.051470588235294115	False
+cKO/CRE	up	GO:0048468	cell development	171	7	Ankrd1, ENSMUSG00000025279, ENSMUSG00000030223, Il6, Plppr4, Slamf1, Ucn	0.04093567251461988	False
+WT/FF	up	GO:0019538	protein metabolic process	181	7	Clca1, Dusp9, Ecel1, Il6, Plaur, Serpine1, Ucn	0.03867403314917127	False
+cKO/CRE	up	GO:0051641	cellular localization	191	7	Ankrd1, ENSMUSG00000038115, ENSMUSG00000051209, Gpr151, Grp, Il6, Vgf	0.03664921465968586	False
+cKO/CRE	up	GO:0009914	hormone transport	29	6	Cckbr, ENSMUSG00000051209, Grp, Il6, Ucn, Vgf	0.20689655172413793	False
+WT/FF	up	GO:0023061	signal release	37	6	Cckbr, Gpr151, Grp, Il6, Ucn, Vgf	0.16216216216216217	False
+cKO/CRE	up	GO:0010817	regulation of hormone levels	39	6	Cckbr, ENSMUSG00000051209, Grp, Il6, Ucn, Vgf	0.15384615384615385	False
+WT/FF	up	GO:0007610	behavior	40	6	Adm2, Cckbr, Grp, Il6, Rin1, Ucn	0.15	False
+WT/FF	up	GO:1903530	regulation of secretion by cell	40	6	Ankrd1, Cckbr, Gpr151, Grp, Il6, Ucn	0.15	False
+cKO/CRE	up	GO:0009611	response to wounding	40	6	ENSMUSG00000061947, Il6, Krt6a, Plaur, Procr, Serpine1	0.15	False
+WT/FF	up	GO:0051046	regulation of secretion	41	6	Ankrd1, Cckbr, Gpr151, Grp, Il6, Ucn	0.14634146341463414	False
+cKO/CRE	up	GO:1903530	regulation of secretion by cell	45	6	Ankrd1, Cckbr, Gpr151, Grp, Il6, Ucn	0.13333333333333333	False
+cKO/CRE	up	GO:0007610	behavior	46	6	Adm2, Cckbr, Grp, Il6, Rin1, Ucn	0.13043478260869565	False
+cKO/CRE	up	GO:0030855	epithelial cell differentiation	46	6	2210017I01Rik, ENSMUSG00000030223, Krt6a, Lce1g, Plaur, Serpine1	0.13043478260869565	False
+cKO/CRE	up	GO:0051046	regulation of secretion	46	6	Ankrd1, Cckbr, Gpr151, Grp, Il6, Ucn	0.13043478260869565	False
+WT/FF	up	GO:0009887	animal organ morphogenesis	50	6	Ankrd1, Cited2, Hmx3, Il6, Satb2, Serpine1	0.12	False
+WT/FF	up	GO:0072359	circulatory system development	56	6	Adm2, Ankrd1, Ccn4, Cited2, Fgf3, Serpine1	0.10714285714285714	False
+WT/FF	up	GO:0051050	positive regulation of transport	58	6	Ankrd1, Cckbr, Grp, Il6, Serpine1, Ucn	0.10344827586206896	False
+WT/FF	up	GO:0009628	response to abiotic stimulus	59	6	Ankrd1, Cited2, Clca1, Gpr151, Ucn, Vgf	0.1016949152542373	False
+WT/FF	up	GO:0007155	cell adhesion	64	6	Ccn4, Cited2, Il6, Plaur, Serpine1, Slamf1	0.09375	False
+WT/FF	up	GO:0010628	positive regulation of gene expression	66	6	Adm2, Cited2, Il6, Serpine1, Slamf1, Ucn	0.09090909090909091	False
+cKO/CRE	up	GO:0051050	positive regulation of transport	69	6	Ankrd1, Cckbr, Grp, Il6, Serpine1, Ucn	0.08695652173913043	False
+WT/FF	up	GO:0006955	immune response	79	6	Bpifc, Grp, Il6, Krt6a, Sectm1b, Slamf1	0.0759493670886076	False
+WT/FF	up	GO:0042127	regulation of cell population proliferation	82	6	Cckbr, Ccn4, Cited2, Fgf3, Il6, Slamf1	0.07317073170731707	False
+WT/FF	up	GO:0009968	negative regulation of signal transduction	84	6	Dusp9, Il6, Plaur, Serpine1, Slamf1, Tmem88b	0.07142857142857142	False
+WT/FF	up	GO:0071705	nitrogen compound transport	88	6	Ankrd1, Cckbr, Grp, Il6, Ucn, Vgf	0.06818181818181818	False
+WT/FF	up	GO:0016477	cell migration	89	6	Ccn4, Cited2, Satb2, Serpine1, Slamf1, Zpld2	0.06741573033707865	False
+WT/FF	up	GO:0009719	response to endogenous stimulus	90	6	Ankrd1, Cited2, Fgf3, Il6, Ucn, Vgf	0.06666666666666667	False
+WT/FF	up	GO:0048870	cell motility	90	6	Ccn4, Cited2, Satb2, Serpine1, Slamf1, Zpld2	0.06666666666666667	False
+cKO/CRE	up	GO:0009967	positive regulation of signal transduction	90	6	Ankrd1, Grp, Il6, Plaur, Slamf1, Ucn	0.06666666666666667	False
+WT/FF	up	GO:0008283	cell population proliferation	100	6	Cckbr, Ccn4, Cited2, Fgf3, Il6, Slamf1	0.06	False
+cKO/CRE	up	GO:0042981	regulation of apoptotic process	105	6	Ankrd1, Grp, Il6, Plaur, Serpine1, Ucn	0.05714285714285714	False
+cKO/CRE	up	GO:0043067	regulation of programmed cell death	107	6	Ankrd1, Grp, Il6, Plaur, Serpine1, Ucn	0.056074766355140186	False
+cKO/CRE	up	GO:1902531	regulation of intracellular signal transduction	107	6	Ankrd1, Dusp9, Il6, Plaur, Slamf1, Ucn	0.056074766355140186	False
+WT/FF	up	GO:0006357	regulation of transcription by RNA polymerase II	108	6	Ankrd1, Cited2, Hmx3, Il6, Satb2, Ucn	0.05555555555555555	False
+WT/FF	up	GO:0006366	transcription by RNA polymerase II	108	6	Ankrd1, Cited2, Hmx3, Il6, Satb2, Ucn	0.05555555555555555	False
+WT/FF	up	GO:0006355	regulation of DNA-templated transcription	124	6	Ankrd1, Cited2, Hmx3, Il6, Satb2, Ucn	0.04838709677419355	False
+WT/FF	up	GO:2001141	regulation of RNA biosynthetic process	125	6	Ankrd1, Cited2, Hmx3, Il6, Satb2, Ucn	0.048	False
+WT/FF	up	GO:0006351	DNA-templated transcription	126	6	Ankrd1, Cited2, Hmx3, Il6, Satb2, Ucn	0.047619047619047616	False
+WT/FF	up	GO:0050793	regulation of developmental process	126	6	Adm2, Ccn4, Cited2, Fgf3, Il6, Serpine1	0.047619047619047616	False
+WT/FF	up	GO:0051252	regulation of RNA metabolic process	133	6	Ankrd1, Cited2, Hmx3, Il6, Satb2, Ucn	0.045112781954887216	False
+cKO/CRE	up	GO:0010605	negative regulation of macromolecule metabolic process	138	6	Ankrd1, ENSMUSG00000030223, Il6, Serpine1, Slamf1, Ucn	0.043478260869565216	False
+cKO/CRE	up	GO:0010557	positive regulation of macromolecule biosynthetic process	142	6	Adm2, Ankrd1, Il6, Serpine1, Slamf1, Ucn	0.04225352112676056	False
+cKO/CRE	up	GO:0009891	positive regulation of biosynthetic process	145	6	Adm2, Ankrd1, Il6, Serpine1, Slamf1, Ucn	0.041379310344827586	False
+WT/FF	up	GO:0019219	regulation of nucleobase-containing compound metabolic process	146	6	Ankrd1, Cited2, Hmx3, Il6, Satb2, Ucn	0.0410958904109589	False
+cKO/CRE	up	GO:0009892	negative regulation of metabolic process	148	6	Ankrd1, ENSMUSG00000030223, Il6, Serpine1, Slamf1, Ucn	0.04054054054054054	False
+cKO/CRE	up	GO:0033036	macromolecule localization	173	6	Ankrd1, ENSMUSG00000051209, Il6, Plppr4, Slc10a6, Vgf	0.03468208092485549	False
+cKO/CRE	up	GO:0010604	positive regulation of macromolecule metabolic process	179	6	Adm2, Ankrd1, Il6, Serpine1, Slamf1, Ucn	0.0335195530726257	False
+cKO/CRE	up	GO:0009893	positive regulation of metabolic process	195	6	Adm2, Ankrd1, Il6, Serpine1, Slamf1, Ucn	0.03076923076923077	False
+cKO/CRE	up	GO:0080090	regulation of primary metabolic process	251	6	Ankrd1, ENSMUSG00000030223, Il6, Plaur, Serpine1, Ucn	0.02390438247011952	False
+WT/FF	up	GO:0002790	peptide secretion	21	5	Cckbr, Grp, Il6, Ucn, Vgf	0.23809523809523808	False
+WT/FF	up	GO:0046879	hormone secretion	25	5	Cckbr, Grp, Il6, Ucn, Vgf	0.2	False
+WT/FF	up	GO:0009914	hormone transport	27	5	Cckbr, Grp, Il6, Ucn, Vgf	0.18518518518518517	False
+WT/FF	up	GO:0031349	positive regulation of defense response	29	5	Cckbr, Ccn4, Grp, Serpine1, Ucn	0.1724137931034483	False
+WT/FF	up	GO:0010817	regulation of hormone levels	34	5	Cckbr, Grp, Il6, Ucn, Vgf	0.14705882352941177	False
+WT/FF	up	GO:0030855	epithelial cell differentiation	39	5	2210017I01Rik, Krt6a, Lce1g, Plaur, Serpine1	0.1282051282051282	False
+WT/FF	up	GO:0061061	muscle structure development	39	5	Ankrd1, Ccn4, Cited2, Fgf3, Il6	0.1282051282051282	False
+WT/FF	up	GO:0030155	regulation of cell adhesion	43	5	Cited2, Il6, Plaur, Serpine1, Slamf1	0.11627906976744186	False
+WT/FF	up	GO:0031347	regulation of defense response	46	5	Cckbr, Ccn4, Grp, Serpine1, Ucn	0.10869565217391304	False
+WT/FF	up	GO:0001816	cytokine production	47	5	Ccn4, Il6, Serpine1, Slamf1, Ucn	0.10638297872340426	False
+WT/FF	up	GO:0001817	regulation of cytokine production	47	5	Ccn4, Il6, Serpine1, Slamf1, Ucn	0.10638297872340426	False
+WT/FF	up	GO:0008284	positive regulation of cell population proliferation	48	5	Cckbr, Ccn4, Fgf3, Il6, Slamf1	0.10416666666666667	False
+WT/FF	up	GO:0051093	negative regulation of developmental process	55	5	Ccn4, Cited2, Fgf3, Il6, Serpine1	0.09090909090909091	False
+WT/FF	up	GO:1902533	positive regulation of intracellular signal transduction	56	5	Ankrd1, Cited2, Il6, Slamf1, Ucn	0.08928571428571429	False
+cKO/CRE	up	GO:0031347	regulation of defense response	58	5	Cckbr, ENSMUSG00000025279, Grp, Serpine1, Ucn	0.08620689655172414	False
+WT/FF	up	GO:0043066	negative regulation of apoptotic process	64	5	Cited2, Il6, Plaur, Serpine1, Ucn	0.078125	False
+WT/FF	up	GO:0043069	negative regulation of programmed cell death	66	5	Cited2, Il6, Plaur, Serpine1, Ucn	0.07575757575757576	False
+cKO/CRE	up	GO:0009628	response to abiotic stimulus	67	5	Ankrd1, Clca1, Gpr151, Ucn, Vgf	0.07462686567164178	False
+WT/FF	up	GO:0042592	homeostatic process	68	5	Cckbr, Ccn4, Cited2, Il6, Vgf	0.07352941176470588	False
+WT/FF	up	GO:0016192	vesicle-mediated transport	70	5	Gpr151, Grp, Rin1, Serpine1, Slamf1	0.07142857142857142	False
+cKO/CRE	up	GO:0010628	positive regulation of gene expression	74	5	Adm2, Il6, Serpine1, Slamf1, Ucn	0.06756756756756757	False
+cKO/CRE	up	GO:0055085	transmembrane transport	76	5	Clca1, ENSMUSG00000038115, Grp, Kcnk16, Slc10a6	0.06578947368421052	False
+WT/FF	up	GO:2000026	regulation of multicellular organismal development	78	5	Adm2, Ccn4, Cited2, Il6, Serpine1	0.0641025641025641	False
+cKO/CRE	up	GO:0031175	neuron projection development	79	5	Ankrd1, ENSMUSG00000030223, Il6, Plppr4, Ucn	0.06329113924050633	False
+WT/FF	up	GO:0051094	positive regulation of developmental process	80	5	Adm2, Ccn4, Cited2, Il6, Serpine1	0.0625	False
+cKO/CRE	up	GO:0048666	neuron development	84	5	Ankrd1, ENSMUSG00000030223, Il6, Plppr4, Ucn	0.05952380952380952	False
+WT/FF	up	GO:0048699	generation of neurons	85	5	Ankrd1, Il6, Plppr4, Satb2, Ucn	0.058823529411764705	False
+WT/FF	up	GO:0045893	positive regulation of DNA-templated transcription	86	5	Ankrd1, Cited2, Il6, Satb2, Ucn	0.05813953488372093	False
+WT/FF	up	GO:1902680	positive regulation of RNA biosynthetic process	87	5	Ankrd1, Cited2, Il6, Satb2, Ucn	0.05747126436781609	False
+WT/FF	up	GO:1901700	response to oxygen-containing compound	89	5	Ankrd1, Il6, Serpine1, Ucn, Vgf	0.056179775280898875	False
+cKO/CRE	up	GO:0042127	regulation of cell population proliferation	91	5	Cckbr, ENSMUSG00000067006, Fgf3, Il6, Slamf1	0.054945054945054944	False
+WT/FF	up	GO:0051254	positive regulation of RNA metabolic process	92	5	Ankrd1, Cited2, Il6, Satb2, Ucn	0.05434782608695652	False
+cKO/CRE	up	GO:0016192	vesicle-mediated transport	92	5	Gpr151, Grp, Rin1, Serpine1, Slamf1	0.05434782608695652	False
+WT/FF	up	GO:0141124	intracellular signaling cassette	99	5	Cckbr, Dusp9, Il6, Slamf1, Ucn	0.050505050505050504	False
+WT/FF	up	GO:0045935	positive regulation of nucleobase-containing compound metabolic process	101	5	Ankrd1, Cited2, Il6, Satb2, Ucn	0.04950495049504951	False
+cKO/CRE	up	GO:0030030	cell projection organization	102	5	Ankrd1, ENSMUSG00000030223, Il6, Plppr4, Ucn	0.049019607843137254	False
+cKO/CRE	up	GO:0030182	neuron differentiation	102	5	Ankrd1, ENSMUSG00000030223, Il6, Plppr4, Ucn	0.049019607843137254	False
+cKO/CRE	up	GO:0120036	plasma membrane bounded cell projection organization	102	5	Ankrd1, ENSMUSG00000030223, Il6, Plppr4, Ucn	0.049019607843137254	False
+WT/FF	up	GO:0022008	neurogenesis	103	5	Ankrd1, Il6, Plppr4, Satb2, Ucn	0.04854368932038835	False
+cKO/CRE	up	GO:0048699	generation of neurons	103	5	Ankrd1, ENSMUSG00000030223, Il6, Plppr4, Ucn	0.04854368932038835	False
+cKO/CRE	up	GO:0009719	response to endogenous stimulus	105	5	Ankrd1, Fgf3, Il6, Ucn, Vgf	0.047619047619047616	False
+cKO/CRE	up	GO:1901700	response to oxygen-containing compound	106	5	Ankrd1, Il6, Serpine1, Ucn, Vgf	0.04716981132075472	False
+cKO/CRE	up	GO:0141124	intracellular signaling cassette	111	5	Cckbr, Dusp9, Il6, Slamf1, Ucn	0.04504504504504504	False
+cKO/CRE	up	GO:0008283	cell population proliferation	113	5	Cckbr, ENSMUSG00000067006, Fgf3, Il6, Slamf1	0.04424778761061947	False
+cKO/CRE	up	GO:0051246	regulation of protein metabolic process	116	5	ENSMUSG00000030223, Il6, Plaur, Serpine1, Ucn	0.04310344827586207	False
+cKO/CRE	up	GO:0010558	negative regulation of macromolecule biosynthetic process	117	5	Ankrd1, Il6, Serpine1, Slamf1, Ucn	0.042735042735042736	False
+cKO/CRE	up	GO:0009890	negative regulation of biosynthetic process	121	5	Ankrd1, Il6, Serpine1, Slamf1, Ucn	0.04132231404958678	False
+cKO/CRE	up	GO:0022008	neurogenesis	123	5	Ankrd1, ENSMUSG00000030223, Il6, Plppr4, Ucn	0.04065040650406504	False
+WT/FF	up	GO:0033036	macromolecule localization	124	5	Ankrd1, Il6, Plppr4, Slc10a6, Vgf	0.04032258064516129	False
+WT/FF	up	GO:0051641	cellular localization	143	5	Ankrd1, Gpr151, Grp, Il6, Vgf	0.03496503496503497	False
+cKO/CRE	up	GO:0006793	phosphorus metabolic process	145	5	Dusp9, ENSMUSG00000030223, Il6, Plppr4, Ucn	0.034482758620689655	False
+cKO/CRE	up	GO:0006796	phosphate-containing compound metabolic process	145	5	Dusp9, ENSMUSG00000030223, Il6, Plppr4, Ucn	0.034482758620689655	False
+cKO/CRE	up	GO:0007399	nervous system development	155	5	Ankrd1, ENSMUSG00000030223, Il6, Plppr4, Ucn	0.03225806451612903	False
+WT/FF	up	GO:0046883	regulation of hormone secretion	21	4	Cckbr, Grp, Il6, Ucn	0.19047619047619047	False
+WT/FF	up	GO:1903532	positive regulation of secretion by cell	26	4	Ankrd1, Cckbr, Grp, Ucn	0.15384615384615385	False
+WT/FF	up	GO:0051047	positive regulation of secretion	27	4	Ankrd1, Cckbr, Grp, Ucn	0.14814814814814814	False
+cKO/CRE	up	GO:1903532	positive regulation of secretion by cell	28	4	Ankrd1, Cckbr, Grp, Ucn	0.14285714285714285	False
+cKO/CRE	up	GO:0009306	protein secretion	29	4	Ankrd1, ENSMUSG00000051209, Il6, Vgf	0.13793103448275862	False
+cKO/CRE	up	GO:0035592	establishment of protein localization to extracellular region	29	4	Ankrd1, ENSMUSG00000051209, Il6, Vgf	0.13793103448275862	False
+cKO/CRE	up	GO:0051047	positive regulation of secretion	29	4	Ankrd1, Cckbr, Grp, Ucn	0.13793103448275862	False
+cKO/CRE	up	GO:0071692	protein localization to extracellular region	29	4	Ankrd1, ENSMUSG00000051209, Il6, Vgf	0.13793103448275862	False
+WT/FF	up	GO:0001819	positive regulation of cytokine production	33	4	Il6, Serpine1, Slamf1, Ucn	0.12121212121212122	False
+cKO/CRE	up	GO:0031349	positive regulation of defense response	33	4	Cckbr, Grp, Serpine1, Ucn	0.12121212121212122	False
+cKO/CRE	up	GO:0001819	positive regulation of cytokine production	35	4	Il6, Serpine1, Slamf1, Ucn	0.11428571428571428	False
+cKO/CRE	up	GO:0048729	tissue morphogenesis	40	4	Ankrd1, ENSMUSG00000067006, Il6, Krt6a	0.1	False
+WT/FF	up	GO:0000165	MAPK cascade	41	4	Cckbr, Dusp9, Il6, Slamf1	0.0975609756097561	False
+WT/FF	up	GO:0030097	hemopoiesis	46	4	Ccn4, Cited2, Il6, Slamf1	0.08695652173913043	False
+cKO/CRE	up	GO:0000165	MAPK cascade	46	4	Cckbr, Dusp9, Il6, Slamf1	0.08695652173913043	False
+WT/FF	up	GO:0006954	inflammatory response	47	4	Ccn4, Il6, Serpine1, Slamf1	0.0851063829787234	False
+cKO/CRE	up	GO:0001816	cytokine production	50	4	Il6, Serpine1, Slamf1, Ucn	0.08	False
+cKO/CRE	up	GO:0001817	regulation of cytokine production	50	4	Il6, Serpine1, Slamf1, Ucn	0.08	False
+WT/FF	up	GO:0071363	cellular response to growth factor stimulus	51	4	Ankrd1, Cited2, Fgf3, Il6	0.0784313725490196	False
+cKO/CRE	up	GO:0030155	regulation of cell adhesion	51	4	Il6, Plaur, Serpine1, Slamf1	0.0784313725490196	False
+WT/FF	up	GO:0033993	response to lipid	52	4	Ankrd1, Il6, Serpine1, Ucn	0.07692307692307693	False
+WT/FF	up	GO:0070848	response to growth factor	53	4	Ankrd1, Cited2, Fgf3, Il6	0.07547169811320754	False
+WT/FF	up	GO:0022603	regulation of anatomical structure morphogenesis	54	4	Adm2, Cited2, Il6, Serpine1	0.07407407407407407	False
+WT/FF	up	GO:0009790	embryo development	56	4	Cited2, Hmx3, Satb2, Tm4sf1	0.07142857142857142	False
+WT/FF	up	GO:0035295	tube development	56	4	Adm2, Cckbr, Cited2, Serpine1	0.07142857142857142	False
+cKO/CRE	up	GO:0006954	inflammatory response	56	4	ENSMUSG00000025279, Il6, Serpine1, Slamf1	0.07142857142857142	False
+WT/FF	up	GO:0048646	anatomical structure formation involved in morphogenesis	58	4	Adm2, Cited2, Serpine1, Tm4sf1	0.06896551724137931	False
+WT/FF	up	GO:0051130	positive regulation of cellular component organization	58	4	Ankrd1, Il6, Plaur, Serpine1	0.06896551724137931	False
+WT/FF	up	GO:0030334	regulation of cell migration	59	4	Ccn4, Cited2, Serpine1, Slamf1	0.06779661016949153	False
+WT/FF	up	GO:0032101	regulation of response to external stimulus	59	4	Ccn4, Plaur, Serpine1, Slamf1	0.06779661016949153	False
+WT/FF	up	GO:2000145	regulation of cell motility	61	4	Ccn4, Cited2, Serpine1, Slamf1	0.06557377049180328	False
+WT/FF	up	GO:0031175	neuron projection development	62	4	Ankrd1, Il6, Plppr4, Ucn	0.06451612903225806	False
+WT/FF	up	GO:0040012	regulation of locomotion	63	4	Ccn4, Cited2, Serpine1, Slamf1	0.06349206349206349	False
+cKO/CRE	up	GO:1902533	positive regulation of intracellular signal transduction	63	4	Ankrd1, Il6, Slamf1, Ucn	0.06349206349206349	False
+WT/FF	up	GO:0055085	transmembrane transport	65	4	Clca1, Grp, Kcnk16, Slc10a6	0.06153846153846154	False
+cKO/CRE	up	GO:0140546	defense response to symbiont	65	4	Bpifc, ENSMUSG00000076434, Krt6a, Slamf1	0.06153846153846154	False
+WT/FF	up	GO:0040011	locomotion	67	4	Ccn4, Cited2, Serpine1, Slamf1	0.05970149253731343	False
+WT/FF	up	GO:0048666	neuron development	67	4	Ankrd1, Il6, Plppr4, Ucn	0.05970149253731343	False
+WT/FF	up	GO:0071495	cellular response to endogenous stimulus	69	4	Ankrd1, Cited2, Fgf3, Il6	0.057971014492753624	False
+WT/FF	up	GO:0045944	positive regulation of transcription by RNA polymerase II	71	4	Cited2, Il6, Satb2, Ucn	0.056338028169014086	False
+cKO/CRE	up	GO:0043066	negative regulation of apoptotic process	71	4	Il6, Plaur, Serpine1, Ucn	0.056338028169014086	False
+cKO/CRE	up	GO:0032101	regulation of response to external stimulus	73	4	ENSMUSG00000025279, Plaur, Serpine1, Slamf1	0.0547945205479452	False
+cKO/CRE	up	GO:0043069	negative regulation of programmed cell death	73	4	Il6, Plaur, Serpine1, Ucn	0.0547945205479452	False
+cKO/CRE	up	GO:0072359	circulatory system development	73	4	Adm2, Ankrd1, Fgf3, Serpine1	0.0547945205479452	False
+cKO/CRE	up	GO:0007155	cell adhesion	75	4	Il6, Plaur, Serpine1, Slamf1	0.05333333333333334	False
+cKO/CRE	up	GO:0051130	positive regulation of cellular component organization	77	4	Ankrd1, Il6, Plaur, Serpine1	0.05194805194805195	False
+WT/FF	up	GO:0030030	cell projection organization	79	4	Ankrd1, Il6, Plppr4, Ucn	0.05063291139240506	False
+WT/FF	up	GO:0120036	plasma membrane bounded cell projection organization	79	4	Ankrd1, Il6, Plppr4, Ucn	0.05063291139240506	False
+cKO/CRE	up	GO:0006508	proteolysis	79	4	Clca1, Ecel1, Plaur, Serpine1	0.05063291139240506	False
+WT/FF	up	GO:0030182	neuron differentiation	83	4	Ankrd1, Il6, Plppr4, Ucn	0.04819277108433735	False
+WT/FF	up	GO:0051246	regulation of protein metabolic process	86	4	Il6, Plaur, Serpine1, Ucn	0.046511627906976744	False
+cKO/CRE	up	GO:0015031	protein transport	92	4	Ankrd1, ENSMUSG00000051209, Il6, Vgf	0.043478260869565216	False
+cKO/CRE	up	GO:0002682	regulation of immune system process	93	4	ENSMUSG00000025279, Il6, Serpine1, Slamf1	0.043010752688172046	False
+cKO/CRE	up	GO:0016477	cell migration	106	4	ENSMUSG00000030223, Serpine1, Slamf1, Zpld2	0.03773584905660377	False
+cKO/CRE	up	GO:0045184	establishment of protein localization	107	4	Ankrd1, ENSMUSG00000051209, Il6, Vgf	0.037383177570093455	False
+cKO/CRE	up	GO:0048870	cell motility	107	4	ENSMUSG00000030223, Serpine1, Slamf1, Zpld2	0.037383177570093455	False
+WT/FF	up	GO:0006793	phosphorus metabolic process	110	4	Dusp9, Il6, Plppr4, Ucn	0.03636363636363636	False
+WT/FF	up	GO:0006796	phosphate-containing compound metabolic process	110	4	Dusp9, Il6, Plppr4, Ucn	0.03636363636363636	False
+cKO/CRE	up	GO:0051649	establishment of localization in cell	123	4	ENSMUSG00000038115, Gpr151, Grp, Il6	0.032520325203252036	False
+cKO/CRE	up	GO:0008104	protein localization	146	4	Ankrd1, ENSMUSG00000051209, Il6, Vgf	0.0273972602739726	False
+cKO/CRE	up	GO:0036211	protein modification process	149	4	Dusp9, ENSMUSG00000030223, Il6, Ucn	0.026845637583892617	False
+cKO/CRE	up	GO:0070727	cellular macromolecule localization	149	4	Ankrd1, ENSMUSG00000051209, Il6, Vgf	0.026845637583892617	False
+cKO/CRE	up	GO:0043412	macromolecule modification	154	4	Dusp9, ENSMUSG00000030223, Il6, Ucn	0.025974025974025976	False
+cKO/CRE	up	GO:0050793	regulation of developmental process	155	4	Adm2, Fgf3, Il6, Serpine1	0.025806451612903226	False
+WT/FF	up	GO:0071219	cellular response to molecule of bacterial origin	21	3	Ankrd1, Il6, Serpine1	0.14285714285714285	False
+WT/FF	up	GO:0071222	cellular response to lipopolysaccharide	21	3	Ankrd1, Il6, Serpine1	0.14285714285714285	False
+WT/FF	up	GO:0071216	cellular response to biotic stimulus	22	3	Ankrd1, Il6, Serpine1	0.13636363636363635	False
+cKO/CRE	up	GO:0043588	skin development	24	3	2210017I01Rik, Krt6a, Lce1g	0.125	False
+WT/FF	up	GO:0009306	protein secretion	26	3	Ankrd1, Il6, Vgf	0.11538461538461539	False
+WT/FF	up	GO:0035592	establishment of protein localization to extracellular region	26	3	Ankrd1, Il6, Vgf	0.11538461538461539	False
+WT/FF	up	GO:0071692	protein localization to extracellular region	26	3	Ankrd1, Il6, Vgf	0.11538461538461539	False
+cKO/CRE	up	GO:0071216	cellular response to biotic stimulus	26	3	Ankrd1, Il6, Serpine1	0.11538461538461539	False
+WT/FF	up	GO:0051051	negative regulation of transport	27	3	Grp, Il6, Ucn	0.1111111111111111	False
+WT/FF	up	GO:0002237	response to molecule of bacterial origin	28	3	Ankrd1, Il6, Serpine1	0.10714285714285714	False
+WT/FF	up	GO:0032496	response to lipopolysaccharide	28	3	Ankrd1, Il6, Serpine1	0.10714285714285714	False
+WT/FF	up	GO:0048568	embryonic organ development	28	3	Cited2, Hmx3, Satb2	0.10714285714285714	False
+WT/FF	up	GO:0001503	ossification	29	3	Ccn4, Grp, Satb2	0.10344827586206896	False
+cKO/CRE	up	GO:0016055	Wnt signaling pathway	30	3	ENSMUSG00000030223, Krt6a, Tmem88b	0.1	False
+WT/FF	up	GO:0043408	regulation of MAPK cascade	33	3	Dusp9, Il6, Slamf1	0.09090909090909091	False
+WT/FF	up	GO:0060627	regulation of vesicle-mediated transport	33	3	Gpr151, Serpine1, Slamf1	0.09090909090909091	False
+WT/FF	up	GO:0048514	blood vessel morphogenesis	34	3	Adm2, Cited2, Serpine1	0.08823529411764706	False
+WT/FF	up	GO:0030335	positive regulation of cell migration	35	3	Ccn4, Serpine1, Slamf1	0.08571428571428572	False
+WT/FF	up	GO:0032103	positive regulation of response to external stimulus	35	3	Ccn4, Serpine1, Slamf1	0.08571428571428572	False
+WT/FF	up	GO:2000147	positive regulation of cell motility	35	3	Ccn4, Serpine1, Slamf1	0.08571428571428572	False
+WT/FF	up	GO:0040008	regulation of growth	36	3	Ccn4, Cited2, Ucn	0.08333333333333333	False
+WT/FF	up	GO:0040017	positive regulation of locomotion	36	3	Ccn4, Serpine1, Slamf1	0.08333333333333333	False
+WT/FF	up	GO:0048598	embryonic morphogenesis	37	3	Cited2, Hmx3, Satb2	0.08108108108108109	False
+WT/FF	up	GO:0001568	blood vessel development	38	3	Adm2, Cited2, Serpine1	0.07894736842105263	False
+cKO/CRE	up	GO:0043408	regulation of MAPK cascade	38	3	Dusp9, Il6, Slamf1	0.07894736842105263	False
+WT/FF	up	GO:0001944	vasculature development	39	3	Adm2, Cited2, Serpine1	0.07692307692307693	False
+WT/FF	up	GO:0006897	endocytosis	39	3	Rin1, Serpine1, Slamf1	0.07692307692307693	False
+cKO/CRE	up	GO:0060627	regulation of vesicle-mediated transport	42	3	Gpr151, Serpine1, Slamf1	0.07142857142857142	False
+WT/FF	up	GO:0035239	tube morphogenesis	45	3	Adm2, Cited2, Serpine1	0.06666666666666667	False
+WT/FF	up	GO:0000122	negative regulation of transcription by RNA polymerase II	47	3	Ankrd1, Cited2, Satb2	0.06382978723404255	False
+WT/FF	up	GO:0040007	growth	47	3	Ccn4, Cited2, Ucn	0.06382978723404255	False
+WT/FF	up	GO:0001775	cell activation	48	3	Grp, Il6, Slamf1	0.0625	False
+WT/FF	up	GO:0009725	response to hormone	48	3	Cited2, Ucn, Vgf	0.0625	False
+cKO/CRE	up	GO:0006897	endocytosis	48	3	Rin1, Serpine1, Slamf1	0.0625	False
+WT/FF	up	GO:0002684	positive regulation of immune system process	51	3	Il6, Serpine1, Slamf1	0.058823529411764705	False
+WT/FF	up	GO:0140546	defense response to symbiont	51	3	Bpifc, Krt6a, Slamf1	0.058823529411764705	False
+WT/FF	up	GO:0098657	import into cell	52	3	Rin1, Serpine1, Slamf1	0.057692307692307696	False
+WT/FF	up	GO:0045597	positive regulation of cell differentiation	54	3	Ccn4, Il6, Serpine1	0.05555555555555555	False
+cKO/CRE	up	GO:0001932	regulation of protein phosphorylation	58	3	ENSMUSG00000030223, Il6, Ucn	0.05172413793103448	False
+WT/FF	up	GO:0007167	enzyme-linked receptor protein signaling pathway	59	3	Cited2, Fgf3, Plaur	0.05084745762711865	False
+cKO/CRE	up	GO:0042325	regulation of phosphorylation	59	3	ENSMUSG00000030223, Il6, Ucn	0.05084745762711865	False
+cKO/CRE	up	GO:0051093	negative regulation of developmental process	59	3	Fgf3, Il6, Serpine1	0.05084745762711865	False
+WT/FF	up	GO:0045892	negative regulation of DNA-templated transcription	60	3	Ankrd1, Cited2, Satb2	0.05	False
+WT/FF	up	GO:1902679	negative regulation of RNA biosynthetic process	60	3	Ankrd1, Cited2, Satb2	0.05	False
+cKO/CRE	up	GO:0071363	cellular response to growth factor stimulus	61	3	Ankrd1, Fgf3, Il6	0.04918032786885246	False
+WT/FF	up	GO:1901701	cellular response to oxygen-containing compound	62	3	Ankrd1, Il6, Serpine1	0.04838709677419355	False
+cKO/CRE	up	GO:0000902	cell morphogenesis	62	3	ENSMUSG00000030223, Il6, Plppr4	0.04838709677419355	False
+WT/FF	up	GO:0051253	negative regulation of RNA metabolic process	63	3	Ankrd1, Cited2, Satb2	0.047619047619047616	False
+cKO/CRE	up	GO:0045087	innate immune response	63	3	Bpifc, ENSMUSG00000076434, Slamf1	0.047619047619047616	False
+cKO/CRE	up	GO:0070848	response to growth factor	63	3	Ankrd1, Fgf3, Il6	0.047619047619047616	False
+cKO/CRE	up	GO:0002684	positive regulation of immune system process	64	3	Il6, Serpine1, Slamf1	0.046875	False
+cKO/CRE	up	GO:0098657	import into cell	64	3	Rin1, Serpine1, Slamf1	0.046875	False
+cKO/CRE	up	GO:0019220	regulation of phosphate metabolic process	65	3	ENSMUSG00000030223, Il6, Ucn	0.046153846153846156	False
+cKO/CRE	up	GO:0031399	regulation of protein modification process	65	3	ENSMUSG00000030223, Il6, Ucn	0.046153846153846156	False
+cKO/CRE	up	GO:0051174	regulation of phosphorus metabolic process	65	3	ENSMUSG00000030223, Il6, Ucn	0.046153846153846156	False
+cKO/CRE	up	GO:0022603	regulation of anatomical structure morphogenesis	66	3	Adm2, Il6, Serpine1	0.045454545454545456	False
+cKO/CRE	up	GO:0035295	tube development	67	3	Adm2, Cckbr, Serpine1	0.04477611940298507	False
+WT/FF	up	GO:0015031	protein transport	69	3	Ankrd1, Il6, Vgf	0.043478260869565216	False
+WT/FF	up	GO:0045934	negative regulation of nucleobase-containing compound metabolic process	69	3	Ankrd1, Cited2, Satb2	0.043478260869565216	False
+cKO/CRE	up	GO:1901701	cellular response to oxygen-containing compound	75	3	Ankrd1, Il6, Serpine1	0.04	False
+WT/FF	up	GO:0045184	establishment of protein localization	76	3	Ankrd1, Il6, Vgf	0.039473684210526314	False
+WT/FF	up	GO:0002682	regulation of immune system process	77	3	Il6, Serpine1, Slamf1	0.03896103896103896	False
+cKO/CRE	up	GO:0071495	cellular response to endogenous stimulus	83	3	Ankrd1, Fgf3, Il6	0.03614457831325301	False
+cKO/CRE	up	GO:0040011	locomotion	84	3	ENSMUSG00000030223, Serpine1, Slamf1	0.03571428571428571	False
+WT/FF	up	GO:0033554	cellular response to stress	85	3	Ankrd1, Cited2, Clca1	0.03529411764705882	False
+WT/FF	up	GO:0045595	regulation of cell differentiation	86	3	Ccn4, Il6, Serpine1	0.03488372093023256	False
+cKO/CRE	up	GO:2000026	regulation of multicellular organismal development	87	3	Adm2, Il6, Serpine1	0.034482758620689655	False
+cKO/CRE	up	GO:0006468	protein phosphorylation	89	3	ENSMUSG00000030223, Il6, Ucn	0.033707865168539325	False
+cKO/CRE	up	GO:0042592	homeostatic process	89	3	Cckbr, Il6, Vgf	0.033707865168539325	False
+WT/FF	up	GO:0051649	establishment of localization in cell	90	3	Gpr151, Grp, Il6	0.03333333333333333	False
+cKO/CRE	up	GO:0051094	positive regulation of developmental process	91	3	Adm2, Il6, Serpine1	0.03296703296703297	False
+cKO/CRE	up	GO:0016310	phosphorylation	95	3	ENSMUSG00000030223, Il6, Ucn	0.031578947368421054	False
+cKO/CRE	up	GO:0045893	positive regulation of DNA-templated transcription	100	3	Ankrd1, Il6, Ucn	0.03	False
+cKO/CRE	up	GO:1902680	positive regulation of RNA biosynthetic process	100	3	Ankrd1, Il6, Ucn	0.03	False
+cKO/CRE	up	GO:0051254	positive regulation of RNA metabolic process	105	3	Ankrd1, Il6, Ucn	0.02857142857142857	False
+WT/FF	up	GO:0008104	protein localization	107	3	Ankrd1, Il6, Vgf	0.028037383177570093	False
+WT/FF	up	GO:0070727	cellular macromolecule localization	108	3	Ankrd1, Il6, Vgf	0.027777777777777776	False
+WT/FF	up	GO:0036211	protein modification process	112	3	Dusp9, Il6, Ucn	0.026785714285714284	False
+cKO/CRE	up	GO:0045935	positive regulation of nucleobase-containing compound metabolic process	113	3	Ankrd1, Il6, Ucn	0.02654867256637168	False
+WT/FF	up	GO:0043412	macromolecule modification	116	3	Dusp9, Il6, Ucn	0.02586206896551724	False
+WT/FF	up	GO:0006996	organelle organization	122	3	Krt6a, Plaur, Slamf1	0.02459016393442623	False
+cKO/CRE	up	GO:0006357	regulation of transcription by RNA polymerase II	125	3	Ankrd1, Il6, Ucn	0.024	False
+cKO/CRE	up	GO:0006366	transcription by RNA polymerase II	126	3	Ankrd1, Il6, Ucn	0.023809523809523808	False
+cKO/CRE	up	GO:0006355	regulation of DNA-templated transcription	146	3	Ankrd1, Il6, Ucn	0.02054794520547945	False
+cKO/CRE	up	GO:2001141	regulation of RNA biosynthetic process	147	3	Ankrd1, Il6, Ucn	0.02040816326530612	False
+cKO/CRE	up	GO:0006351	DNA-templated transcription	149	3	Ankrd1, Il6, Ucn	0.020134228187919462	False
+cKO/CRE	up	GO:0006996	organelle organization	159	3	Krt6a, Plaur, Slamf1	0.018867924528301886	False
+cKO/CRE	up	GO:0051252	regulation of RNA metabolic process	161	3	Ankrd1, Il6, Ucn	0.018633540372670808	False
+cKO/CRE	up	GO:0019219	regulation of nucleobase-containing compound metabolic process	174	3	Ankrd1, Il6, Ucn	0.017241379310344827	False
+WT/FF	up	GO:0070555	response to interleukin-1	11	2	Ankrd1, Il6	0.18181818181818182	False
+WT/FF	up	GO:0014910	regulation of smooth muscle cell migration	15	2	Ccn4, Serpine1	0.13333333333333333	False
+cKO/CRE	up	GO:0018105	peptidyl-serine phosphorylation	15	2	Il6, Ucn	0.13333333333333333	False
+WT/FF	up	GO:0014909	smooth muscle cell migration	16	2	Ccn4, Serpine1	0.125	False
+cKO/CRE	up	GO:0018209	peptidyl-serine modification	16	2	Il6, Ucn	0.125	False
+WT/FF	up	GO:0014812	muscle cell migration	17	2	Ccn4, Serpine1	0.11764705882352941	False
+WT/FF	up	GO:0001649	osteoblast differentiation	19	2	Ccn4, Satb2	0.10526315789473684	False
+WT/FF	up	GO:0045927	positive regulation of growth	20	2	Ccn4, Ucn	0.1	False
+WT/FF	up	GO:0033002	muscle cell proliferation	21	2	Ccn4, Cited2	0.09523809523809523	False
+WT/FF	up	GO:0043523	regulation of neuron apoptotic process	21	2	Il6, Ucn	0.09523809523809523	False
+WT/FF	up	GO:0045765	regulation of angiogenesis	21	2	Adm2, Serpine1	0.09523809523809523	False
+WT/FF	up	GO:1901342	regulation of vasculature development	21	2	Adm2, Serpine1	0.09523809523809523	False
+WT/FF	up	GO:0030336	negative regulation of cell migration	22	2	Cited2, Serpine1	0.09090909090909091	False
+WT/FF	up	GO:0050727	regulation of inflammatory response	22	2	Ccn4, Serpine1	0.09090909090909091	False
+WT/FF	up	GO:0040013	negative regulation of locomotion	23	2	Cited2, Serpine1	0.08695652173913043	False
+WT/FF	up	GO:0050890	cognition	23	2	Rin1, Ucn	0.08695652173913043	False
+WT/FF	up	GO:0051402	neuron apoptotic process	23	2	Il6, Ucn	0.08695652173913043	False
+WT/FF	up	GO:1904951	positive regulation of establishment of protein localization	23	2	Ankrd1, Il6	0.08695652173913043	False
+WT/FF	up	GO:2000146	negative regulation of cell motility	23	2	Cited2, Serpine1	0.08695652173913043	False
+WT/FF	up	GO:2001234	negative regulation of apoptotic signaling pathway	23	2	Plaur, Serpine1	0.08695652173913043	False
+WT/FF	up	GO:0048511	rhythmic process	24	2	Cckbr, Il6	0.08333333333333333	False
+cKO/CRE	up	GO:0010976	positive regulation of neuron projection development	24	2	Ankrd1, Il6	0.08333333333333333	False
+cKO/CRE	up	GO:0045765	regulation of angiogenesis	24	2	Adm2, Serpine1	0.08333333333333333	False
+cKO/CRE	up	GO:0051222	positive regulation of protein transport	24	2	Ankrd1, Il6	0.08333333333333333	False
+cKO/CRE	up	GO:1901342	regulation of vasculature development	24	2	Adm2, Serpine1	0.08333333333333333	False
+cKO/CRE	up	GO:0048511	rhythmic process	26	2	Cckbr, Il6	0.07692307692307693	False
+WT/FF	up	GO:0031346	positive regulation of cell projection organization	27	2	Ankrd1, Il6	0.07407407407407407	False
+cKO/CRE	up	GO:2001234	negative regulation of apoptotic signaling pathway	27	2	Plaur, Serpine1	0.07407407407407407	False
+WT/FF	up	GO:0001934	positive regulation of protein phosphorylation	28	2	Il6, Ucn	0.07142857142857142	False
+WT/FF	up	GO:0042327	positive regulation of phosphorylation	28	2	Il6, Ucn	0.07142857142857142	False
+WT/FF	up	GO:0048638	regulation of developmental growth	28	2	Ccn4, Cited2	0.07142857142857142	False
+WT/FF	up	GO:2001233	regulation of apoptotic signaling pathway	28	2	Plaur, Serpine1	0.07142857142857142	False
+cKO/CRE	up	GO:0030162	regulation of proteolysis	28	2	Plaur, Serpine1	0.07142857142857142	False
+cKO/CRE	up	GO:0032102	negative regulation of response to external stimulus	29	2	Plaur, Serpine1	0.06896551724137931	False
+cKO/CRE	up	GO:1904951	positive regulation of establishment of protein localization	29	2	Ankrd1, Il6	0.06896551724137931	False
+WT/FF	up	GO:0010562	positive regulation of phosphorus metabolic process	30	2	Il6, Ucn	0.06666666666666667	False
+WT/FF	up	GO:0045937	positive regulation of phosphate metabolic process	30	2	Il6, Ucn	0.06666666666666667	False
+WT/FF	up	GO:0051223	regulation of protein transport	30	2	Ankrd1, Il6	0.06666666666666667	False
+cKO/CRE	up	GO:0006887	exocytosis	30	2	Gpr151, Grp	0.06666666666666667	False
+WT/FF	up	GO:0010975	regulation of neuron projection development	31	2	Ankrd1, Il6	0.06451612903225806	False
+WT/FF	up	GO:0031401	positive regulation of protein modification process	32	2	Il6, Ucn	0.0625	False
+WT/FF	up	GO:0031667	response to nutrient levels	32	2	Ucn, Vgf	0.0625	False
+cKO/CRE	up	GO:0050803	regulation of synapse structure or activity	32	2	ENSMUSG00000030223, Plppr4	0.0625	False
+cKO/CRE	up	GO:0050807	regulation of synapse organization	32	2	ENSMUSG00000030223, Plppr4	0.0625	False
+WT/FF	up	GO:0001525	angiogenesis	33	2	Adm2, Serpine1	0.06060606060606061	False
+WT/FF	up	GO:0018193	peptidyl-amino acid modification	33	2	Il6, Ucn	0.06060606060606061	False
+cKO/CRE	up	GO:0001934	positive regulation of protein phosphorylation	33	2	Il6, Ucn	0.06060606060606061	False
+cKO/CRE	up	GO:0042327	positive regulation of phosphorylation	33	2	Il6, Ucn	0.06060606060606061	False
+WT/FF	up	GO:0070201	regulation of establishment of protein localization	34	2	Ankrd1, Il6	0.058823529411764705	False
+cKO/CRE	up	GO:2001233	regulation of apoptotic signaling pathway	35	2	Plaur, Serpine1	0.05714285714285714	False
+WT/FF	up	GO:0050778	positive regulation of immune response	36	2	Il6, Slamf1	0.05555555555555555	False
+WT/FF	up	GO:1903829	positive regulation of protein localization	36	2	Ankrd1, Il6	0.05555555555555555	False
+cKO/CRE	up	GO:0051223	regulation of protein transport	36	2	Ankrd1, Il6	0.05555555555555555	False
+cKO/CRE	up	GO:0061564	axon development	36	2	ENSMUSG00000030223, Plppr4	0.05555555555555555	False
+cKO/CRE	up	GO:0010562	positive regulation of phosphorus metabolic process	37	2	Il6, Ucn	0.05405405405405406	False
+cKO/CRE	up	GO:0045937	positive regulation of phosphate metabolic process	37	2	Il6, Ucn	0.05405405405405406	False
+cKO/CRE	up	GO:0031401	positive regulation of protein modification process	38	2	Il6, Ucn	0.05263157894736842	False
+WT/FF	up	GO:0008285	negative regulation of cell population proliferation	40	2	Cited2, Il6	0.05	False
+WT/FF	up	GO:0048589	developmental growth	40	2	Ccn4, Cited2	0.05	False
+cKO/CRE	up	GO:0001525	angiogenesis	40	2	Adm2, Serpine1	0.05	False
+cKO/CRE	up	GO:0031346	positive regulation of cell projection organization	40	2	Ankrd1, Il6	0.05	False
+cKO/CRE	up	GO:0032103	positive regulation of response to external stimulus	40	2	Serpine1, Slamf1	0.05	False
+cKO/CRE	up	GO:1903829	positive regulation of protein localization	40	2	Ankrd1, Il6	0.05	False
+WT/FF	up	GO:0043065	positive regulation of apoptotic process	41	2	Ankrd1, Grp	0.04878048780487805	False
+WT/FF	up	GO:0120035	regulation of plasma membrane bounded cell projection organization	41	2	Ankrd1, Il6	0.04878048780487805	False
+cKO/CRE	up	GO:0031667	response to nutrient levels	41	2	Ucn, Vgf	0.04878048780487805	False
+cKO/CRE	up	GO:0070201	regulation of establishment of protein localization	41	2	Ankrd1, Il6	0.04878048780487805	False
+WT/FF	up	GO:0031344	regulation of cell projection organization	42	2	Ankrd1, Il6	0.047619047619047616	False
+WT/FF	up	GO:0043068	positive regulation of programmed cell death	42	2	Ankrd1, Grp	0.047619047619047616	False
+cKO/CRE	up	GO:0048514	blood vessel morphogenesis	42	2	Adm2, Serpine1	0.047619047619047616	False
+cKO/CRE	up	GO:0050808	synapse organization	42	2	ENSMUSG00000030223, Plppr4	0.047619047619047616	False
+cKO/CRE	up	GO:0065009	regulation of molecular function	42	2	ENSMUSG00000030223, Grp	0.047619047619047616	False
+WT/FF	up	GO:0007169	cell surface receptor protein tyrosine kinase signaling pathway	43	2	Fgf3, Plaur	0.046511627906976744	False
+cKO/CRE	up	GO:0010975	regulation of neuron projection development	43	2	Ankrd1, Il6	0.046511627906976744	False
+cKO/CRE	up	GO:0018193	peptidyl-amino acid modification	43	2	Il6, Ucn	0.046511627906976744	False
+cKO/CRE	up	GO:0030335	positive regulation of cell migration	44	2	Serpine1, Slamf1	0.045454545454545456	False
+cKO/CRE	up	GO:2000147	positive regulation of cell motility	44	2	Serpine1, Slamf1	0.045454545454545456	False
+cKO/CRE	up	GO:0040017	positive regulation of locomotion	45	2	Serpine1, Slamf1	0.044444444444444446	False
+WT/FF	up	GO:0001932	regulation of protein phosphorylation	46	2	Il6, Ucn	0.043478260869565216	False
+WT/FF	up	GO:0050776	regulation of immune response	46	2	Il6, Slamf1	0.043478260869565216	False
+cKO/CRE	up	GO:0050778	positive regulation of immune response	46	2	Il6, Slamf1	0.043478260869565216	False
+cKO/CRE	up	GO:0051248	negative regulation of protein metabolic process	46	2	ENSMUSG00000030223, Serpine1	0.043478260869565216	False
+WT/FF	up	GO:0042325	regulation of phosphorylation	47	2	Il6, Ucn	0.0425531914893617	False
+WT/FF	up	GO:0097190	apoptotic signaling pathway	47	2	Plaur, Serpine1	0.0425531914893617	False
+WT/FF	up	GO:1902532	negative regulation of intracellular signal transduction	47	2	Dusp9, Plaur	0.0425531914893617	False
+WT/FF	up	GO:0051247	positive regulation of protein metabolic process	48	2	Il6, Ucn	0.041666666666666664	False
+WT/FF	up	GO:0045087	innate immune response	49	2	Bpifc, Slamf1	0.04081632653061224	False
+WT/FF	up	GO:0071345	cellular response to cytokine stimulus	49	2	Ankrd1, Il6	0.04081632653061224	False
+cKO/CRE	up	GO:0001568	blood vessel development	49	2	Adm2, Serpine1	0.04081632653061224	False
+cKO/CRE	up	GO:0043065	positive regulation of apoptotic process	49	2	Ankrd1, Grp	0.04081632653061224	False
+cKO/CRE	up	GO:0043068	positive regulation of programmed cell death	50	2	Ankrd1, Grp	0.04	False
+WT/FF	up	GO:0000902	cell morphogenesis	51	2	Il6, Plppr4	0.0392156862745098	False
+WT/FF	up	GO:0019220	regulation of phosphate metabolic process	51	2	Il6, Ucn	0.0392156862745098	False
+WT/FF	up	GO:0031399	regulation of protein modification process	51	2	Il6, Ucn	0.0392156862745098	False
+WT/FF	up	GO:0051174	regulation of phosphorus metabolic process	51	2	Il6, Ucn	0.0392156862745098	False
+cKO/CRE	up	GO:1902532	negative regulation of intracellular signal transduction	51	2	Dusp9, Plaur	0.0392156862745098	False
+cKO/CRE	up	GO:0034330	cell junction organization	52	2	ENSMUSG00000030223, Plppr4	0.038461538461538464	False
+cKO/CRE	up	GO:0001944	vasculature development	53	2	Adm2, Serpine1	0.03773584905660377	False
+cKO/CRE	up	GO:0007169	cell surface receptor protein tyrosine kinase signaling pathway	53	2	Fgf3, Plaur	0.03773584905660377	False
+cKO/CRE	up	GO:0030097	hemopoiesis	54	2	Il6, Slamf1	0.037037037037037035	False
+cKO/CRE	up	GO:0097190	apoptotic signaling pathway	55	2	Plaur, Serpine1	0.03636363636363636	False
+WT/FF	up	GO:0032880	regulation of protein localization	56	2	Ankrd1, Il6	0.03571428571428571	False
+cKO/CRE	up	GO:0035239	tube morphogenesis	56	2	Adm2, Serpine1	0.03571428571428571	False
+WT/FF	up	GO:0034097	response to cytokine	57	2	Ankrd1, Il6	0.03508771929824561	False
+cKO/CRE	up	GO:0120035	regulation of plasma membrane bounded cell projection organization	57	2	Ankrd1, Il6	0.03508771929824561	False
+WT/FF	up	GO:1901652	response to peptide	58	2	Ankrd1, Il6	0.034482758620689655	False
+cKO/CRE	up	GO:0031344	regulation of cell projection organization	58	2	Ankrd1, Il6	0.034482758620689655	False
+cKO/CRE	up	GO:0045597	positive regulation of cell differentiation	58	2	Il6, Serpine1	0.034482758620689655	False
+cKO/CRE	up	GO:0050776	regulation of immune response	59	2	Il6, Slamf1	0.03389830508474576	False
+cKO/CRE	up	GO:0051247	positive regulation of protein metabolic process	60	2	Il6, Ucn	0.03333333333333333	False
+WT/FF	up	GO:0060341	regulation of cellular localization	61	2	Ankrd1, Il6	0.03278688524590164	False
+WT/FF	up	GO:0006468	protein phosphorylation	67	2	Il6, Ucn	0.029850746268656716	False
+cKO/CRE	up	GO:0048646	anatomical structure formation involved in morphogenesis	67	2	Adm2, Serpine1	0.029850746268656716	False
+cKO/CRE	up	GO:0032880	regulation of protein localization	68	2	Ankrd1, Il6	0.029411764705882353	False
+WT/FF	up	GO:0016310	phosphorylation	71	2	Il6, Ucn	0.028169014084507043	False
+cKO/CRE	up	GO:0007167	enzyme-linked receptor protein signaling pathway	71	2	Fgf3, Plaur	0.028169014084507043	False
+cKO/CRE	up	GO:0030334	regulation of cell migration	74	2	Serpine1, Slamf1	0.02702702702702703	False
+cKO/CRE	up	GO:0060341	regulation of cellular localization	74	2	Ankrd1, Il6	0.02702702702702703	False
+cKO/CRE	up	GO:2000145	regulation of cell motility	76	2	Serpine1, Slamf1	0.02631578947368421	False
+cKO/CRE	up	GO:0040012	regulation of locomotion	78	2	Serpine1, Slamf1	0.02564102564102564	False
+cKO/CRE	up	GO:0045944	positive regulation of transcription by RNA polymerase II	83	2	Il6, Ucn	0.024096385542168676	False
+cKO/CRE	up	GO:0045595	regulation of cell differentiation	96	2	Il6, Serpine1	0.020833333333333332	False
+cKO/CRE	up	GO:0033554	cellular response to stress	105	2	Ankrd1, Clca1	0.01904761904761905	False
+WT/FF	up	GO:0045837	negative regulation of membrane potential	5	1	Il6	0.2	False
+WT/FF	up	GO:0032740	positive regulation of interleukin-17 production	6	1	Il6	0.16666666666666666	False
+WT/FF	up	GO:0032620	interleukin-17 production	7	1	Il6	0.14285714285714285	False
+WT/FF	up	GO:0032660	regulation of interleukin-17 production	7	1	Il6	0.14285714285714285	False
+WT/FF	up	GO:0070498	interleukin-1-mediated signaling pathway	7	1	Il6	0.14285714285714285	False
+cKO/CRE	up	GO:0070498	interleukin-1-mediated signaling pathway	7	1	Il6	0.14285714285714285	False
+WT/FF	up	GO:0014912	negative regulation of smooth muscle cell migration	8	1	Serpine1	0.125	False
+cKO/CRE	up	GO:0014912	negative regulation of smooth muscle cell migration	8	1	Serpine1	0.125	False
+cKO/CRE	up	GO:2000300	regulation of synaptic vesicle exocytosis	9	1	Gpr151	0.1111111111111111	False
+WT/FF	up	GO:0051591	response to cAMP	11	1	Vgf	0.09090909090909091	False
+WT/FF	up	GO:0008360	regulation of cell shape	13	1	Il6	0.07692307692307693	False
+cKO/CRE	up	GO:0014910	regulation of smooth muscle cell migration	13	1	Serpine1	0.07692307692307693	False
+cKO/CRE	up	GO:2001243	negative regulation of intrinsic apoptotic signaling pathway	13	1	Plaur	0.07692307692307693	False
+WT/FF	up	GO:0045667	regulation of osteoblast differentiation	14	1	Ccn4	0.07142857142857142	False
+WT/FF	up	GO:0046683	response to organophosphorus	14	1	Vgf	0.07142857142857142	False
+cKO/CRE	up	GO:0014909	smooth muscle cell migration	14	1	Serpine1	0.07142857142857142	False
+WT/FF	up	GO:0006606	protein import into nucleus	15	1	Il6	0.06666666666666667	False
+WT/FF	up	GO:0014074	response to purine-containing compound	15	1	Vgf	0.06666666666666667	False
+WT/FF	up	GO:0051170	import into nucleus	15	1	Il6	0.06666666666666667	False
+cKO/CRE	up	GO:0014812	muscle cell migration	15	1	Serpine1	0.06666666666666667	False
+WT/FF	up	GO:0048639	positive regulation of developmental growth	16	1	Ccn4	0.0625	False
+cKO/CRE	up	GO:0045859	regulation of protein kinase activity	17	1	ENSMUSG00000030223	0.058823529411764705	False
+cKO/CRE	up	GO:1900180	regulation of protein localization to nucleus	17	1	Il6	0.058823529411764705	False
+WT/FF	up	GO:0007623	circadian rhythm	18	1	Il6	0.05555555555555555	False
+cKO/CRE	up	GO:0043549	regulation of kinase activity	18	1	ENSMUSG00000030223	0.05555555555555555	False
+cKO/CRE	up	GO:0006606	protein import into nucleus	19	1	Il6	0.05263157894736842	False
+cKO/CRE	up	GO:0051170	import into nucleus	19	1	Il6	0.05263157894736842	False
+WT/FF	up	GO:0007162	negative regulation of cell adhesion	20	1	Serpine1	0.05	False
+WT/FF	up	GO:0022604	regulation of cell morphogenesis	20	1	Il6	0.05	False
+WT/FF	up	GO:0050769	positive regulation of neurogenesis	20	1	Il6	0.05	False
+WT/FF	up	GO:0099173	postsynapse organization	21	1	Plppr4	0.047619047619047616	False
+cKO/CRE	up	GO:0001933	negative regulation of protein phosphorylation	21	1	ENSMUSG00000030223	0.047619047619047616	False
+cKO/CRE	up	GO:0099175	regulation of postsynapse organization	21	1	Plppr4	0.047619047619047616	False
+WT/FF	up	GO:0006913	nucleocytoplasmic transport	22	1	Il6	0.045454545454545456	False
+WT/FF	up	GO:0051169	nuclear transport	22	1	Il6	0.045454545454545456	False
+cKO/CRE	down	GO:0009966	regulation of signal transduction	22	1	ENSMUSG00000009633	0.045454545454545456	False
+cKO/CRE	up	GO:0042326	negative regulation of phosphorylation	22	1	ENSMUSG00000030223	0.045454545454545456	False
+cKO/CRE	up	GO:0051896	regulation of phosphatidylinositol 3-kinase/protein kinase B signal transduction	22	1	Il6	0.045454545454545456	False
+cKO/CRE	up	GO:0071559	response to transforming growth factor beta	22	1	Ankrd1	0.045454545454545456	False
+WT/FF	down	GO:0007399	nervous system development	23	1	Rnf112	0.043478260869565216	False
+WT/FF	up	GO:0015849	organic acid transport	23	1	Slc10a6	0.043478260869565216	False
+WT/FF	up	GO:0046942	carboxylic acid transport	23	1	Slc10a6	0.043478260869565216	False
+cKO/CRE	up	GO:0007162	negative regulation of cell adhesion	23	1	Serpine1	0.043478260869565216	False
+cKO/CRE	up	GO:0032386	regulation of intracellular transport	23	1	Il6	0.043478260869565216	False
+cKO/CRE	up	GO:0022604	regulation of cell morphogenesis	24	1	Il6	0.041666666666666664	False
+WT/FF	up	GO:0034762	regulation of transmembrane transport	25	1	Grp	0.04	False
+cKO/CRE	down	GO:0010646	regulation of cell communication	25	1	ENSMUSG00000009633	0.04	False
+cKO/CRE	down	GO:0023051	regulation of signaling	25	1	ENSMUSG00000009633	0.04	False
+WT/FF	up	GO:0015711	organic anion transport	26	1	Slc10a6	0.038461538461538464	False
+cKO/CRE	up	GO:0010563	negative regulation of phosphorus metabolic process	26	1	ENSMUSG00000030223	0.038461538461538464	False
+cKO/CRE	up	GO:0031400	negative regulation of protein modification process	26	1	ENSMUSG00000030223	0.038461538461538464	False
+cKO/CRE	up	GO:0045936	negative regulation of phosphate metabolic process	26	1	ENSMUSG00000030223	0.038461538461538464	False
+WT/FF	up	GO:0002683	negative regulation of immune system process	27	1	Slamf1	0.037037037037037035	False
+WT/FF	up	GO:0019221	cytokine-mediated signaling pathway	27	1	Il6	0.037037037037037035	False
+cKO/CRE	up	GO:0006417	regulation of translation	27	1	Ucn	0.037037037037037035	False
+cKO/CRE	up	GO:0030336	negative regulation of cell migration	27	1	Serpine1	0.037037037037037035	False
+WT/FF	up	GO:0006979	response to oxidative stress	28	1	Ucn	0.03571428571428571	False
+WT/FF	up	GO:0043434	response to peptide hormone	28	1	Vgf	0.03571428571428571	False
+WT/FF	up	GO:0097193	intrinsic apoptotic signaling pathway	28	1	Plaur	0.03571428571428571	False
+cKO/CRE	up	GO:0031589	cell-substrate adhesion	28	1	Serpine1	0.03571428571428571	False
+cKO/CRE	up	GO:0034504	protein localization to nucleus	28	1	Il6	0.03571428571428571	False
+cKO/CRE	up	GO:0040013	negative regulation of locomotion	28	1	Serpine1	0.03571428571428571	False
+cKO/CRE	up	GO:2000146	negative regulation of cell motility	28	1	Serpine1	0.03571428571428571	False
+cKO/CRE	up	GO:0006913	nucleocytoplasmic transport	29	1	Il6	0.034482758620689655	False
+cKO/CRE	up	GO:0006979	response to oxidative stress	29	1	Ucn	0.034482758620689655	False
+cKO/CRE	up	GO:0051169	nuclear transport	29	1	Il6	0.034482758620689655	False
+cKO/CRE	up	GO:0099173	postsynapse organization	29	1	Plppr4	0.034482758620689655	False
+WT/FF	up	GO:0010720	positive regulation of cell development	30	1	Il6	0.03333333333333333	False
+WT/FF	up	GO:0050767	regulation of neurogenesis	30	1	Il6	0.03333333333333333	False
+cKO/CRE	up	GO:0001503	ossification	31	1	Grp	0.03225806451612903	False
+cKO/CRE	up	GO:0050767	regulation of neurogenesis	31	1	Il6	0.03225806451612903	False
+cKO/CRE	up	GO:0043434	response to peptide hormone	32	1	Vgf	0.03125	False
+cKO/CRE	up	GO:0097193	intrinsic apoptotic signaling pathway	32	1	Plaur	0.03125	False
+WT/FF	up	GO:0051960	regulation of nervous system development	33	1	Il6	0.030303030303030304	False
+WT/FF	up	GO:0090066	regulation of anatomical structure size	33	1	Ucn	0.030303030303030304	False
+cKO/CRE	up	GO:0015711	organic anion transport	33	1	Slc10a6	0.030303030303030304	False
+WT/FF	up	GO:0006886	intracellular protein transport	34	1	Il6	0.029411764705882353	False
+cKO/CRE	up	GO:0072594	establishment of protein localization to organelle	34	1	Il6	0.029411764705882353	False
+cKO/CRE	up	GO:0051960	regulation of nervous system development	35	1	Il6	0.02857142857142857	False
+WT/FF	up	GO:0051248	negative regulation of protein metabolic process	37	1	Serpine1	0.02702702702702703	False
+cKO/CRE	up	GO:0090066	regulation of anatomical structure size	37	1	Ucn	0.02702702702702703	False
+WT/FF	up	GO:0045596	negative regulation of cell differentiation	39	1	Ccn4	0.02564102564102564	False
+WT/FF	up	GO:0065009	regulation of molecular function	39	1	Grp	0.02564102564102564	False
+cKO/CRE	up	GO:0008285	negative regulation of cell population proliferation	42	1	Il6	0.023809523809523808	False
+cKO/CRE	up	GO:0040008	regulation of growth	43	1	Ucn	0.023255813953488372	False
+WT/FF	up	GO:0033365	protein localization to organelle	47	1	Il6	0.02127659574468085	False
+cKO/CRE	up	GO:0006886	intracellular protein transport	49	1	Il6	0.02040816326530612	False
+WT/FF	up	GO:0060284	regulation of cell development	50	1	Il6	0.02	False
+cKO/CRE	up	GO:0061024	membrane organization	50	1	Slamf1	0.02	False
+cKO/CRE	up	GO:0060284	regulation of cell development	52	1	Il6	0.019230769230769232	False
+cKO/CRE	up	GO:0000122	negative regulation of transcription by RNA polymerase II	53	1	Ankrd1	0.018867924528301886	False
+cKO/CRE	up	GO:0040007	growth	56	1	Ucn	0.017857142857142856	False
+WT/FF	up	GO:0046907	intracellular transport	62	1	Il6	0.016129032258064516	False
+WT/FF	up	GO:1901698	response to nitrogen compound	62	1	Vgf	0.016129032258064516	False
+WT/FF	up	GO:0007010	cytoskeleton organization	68	1	Krt6a	0.014705882352941176	False
+cKO/CRE	up	GO:0033365	protein localization to organelle	68	1	Il6	0.014705882352941176	False
+cKO/CRE	up	GO:0045892	negative regulation of DNA-templated transcription	68	1	Ankrd1	0.014705882352941176	False
+cKO/CRE	up	GO:1902679	negative regulation of RNA biosynthetic process	69	1	Ankrd1	0.014492753623188406	False
+cKO/CRE	up	GO:0051253	negative regulation of RNA metabolic process	74	1	Ankrd1	0.013513513513513514	False
+cKO/CRE	up	GO:1901698	response to nitrogen compound	76	1	Vgf	0.013157894736842105	False
+cKO/CRE	up	GO:0007049	cell cycle	77	1	Serpine1	0.012987012987012988	False
+cKO/CRE	up	GO:0007010	cytoskeleton organization	80	1	Krt6a	0.0125	False
+cKO/CRE	up	GO:0045934	negative regulation of nucleobase-containing compound metabolic process	81	1	Ankrd1	0.012345679012345678	False
+cKO/CRE	up	GO:0044281	small molecule metabolic process	85	1	Il6	0.011764705882352941	False
+cKO/CRE	up	GO:0046907	intracellular transport	87	1	Il6	0.011494252873563218	False
+cKO/CRE	up	GO:0009057	macromolecule catabolic process	90	1	ENSMUSG00000025279	0.011111111111111112	False
+cKO/CRE	up	GO:0009056	catabolic process	131	1	ENSMUSG00000025279	0.007633587786259542	False
+WT/FF	down	GO:0099171	presynaptic modulation of chemical synaptic transmission	5	0		0.0	False
+WT/FF	up	GO:0000768	syncytium formation by plasma membrane fusion	9	0		0.0	False
+WT/FF	up	GO:0001933	negative regulation of protein phosphorylation	18	0		0.0	False
+WT/FF	up	GO:0002831	regulation of response to biotic stimulus	28	0		0.0	False
+WT/FF	up	GO:0003158	endothelium development	13	0		0.0	False
+WT/FF	up	GO:0006413	translational initiation	12	0		0.0	False
+WT/FF	up	GO:0006949	syncytium formation	9	0		0.0	False
+WT/FF	up	GO:0006986	response to unfolded protein	13	0		0.0	False
+WT/FF	up	GO:0007264	small GTPase-mediated signal transduction	32	0		0.0	False
+WT/FF	up	GO:0007266	Rho protein signal transduction	14	0		0.0	False
+WT/FF	up	GO:0008643	carbohydrate transport	14	0		0.0	False
+WT/FF	up	GO:0008645	hexose transmembrane transport	12	0		0.0	False
+WT/FF	up	GO:0009056	catabolic process	92	0		0.0	False
+WT/FF	up	GO:0009057	macromolecule catabolic process	61	0		0.0	False
+WT/FF	up	GO:0009894	regulation of catabolic process	46	0		0.0	False
+WT/FF	up	GO:0010563	negative regulation of phosphorus metabolic process	20	0		0.0	False
+WT/FF	up	GO:0015749	monosaccharide transmembrane transport	14	0		0.0	False
+WT/FF	up	GO:0030036	actin cytoskeleton organization	36	0		0.0	False
+WT/FF	up	GO:0030163	protein catabolic process	44	0		0.0	False
+WT/FF	up	GO:0031400	negative regulation of protein modification process	21	0		0.0	False
+WT/FF	up	GO:0034219	carbohydrate transmembrane transport	14	0		0.0	False
+WT/FF	up	GO:0034250	positive regulation of amide metabolic process	7	0		0.0	False
+WT/FF	up	GO:0034620	cellular response to unfolded protein	10	0		0.0	False
+WT/FF	up	GO:0034976	response to endoplasmic reticulum stress	20	0		0.0	False
+WT/FF	up	GO:0035966	response to topologically incorrect protein	13	0		0.0	False
+WT/FF	up	GO:0036010	protein localization to endosome	8	0		0.0	False
+WT/FF	up	GO:0042326	negative regulation of phosphorylation	19	0		0.0	False
+WT/FF	up	GO:0045088	regulation of innate immune response	26	0		0.0	False
+WT/FF	up	GO:0045446	endothelial cell differentiation	13	0		0.0	False
+WT/FF	up	GO:0045936	negative regulation of phosphate metabolic process	20	0		0.0	False
+WT/FF	up	GO:0046323	D-glucose import	10	0		0.0	False
+WT/FF	up	GO:0051668	localization within membrane	38	0		0.0	False
+WT/FF	up	GO:0070059	intrinsic apoptotic signaling pathway in response to endoplasmic reticulum stress	10	0		0.0	False
+WT/FF	up	GO:0072659	protein localization to plasma membrane	20	0		0.0	False
+WT/FF	up	GO:0140253	cell-cell fusion	9	0		0.0	False
+WT/FF	up	GO:1901699	cellular response to nitrogen compound	38	0		0.0	False
+WT/FF	up	GO:1903825	organic acid transmembrane transport	14	0		0.0	False
+WT/FF	up	GO:1904659	D-glucose transmembrane transport	12	0		0.0	False
+WT/FF	up	GO:1905039	carboxylic acid transmembrane transport	14	0		0.0	False
+WT/FF	up	GO:1905477	positive regulation of protein localization to membrane	12	0		0.0	False
+cKO/CRE	down	GO:0099171	presynaptic modulation of chemical synaptic transmission	5	0		0.0	False
+cKO/CRE	down	GO:1902531	regulation of intracellular signal transduction	17	0		0.0	False
+cKO/CRE	up	GO:0001667	ameboidal-type cell migration	22	0		0.0	False
+cKO/CRE	up	GO:0002221	pattern recognition receptor signaling pathway	21	0		0.0	False
+cKO/CRE	up	GO:0002253	activation of immune response	34	0		0.0	False
+cKO/CRE	up	GO:0002757	immune response-activating signaling pathway	32	0		0.0	False
+cKO/CRE	up	GO:0002758	innate immune response-activating signaling pathway	21	0		0.0	False
+cKO/CRE	up	GO:0002764	immune response-regulating signaling pathway	32	0		0.0	False
+cKO/CRE	up	GO:0002831	regulation of response to biotic stimulus	39	0		0.0	False
+cKO/CRE	up	GO:0006413	translational initiation	14	0		0.0	False
+cKO/CRE	up	GO:0006418	tRNA aminoacylation for protein translation	8	0		0.0	False
+cKO/CRE	up	GO:0006511	ubiquitin-dependent protein catabolic process	38	0		0.0	False
+cKO/CRE	up	GO:0006520	amino acid metabolic process	22	0		0.0	False
+cKO/CRE	up	GO:0006986	response to unfolded protein	15	0		0.0	False
+cKO/CRE	up	GO:0007264	small GTPase-mediated signal transduction	38	0		0.0	False
+cKO/CRE	up	GO:0009267	cellular response to starvation	20	0		0.0	False
+cKO/CRE	up	GO:0009790	embryo development	69	0		0.0	False
+cKO/CRE	up	GO:0009894	regulation of catabolic process	65	0		0.0	False
+cKO/CRE	up	GO:0009896	positive regulation of catabolic process	36	0		0.0	False
+cKO/CRE	up	GO:0010256	endomembrane system organization	35	0		0.0	False
+cKO/CRE	up	GO:0014858	positive regulation of skeletal muscle cell proliferation	4	0		0.0	False
+cKO/CRE	up	GO:0016197	endosomal transport	22	0		0.0	False
+cKO/CRE	up	GO:0019941	modification-dependent protein catabolic process	38	0		0.0	False
+cKO/CRE	up	GO:0030163	protein catabolic process	65	0		0.0	False
+cKO/CRE	up	GO:0030968	endoplasmic reticulum unfolded protein response	11	0		0.0	False
+cKO/CRE	up	GO:0031334	positive regulation of protein-containing complex assembly	19	0		0.0	False
+cKO/CRE	up	GO:0031348	negative regulation of defense response	22	0		0.0	False
+cKO/CRE	up	GO:0031669	cellular response to nutrient levels	23	0		0.0	False
+cKO/CRE	up	GO:0032611	interleukin-1 beta production	13	0		0.0	False
+cKO/CRE	up	GO:0032612	interleukin-1 production	13	0		0.0	False
+cKO/CRE	up	GO:0032651	regulation of interleukin-1 beta production	13	0		0.0	False
+cKO/CRE	up	GO:0032652	regulation of interleukin-1 production	13	0		0.0	False
+cKO/CRE	up	GO:0033002	muscle cell proliferation	23	0		0.0	False
+cKO/CRE	up	GO:0034620	cellular response to unfolded protein	12	0		0.0	False
+cKO/CRE	up	GO:0034976	response to endoplasmic reticulum stress	26	0		0.0	False
+cKO/CRE	up	GO:0035966	response to topologically incorrect protein	16	0		0.0	False
+cKO/CRE	up	GO:0035967	cellular response to topologically incorrect protein	13	0		0.0	False
+cKO/CRE	up	GO:0036010	protein localization to endosome	7	0		0.0	False
+cKO/CRE	up	GO:0038179	neurotrophin signaling pathway	9	0		0.0	False
+cKO/CRE	up	GO:0042149	cellular response to glucose starvation	12	0		0.0	False
+cKO/CRE	up	GO:0042176	regulation of protein catabolic process	27	0		0.0	False
+cKO/CRE	up	GO:0042594	response to starvation	23	0		0.0	False
+cKO/CRE	up	GO:0043254	regulation of protein-containing complex assembly	29	0		0.0	False
+cKO/CRE	up	GO:0043632	modification-dependent macromolecule catabolic process	38	0		0.0	False
+cKO/CRE	up	GO:0044087	regulation of cellular component biogenesis	58	0		0.0	False
+cKO/CRE	up	GO:0044089	positive regulation of cellular component biogenesis	34	0		0.0	False
+cKO/CRE	up	GO:0045088	regulation of innate immune response	35	0		0.0	False
+cKO/CRE	up	GO:0045089	positive regulation of innate immune response	26	0		0.0	False
+cKO/CRE	up	GO:0046777	protein autophosphorylation	15	0		0.0	False
+cKO/CRE	up	GO:0046847	filopodium assembly	11	0		0.0	False
+cKO/CRE	up	GO:0048589	developmental growth	46	0		0.0	False
+cKO/CRE	up	GO:0048598	embryonic morphogenesis	39	0		0.0	False
+cKO/CRE	up	GO:0048638	regulation of developmental growth	31	0		0.0	False
+cKO/CRE	up	GO:0051099	positive regulation of binding	7	0		0.0	False
+cKO/CRE	up	GO:0051603	proteolysis involved in protein catabolic process	45	0		0.0	False
+cKO/CRE	up	GO:0051668	localization within membrane	55	0		0.0	False
+cKO/CRE	up	GO:0051726	regulation of cell cycle	56	0		0.0	False
+cKO/CRE	up	GO:0060322	head development	47	0		0.0	False
+cKO/CRE	up	GO:0060996	dendritic spine development	14	0		0.0	False
+cKO/CRE	up	GO:0070059	intrinsic apoptotic signaling pathway in response to endoplasmic reticulum stress	10	0		0.0	False
+cKO/CRE	up	GO:0072657	protein localization to membrane	48	0		0.0	False
+cKO/CRE	up	GO:0072659	protein localization to plasma membrane	26	0		0.0	False
+cKO/CRE	up	GO:0150052	regulation of postsynapse assembly	10	0		0.0	False
+cKO/CRE	up	GO:1901699	cellular response to nitrogen compound	48	0		0.0	False
+cKO/CRE	up	GO:1903828	negative regulation of protein localization	20	0		0.0	False
+cKO/CRE	up	GO:1990778	protein localization to cell periphery	30	0		0.0	False
