@@ -1,0 +1,12 @@
+metric	count	interpretation
+Source RSS genes found in our DESeq2-tested universe	1025	Matched source-paper RSS genes available for source-constrained bend-point selection.
+WT/FF selected after source-constrained bend-point	37	Source RSS genes prioritized when the WT/FF bend-point rule is rerun inside the matched source-gene subset.
+cKO/CRE selected after source-constrained bend-point	53	Source RSS genes prioritized when the cKO/CRE bend-point rule is rerun inside the matched source-gene subset.
+Shared source-constrained WT/cKO selected genes	32	Source RSS genes selected by the source-constrained bend-point rule in both side-specific branches.
+cKO-only source-constrained selected genes	21	Source RSS genes selected only under the cKO/CRE source-constrained branch.
+WT-only source-constrained selected genes	5	Source RSS genes selected only under the WT/FF source-constrained branch.
+Source-constrained selected genes also in original WT/FF bend-point	37	All WT/FF source-constrained selections are contained within the original full-universe WT/FF bend-point set.
+Source-constrained selected genes also in original cKO/CRE bend-point	45	Most cKO/CRE source-constrained selections are also in the original full-universe cKO/CRE bend-point set.
+cKO/CRE source-constrained selections outside original full cKO/CRE bend-point	8	Additional source RSS genes prioritized only after reranking within the source-gene subset.
+Directionally consistent selected source RSS symbols	55	Selected source genes where sign(source RSS) agrees with sign(our local cKO-minus-WT log2FC delta).
+Source-constrained selected genes appearing in retained GO terms	46	Selected source RSS gene IDs that appear in retained WT/FF or cKO/CRE GO/pathway membership tables.

@@ -1,0 +1,3 @@
+branch	source_rss_gene_id_rows_ranked	source_rss_symbols_ranked	significant_padj_lt_0_05_within_source_subset	source_constrained_bend_pvalue_threshold	source_constrained_bend_rank	source_constrained_selected_gene_ids	source_constrained_selected_symbols	selected_up_log2fc_gt_0	selected_down_log2fc_lt_0	selected_positive_source_rss	selected_negative_source_rss	selected_direction_consistent_symbols	overlap_with_original_full_branch_bendpoint	selected_outside_original_full_branch_bendpoint
+WT/FF	1027	1025	474	6.388457908700271e-19	37	37	37	36	1	26	11	35	37	0
+cKO/CRE	1027	1025	578	3.0179623409184104e-14	53	53	53	51	2	41	12	50	45	8

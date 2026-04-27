@@ -1,0 +1,6 @@
+source_constrained_membership	positive	negative
+shared source-constrained bend-point	25	7
+cKO-only source-constrained bend-point	16	5
+WT-only source-constrained bend-point	1	4
+tested source RSS, not source-constrained selected	304	663
+not in our tested universe	187	219
